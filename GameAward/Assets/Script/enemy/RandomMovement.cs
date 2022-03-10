@@ -29,8 +29,16 @@ public class RandomMovement : MonoBehaviour
             //スコア処理を追加
             FindObjectOfType<Score>().AddScore(10);
 
-            //相手のタグがScicssorであるならば、自分を消す
+            //相手のタグがScicssorであるならば、自分を消すに変える
             Destroy(this.gameObject);
         }
+
     }
+    //void GameC_O()
+    //{
+    //    if (Destroy(this.gameObject))
+    //    {
+    //        
+    //    }
+    //}
 }
