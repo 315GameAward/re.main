@@ -104,8 +104,8 @@ public class Scissor : MonoBehaviour
         if (g_bMove)
         {
             //GetComponent<point>().AddPoitn(gameObject.transform.position);
-           Instantiate(poitObj, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
-           // g_point.AddPoint(gameObject.transform.position);
+           // Instantiate(poitObj, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            g_point.AddPoint(gameObject.transform.position);
             g_bMove = false;
         }
     }
