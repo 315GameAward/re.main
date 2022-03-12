@@ -1,3 +1,14 @@
+//----------------------------------------------------------
+//
+//
+//
+//
+//
+//
+//
+//----------------------------------------------------------
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +16,8 @@ using UnityEngine.SceneManagement; //シーン切り替えに必要
 
 public class SceneChange : MonoBehaviour
 {
-    string SceneName;
+    private string SceneName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +40,7 @@ public class SceneChange : MonoBehaviour
                 {
                     // ゲームシーンのロード
                     SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
-                    SceneManager.UnloadSceneAsync(SceneName);
-                    CoUnload();
+                    OnUnloadScene();
 
                 }
                 break;
@@ -38,15 +49,20 @@ public class SceneChange : MonoBehaviour
                 {
                     // タイトルシーンのロード
                     SceneManager.LoadScene("TitleScene", LoadSceneMode.Additive);
-                    SceneManager.UnloadSceneAsync(SceneName);
-                    CoUnload();
+                    OnUnloadScene();
                 }
                 break;
             default:
                 break;
         }
     }
-    
+
+
+    public void OnUnloadScene()
+    {
+        StartCoroutine(CoUnload());
+    }
+
     IEnumerator CoUnload()
     {
         //SceneAをアンロード
@@ -58,6 +74,18 @@ public class SceneChange : MonoBehaviour
         //必要に応じて不使用アセットをアンロードしてメモリを解放する
         //けっこう重い処理なので、別に管理するのも手
         yield return Resources.UnloadUnusedAssets();
-
     }
+    //IEnumerator CoUnload(string SceneName)
+    //{
+    //    //SceneAをアンロード
+    //    var op = SceneManager.UnloadSceneAsync(SceneName);
+    //    yield return op;
+    //
+    //    //アンロード後の処理を書く
+    //
+    //    //必要に応じて不使用アセットをアンロードしてメモリを解放する
+    //    //けっこう重い処理なので、別に管理するのも手
+    //    yield return Resources.UnloadUnusedAssets();
+    //
+    //}
 }
