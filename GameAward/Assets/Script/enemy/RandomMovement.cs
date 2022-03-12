@@ -1,6 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+//プログラム説明
+//一定時間で進路をランダムに変更しながら動く
+//"test"というタグ名のついたオブジェクトと接触したときに削除する
+//このスクリプトをアタッチしたオブジェクトが消えたことを告知する
+
 public class RandomMovement : MonoBehaviour
 {
     private float chargeTime = 5.0f;
@@ -21,6 +28,8 @@ public class RandomMovement : MonoBehaviour
         }
     }
 
+    public UnityEvent OnDestroyed = new UnityEvent();
+
     private void OnCollisionEnter(Collision collision)
     {
         //衝突判定
@@ -29,8 +38,16 @@ public class RandomMovement : MonoBehaviour
             //スコア処理を追加
             FindObjectOfType<Score>().AddScore(10);
 
-            //相手のタグがScicssorであるならば、自分を消す
+            //相手のタグがScicssorであるならば、自分を消すに変える
             Destroy(this.gameObject);
         }
+
+    }
+
+    private void OnDestroy()
+    {
+        //エフェクトなど入れても可
+
+        OnDestroyed.Invoke();
     }
 }
