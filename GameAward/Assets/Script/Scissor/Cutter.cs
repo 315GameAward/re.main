@@ -50,7 +50,7 @@ public class Cutter : MonoBehaviour
     // ’n–Ê‚É“–‚½‚Á‚½‚Æ‚«
     void OnTriggerStay(Collider other)
     {
-        if(GetComponent<PlayerControl>().g_bPlayerMove)
+        if(GetComponent<Scissor>().g_bMove)
         {
 
         }
