@@ -13,12 +13,6 @@
 // 編集者: 道塚悠基
 //================================================
 
-//================================================
-// 変更履歴
-// 2022/03/12 
-// 編集者: 澤村瑠人
-//================================================
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,12 +29,6 @@ public enum GameState
 }
 public class GameManager : MonoBehaviour
 {
-    public enum GAME_STATUS { Play,Clear,Paose,GameOver};
-    public static GAME_STATUS status;
-
-    [SerializeField]
-    GameObject clearUI;
-
     //現在のスコア
     public int g_nScore;
     //最大スコア
@@ -69,22 +57,9 @@ public class GameManager : MonoBehaviour
         g_fTime = 100.0f;
     }
 
-    void Start()
-    {
-        //ステータスをPlayに
-        status = GAME_STATUS.Play;
-    }
-
     //毎フレーム実行
     void Update()
     {
-        if (status == GAME_STATUS.Clear)
-        {
-            clearUI.SetActive(true);
-        }
-
-        
-
         /*
         switch (GameState.GameStart) 
         {
