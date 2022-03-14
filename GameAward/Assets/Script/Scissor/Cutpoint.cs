@@ -12,6 +12,11 @@
 // 2022/03/13 作成開始
 // 編集者:根本龍之介
 //======================================================
+//======================================================
+// 開発履歴
+// 2022/03/14 コメントの追加
+// 編集者:根本龍之介
+//======================================================
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +61,7 @@ public class Cutpoint : MonoBehaviour
                     m_vCotPoint.Add(hit.point);
                     Debug.Log("軌跡を追加");
                     Debug.Log("軌跡の数:" + m_vCotPoint.Count);
+
                 }
             }
             else
@@ -67,11 +73,14 @@ public class Cutpoint : MonoBehaviour
                     m_vCotPoint.Add(hit.point);
                     Debug.Log("軌跡を追加");
                     Debug.Log("軌跡の数:" + m_vCotPoint.Count);
+
                 }
             }
-        }
 
-        
+            // メッシュを分割する処理
+
+
+        }
     }
 
     // 何かから離れる瞬間
@@ -84,6 +93,10 @@ public class Cutpoint : MonoBehaviour
             m_vCotPoint.Add(gameObject.transform.position);
             Debug.Log("軌跡を追加");
             Debug.Log("軌跡の数:" + m_vCotPoint.Count);
+
+            // メッシュを分割する処理
+
+            // メッシュを切り分ける処理
 
             // 頂点を削除
             m_vCotPoint.Clear();
