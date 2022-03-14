@@ -46,6 +46,8 @@ public class PlayerControl : MonoBehaviour
         _gameInputs.Player.Move.started += OnMove;
         _gameInputs.Player.Move.performed += OnMove;
         _gameInputs.Player.Move.canceled += OnMove;
+       
+
 
         //CutƒCƒxƒ“ƒg“o˜^
         _gameInputs.Player.Cut.started += OnCut;
