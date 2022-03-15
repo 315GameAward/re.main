@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     private Vector2 _moveStickValue;        //スティック移動量
 
     public float motorDelay = 0.1f;               //パッド振動のディレイ
-    public bool g_bPlayerMove = false;       //移動しているか
+    public bool m_bPlayerMove = false;       //移動しているか
 
     private void Awake()
     {
@@ -46,6 +46,8 @@ public class PlayerControl : MonoBehaviour
         _gameInputs.Player.Move.started += OnMove;
         _gameInputs.Player.Move.performed += OnMove;
         _gameInputs.Player.Move.canceled += OnMove;
+       
+
 
         //Cutイベント登録
         _gameInputs.Player.Cut.started += OnCut;
@@ -81,25 +83,25 @@ public class PlayerControl : MonoBehaviour
         {
             Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
         }));
-        g_bPlayerMove = true;
+        m_bPlayerMove = true;
 
         //WaitForSecondsRealtime(3.0f);
     }
 
     private void OnCutOff(InputAction.CallbackContext context)
     {
-        g_bPlayerMove = false;
+        m_bPlayerMove = false;
         Debug.Log("CutOff");
     }
 
     private void OnSmoothCut(InputAction.CallbackContext context)
     {
         transform.position += transform.forward * 1.0f;
-        g_bPlayerMove = true;
+        m_bPlayerMove = true;
     }
     private void OnSmoothCutOff(InputAction.CallbackContext context)
     {
-        g_bPlayerMove = false;
+        m_bPlayerMove = false;
     }
 
 

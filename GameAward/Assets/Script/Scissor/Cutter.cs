@@ -19,7 +19,7 @@ using UnityEngine;
 public class Cutter : MonoBehaviour
 {
     //--- Unityに公開しないパラメータ
-    private bool g_bBiginPoint = false; // 地面に当たったときに切り始めのポイントを作り、それがあったらtrueにする
+    private bool m_bBiginPoint = false; // 地面に当たったときに切り始めのポイントを作り、それがあったらtrueにする
 
 
     // 動く方向で切断する場合
@@ -35,7 +35,7 @@ public class Cutter : MonoBehaviour
     // このコンポーネントを付けたオブジェクトのCollider.IsTriggerをONにする
     void OnTriggerEnter(Collider other)
     {
-        g_bBiginPoint = true;
+        m_bBiginPoint = true;
         
 
         //var meshCut = other.gameObject.GetComponent<MeshCut>();
@@ -50,16 +50,13 @@ public class Cutter : MonoBehaviour
     // 地面に当たったとき
     void OnTriggerStay(Collider other)
     {
-        if(GetComponent<PlayerControl>().g_bPlayerMove)
-        {
-
-        }
+        
     }
 
     // 地面から離れたとき
    void OnTriggerExit(Collider other)
    {
-        if(g_bBiginPoint)
+        if(m_bBiginPoint)
         {
             var meshCut = other.gameObject.GetComponent<MeshCut>();
             if (meshCut == null) { return; }
@@ -68,7 +65,7 @@ public class Cutter : MonoBehaviour
             //動きで切断する場合
             //var cutPlane = new Plane (Vector3.Cross(transform.forward.normalized, prePos - transform.position).normalized, transform.position);
             meshCut.Cut(cutPlane);  // 地面を切る
-            g_bBiginPoint = false;  // ポイント解除
+            m_bBiginPoint = false;  // ポイント解除
         }
    }
 }

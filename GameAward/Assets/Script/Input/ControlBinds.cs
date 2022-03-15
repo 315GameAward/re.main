@@ -80,6 +80,15 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Test"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e7cb05d-f2e7-4d92-bad7-7eadccb795ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -379,6 +388,17 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""action"": ""MoveSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""460962ca-21eb-4e36-b135-f54946c60a53"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -421,6 +441,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         m_Player_MoveSelect = m_Player.FindAction("MoveSelect", throwIfNotFound: true);
+        m_Player_Test = m_Player.FindAction("Test", throwIfNotFound: true);
         // New action map
         m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
         m_Newactionmap_Newaction = m_Newactionmap.FindAction("New action", throwIfNotFound: true);
@@ -489,6 +510,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Select;
     private readonly InputAction m_Player_MoveSelect;
+    private readonly InputAction m_Player_Test;
     public struct PlayerActions
     {
         private @ControlBinds m_Wrapper;
@@ -499,6 +521,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputAction @MoveSelect => m_Wrapper.m_Player_MoveSelect;
+        public InputAction @Test => m_Wrapper.m_Player_Test;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -526,6 +549,9 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @MoveSelect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveSelect;
                 @MoveSelect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveSelect;
                 @MoveSelect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveSelect;
+                @Test.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTest;
+                @Test.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTest;
+                @Test.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTest;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -548,6 +574,9 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @MoveSelect.started += instance.OnMoveSelect;
                 @MoveSelect.performed += instance.OnMoveSelect;
                 @MoveSelect.canceled += instance.OnMoveSelect;
+                @Test.started += instance.OnTest;
+                @Test.performed += instance.OnTest;
+                @Test.canceled += instance.OnTest;
             }
         }
     }
@@ -593,6 +622,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnMoveSelect(InputAction.CallbackContext context);
+        void OnTest(InputAction.CallbackContext context);
     }
     public interface INewactionmapActions
     {
