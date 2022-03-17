@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-
+    // リジットボディの追加
     Rigidbody rb;
 
     void Start()
