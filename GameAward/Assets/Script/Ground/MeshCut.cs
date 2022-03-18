@@ -98,6 +98,30 @@ public class MeshCut : MonoBehaviour
             {       // 分割される三角形の数は4個
 
 
+                // 新しく追加した頂点が3つの頂点の中にあるかをベクトルの係数を使って計算
+                // 中にあったら新しく追加した頂点をメッシュの頂点群の中に追加、
+                // なかったらそのまま3点を追加
+                double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+                double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 1].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 1].z);
+                double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 1].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 1].z);
+                if ((0 < s && s < 1) && (0 < t && t < 1) && (0 < 1 - s - t && 1 - s - t < 1))
+                {
+                    
+
+
+                }
+                else
+                {
+                    // 新しく追加した頂点が3点の中にない、そのまま追加
+                    for (int k = 0; k < 3; k++)
+                    {
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + k]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + k]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + k]]);
+                        triangles1.Add(vertices1.Count - 1);
+                    }
+                }
+
             }
             else    // そうでないときは切り始めの頂点になる
             {       // ので、分割される三角形は2個
@@ -112,8 +136,22 @@ public class MeshCut : MonoBehaviour
                 if ((0 < s && s < 1) && (0 < t && t < 1) && (0 < 1 - s - t && 1 - s - t < 1))
                 {
                     // 新しく追加した頂点がどの辺にあるか調べる
+                    if(s < 0.01)
+                    {
 
+                    }
+                    else if(t < 0.01)
+                    {
 
+                    }
+                    else if(s + t > 0.98)
+                    {
+
+                    }
+                    else
+                    {
+                        Debug.Log("どの辺にもありませんでした");
+                    }
 
                 }
                 else
