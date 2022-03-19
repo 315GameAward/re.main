@@ -55,7 +55,8 @@ public class MeshCut : MonoBehaviour
 
     }
 
-    public void Cut(List<Vector3> cutPoint)
+    // メッシュを引数の頂点をもとに三角形に分割する処理
+    public void Devision(List<Vector3> cutPoint)
     {
         //coliboolがfalseの時は何もしない
         if (coliBool == false)
@@ -65,7 +66,7 @@ public class MeshCut : MonoBehaviour
         returnBool = false;
 
         //いろいろ、Vector3は精度のためにdoubleで扱えるようにしたDVector3を使用↓にclassあり
-        DVector3 p1, p2, p3;
+        DVector3 p0, p1, p2;
         bool p1Bool, p2Bool, p3Bool;
         var uvs1 = new List<Vector2>();
         var uvs2 = new List<Vector2>();
@@ -79,6 +80,113 @@ public class MeshCut : MonoBehaviour
 
         var cutPoint1 = new List<Vector3>();    // カットポイント用リスト
 
+        //カットしたいオブジェクトのメッシュをトライアングルごとに処理
+        for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
+        {
+            //メッシュの3つの頂点を取得
+            p0 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]]));
+            p1 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+            p2 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+
+            // カットしたい頂点が1個以上の時
+            if (cutPoint.Count >= 1)
+            {       // 分割される三角形の数は4個
+
+
+            }
+            else    // そうでないときは切り始めの頂点になる
+            {       // ので、分割される三角形は2個
+
+
+                // 新しく追加した頂点が3つの頂点の中にあるかをベクトルの係数を使って計算
+                // 中にあったら新しく追加した頂点をメッシュの頂点群の中に追加、
+                // なかったらそのまま3点を追加
+                double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+                double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 1].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 1].z);
+                double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 1].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 1].z);
+                if ((0 < s && s < 1) && (0 < t && t < 1) && (0 < 1 - s - t && 1 - s - t < 1))
+                {
+                    // 新しく追加した頂点がどの辺にあるか調べる
+
+
+
+                }
+                else
+                {
+                    // 新しく追加した頂点が3点の中にない、そのまま追加
+                    for (int k = 0; k < 3; k++)
+                    {
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + k]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + k]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + k]]);
+                        triangles1.Add(vertices1.Count - 1);
+                    }
+                }
+            }
+
+            
+
+        }
+    }
+
+    // メッシュを引数の頂点をもとに切り分ける処理
+    public void Cut(List<Vector3> cutPoint)
+    {
+        //coliboolがfalseの時は何もしない
+        if (coliBool == false)
+        {
+            return;
+        }
+        returnBool = false;
+
+        //いろいろ、Vector3は精度のためにdoubleで扱えるようにしたDVector3を使用↓にclassあり
+        DVector3  p0,p1, p2;
+        bool p1Bool, p2Bool, p3Bool;
+        var uvs1 = new List<Vector2>();
+        var uvs2 = new List<Vector2>();
+        var vertices1 = new List<DVector3>();
+        var vertices2 = new List<DVector3>();
+        var triangles1 = new List<int>();
+        var triangles2 = new List<int>();
+        var normals1 = new List<Vector3>();
+        var normals2 = new List<Vector3>();
+        var crossVertices = new List<DVector3>();
+
+        var cutPoint1 = new List<Vector3>();    // カットポイント用リスト
+
+        //カットしたいオブジェクトのメッシュをトライアングルごとに処理
+        for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
+        {
+            //メッシュの3つの頂点を取得
+            p0 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]]));
+            p1 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+            p2 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+
+            // カットしたい頂点が1個以上の時
+            if(cutPoint.Count >= 1)
+            {
+
+            }
+            else    // そうでないときは切り始めの頂点になる
+            {       // ので、分割される三角形は2個
+
+            }
+
+            // 新しく追加した頂点が3つの頂点の中にあるかをベクトルの係数を使って計算
+            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+            double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 1].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 1].z);
+            double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 1].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 1].z);
+
+            if ((0 < s　&& s < 1) && (0 < t && t < 1) && (0 < 1 - s - t && 1 - s - t < 1))
+            {
+               
+            }
+            else
+            {
+               
+            }
+
+        }
 
     }
     public void Cut(Plane cutPlane)
