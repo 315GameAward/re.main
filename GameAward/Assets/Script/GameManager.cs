@@ -30,7 +30,7 @@ public enum GameState
 }
 public class GameManager : MonoBehaviour
 {
-    public static GameState status;
+    public  GameState status;
 
     //いじりたい値をシリアライズして
     //インスペクターで触れるようにする
@@ -107,7 +107,8 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    
+
+
     //ゲームステート変更
     public void SetGameState(GameState state)
     {

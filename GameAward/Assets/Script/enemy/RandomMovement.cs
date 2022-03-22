@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 //プログラム説明
 //一定時間で進路をランダムに変更しながら動く
@@ -37,6 +38,12 @@ public class RandomMovement : MonoBehaviour
         {
             //スコア処理を追加
             FindObjectOfType<Score>().AddScore(10);
+
+
+            //statusをgameoverに変更する処理
+            //**test**
+            
+
 
             //相手のタグがScicssorであるならば、自分を消すに変える
             Destroy(this.gameObject);
