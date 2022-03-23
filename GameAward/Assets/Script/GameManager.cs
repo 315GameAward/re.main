@@ -24,11 +24,29 @@ public enum GameState
     Title,          //タイトル
     StageSelect,    //ステージセレクト
     GameStart,      //ゲームスタート
+    GameClear,
     GameOver        //ゲームオーバー
     //result??
 }
 public class GameManager : MonoBehaviour
 {
+    public  GameState status;
+
+    //いじりたい値をシリアライズして
+    //インスペクターで触れるようにする
+
+    //スコア表示用テキスト
+    [SerializeField]
+    Text scoreText;
+
+    //クリア用UI
+    [SerializeField]
+    GameObject clearUI;
+
+    //ゲームオーバー用UI
+    [SerializeField]
+    GameObject gameoverUI;
+
     //現在のスコア
     public int g_nScore;
     //最大スコア
@@ -36,8 +54,6 @@ public class GameManager : MonoBehaviour
     //現在のタイム
     public float g_fTime;
     
-    //スコア表示用テキスト
-    [SerializeField] Text scoreText;
     
     //ゲームステート
     private GameState gameState;
@@ -57,19 +73,42 @@ public class GameManager : MonoBehaviour
         g_fTime = 100.0f;
     }
 
+    //澤村追加
+    void Start()
+    {
+        //ステータスをGameStartに
+        status = GameState.GameStart;
+    }
+
+
     //毎フレーム実行
     void Update()
     {
-        /*
-        switch (GameState.GameStart) 
+        //澤村追加
+        if (status == GameState.GameClear)
         {
-            //タイムのカウントダウン
-            g_fTime = g_fTime - Time.time;
+            clearUI.SetActive(true);
+
+
+            /*
+            switch (GameState.GameStart) 
+            {
+                //タイムのカウントダウン
+                g_fTime = g_fTime - Time.time;
+            }
+            */
+
         }
-        */
-        
+
+        //澤村追加
+        if (status == GameState.GameOver)
+        {
+            gameoverUI.SetActive(true);
+
+        }
     }
-    
+
+
     //ゲームステート変更
     public void SetGameState(GameState state)
     {
@@ -87,7 +126,9 @@ public class GameManager : MonoBehaviour
             break;
         case GameState.GameStart:
             break;
-        case GameState.GameOver:
+        case GameState.GameClear:   //澤村追加
+            break;
+            case GameState.GameOver:
             break;
         }
     }
