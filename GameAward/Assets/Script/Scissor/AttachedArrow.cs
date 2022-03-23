@@ -16,8 +16,9 @@ public class AttachedArrow : MonoBehaviour
     void Update()
     {
         PlayerRotation.y += 0.001f;
-
-        //transform.rotation = PlayerRotation;
+        transform.Rotate(0,1,0);
+        
+        //transform.rotation = PlayerRotation;a
     }
 }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    AttachedArrow playerRotation;
+    public AttachedArrow playerRotation;
     // Start is called before the first frame update
     void Start()
     {
