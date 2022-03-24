@@ -85,6 +85,8 @@ public class MeshCut : MonoBehaviour
 
         var cutPoint1 = new List<Vector3>();    // カットポイント用リスト
 
+        //Debug.Log("このメッシュの三角形数："+ attachedMesh.triangles.Length);
+
         //カットしたいオブジェクトのメッシュをトライアングルごとに処理
         for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
         {
@@ -93,10 +95,106 @@ public class MeshCut : MonoBehaviour
             p1 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
             p2 = new DVector3(transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
 
-            // カットしたい頂点が1個以上の時
-            if (cutPoint.Count >= 1)
-            {       // 分割される三角形の数は4個
+            // カットしたい頂点が2個以上の時
+            if (cutPoint.Count >= 2)
+            {       // 分割される三角形の数は3個
 
+                // --- 新しく追加した頂点が3つの頂点の中にあるかをベクトルの係数を使って計算 ---
+                // 中にあったら新しく追加した頂点をメッシュの頂点群の中に追加、
+                // なかったらそのまま3点を追加
+                double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+                double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 1].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 1].z);
+                double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 1].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 1].z);
+                if ((0 < s && s < 1) && (0 < t && t < 1) && (0 < 1 - s - t && 1 - s - t < 1))
+                {
+                    // 一個前の追加した頂点が同じ三角形内にあるかどうか
+                    double _s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 2].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 2].z);
+                    double _t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 2].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 2].z);
+                    if ((0 < _s && _s < 1) && (0 < _t && _t < 1) && (0 < 1 - _s - _t && 1 - _s - _t < 1))
+                    {   // あるとき
+                        // 
+
+                    }
+                    else    // ないとき
+                    {       // 新しく追加した頂点と一個前の頂点を結ぶ直線と三角形の辺との交点に新しく頂点を追加したい
+                            
+                    }
+                   
+                    
+
+                    
+                    // 三角形1
+                    // p0
+                    vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i]]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    // p1
+                    vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 1]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 1]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    // 新しく追加した頂点
+                    vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    // 三角形2
+                    // p1
+                    vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 1]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 1]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+
+                    // p2
+                    vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 2]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 2]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    // 新しく追加した頂点
+                    vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    // 三角形3
+                    // p0
+                    vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i]]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    // 新しく追加した頂点
+                    vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    // p2
+                    vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+                    uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 2]]);
+                    normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 2]]);
+                    triangles1.Add(vertices1.Count - 1);
+
+                    
+
+                }
+                else
+                {
+                    // 新しく追加した頂点が3点の中にない時そのまま追加
+                    for (int k = 0; k < 3; k++)
+                    {
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + k]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + k]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + k]]);
+                        triangles1.Add(vertices1.Count - 1);
+                    }
+                }
 
             }
             else    // そうでないときは切り始めの頂点になる
@@ -106,13 +204,156 @@ public class MeshCut : MonoBehaviour
                 // 新しく追加した頂点が3つの頂点の中にあるかをベクトルの係数を使って計算
                 // 中にあったら新しく追加した頂点をメッシュの頂点群の中に追加、
                 // なかったらそのまま3点を追加
-                double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+                //double Area = 0.5 * (-p1y * p2x + p0y * (-p1x + p2x) + p0x * (p1y - p2y) + p1x * p2y);
+                //double s = 1 / (2 * Area) * (p0y * p2x - p0x * p2y + (p2y - p0y) * px + (p0x - p2x) * py);
+                //double t = 1 / (2 * Area) * (p0x * p1y - p0y * p1x + (p0y - p1y) * px + (p1x - p0x) * py);
+
+                double Area = 0.5f * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
                 double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 1].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 1].z);
                 double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 1].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 1].z);
+                
                 if ((0 < s && s < 1) && (0 < t && t < 1) && (0 < 1 - s - t && 1 - s - t < 1))
                 {
-                    // 新しく追加した頂点がどの辺にあるか調べる
+                    Debug.Log("Area：" + Area);
+                    Debug.Log("s：" + s);
+                    Debug.Log("t：" + t);
 
+                    // 新しく追加した頂点がどの辺にあるか調べる
+                    if (s < 0.01f) // 辺p0p2
+                    {
+                        // 三角形1
+                        // p0
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i ]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i ]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i ]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // p1
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 1]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 1]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // 新しく追加した頂点
+                        vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // 三角形2
+                        // p1
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 1]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 1]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                       
+                        // p2
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 2]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 2]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // 新しく追加した頂点
+                        vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                    }
+                    else if(t < 0.01f)  // 辺p0p1
+                    {
+                        // 三角形1
+                        // p0
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // 新しく追加した頂点
+                        vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // p2
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 2]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 2]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+
+                        // 三角形2
+                        // 新しく追加した頂点
+                        vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // p1
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 1]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 1]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+
+                        // p2
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 2]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 2]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        
+                    }
+                    else if(s + t > 0.98f)  // 辺p1p2
+                    {
+                        // 三角形1
+                        // p0
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // p1
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 1]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 1]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 1]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // 新しく追加した頂点
+                        vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+
+
+                        // 三角形2
+                        // p0
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+                        // 新しく追加した頂点
+                        vertices1.Add(new DVector3(cutPoint[cutPoint.Count - 1]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i]]);
+                        triangles1.Add(vertices1.Count - 1);
+                      
+                        // p2
+                        vertices1.Add(new DVector3(attachedMesh.vertices[attachedMesh.triangles[i + 2]]));
+                        uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + 2]]);
+                        normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + 2]]);
+                        triangles1.Add(vertices1.Count - 1);
+
+
+                    }
+                    else
+                    {
+                        Debug.Log("新しく追加した頂点が");
+                        Debug.Log("どの辺にもありません");
+                    }
 
 
                 }
@@ -132,6 +373,47 @@ public class MeshCut : MonoBehaviour
             
 
         }
+
+        //DVector3を通常のVector3に直す、もっと賢いやりかたがありそう
+        var list1 = new List<Vector3>();
+        for (int i = 0; i < vertices1.Count; i++)
+        {
+            list1.Add(vertices1[i].ToVector3());
+        }
+        var list2 = new List<Vector3>();
+        for (int i = 0; i < vertices2.Count; i++)
+        {
+            list2.Add(vertices2[i].ToVector3());
+        }
+
+        
+        // 追加された三角形をもとに新しくオブジェクトを生成
+        GameObject obj = new GameObject("cut obj", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshCut), typeof(Ground));
+        var mesh = new Mesh();
+        mesh.vertices = list1.ToArray();
+        mesh.triangles = triangles1.ToArray();
+        mesh.uv = uvs1.ToArray();
+        mesh.normals = normals1.ToArray();
+        obj.GetComponent<MeshFilter>().mesh = mesh;
+        obj.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
+        obj.GetComponent<MeshCollider>().sharedMesh = mesh;
+        obj.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
+        obj.GetComponent<MeshCollider>().convex = false;
+        obj.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+        obj.transform.position = transform.position;
+        obj.transform.rotation = transform.rotation;
+        obj.transform.localScale = transform.localScale;
+        //obj.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
+        //obj.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
+        obj.GetComponent<MeshCut>().skinWidth = skinWidth;
+
+
+        obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
+        obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+
+        //このオブジェクトをデストロイ
+        Destroy(gameObject);
+
     }
 
     // メッシュを引数の頂点をもとに切り分ける処理
@@ -608,7 +890,7 @@ public class MeshCut : MonoBehaviour
         obj.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
         obj.GetComponent<MeshCollider>().sharedMesh = mesh;
         obj.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
-        obj.GetComponent<MeshCollider>().convex = true;
+        obj.GetComponent<MeshCollider>().convex = false;
         obj.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
         obj.transform.position = transform.position;
         obj.transform.rotation = transform.rotation;
@@ -627,7 +909,7 @@ public class MeshCut : MonoBehaviour
         obj2.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
         obj2.GetComponent<MeshCollider>().sharedMesh = mesh2;
         obj2.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
-        obj2.GetComponent<MeshCollider>().convex = true;
+        obj2.GetComponent<MeshCollider>().convex = false;
         obj2.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
         obj2.transform.position = transform.position;
         obj2.transform.rotation = transform.rotation;
