@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
         g_fTime = 100.0f;
     }
 
+    
+
     //澤村追加
     void Start()
     {
@@ -84,27 +86,25 @@ public class GameManager : MonoBehaviour
     //毎フレーム実行
     void Update()
     {
+        /*
+          switch (GameState.GameStart) 
+          {
+              //タイムのカウントダウン
+              g_fTime = g_fTime - Time.time;
+          }
+          */
+
         //澤村追加
         if (status == GameState.GameClear)
         {
             clearUI.SetActive(true);
-
-
-            /*
-            switch (GameState.GameStart) 
-            {
-                //タイムのカウントダウン
-                g_fTime = g_fTime - Time.time;
-            }
-            */
-
         }
 
+        
         //澤村追加
         if (status == GameState.GameOver)
         {
             gameoverUI.SetActive(true);
-
         }
     }
 
