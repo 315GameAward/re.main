@@ -13,7 +13,7 @@ using UnityEngine.UI;
 
 public class RandomMovement : MonoBehaviour
 {
-    
+    public GameState status;
     private float chargeTime = 5.0f;
     private float timeCount;
     void Update()
