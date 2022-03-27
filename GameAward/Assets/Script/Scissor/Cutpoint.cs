@@ -25,13 +25,18 @@ public class Cutpoint : MonoBehaviour
 {
     // 変数宣言
     public List<Vector3> m_vCotPoint;   // ハサミの軌跡用リスト
+    public List<Vector3> CutPointTest;   // ハサミの軌跡用リスト(テスト)
+
     public MeshCut ground;
+
+    private bool triggerFlg = false;    // デバック用トリガーフラグ
 
 
     // Start is called before the first frame update
     void Start()
     {
         m_vCotPoint.Clear();    // リストの中身をクリア
+        CutPointTest.Clear();    // リストの中身をクリア
     }
 
     // Update is called once per frame
@@ -64,7 +69,13 @@ public class Cutpoint : MonoBehaviour
 
                 }
 
-
+                // デバック用文字列表示
+                if(!triggerFlg)
+                {
+                    Debug.Log(hit.collider.gameObject.name + "に当たった");
+                    triggerFlg = true;  // デバック用トリガーフラグON
+                }
+                Debug.Log(hit.collider.gameObject.name + "に当たった");
             }
             else    // レイキャストが当たってないとき
             {
@@ -73,6 +84,7 @@ public class Cutpoint : MonoBehaviour
                 m_vCotPoint.Clear();
                 Debug.Log("軌跡を削除");
                 Debug.Log("軌跡の数:" + m_vCotPoint.Count);
+                triggerFlg = false; // デバック用トリガーフラグOFF
             }
         }
         else
@@ -95,6 +107,14 @@ public class Cutpoint : MonoBehaviour
                     Debug.Log("軌跡の数:" + m_vCotPoint.Count);
                     Debug.Log("軌跡の座標:" + m_vCotPoint[m_vCotPoint.Count - 1]);
                 }
+
+                // デバック用文字列表示
+                if (!triggerFlg)
+                {
+                    Debug.Log(hit.collider.gameObject.name + "に当たった");
+                    triggerFlg = true;  // デバック用トリガーフラグON
+                }
+                
             }
             else    // レイキャストが当たってないとき
             {
@@ -106,8 +126,61 @@ public class Cutpoint : MonoBehaviour
             }
         }
 
+
+        // レイキャストがあったとき 
+        if (Physics.Raycast(ray, out hit) )
+        {
+            // テスト用のポイントがあるとき
+            if(CutPointTest.Count > 0)
+            { 
+                // ヒットした座標と最後に格納した座標が違うときリストに格納したい
+                if(hit.point != CutPointTest[CutPointTest.Count -1])
+                {
+                    CutPointTest.Add(hit.point);    // ヒットした座標を格納
+
+                    // ヒットした物が切りたいものと違うときは一個前のポイントを削除したい
+                    if(hit.collider.gameObject.name != "Plane")
+                    {
+                        CutPointTest.RemoveAt(CutPointTest.Count - 2);
+                    }
+                }
+            }
+            else //テスト用のポイントがないとき
+            {
+                CutPointTest.Add(hit.point);    // ヒットした座標を格納
+            }
+
+        }
+
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        // テスト用のポイントを表示したい
+        if(CutPointTest.Count > 0)
+        {
+            for(int i = 0;i < CutPointTest.Count;i++)
+            {
+                Gizmos.color = new Color(0, 1, 0, 1);   // 色の指定
+                Gizmos.DrawSphere(CutPointTest[i], 0.05f);  // 球の表示
+
+            }
+        }
+
+        // テスト用のポイントをつなぐ線を表示したい
+        if(CutPointTest.Count >= 2)
+        {
+            for (int i = 1; i < CutPointTest.Count; i++)
+            {
+                Gizmos.color = new Color(0, 0.5f, 0, 1);    // 色の指定                
+                Gizmos.DrawLine(CutPointTest[i - 1], CutPointTest[i]);  // 線の表示
+            }
+        }
     }
 }
+
+
 
 //    private void OnTriggerEnter(Collider other)
 //    {
@@ -210,7 +283,7 @@ public class Cutpoint : MonoBehaviour
 //                }
 //            }
 
-           
+
 
 
 //        }
