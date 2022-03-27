@@ -30,7 +30,7 @@ public enum GameState
 }
 public class GameManager : MonoBehaviour
 {
-    public  GameState status;
+    //public  GameState status;
 
     //いじりたい値をシリアライズして
     //インスペクターで触れるようにする
@@ -40,12 +40,12 @@ public class GameManager : MonoBehaviour
     Text scoreText;
 
     //クリア用UI
-    [SerializeField]
-    GameObject clearUI;
+    //[SerializeField]
+    //GameObject clearUI;
 
     //ゲームオーバー用UI
-    [SerializeField]
-    GameObject gameoverUI;
+    //[SerializeField]
+    //GameObject gameoverUI;
 
     //現在のスコア
     public int g_nScore;
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //ステータスをGameStartに
-        status = GameState.GameStart;
+        //status = GameState.GameStart;
     }
 
 
@@ -95,17 +95,17 @@ public class GameManager : MonoBehaviour
           */
 
         //澤村追加
-        if (status == GameState.GameClear)
-        {
-            clearUI.SetActive(true);
-        }
-
-        
-        //澤村追加
-        if (status == GameState.GameOver)
-        {
-            gameoverUI.SetActive(true);
-        }
+        //if (status == GameState.GameClear)
+        //{
+        //    clearUI.SetActive(true);
+        //}
+        //
+        //
+        ////澤村追加
+        //if (status == GameState.GameOver)
+        //{
+        //    gameoverUI.SetActive(true);
+        //}
     }
 
 
