@@ -31,7 +31,7 @@ public class IventPush_col : MonoBehaviour
             //相手のタグが○○であるならば、自分を消すに変える
             //削除された時点でスクリプトも消えるので、
             //その時点で参照は出来なくなる
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
 
         }
 

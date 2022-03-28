@@ -16,24 +16,30 @@ public class IventPush_Dest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        //衝突判定
-        if (collision.gameObject.tag == "test")
+        // このオブジェクトを削除
+        if (gameObject.transform.position.y < -50)
         {
-            //スコア処理を追加
-            FindObjectOfType<Score>().AddScore(20);
-            //相手のタグが○○であるならば、自分を消すに変える
-            //削除された時点でスクリプトも消えるので、
-            //その時点で参照は出来なくなる
-            Destroy(this.gameObject);
-
+            Destroy(gameObject);
+            FindObjectOfType<Score>().AddScore(10);
         }
 
     }
+
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    //衝突判定
+    //    if (collision.gameObject.tag == "test")
+    //    {
+    //        //スコア処理を追加
+    //        FindObjectOfType<Score>().AddScore(20);
+    //        //相手のタグが○○であるならば、自分を消すに変える
+    //        //削除された時点でスクリプトも消えるので、
+    //        //その時点で参照は出来なくなる
+    //        Destroy(this.gameObject);
+    //
+    //    }
+    //
+    //}
 
     private void OnDestroy()
     {

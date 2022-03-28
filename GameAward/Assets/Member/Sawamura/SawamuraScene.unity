@@ -779,14 +779,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767338930}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c01aaba94515ca1409e9a167cd65bee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameoverUI: {fileID: 94776113}
   status_col: 0
-  target: {fileID: 247822328}
+  target: {fileID: 1180602994}
 --- !u!114 &767338937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,8 +1177,8 @@ GameObject:
   - component: {fileID: 1180602997}
   - component: {fileID: 1180602996}
   - component: {fileID: 1180602995}
-  - component: {fileID: 1180602994}
   - component: {fileID: 1180603000}
+  - component: {fileID: 1180602994}
   m_Layer: 0
   m_Name: RedCube
   m_TagString: Cube
@@ -1193,11 +1193,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180602993}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 259d95e3de51cdf43b9c45e5d1031f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7f2e5523739f04fab620f1a81b43e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnCollisioned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1180602995
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1284,7 +1287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180602993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.11, y: 0.55, z: -2.7574492}
+  m_LocalPosition: {x: 0.57, y: 0.55, z: -2.7574492}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
