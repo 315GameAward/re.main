@@ -37,7 +37,8 @@ public class IventPush_col : MonoBehaviour
 
     }
 
-    private void OnCollision()
+    //private void OnCollision()
+    private void OnDestroy()
     {
         Debug.Log("Ç‘Ç¬Ç©Ç¡ÇΩÇÊÅI");
         OnCollisioned.Invoke();

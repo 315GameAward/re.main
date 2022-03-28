@@ -19,8 +19,8 @@ public class IventPush_Dest : MonoBehaviour
         // このオブジェクトを削除
         if (gameObject.transform.position.y < -50)
         {
-            Destroy(gameObject);
             FindObjectOfType<Score>().AddScore(10);
+            Destroy(this.gameObject);
         }
 
     }
