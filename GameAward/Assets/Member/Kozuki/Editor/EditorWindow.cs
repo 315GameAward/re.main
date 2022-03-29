@@ -125,21 +125,21 @@ public class EditorScene : EditorWindow
         };
 
         // Titleボタン
-        if (GUILayout.Button("Kozk001", buttonStyle, layoutOptions))
+        if (GUILayout.Button("タイトルα", buttonStyle, layoutOptions))
         {
             // シーンを保存するか確認
             if (!EditorSceneManager.SaveModifiedScenesIfUserWantsTo(new Scene[] { SceneManager.GetActiveScene() })) return;
             // Titleシーンを開く
-            OpenScene("Kozk001");
+            OpenScene("TitleScene");
         }
 
         // Selectボタン
-        if (GUILayout.Button("Kozk002", buttonStyle, layoutOptions))
+        if (GUILayout.Button("ゲームα", buttonStyle, layoutOptions))
         {
             // シーンを保存するか確認
             if (!EditorSceneManager.SaveModifiedScenesIfUserWantsTo(new Scene[] { SceneManager.GetActiveScene() })) return;
             // Titleシーンを開く
-            OpenScene("Kozk002");
+            OpenScene("GameScene");
         }
 
         // Stageボタン
