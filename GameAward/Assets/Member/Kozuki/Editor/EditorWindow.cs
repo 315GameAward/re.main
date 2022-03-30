@@ -133,22 +133,13 @@ public class EditorScene : EditorWindow
             OpenScene("TitleScene");
         }
 
-        // Selectボタン
+        // メインゲームボタン
         if (GUILayout.Button("ゲームα", buttonStyle, layoutOptions))
         {
             // シーンを保存するか確認
             if (!EditorSceneManager.SaveModifiedScenesIfUserWantsTo(new Scene[] { SceneManager.GetActiveScene() })) return;
             // Titleシーンを開く
             OpenScene("GameScene");
-        }
-
-        // Stageボタン
-        if (GUILayout.Button("Kozk003", buttonStyle, layoutOptions))
-        {
-            // シーンを保存するか確認
-            if (!EditorSceneManager.SaveModifiedScenesIfUserWantsTo(new Scene[] { SceneManager.GetActiveScene() })) return;
-            // Titleシーンを開く
-            OpenScene("Kozk003");
         }
 
         // プロトタイプ
@@ -159,6 +150,15 @@ public class EditorScene : EditorWindow
             // Titleシーンを開く
             OpenScene("prototype");
         }
+        // Nemotoボタン
+        if (GUILayout.Button("ネモト", buttonStyle, layoutOptions))
+        {
+            // シーンを保存するか確認
+            if (!EditorSceneManager.SaveModifiedScenesIfUserWantsTo(new Scene[] { SceneManager.GetActiveScene() })) return;
+            // Titleシーンを開く
+            OpenScene("NemotoScene");
+        }
+
     }
 
     // シーンを開ける関数
