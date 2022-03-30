@@ -40,12 +40,14 @@ public class CutterPoint : MonoBehaviour
     public float t1;
     public float t2;
 
+    private int count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         m_vCotPoint.Clear();    // リストの中身をクリア
         CutPointTest.Clear();    // リストの中身をクリア
+
     }
 
     // Update is called once per frame
@@ -149,14 +151,17 @@ public class CutterPoint : MonoBehaviour
                 {
                     CutPointTest.Add(hit.point);    // ヒットした座標を格納
 
-                    // ヒットした物が切りたいものと違うときは一個前のポイントを削除したい
+                    // ヒットした物が切りたいものと違うときは一個前のポイントを削除したい。なんなら全部削除してもいいのか？          
                     if(hit.collider.gameObject.name != "Plane")
                     {
                         CutPointTest.RemoveAt(CutPointTest.Count - 2);
+                        CutPointTest.Clear();
                     }
 
                     // ヒットしたメッシュのポリゴン数
-                    //Debug.Log("ポリゴン数" + hit.collider.gameObject.GetComponent<Mesh>().triangles.Length);
+                 
+                    Debug.Log("ポリゴン数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertexCount);
+                    //Debug.Log("ポリゴン数" + hit.triangleIndex);
                 }
             }
             else //テスト用のポイントがないとき
@@ -166,27 +171,39 @@ public class CutterPoint : MonoBehaviour
 
         }
 
-        // 2Dの線を定義
-        if(CutPointTest.Count >= 3)
+        // カットポイントの始点と終点ををポリゴンの返上におきたい
+        if(CutPointTest.Count >= 2)
         {
-            v  = new Vector2(CutPointTest[CutPointTest.Count - 2].x - CutPointTest[0].x, CutPointTest[CutPointTest.Count - 2].z - CutPointTest[0].z);
-            v1 = new Vector2(CutPointTest[1].x - CutPointTest[0].x, CutPointTest[1].z - CutPointTest[0].z);
-            v2 = new Vector2(CutPointTest[CutPointTest.Count - 1].x - CutPointTest[CutPointTest.Count - 2].x, CutPointTest[CutPointTest.Count - 1].z - CutPointTest[CutPointTest.Count - 2].z);
-            t2 = (v.x * v1.y - v1.x * v.y)/(v1.x * v2.y - v2.x * v1.y);
-            p = new Vector2(CutPointTest[CutPointTest.Count - 2].x, CutPointTest[CutPointTest.Count - 2].z) + new Vector2(v2.x * t2,v2.y * t2);
+            if (CutPointTest.Count == count) return;
+
+            // 当たったメッシュの辺の数だけ処理
+            for(int i = 0;i < hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertexCount - 1;i++)
+            {
+                v = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x - CutPointTest[0].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z - CutPointTest[0].z);
+                v1 = new Vector2(CutPointTest[1].x - CutPointTest[0].x, CutPointTest[1].z - CutPointTest[0].z);
+                v2 = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].x - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x , hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].z - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z);
+                t2 = (v.x * v1.y - v1.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
+                p = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z) + new Vector2(v2.x * t2, v2.y * t2);
+
+
+                const float eps = 0.00001f;
+                if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
+                {
+                    //Debug.Log("交差してない");
+                }
+                else
+                {
+                    Debug.Log("交差してる");
+                    Debug.Log("交差した座標:" + p);
+                    CutPointTest[0] = new Vector3(p.x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].y, p.y);
+                }
+            }
+
             //Debug.Log("t2:"+t2);
 
 
-            const float eps = 0.00001f;
-            if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
-            {
-                //Debug.Log("交差してない");
-            }
-            else
-            {
-                //Debug.Log("交差してる");
-                //Debug.Log("交差した座標:" + p);
-            }
+            count = CutPointTest.Count;
+           
         }
 
         // 線と線の交点
@@ -199,8 +216,11 @@ public class CutterPoint : MonoBehaviour
         // テスト用のポイントを表示したい
         if(CutPointTest.Count > 0)
         {
-            for(int i = 0;i < CutPointTest.Count;i++)
+            for(int i = 1;i < CutPointTest.Count;i++)
             {
+                //Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
+                //Gizmos.DrawSphere(CutPointTest[0], 0.05f);  // 球の表示
+
                 Gizmos.color = new Color(0, 1, 0, 1);   // 色の指定
                 Gizmos.DrawSphere(CutPointTest[i], 0.05f);  // 球の表示
 
