@@ -1,24 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CleateLog : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-}
-
 /*
- 2022/03/26：開発ログ
+ 2022/04/01：開発ログ
+   成果：一定の範囲内を順番に移動することに成功
+         ビヘイビアツリーの最初期段階に到達
+   次の課題：AIの判断する量を増やしてみる
+             改めて動画の情報をかみ砕く
 
  */

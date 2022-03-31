@@ -7,6 +7,7 @@ using BehaviorTree;
 public class TaskPatrol : Node
 {
     private Transform __transform;
+    private Animator __animator;
     private Transform[] __waypoints;
 
     private int __currentWaypointIndex = 0;
@@ -19,6 +20,7 @@ public class TaskPatrol : Node
     public TaskPatrol(Transform transform, Transform[] waypoints)
     {
         __transform = transform;
+        __animator = transform.GetComponent<Animator>();
         __waypoints = waypoints;
     }
 
@@ -29,7 +31,7 @@ public class TaskPatrol : Node
             __waitCounter += Time.deltaTime;
             if (__waitCounter >= __waitTime)
                 __waiting = false;
-
+            __animator.SetBool("Walking", true);
         }
         else
         {
@@ -41,11 +43,11 @@ public class TaskPatrol : Node
                 __waiting = true;
 
                 __currentWaypointIndex = (__currentWaypointIndex + 1) % __waypoints.Length;
-                
+                __animator.SetBool("Walking", false);
             }
             else
             {
-                __transform.position = Vector3.MoveTowards(__transform.position, wp.position, __speed * Time.deltaTime);
+                __transform.position = Vector3.MoveTowards(__transform.position, wp.position, GuardBT.speed * Time.deltaTime);
                 __transform.LookAt(wp.position);
             }
             
