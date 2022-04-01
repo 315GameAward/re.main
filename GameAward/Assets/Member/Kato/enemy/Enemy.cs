@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
 
 
 
-void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         FSM = GetComponent<FSM>();
@@ -61,8 +61,8 @@ void Start()
         FSM.addnode("turn", new EnemyTurn());
         FSM.addnode("assault", new EnemyPlayerAssault());
         FSM.startnode("move");
-        FSM.addnode("Foll", new EnemyFoll());
-        FSM.addnode("Derete", new EnemyDelete());
+        //FSM.addnode("Foll", new EnemyFoll());
+        //FSM.addnode("Derete", new EnemyDelete());
     }
 
     void Update()
@@ -92,10 +92,10 @@ void Start()
         //hitray = Physics.Raycast(transform.position, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore,);
         Vector3 foll;
         foll = new Vector3(0, -1, 0);
-        hitground = Physics.Raycast(transform.position,  foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+        hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
 
-        Debug.DrawRay(transform.position,angle.normalized , Color.green);
- 
+        Debug.DrawRay(transform.position, angle.normalized, Color.green);
+
     }
     void OnDrawGizmosSelected()
     {
@@ -117,7 +117,7 @@ void Start()
     public void EnableRagdoll()
     {
         Gravity();
-        
+
     }
     public void Gravity()
     {
@@ -127,7 +127,7 @@ void Start()
         rb.detectCollisions = false;
         //UnityEngine.Debug.Log("Hello World");
     }
-    
+
 
     // Let animation control the rigidbody and ignore collisions.
     public void DisableRagdoll()
@@ -137,6 +137,6 @@ void Start()
             rb.isKinematic = true;
             rb.detectCollisions = false;
         }
-        
+
     }
 }
