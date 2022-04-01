@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    bool a;
     bool hitray;
     bool hitground;
+    bool enemyfoll;
     Vector3 direction;
     FSM FSM;
     [SerializeField] Transform Target;
@@ -50,15 +51,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Start()
+
+
+void Start()
     {
+        rb = GetComponent<Rigidbody>();
         FSM = GetComponent<FSM>();
         FSM.addnode("move", new Enemymove());
         FSM.addnode("turn", new EnemyTurn());
         FSM.addnode("assault", new EnemyPlayerAssault());
         FSM.startnode("move");
-      //  FSM.addnode("Foll", new EnemyFoll());
-       // FSM.addnode("Derete", new);
+        FSM.addnode("Foll", new EnemyFoll());
+        FSM.addnode("Derete", new EnemyDelete());
     }
 
     void Update()
@@ -84,16 +88,55 @@ public class Enemy : MonoBehaviour
         Vector3 hiku;
         hiku = new Vector3(0, 1, 0);
         Vector3 angle = transform.forward - hiku;
-        hitray = Physics.SphereCast(transform.position, 1, angle.normalized, out rayhit, 3, mask, QueryTriggerInteraction.Ignore);
+        hitray = Physics.SphereCast(transform.position, 1, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+        //hitray = Physics.Raycast(transform.position, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore,);
         Vector3 foll;
         foll = new Vector3(0, -1, 0);
-      //  Vector3 velocity = Contloller.Parent.gameObject.transform.position += foll;
+        hitground = Physics.Raycast(transform.position,  foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+
+        Debug.DrawRay(transform.position,angle.normalized , Color.green);
+ 
     }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 1);
+    }
+
 
     private Vector3 moveRandomDirection()  // 目的地を生成、xとyのポジションをランダムに値を取得 
     {
 
         Vector3 randomDire = new Vector3(Random.Range(-100, 100), 1, Random.Range(-100, 100));
         return randomDire.normalized;
+    }
+    public Rigidbody rb;
+
+    // Let the rigidbody take control and detect collisions.
+
+    public void EnableRagdoll()
+    {
+        Gravity();
+        
+    }
+    public void Gravity()
+    {
+        //var Gra = rb.isKinematic = false;
+        //var Shock = rb.detectCollisions = true;
+        rb.isKinematic = true;
+        rb.detectCollisions = false;
+        //UnityEngine.Debug.Log("Hello World");
+    }
+    
+
+    // Let animation control the rigidbody and ignore collisions.
+    public void DisableRagdoll()
+    {
+        void disableragdoll()
+        {
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
+        }
+        
     }
 }

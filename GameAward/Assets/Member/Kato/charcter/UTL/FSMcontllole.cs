@@ -29,7 +29,6 @@ public class FSMcontllole
     }
     public void changenode(string key)
     {
-
         Prevnord = Currentnord;
         allnode[Currentnord].End(this);
         Currentnord = key;
@@ -38,7 +37,7 @@ public class FSMcontllole
     }
     public void Updatenode()
     {
-        allnode[Currentnord].Update(this);
+        allnode[Currentnord].Update(this);  
     }
 
     public void addnode(string key, FSMnord adnode)

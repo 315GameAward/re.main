@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 public class EnemyTurn : FSMnord
 {
-
+    
     public override void Start(FSMcontllole Contloller)
     {
         float rand = Random.Range(-90, 90);
@@ -23,9 +25,12 @@ public class EnemyTurn : FSMnord
 }
 public class Enemymove : FSMnord
 {
+    
     Enemy enemy;
+   
     public override void Start(FSMcontllole Contloller)
     {
+        
         base.Start(Contloller);
         enemy = Contloller.Parent.gameObject.GetComponent<Enemy>();
     }
@@ -39,6 +44,8 @@ public class Enemymove : FSMnord
 
         if (enemy.Hitray == false)
         {
+            //enemy.Gravity();
+
             Contloller.changenode("turn");
 
         }
@@ -89,4 +96,28 @@ public class EnemyPlayerAssault : FSMnord
     {
         base.End(Contloller);
     }
+}
+public class EnemyDelete : FSMnord
+{
+    Enemy enemy;
+
+    public override void Start(FSMcontllole Contloller)
+    {
+        enemy = Contloller.Parent.gameObject.GetComponent<Enemy>();
+        base.Start(Contloller);
+       // var rb = GetComponent<Rigidbody>();
+    }
+    public override void Update(FSMcontllole Contloller)
+    {
+        base.Update(Contloller);
+    }
+
+    public override void End(FSMcontllole Contloller)
+    {
+        base.End(Contloller);
+    }
+}
+public class EnemyFoll : FSMnord
+{
+
 }
