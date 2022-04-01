@@ -42,6 +42,14 @@ public class CutterPoint : MonoBehaviour
 
     private int count = 0;
 
+    // 線分構造体
+    public struct Segment
+    {
+        public Vector2 s; // 始点
+        public Vector2 v; // 方向ベクトル（線分の長さも担うので正規化しないように！）
+    };
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -154,13 +162,14 @@ public class CutterPoint : MonoBehaviour
                     // ヒットした物が切りたいものと違うときは一個前のポイントを削除したい。なんなら全部削除してもいいのか？          
                     if(hit.collider.gameObject.name != "Plane")
                     {
+                        // カットポイントの削除
                         CutPointTest.RemoveAt(CutPointTest.Count - 2);
                         CutPointTest.Clear();
                     }
 
                     // ヒットしたメッシュのポリゴン数
-                 
                     Debug.Log("ポリゴン数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertexCount);
+
                     //Debug.Log("ポリゴン数" + hit.triangleIndex);
                 }
             }
@@ -174,6 +183,7 @@ public class CutterPoint : MonoBehaviour
         // カットポイントの始点と終点ををポリゴンの返上におきたい
         if(CutPointTest.Count >= 2)
         {
+            // 処理を一回だけにする処理
             if (CutPointTest.Count == count) return;
 
             // 当たったメッシュの辺の数だけ処理
@@ -181,15 +191,16 @@ public class CutterPoint : MonoBehaviour
             {
                 v = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x - CutPointTest[0].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z - CutPointTest[0].z);
                 v1 = new Vector2(CutPointTest[1].x - CutPointTest[0].x, CutPointTest[1].z - CutPointTest[0].z);
-                v2 = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].x - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x , hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].z - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z);
+                v2 = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].x - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].z - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z);
                 t2 = (v.x * v1.y - v1.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
-                p = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z) + new Vector2(v2.x * t2, v2.y * t2);
+                t1 = (v.x * v2.y - v2.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
 
+                p = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z) + new Vector2(v2.x * t2, v2.y * t2);
 
                 const float eps = 0.00001f;
                 if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
                 {
-                    //Debug.Log("交差してない");
+                    // Debug.Log("交差してない");
                 }
                 else
                 {
@@ -197,12 +208,39 @@ public class CutterPoint : MonoBehaviour
                     Debug.Log("交差した座標:" + p);
                     CutPointTest[0] = new Vector3(p.x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].y, p.y);
                 }
+
+                //// 線分の宣言(カットポイントから)
+                //Segment seg1;
+                //seg1.s = new Vector2(CutPointTest[0].x, CutPointTest[0].z); // 線分の始点
+                //seg1.v = new Vector2(CutPointTest[1].x, CutPointTest[1].z); // 線分の始点
+
+                //// 線分の宣言(メッシュから)
+                //Segment seg2;
+                //seg2.s = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x    , hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z); // 線分の始点
+                //seg2.v = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].z); // 線分の始点
+
+
+                //if (ColSegments(seg1,seg2,0,0,new Vector2(0,0)))
+                //{
+                //    Debug.Log("交差してる");
+                //    CutPointTest[0] = new Vector3(p.x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].y, p.y);
+
+                //}
+
+
+
             }
 
-            //Debug.Log("t2:"+t2);
+            // 当たったメッシュのポリゴンごとに処理
+            for (int i = 0; i < hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertexCount ; i += 3)
+            {
+
+            }
+
+                //Debug.Log("t2:"+t2);
 
 
-            count = CutPointTest.Count;
+                count = CutPointTest.Count;
            
         }
 
@@ -216,15 +254,20 @@ public class CutterPoint : MonoBehaviour
         // テスト用のポイントを表示したい
         if(CutPointTest.Count > 0)
         {
-            for(int i = 1;i < CutPointTest.Count;i++)
-            {
-                //Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
-                //Gizmos.DrawSphere(CutPointTest[0], 0.05f);  // 球の表示
+            // 始点のカットポイントギズモ
+            Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
+            Gizmos.DrawSphere(CutPointTest[0], 0.05f);  // 球の表示
 
+            // 途中のカットポイントギズモ
+            for (int i = 1;i < CutPointTest.Count;i++)
+            {          
                 Gizmos.color = new Color(0, 1, 0, 1);   // 色の指定
                 Gizmos.DrawSphere(CutPointTest[i], 0.05f);  // 球の表示
-
             }
+
+            // 終点のカットポイントギズモ
+            Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
+            Gizmos.DrawSphere(CutPointTest[CutPointTest.Count - 1], 0.05f);  // 球の表示
         }
 
         // テスト用のポイントをつなぐ線を表示したい
@@ -236,6 +279,62 @@ public class CutterPoint : MonoBehaviour
                 Gizmos.DrawLine(CutPointTest[i - 1], CutPointTest[i]);  // 線の表示
             }
         }
+
+        
+
+    }
+
+    // 2Dベクトルの外積
+    float Vec2Cross(Vector2 v1, Vector2 v2)
+    {
+        return v1.x * v2.y - v1.y * v2.x;
+    }
+
+
+    // 線分の衝突
+    bool ColSegments(
+       Segment seg1,          // 線分1
+       Segment seg2,          // 線分2
+       float outT1 ,       // 線分1の内分比（出力）
+       float outT2 ,       // 線分2の内分比（出力
+       Vector2 outPos  // 交点（出力）
+    )
+    {
+
+        Vector2 v = seg2.s - seg1.s;
+        float Crs_v1_v2 = Vec2Cross(seg1.v, seg2.v);
+        if (Crs_v1_v2 == 0.0f)
+        {
+            // 平行状態
+            return false;
+        }
+
+        float Crs_v_v1 = Vec2Cross(v, seg1.v);
+        float Crs_v_v2 = Vec2Cross(v, seg2.v);
+
+        float t1 = Crs_v_v2 / Crs_v1_v2;
+        float t2 = Crs_v_v1 / Crs_v1_v2;
+
+        if (outT1 == 0)
+            outT1 = Crs_v_v2 / Crs_v1_v2;
+        if (outT2 == 0)
+            outT2 = Crs_v_v1 / Crs_v1_v2;
+
+        const float eps = 0.00001f;
+        if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
+        {
+            // 交差していない
+            return false;
+        }
+
+        if (outPos == new Vector2(0,0))
+        {
+            outPos = seg1.s + seg1.v * t1;
+            p = seg1.s + seg1.v * t1;
+        }
+        p = seg1.s + seg1.v * t1;
+        Debug.Log("交差してる");
+        return true;
     }
 }
 
