@@ -25,7 +25,6 @@ public class Ingredient
     public int amount = 1;
     private IngredientUnit unit;
 }
-
 public class Recipe : MonoBehaviour
 {
     public Ingredient potionResult;
@@ -89,7 +88,6 @@ public class EditorWindowSample : EditorWindow
 
     }
 }
-
 // シーンウィンドウ
 public class EditorScene : EditorWindow
 {
@@ -173,7 +171,6 @@ public class EditorScene : EditorWindow
         EditorSceneManager.OpenScene(scenePath);
     }
 }
-
 // オブジェクト名に文字を追加
 public class PrefixAdder : ScriptableWizard
 {
@@ -186,18 +183,15 @@ public class PrefixAdder : ScriptableWizard
         Transform[] transforms = Selection.GetTransforms(SelectionMode.ExcludePrefab);
         return transforms.Length >= 1;
     }
-
     [MenuItem("Editor/String Adder", false)]
     static void CreateWizard()
     {
         ScriptableWizard.DisplayWizard("String Adder", typeof(PrefixAdder), "追加して閉じる","追加");
     }
-
     void OnWizardCreate()
     {
         ApplyPrefix();
     }
-
     void ApplyPrefix()
     {
         GameObject[] gos = Selection.gameObjects;
@@ -237,7 +231,6 @@ public class PrefixAdder : ScriptableWizard
 
         }
     }
-
     void OnWizardOtherButton()
     {
         ApplyPrefix();
