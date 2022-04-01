@@ -6,7 +6,7 @@ using BehaviorTree;
 
 public class CheckEnemyInAttackRange : Node
 {
-    private static int __enemyLayeMask = 1 << 6;
+    //private static int __enemyLayeMask = 1 << 6;
 
     private Transform __transform;
     private Animator __animator;
@@ -27,7 +27,7 @@ public class CheckEnemyInAttackRange : Node
         }
 
         Transform target = (Transform)t;
-        if (Vector3.Distance(__transform.position, target.position) <= GuardBT.attackRange) ;
+        if (Vector3.Distance(__transform.position, target.position) <= GuardBT.attackRange)
         {
             __animator.SetBool("Attacking", true);
             __animator.SetBool("Walking", false);

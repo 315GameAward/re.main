@@ -30,8 +30,11 @@ public class TaskPatrol : Node
         {
             __waitCounter += Time.deltaTime;
             if (__waitCounter >= __waitTime)
+            {
                 __waiting = false;
-            __animator.SetBool("Walking", true);
+                __animator.SetBool("Walking", true);
+
+            }
         }
         else
         {
