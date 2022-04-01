@@ -189,14 +189,21 @@ public class CutterPoint : MonoBehaviour
             // 当たったメッシュの辺の数だけ処理
             for(int i = 0;i < hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertexCount - 1;i++)
             {
+                // 線分と線分の始点をつないだベクトル
                 v = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x - CutPointTest[0].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z - CutPointTest[0].z);
+
+                // 線分
                 v1 = new Vector2(CutPointTest[1].x - CutPointTest[0].x, CutPointTest[1].z - CutPointTest[0].z);
                 v2 = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].x - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i + 1].z - hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z);
-                t2 = (v.x * v1.y - v1.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
-                t1 = (v.x * v2.y - v2.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
 
+                // 線分の始点から交点のベクトル
+                t1 = (v.x * v2.y - v2.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
+                t2 = (v.x * v1.y - v1.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
+
+                // 交点
                 p = new Vector2(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].z) + new Vector2(v2.x * t2, v2.y * t2);
 
+                // 線分と線分が交わっているか
                 const float eps = 0.00001f;
                 if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
                 {
@@ -206,6 +213,7 @@ public class CutterPoint : MonoBehaviour
                 {
                     Debug.Log("交差してる");
                     Debug.Log("交差した座標:" + p);
+                    Debug.Log("交差した比:" + (double)t1 + ":" + (double)t2);
                     CutPointTest[0] = new Vector3(p.x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].y, p.y);
                 }
 
