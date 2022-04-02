@@ -69,4 +69,11 @@ public class CreateGround : MonoBehaviour
     {
         
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(25, 0, 0, 0.1f);   // êFÇÃéwíË
+        //Gizmos.DrawMesh(filter.mesh);
+        Gizmos.DrawCube(transform.position,new Vector3(6,0.1f,6));
+    }
 }
