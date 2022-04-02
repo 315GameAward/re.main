@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     bool hitground;
     bool enemyfoll;
     Vector3 direction;
+    Vector3 targetchar;
+    public CharacterController controller;
     FSM FSM;
     [SerializeField] Transform Target;
     float distance;
@@ -55,6 +57,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        controller = GetComponent<CharacterController>();
         //rb = GetComponent<Rigidbody>();
         FSM = GetComponent<FSM>();
         FSM.addnode("move", new Enemymove());
@@ -87,14 +90,16 @@ public class Enemy : MonoBehaviour
         rayhit = new RaycastHit();
         Vector3 hiku;
         hiku = new Vector3(0, 1, 0);
+
         Vector3 angle = transform.forward - hiku;
-        hitray = Physics.SphereCast(transform.position, 1, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
-        //hitray = Physics.Raycast(transform.position, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore,);
+        hitray = Physics.SphereCast(controller.transform.position, 1, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+        //hitray = Physics.Raycast(controller.transform.position, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore,);
         Vector3 foll;
         foll = new Vector3(0, -1, 0);
-        hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+        // hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
 
-        Debug.DrawRay(transform.position, angle.normalized, Color.green);
+        //Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
+        // Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
 
     }
     void OnDrawGizmosSelected()
@@ -102,7 +107,11 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 1);
     }
-
+    //void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position + transform.forward, 1);
+    //}
 
     private Vector3 moveRandomDirection()  // 目的地を生成、xとyのポジションをランダムに値を取得 
     {
