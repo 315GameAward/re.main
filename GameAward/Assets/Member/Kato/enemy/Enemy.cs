@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         FSM = GetComponent<FSM>();
         FSM.addnode("move", new Enemymove());
         FSM.addnode("turn", new EnemyTurn());
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     }
     void Dosperecast()
     {
-        int mask = LayerMask.GetMask("Default");
+        int mask = LayerMask.GetMask("Ground");
         RaycastHit rayhit;
         rayhit = new RaycastHit();
         Vector3 hiku;
@@ -110,33 +110,33 @@ public class Enemy : MonoBehaviour
         Vector3 randomDire = new Vector3(Random.Range(-100, 100), 1, Random.Range(-100, 100));
         return randomDire.normalized;
     }
-    public Rigidbody rb;
+    //public Rigidbody rb;
 
     // Let the rigidbody take control and detect collisions.
 
-    public void EnableRagdoll()
-    {
-        Gravity();
-
-    }
-    public void Gravity()
-    {
-        //var Gra = rb.isKinematic = false;
-        //var Shock = rb.detectCollisions = true;
-        rb.isKinematic = true;
-        rb.detectCollisions = false;
-        //UnityEngine.Debug.Log("Hello World");
-    }
-
-
-    // Let animation control the rigidbody and ignore collisions.
-    public void DisableRagdoll()
-    {
-        void disableragdoll()
-        {
-            rb.isKinematic = true;
-            rb.detectCollisions = false;
-        }
-
-    }
+    //public void EnableRagdoll()
+    //{
+    //    Gravity();
+    //
+    //}
+    //public void Gravity()
+    //{
+    //    //var Gra = rb.isKinematic = false;
+    //    //var Shock = rb.detectCollisions = true;
+    //    rb.isKinematic = true;
+    //    rb.detectCollisions = false;
+    //    //UnityEngine.Debug.Log("Hello World");
+    //}
+    //
+    //
+    //// Let animation control the rigidbody and ignore collisions.
+    //public void DisableRagdoll()
+    //{
+    //    void disableragdoll()
+    //    {
+    //        rb.isKinematic = true;
+    //        rb.detectCollisions = false;
+    //    }
+    //
+    //}
 }
