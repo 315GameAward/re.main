@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
     }
     void Dosperecast()
     {
-        int mask = LayerMask.GetMask("Ground");
+        int mask = LayerMask.GetMask("Default");
         RaycastHit rayhit;
         rayhit = new RaycastHit();
         Vector3 hiku;
