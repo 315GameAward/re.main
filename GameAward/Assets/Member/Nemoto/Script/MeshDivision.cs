@@ -60,78 +60,94 @@ public class MeshDivision : MonoBehaviour
             p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]]);
             p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]);
             p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]);
-            
-            // カットポイントの始点がこのポリゴンの中にあるか
-            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
-            double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[0].x + (p0.x - p2.x) * cutPoint[0].z);
-            double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[0].x + (p1.x - p0.x) * cutPoint[0].z);
-            if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
+
+            for (int j = 0; j < cutPoint.Count; j++)
             {
-                // ポリゴンの中にカットポイントの始点があったとき
-
-                // 頂点の追加
-                vertices1.Add(p0);
-                vertices1.Add(p1);
-                vertices1.Add(p2);
-                vertices1.Add(cutPoint[0]);
-
-                int _0 = vertices1.Count - 4;
-                int _1 = vertices1.Count - 3;
-                int _2 = vertices1.Count - 2;
-                int _3 = vertices1.Count - 1;
-
-                // 三角形インデクスの追加
-                //triangles1
-                if(t < 0.001f)
+                // カットポイントの始点がこのポリゴンの中にあるか
+                double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+                double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[j].x + (p0.x - p2.x) * cutPoint[j].z);
+                double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[j].x + (p1.x - p0.x) * cutPoint[j].z);
+                if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
                 {
-                    triangles1.Add(_0);
-                    triangles1.Add(_1);
-                    triangles1.Add(_3);
+                    // ポリゴンの中にカットポイントの始点があったとき
 
-                    triangles1.Add(_0);
-                    triangles1.Add(_3);
-                    triangles1.Add(_2);
-                    Debug.Log("t");
+                    // 頂点の追加
+                    vertices1.Add(attachedMesh.vertices[attachedMesh.triangles[i]]);
+                    vertices1.Add(attachedMesh.vertices[attachedMesh.triangles[i + 1]]);
+                    vertices1.Add(attachedMesh.vertices[attachedMesh.triangles[i + 2]]);
+                    vertices1.Add(cutPoint[j] - transform.position);
+
+                    // 頂点のインデックス
+                    int _0 = vertices1.Count - 4;
+                    int _1 = vertices1.Count - 3;
+                    int _2 = vertices1.Count - 2;
+                    int _3 = vertices1.Count - 1;
+
+                    // 三角形インデクスの追加
+                    //triangles1
+                    if (t < 0.001f)
+                    {
+                        triangles1.Add(_0);
+                        triangles1.Add(_3);
+                        triangles1.Add(_2);
+
+                        triangles1.Add(_3);
+                        triangles1.Add(_1);
+                        triangles1.Add(_2);
+                        Debug.Log("t");
+                    }
+                    else if (s < 0.001f)
+                    {
+
+                        triangles1.Add(_1);
+                        triangles1.Add(_3);
+                        triangles1.Add(_2);
+
+                        triangles1.Add(_0);
+                        triangles1.Add(_3);
+                        triangles1.Add(_2);
+                        Debug.Log("s ");
+                    }
+                    else if (s + t > 0.98f)
+                    {
+                        triangles1.Add(_0);
+                        triangles1.Add(_1);
+                        triangles1.Add(_3);
+
+                        triangles1.Add(_0);
+                        triangles1.Add(_3);
+                        triangles1.Add(_2);
+                        Debug.Log("s + t:");
+                    }
+                    else
+                    {
+                        triangles1.Add(_0);
+                        triangles1.Add(_3);
+                        triangles1.Add(_1);
+
+                        triangles1.Add(_0);
+                        triangles1.Add(_3);
+                        triangles1.Add(_2);
+
+                        triangles1.Add(_3);
+                        triangles1.Add(_1);
+                        triangles1.Add(_2);
+                    }
                 }
-                else if(s < 0.001f)
+                else
                 {
-                    
-                    triangles1.Add(_1);
-                    triangles1.Add(_3);
-                    triangles1.Add(_2);
-
-                    triangles1.Add(_0);
-                    triangles1.Add(_3);
-                    triangles1.Add(_2);
-                    Debug.Log("s ");
+                    // ポリゴンの中にカットポイントの始点がなかった時              
+                    for (int k = 0; k < 3; k++)
+                    {
+                        vertices1.Add(attachedMesh.vertices[attachedMesh.triangles[i + k]]);
+                        //uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + k]]);
+                        //normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + k]]);
+                        triangles1.Add(vertices1.Count - 1);
+                    }
                 }
-                else if(s+t > 0.98f)
-                {
-                    triangles1.Add(_0);
-                    triangles1.Add(_1);
-                    triangles1.Add(_3);
-
-                    triangles1.Add(_0);
-                    triangles1.Add(_3);
-                    triangles1.Add(_2);
-                    Debug.Log("s + t:");
-                }
-                //Debug.Log("t:" + t);
-                //Debug.Log("s:" + s);
-                //Debug.Log("t + s:" + (s+t));
-
+               
             }
-            else
-            {
-                // ポリゴンの中にカットポイントの始点がなかった時              
-                for (int k = 0; k < 3; k++)
-                {
-                    vertices1.Add(attachedMesh.vertices[attachedMesh.triangles[i + k]]);
-                    //uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + k]]);
-                    //normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + k]]);
-                    triangles1.Add(vertices1.Count - 1);
-                }
-            }
+           
 
 
 
@@ -139,7 +155,7 @@ public class MeshDivision : MonoBehaviour
 
 
         //カット後のオブジェクト生成、いろいろといれる
-        GameObject obj = new GameObject("Plane", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshDivision));
+        GameObject obj = new GameObject("DivisionPlane", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshDivision));
         var mesh = new Mesh();
         mesh.vertices = vertices1.ToArray();
         mesh.triangles = triangles1.ToArray();
@@ -159,8 +175,8 @@ public class MeshDivision : MonoBehaviour
         //obj.GetComponent<MeshCut>().skinWidth = skinWidth;
 
        
-            obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
-            obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+        obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
+        obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
 
         
 

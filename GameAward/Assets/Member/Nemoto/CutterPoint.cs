@@ -181,16 +181,22 @@ public class CutterPoint : MonoBehaviour
                 {
                     CutPointTest.Add(hit.point);    // ヒットした座標を格納
 
+                    // ヒットした物が切りたい物体だったら分割
+                    if(hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane")
+                    {
+                        hit.collider.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPointTest);
+                        Debug.Log("分割しました");
+                    }
+
                     test = true;
 
                     // ヒットした物が切りたいものと違うときは一個前のポイントを削除したい。なんなら全部削除してもいいのか？          
-                    if (hit.collider.gameObject.name != "Plane")
+                    if (hit.collider.gameObject.name != "Plane" && hit.collider.gameObject.name != "DivisionPlane")
                     {
                         // カットポイントが1個以下の時
                         if (CutPointTest.Count <= 2)
                         {
                             // カットポイントの削除
-                            //CutPointTest.RemoveAt(CutPointTest.Count - 1);
                             CutPointTest.Clear();
                         }
 
@@ -200,23 +206,27 @@ public class CutterPoint : MonoBehaviour
                     // ヒットしたものが切りたい物体の時
                     if (hit.collider.gameObject.name == "Plane")
                     {
+                        
+                       
                         hit_p = hit;
                         //bCut = true;    // 切り始め
                     }
 
                     // ヒットしたメッシュのポリゴン数
-                    //Debug.Log("三角形のインデックス数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length);
+                    Debug.Log("三角形のインデックス数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length);
 
-
-
-                    //Debug.Log("ポリゴン数" + hit.triangleIndex);
+                   //Debug.Log("ポリゴン数" + hit.triangleIndex);
                 }
             }
             else //テスト用のポイントがないとき
             {
                 CutPointTest.Add(hit.point);    // ヒットした座標を格納
+            }
 
-
+            // 
+            if(hit.collider.gameObject.name == "DivisionPlane")
+            {
+                hit_p = hit;
             }
 
         }
@@ -280,6 +290,7 @@ public class CutterPoint : MonoBehaviour
                             // メッシュを分割
                             hit.collider.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPointTest);
                             bStartP = true; // 切り始めセット
+                             hit_p = hit;
                         }
                     }
 
@@ -291,7 +302,7 @@ public class CutterPoint : MonoBehaviour
             }
 
             // 今の三角形ポリゴンから離れたときにポリゴンとカットポイントの交点を作る処理
-            if (hit.collider.gameObject.name == "Plane")
+            if (hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane")
             for (int i = 0;i < hit_p.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i += 3)
             {
                 if (hit_p.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length > 0)
@@ -345,7 +356,7 @@ public class CutterPoint : MonoBehaviour
 
             // 切りたい物体から離れた時
             if(bStartP)
-            if (hit.collider.gameObject.name != "Plane" )
+            if (hit.collider.gameObject.name != "Plane" && hit.collider.gameObject.name != "DivisionPlane")
                 for (int i = 0; i < hit_p.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i += 3)
                 {
                     if (hit_p.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length > 0)
