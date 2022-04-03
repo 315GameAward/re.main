@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+public class Timer_Puls : MonoBehaviour
 {
     float countTime = 0;
 
@@ -17,8 +17,12 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //countTime‚ÉAƒQ[ƒ€‚ªŠJn‚µ‚Ä‚©‚ç‚Ì•b”‚ğŠi”[
-        countTime += Time.deltaTime;
+        if (countTime <= 10)
+        {
+            //countTime‚ÉAƒQ[ƒ€‚ªŠJn‚µ‚Ä‚©‚ç‚Ì•b”‚ğŠi”[
+            countTime += Time.deltaTime;
+
+        }
 
         //­”‚ğ2Œ…‚É‚µ‚Ä•\¦
         GetComponent<Text>().text = countTime.ToString("F2");
