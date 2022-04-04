@@ -91,6 +91,9 @@ public class EditorWindowSample : EditorWindow
 // シーンウィンドウ
 public class EditorScene : EditorWindow
 {
+    // 検索用文字列入れ
+    string myString = null;
+
     // ボタンの大きさ
     private readonly Vector2 _buttonMinSize = new Vector2(100, 20);
     private readonly Vector2 _buttonMaxSize = new Vector2(300, 60);
@@ -156,6 +159,13 @@ public class EditorScene : EditorWindow
             OpenScene("NemotoScene");
         }
 
+        // 文字列入力場所
+        myString = EditorGUILayout.TextField("その他のシーン", myString);
+        // 検索ボタン
+        if (GUILayout.Button("入力したシーンに飛ぶ"))
+        {
+            OpenScene(myString);
+        }
     }
 
     // シーンを開ける関数
