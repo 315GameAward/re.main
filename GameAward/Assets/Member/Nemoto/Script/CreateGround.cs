@@ -26,8 +26,7 @@ public class CreateGround : MonoBehaviour
     public List<Vector3> vtx = new List<Vector3>();
     public List<int> idx = new List<int>();
     List<Vector3> normal = new List<Vector3>();
-
-
+    
     // Start is called before the first frame update
     void Start()
     {

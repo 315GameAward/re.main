@@ -89,6 +89,24 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Clockwise"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b5c7489e-0bbd-4a9f-8694-5e2e1ab24787"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aniticlockwise"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb3f5ae3-70fd-48ed-8863-879e2b8a7880"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -399,6 +417,72 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""action"": ""Test"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""a4ee6dc0-352c-44f5-9da6-120e5221f7d2"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clockwise"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5c1310a0-e7e9-45c4-9e4a-825cb9134221"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""298e79bf-3f74-426d-9ded-fc3ae0db430b"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""813107a6-dda6-4ca6-8326-9d7779a86625"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e754b0a4-b507-465c-856f-318a88a74958"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""994aaf9d-cf0a-4cb2-8777-a478b2579392"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aniticlockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -442,6 +526,8 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         m_Player_MoveSelect = m_Player.FindAction("MoveSelect", throwIfNotFound: true);
         m_Player_Test = m_Player.FindAction("Test", throwIfNotFound: true);
+        m_Player_Clockwise = m_Player.FindAction("Clockwise", throwIfNotFound: true);
+        m_Player_Aniticlockwise = m_Player.FindAction("Aniticlockwise", throwIfNotFound: true);
         // New action map
         m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
         m_Newactionmap_Newaction = m_Newactionmap.FindAction("New action", throwIfNotFound: true);
@@ -511,6 +597,8 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Select;
     private readonly InputAction m_Player_MoveSelect;
     private readonly InputAction m_Player_Test;
+    private readonly InputAction m_Player_Clockwise;
+    private readonly InputAction m_Player_Aniticlockwise;
     public struct PlayerActions
     {
         private @ControlBinds m_Wrapper;
@@ -522,6 +610,8 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputAction @MoveSelect => m_Wrapper.m_Player_MoveSelect;
         public InputAction @Test => m_Wrapper.m_Player_Test;
+        public InputAction @Clockwise => m_Wrapper.m_Player_Clockwise;
+        public InputAction @Aniticlockwise => m_Wrapper.m_Player_Aniticlockwise;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -552,6 +642,12 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @Test.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTest;
                 @Test.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTest;
                 @Test.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTest;
+                @Clockwise.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClockwise;
+                @Clockwise.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClockwise;
+                @Clockwise.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClockwise;
+                @Aniticlockwise.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAniticlockwise;
+                @Aniticlockwise.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAniticlockwise;
+                @Aniticlockwise.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAniticlockwise;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -577,6 +673,12 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @Test.started += instance.OnTest;
                 @Test.performed += instance.OnTest;
                 @Test.canceled += instance.OnTest;
+                @Clockwise.started += instance.OnClockwise;
+                @Clockwise.performed += instance.OnClockwise;
+                @Clockwise.canceled += instance.OnClockwise;
+                @Aniticlockwise.started += instance.OnAniticlockwise;
+                @Aniticlockwise.performed += instance.OnAniticlockwise;
+                @Aniticlockwise.canceled += instance.OnAniticlockwise;
             }
         }
     }
@@ -623,6 +725,8 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnMoveSelect(InputAction.CallbackContext context);
         void OnTest(InputAction.CallbackContext context);
+        void OnClockwise(InputAction.CallbackContext context);
+        void OnAniticlockwise(InputAction.CallbackContext context);
     }
     public interface INewactionmapActions
     {

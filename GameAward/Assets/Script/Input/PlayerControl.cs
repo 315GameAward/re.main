@@ -58,6 +58,10 @@ public class PlayerControl : MonoBehaviour
         _gameInputs.Player.SmoothCut.performed += OnSmoothCut;
         _gameInputs.Player.SmoothCut.canceled += OnSmoothCutOff;
 
+        // Clockwiseイベント登録(プレイヤーが紙に対して時計回りで移動する処理)
+        _gameInputs.Player.Clockwise.started += ClockwiseMove;
+        _gameInputs.Player.Clockwise.performed += ClockwiseMove;
+
         //InputAction有効化
         _gameInputs.Enable();
     }
@@ -91,7 +95,7 @@ public class PlayerControl : MonoBehaviour
     private void OnCutOff(InputAction.CallbackContext context)
     {
         m_bPlayerMove = false;
-        Debug.Log("CutOff");
+        //Debug.Log("CutOff");
     }
 
     private void OnSmoothCut(InputAction.CallbackContext context)
@@ -116,6 +120,8 @@ public class PlayerControl : MonoBehaviour
             _moveInputValue.y
         ) * _moveForce);
         */
+
+
     }
 
     //ディレイ入れるコルーチン!
@@ -125,4 +131,9 @@ public class PlayerControl : MonoBehaviour
         action();
     }
     
+    // ある物体に対して時計回りに動く処理
+    private void ClockwiseMove(InputAction.CallbackContext context)
+    {
+        //transform.position += transform.right * 1.0f * context.ReadValue<Vector2>().x;
+    }
 }
