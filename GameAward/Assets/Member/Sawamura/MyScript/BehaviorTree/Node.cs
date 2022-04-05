@@ -79,7 +79,7 @@ namespace BehaviorTree
                 bool cleared = node.ClearData(key);
                 if (cleared)
                     return true;
-                    node = node.parent;
+                node = node.parent;
             }
                 return false;
         }
