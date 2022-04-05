@@ -177,6 +177,7 @@ public class CutterPoint : MonoBehaviour
             }
 
             // 今の三角形ポリゴンから離れたときにポリゴンとカットポイントの交点を作る処理
+            /*
             if (hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane")
             for (int i = 0;i < hitGameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i += 3)
             {
@@ -228,6 +229,7 @@ public class CutterPoint : MonoBehaviour
                     }
 
             }
+            */
 
             // 切りたい物体から離れた時
             if(bStartP)
