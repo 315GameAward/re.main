@@ -23,7 +23,7 @@ public class MeshDivision : MonoBehaviour
 
     public static List<Vector3> CutPoint1;  // カットポイント格納用
 
-    public static List<int> CrossNum;
+    public static List<int> CrossNum = new List<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +31,12 @@ public class MeshDivision : MonoBehaviour
         // メッシュのアタッチ
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
-        CrossNum = new List<int>();
+        //CrossNum = new List<int>();
         //CrossNum.Clear();
         CutPoint1 = new List<Vector3>();
         CutPoint1.Clear();
+        Debug.Log("カットポイントの個数だにゃ" + CrossNum.Count);
+
     }
 
     // Update is called once per frame
@@ -242,11 +244,11 @@ public class MeshDivision : MonoBehaviour
                                 int idx_v = attachedMesh.triangles[j + ((k + 1)%3)];  // 終点
 
                                 // このポリゴンの辺の始点と終点のベクトル
-                                Vector2 vtx_s = new Vector2(attachedMesh.vertices[idx_s].x + transform.position.x, attachedMesh.vertices[idx_s].z + transform.position.z);    // 始点のベクトル
-                                Vector2 vtx_v = new Vector2(attachedMesh.vertices[idx_v].x + transform.position.x, attachedMesh.vertices[idx_v].z + transform.position.z);    // 終点のベクトル
+                                Vector2 vtx_s = new Vector2(attachedMesh.vertices[idx_s].x , attachedMesh.vertices[idx_s].z );    // 始点のベクトル
+                                Vector2 vtx_v = new Vector2(attachedMesh.vertices[idx_v].x , attachedMesh.vertices[idx_v].z );    // 終点のベクトル
 
                                 // 今のカットポイントと一個前のカットポイントとの線分と、ポリゴンの辺(線分)の始点をつないだベクトル
-                                Vector2 v = new Vector2(vtx_s.x - cutPoint[cpNum - 1].x, vtx_s.y - cutPoint[cpNum - 1].z);
+                                Vector2 v = new Vector2(vtx_s.x - (cutPoint[cpNum - 1].x - transform.position.x), vtx_s.y - (cutPoint[cpNum - 1].z - transform.position.z));
 
                                 // 線分
                                 Vector2 v1 = new Vector2(cutPoint[cpNum].x - cutPoint[cpNum - 1].x, cutPoint[cpNum].z - cutPoint[cpNum - 1].z); // カットポイントの線分
@@ -257,7 +259,7 @@ public class MeshDivision : MonoBehaviour
                                 float t2 = (v.x * v1.y - v1.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
 
                                 // 交点
-                                Vector2 p = new Vector2(vtx_s.x, vtx_v.y) + new Vector2(v2.x * t2, v2.y * t2);
+                                Vector2 p = new Vector2(vtx_s.x, vtx_s.y) + new Vector2(v2.x * t2, v2.y * t2);
 
                                 // 線分と線分が交わっているか
                                 const float eps = 0.00001f;
@@ -267,9 +269,9 @@ public class MeshDivision : MonoBehaviour
                                 }
                                 else
                                 {
-                                    //Debug.Log("交点を追加");
+                                    Debug.Log("交点を追加");
                                     // 頂点に交点を追加
-                                    vertices1.Add(new Vector3(p.x + transform.position.x, attachedMesh.vertices[attachedMesh.triangles[i]].y, p.y + transform.position.z));
+                                    vertices1.Add(new Vector3(p.x, attachedMesh.vertices[attachedMesh.triangles[i]].y, p.y ));
 
 
                                 }
@@ -408,6 +410,7 @@ public class MeshDivision : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!attachedMesh) return;
+
         for (int i = 0; i < attachedMesh.vertices.Length; i++)
         {
             if(CrossNum.Count > 0)
@@ -417,19 +420,20 @@ public class MeshDivision : MonoBehaviour
                     if (CrossNum[j] == i)
                     {
                         Gizmos.color = new Color(0, 0, 225, 1);   // 色の指定
-                        
+                        break;
                     }
                     else
                     {
-                        //Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
+                        Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
                     }
 
                 }
+
+                
             }
-            else
+           else
             {
                 Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
-
             }
             
             Gizmos.DrawSphere(attachedMesh.vertices[i] + transform.position, 0.05f);  // 球の表示

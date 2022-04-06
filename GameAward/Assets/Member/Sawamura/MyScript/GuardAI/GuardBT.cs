@@ -3,7 +3,7 @@ using BehaviorTree;
 
 public class GuardBT : Tree
 {
-    public UnityEngine.Transform[] waypoints;
+    public UnityEngine.Transform[] waypoints; //進むべきマーカーがwaypointsでない
 
     public static float speed = 2f;
     public static float fovRange = 6f;
