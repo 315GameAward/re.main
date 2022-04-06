@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 1088259250}
   - component: {fileID: 1088259249}
   - component: {fileID: 1088259252}
+  - component: {fileID: 1088259253}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -313,3 +314,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleTest: {fileID: 6628019217059038093, guid: 615794125d6d3b049933865a069ded83, type: 3}
+--- !u!114 &1088259253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088259248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af6ca710c89b2c458615ef8b9bfc721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseUI: {fileID: 1617948477895398985, guid: 7f1caef35e65f5747a2246130f810c8f, type: 3}
