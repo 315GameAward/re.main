@@ -63,9 +63,6 @@ public class CutterPoint : MonoBehaviour
 
     public bool bCut = false;  // 切り始めたか
     public bool bStartP = false;   // 始点が辺の上にあるか
-    public bool bPurposeObj = false;
-
-    [SerializeField] [Tooltip("")] private ParticleSystem particle;
 
     // Start is called before the first frame update
     void Start()
@@ -85,9 +82,6 @@ public class CutterPoint : MonoBehaviour
         // レイキャストがあったとき 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane") bPurposeObj = true;
-            else bPurposeObj = false;
-
             // テスト用のポイントがあるとき
             if (CutPointTest.Count > 0)
             {
@@ -95,14 +89,7 @@ public class CutterPoint : MonoBehaviour
                 if (hit.point != CutPointTest[CutPointTest.Count - 1])
                 {
                     CutPointTest.Add(hit.point);    // ヒットした座標を格納
-                    if(hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane")
-                    {
-                        ParticleSystem newParticle = Instantiate(particle);
-                        newParticle.transform.position = this.transform.position;
-                        newParticle.Play();
-                        Destroy(newParticle.gameObject, 2.0f);
-                    }
-                   
+                  
                     test = true;
 
                     // ヒットした物が切りたいものと違うときは一個前のポイントを削除したい。なんなら全部削除してもいいのか？          
@@ -119,7 +106,7 @@ public class CutterPoint : MonoBehaviour
                     }
                     
                     // ヒットしたメッシュのポリゴン数
-                    Debug.Log("頂点数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices.Length);
+                    //Debug.Log("三角形のインデックス数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length);
                     //Debug.Log("ポリゴン数" + hit.triangleIndex);
                 }
             }
@@ -304,22 +291,19 @@ public class CutterPoint : MonoBehaviour
                                     CutPoint.Add(CutPointTest[k]);
 
                                 }
+                               
+                                // メッシュの分割
+                                for(int l = 0;l < CutPoint.Count;l++)
+                                {
+                                    if(GameObject.Find("DivisionPlane" + l)) hitGameObject = GameObject.Find("DivisionPlane" + l);
+                                    hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint,l);
+                                    
+                                    hitGameObject = GameObject.Find("DivisionPlane" + l);
+                                       
+                                }
 
-                                    // メッシュの分割
-                                    for (int l = 0; l < CutPoint.Count; l++)
-                                    {
-                                        if (GameObject.Find("DivisionPlane" + l)) hitGameObject = GameObject.Find("DivisionPlane" + l);
-                                        hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, l);
-
-                                        hitGameObject = GameObject.Find("DivisionPlane" + l);
-
-                                    }
-                                    //hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, 0);
-                                    //hitGameObject = GameObject.Find("DivisionPlane0");
-                                    //hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, 1);
-                                    //hitGameObject = GameObject.Find("DivisionPlane1");
-                                    //// メッシュのカット
-                                    hitGameObject.gameObject.GetComponent<MeshDivision>().CutMesh();
+                                // メッシュのカット
+                                hitGameObject.gameObject.GetComponent<MeshDivision>().CutMesh();
 
                                 // 今のカットポイントの削除
                                     CutPointTest.RemoveRange(0, CutPointTest.Count-1);

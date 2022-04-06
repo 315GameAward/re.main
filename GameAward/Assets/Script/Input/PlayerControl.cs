@@ -32,17 +32,12 @@ public class PlayerControl : MonoBehaviour
     public float motorDelay = 0.1f;               //パッド振動のディレイ
     public bool m_bPlayerMove = false;       //移動しているか
 
-    public AudioClip se1;       // SEを入れる変数
-    public AudioClip se2;       // SEを入れる変数
-    AudioSource audioSource;    // AudioSourceの取得用 
-
     private void Awake()
     {
         //Rigidbody取得
         _rigidbody = GetComponent<Rigidbody>();
 
-        // Compornentを取得
-        audioSource = GetComponent<AudioSource>();
+
 
         //InputActionインスタンス生成
         _gameInputs = new ControlBinds();
@@ -52,7 +47,6 @@ public class PlayerControl : MonoBehaviour
         _gameInputs.Player.Move.performed += OnMove;
         _gameInputs.Player.Move.canceled += OnMove;
        
-        
 
 
         //Cutイベント登録
@@ -71,9 +65,6 @@ public class PlayerControl : MonoBehaviour
         //InputAction有効化
         _gameInputs.Enable();
     }
-
-
-
 
     private void OnMove(InputAction.CallbackContext context)
     {
@@ -97,17 +88,6 @@ public class PlayerControl : MonoBehaviour
             Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
         }));
         m_bPlayerMove = true;
-
-        // SEの再生
-        if(gameObject.GetComponent<CutterPoint>().bPurposeObj)
-        {
-            audioSource.PlayOneShot(se2);
-        }
-        else
-        {
-            audioSource.PlayOneShot(se1);
-        }
-       
 
         //WaitForSecondsRealtime(3.0f);
     }
