@@ -12,6 +12,8 @@ using UnityEngine;
 
 public class MeshDivision : MonoBehaviour
 {
+   
+
     // メッシュの変数
     private MeshFilter attachedMeshFilter;
     private Mesh attachedMesh;
@@ -25,6 +27,7 @@ public class MeshDivision : MonoBehaviour
 
     public static List<int> CrossNum = new List<int>();
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +38,7 @@ public class MeshDivision : MonoBehaviour
         //CrossNum.Clear();
         CutPoint1 = new List<Vector3>();
         CutPoint1.Clear();
-        Debug.Log("カットポイントの個数だにゃ" + CrossNum.Count);
-
+       
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class MeshDivision : MonoBehaviour
         var uvs1 = new List<Vector2>(); // テクスチャ
         var uvs2 = new List<Vector2>();
         var vertices1 = new List<Vector3>();   // 頂点
-        var vertices2 = new List<DVector3>();
+        var vertices2 = new List<Vector3>();
         var triangles1 = new List<int>();       // 三角形インデックス
         var triangles2 = new List<int>();
         var normals1 = new List<Vector3>();     // 法線
@@ -66,11 +68,11 @@ public class MeshDivision : MonoBehaviour
         var crossVertices = new List<Vector3>();
 
         // カットポイントの格納
-        CutPoint1.Add(cutPoint[cpNum]);
+        //CutPoint1.Add(cutPoint[cpNum]);
         //Debug.Log("カットポイントの個数だにゃ"+ CutPoint1.Count);
 
-        CrossNum.Add(1);
-        Debug.Log("カットポイントの個数だにゃ"+CrossNum.Count);
+        //CrossNum.Add(1);
+        //Debug.Log("カットポイントの個数だにゃ"+CrossNum.Count);
 
 
         //カットしたいオブジェクトのメッシュをトライアングルごとに処理
@@ -271,7 +273,7 @@ public class MeshDivision : MonoBehaviour
                                 {
                                     Debug.Log("交点を追加");
                                     // 頂点に交点を追加
-                                    vertices1.Add(new Vector3(p.x, attachedMesh.vertices[attachedMesh.triangles[i]].y, p.y ));
+                                    //vertices1.Add(new Vector3(p.x, attachedMesh.vertices[attachedMesh.triangles[i]].y, p.y ));
 
 
                                 }
@@ -365,6 +367,124 @@ public class MeshDivision : MonoBehaviour
 
         }
 
+        var nullIdx = new List<int>();  // 無くなってしまった頂点番号の保存用リスト
+        var addIdx = new List<int>();   // 追加する用の頂点番号の保存用リスト
+
+        vertices2  = new List<Vector3>(vertices1);  // vertices1を消す前に保存
+        triangles2 = new List<int>(triangles1);
+
+        //Debug.Log("変更前");
+        //Debug.Log("triangles1:" + triangles1.Count);
+        //for (int i = 0; i < triangles1.Count; i += 3)
+        //{
+        //    Debug.LogFormat("({0},{1},{2})", triangles1[i], triangles1[i + 1], triangles1[i + 2]);
+        //}
+        //Debug.Log("triangles2:" + triangles2.Count);
+        //for (int i = 0; i < triangles2.Count; i += 3)
+        //{
+        //    Debug.LogFormat("({0},{1},{2})", triangles2[i], triangles2[i + 1], triangles2[i + 2]);
+        //}
+        //Debug.Log("vertices1");
+        //for (int i = 0; i < triangles1.Count; i++)
+        //{
+        //    Debug.LogFormat("({0})", vertices1[triangles1[i]]);
+        //}
+        //Debug.Log("vertices2");
+        //for (int i = 0; i < triangles2.Count; i++)
+        //{
+        //    Debug.LogFormat("({0})", vertices2[triangles2[i]]);
+        //}
+        //// 同じ座標の頂点を消したい
+        //for (int i = 0; i < vertices1.Count; i++)
+        //{
+
+        //    var duplicate = new List<int>();
+        //    bool addTrigger = false;
+        //    //Debug.Log(addTrigger);
+        //    for (int j = i + 1; j < vertices1.Count; j++)
+        //    {
+        //        // 同じ座標の頂点があったとき
+        //        if (vertices1[i] == vertices1[j])
+        //        {
+
+        //            duplicate.Add(j);
+        //            nullIdx.Add(j);
+        //            Debug.Log("重複した頂点数" + duplicate.Count);
+        //            if (!addTrigger)
+        //            {
+
+        //                addIdx.Add(i);
+        //                addTrigger = true;
+        //            }
+        //        }
+        //        else
+        //        {
+
+        //        }
+
+        //    }
+
+        //    if (duplicate.Count >= 1)
+        //        for (int k = duplicate.Count; k > 0; --k)
+        //        {
+        //            Debug.Log("頂点の削除");
+        //            vertices1.RemoveAt(duplicate[k - 1]);
+        //            Debug.Log("0");
+        //        }
+        //    //Debug.Log("1");
+        //}
+        ////Debug.Log("2");
+
+        //// 頂点を消したのでインデックスの振り直し        
+        //for(int l = 0;l < addIdx.Count;l++)
+        //{
+        //    for (int k = 0; k < nullIdx.Count; k++)
+        //    {
+        //        if (vertices2[addIdx[l]] != vertices2[nullIdx[k]]) continue;
+
+        //        for (int i = 0; i < triangles1.Count; i++)
+        //        {
+        //            //Debug.Log("4");
+        //            if (nullIdx[k] != triangles1[i]) continue;
+                   
+        //            triangles1[i] = addIdx[l];
+        //            //Debug.Log("6");
+        //        }
+        //    }
+        //}
+
+       
+        
+        //// 頂点を消す前にvertices1を保存したvertices2と消した後のvertices1と比較
+        //for (int i = 0; i < triangles1.Count; i++)
+        //{
+            
+        //    if (triangles1[i] != triangles2[i]) continue;
+
+        //    if (triangles1[i] >= vertices1.Count)
+        //    {
+        //        for (int j = 0; j < vertices1.Count; j++)
+        //        {
+        //            if (vertices2[triangles2[i]] != vertices1[j]) continue;
+
+        //            triangles1[i] = j;
+        //            break;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        for (int j = 0; j < vertices1.Count; j++)
+        //        {
+        //            if (vertices2[triangles2[i]] != vertices1[j]) continue;
+        //            triangles1[i] = j;
+        //            break;
+        //        }
+        //    }
+
+
+        //}
+
+        
 
         // 分割後のオブジェクト生成、いろいろといれる
         GameObject obj = new GameObject("DivisionPlane"+ cpNum, typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshDivision));
@@ -402,6 +522,11 @@ public class MeshDivision : MonoBehaviour
     {
         gameObject.name = "Plane";  // 名前の変更
 
+        for (int i = 0; i < gameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i+= 3)
+        {
+
+        }
+
         // カットポイントの削除
         //CutPoint.Clear();
     }
@@ -413,31 +538,29 @@ public class MeshDivision : MonoBehaviour
 
         for (int i = 0; i < attachedMesh.vertices.Length; i++)
         {
-            if(CrossNum.Count > 0)
-            {
-                for (int j = 0; j < CrossNum.Count; j++)
-                {
-                    if (CrossNum[j] == i)
-                    {
-                        Gizmos.color = new Color(0, 0, 225, 1);   // 色の指定
-                        break;
-                    }
-                    else
-                    {
-                        Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
-                    }
 
-                }
+            bool flg = false;
 
-                
-            }
-           else
+            if(CrossNum.Count > 0)            
+            for (int j = 0; j < CrossNum.Count; j++)
             {
-                Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
+                if (CrossNum[j] != i) continue;
+                                    
+                flg = true;
+                break;
+                              
             }
-            
+                         
+            if (flg)
+            {
+                Gizmos.color = new Color(0, 0, 225, 1);   // 色の指定
+                Gizmos.DrawSphere(attachedMesh.vertices[i] + transform.position, 0.05f);  // 球の表示
+                continue;
+            }
+
+
+            Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
             Gizmos.DrawSphere(attachedMesh.vertices[i] + transform.position, 0.05f);  // 球の表示
-
         }
 
         for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
