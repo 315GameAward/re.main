@@ -51,6 +51,13 @@ public class CreateGround : MonoBehaviour
 
         mesh.SetTriangles(idx, 0);
 
+        normal.Add(Vector3.up);
+        normal.Add(Vector3.up);
+        normal.Add(Vector3.up);
+        normal.Add(Vector3.up);
+
+        mesh.SetNormals(normal);
+
         filter.mesh = mesh;
 
         gameObject.AddComponent<MeshCollider>();
