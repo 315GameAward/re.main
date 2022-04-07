@@ -18,7 +18,7 @@ public class GuardBT : Tree
             //    new CheckEnemyInAttackRange(transform),
             //    new TaskAttack(transform),
             //}),
-            new Selector(new List<Node>
+            new Sequence(new List<Node>
             {
                 new CheckEnemyInFOVRange(transform),
                 new TaskGoToTarget(transform),
