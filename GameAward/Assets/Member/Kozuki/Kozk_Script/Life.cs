@@ -6,30 +6,48 @@
 //--------------------------------------------
 // 作成者：上月大地
 //========================
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class Life : MonoBehaviour
 {
-    // 体力
-    public int nLife;
-
     [SerializeField]
-    GameObject prefab;      // インスペクターからハートのプレハブを割り当てる
+    GameObject prefab;  // インスペクターからハートのプレハブを割り当てる
+
+    public int nLife;   // 体力
 
     List<GameObject> hearts = new List<GameObject>();   // 生成したハートを入れる
    
-    //========================
-    //
-    // ハートを1つ減らす関数
-    //
-    //========================
-    public void DelLife()
+    // Start is called before the first frame update
+    void Start()
     {
-        nLife--;
-        Destroy(hearts[0]);
-        hearts.RemoveAt(0);
+        for (int i = nLife; i > 0; i--)
+        {
+            Increase();
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.Log(nLife);
+
+        if (nLife <= 0)
+        {
+            // ゲームオーバー呼び出し
+            Debug.Log("ゲームオーバー");
+        }
+
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            DelLife();
+        }
+        // スペースを押したら体力消費
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            DelLife();        
+        }
     }
 
     //========================
@@ -44,21 +62,16 @@ public class Life : MonoBehaviour
         hearts.Add(instance);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    //========================
+    //
+    // ハートを1つ減らす関数
+    //
+    //========================
+    public void DelLife()
     {
-        for (int i = nLife; i > 0; i--)
-        {
-            Increase();
-        }
+        Destroy(hearts[0]);
+        hearts.RemoveAt(0);
+        nLife--;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(nLife <= 0)
-        {
-            // ゲームオーバー呼び出し
-        }
-    }
 }
