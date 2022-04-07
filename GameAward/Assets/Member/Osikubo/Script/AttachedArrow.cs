@@ -15,8 +15,10 @@ public class AttachedArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         PlayerRotation.y += 0.001f;
         transform.Rotate(0, 1, 0);
+        */
 
         //transform.rotation = PlayerRotation;a
     }

@@ -113,6 +113,13 @@ public class MeshDivision : MonoBehaviour
                         int _2 = vertices1.Count - 2;
                         int _3 = vertices1.Count - 1;
 
+                        // 法線
+
+                        normals1.Add(Vector3.up);
+                        normals1.Add(Vector3.up);
+                        normals1.Add(Vector3.up);
+                        normals1.Add(Vector3.up);
+
                         // 三角形インデクスの追加
                         //triangles1
                         if (t < 0.001f)
@@ -180,6 +187,12 @@ public class MeshDivision : MonoBehaviour
                         int _1 = vertices1.Count - 3;
                         int _2 = vertices1.Count - 2;
                         int _3 = vertices1.Count - 1;
+
+                        // 法線
+                        normals1.Add(Vector3.up);
+                        normals1.Add(Vector3.up);
+                        normals1.Add(Vector3.up);
+                        normals1.Add(Vector3.up);
 
                         // 三角形インデクスの追加
                         //triangles1
@@ -297,6 +310,13 @@ public class MeshDivision : MonoBehaviour
                     int _2 = vertices1.Count - 2;
                     int _3 = vertices1.Count - 1;
 
+                    // 法線
+                    //Debug.Log("attachedMesh.normals[0]" + attachedMesh.normals[0]);
+                    normals1.Add(Vector3.up);
+                    normals1.Add(Vector3.up);
+                    normals1.Add(Vector3.up);
+                    normals1.Add(Vector3.up);
+
                     // 三角形インデクスの追加
                     //triangles1
                     if (t < 0.001f)
@@ -356,9 +376,15 @@ public class MeshDivision : MonoBehaviour
                 for (int k = 0; k < 3; k++)
                 {
                     vertices1.Add(attachedMesh.vertices[attachedMesh.triangles[i + k]]);
+                    normals1.Add(Vector3.up);
+
                     //uvs1.Add(attachedMesh.uv[attachedMesh.triangles[i + k]]);
                     //normals1.Add(attachedMesh.normals[attachedMesh.triangles[i + k]]);
                     triangles1.Add(vertices1.Count - 1);
+                    // 法線
+                    //Debug.Log("attachedMesh.normals[0]" + attachedMesh.normals[0]);
+                    
+
                 }
             }
 
@@ -372,7 +398,12 @@ public class MeshDivision : MonoBehaviour
         mesh.vertices = vertices1.ToArray();
         mesh.triangles = triangles1.ToArray();
         //mesh.uv = uvs1.ToArray();
-        //mesh.normals = normals1.ToArray();
+       
+        Debug.Log("vertices1.Count" + vertices1.Count);
+        Debug.Log("normals1.Count" + normals1.Count);
+      
+        mesh.normals = normals1.ToArray();
+        Debug.Log("mesh.normals.Length" + mesh.normals.Length);
         obj.GetComponent<MeshFilter>().mesh = mesh;
         obj.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
         obj.GetComponent<MeshCollider>().sharedMesh = mesh;
