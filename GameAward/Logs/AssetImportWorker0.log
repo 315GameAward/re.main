@@ -1,108 +1,138 @@
 Using pre-set license
 Built from '2020.3/release' branch; Version is '2020.3.27f1 (e759542391ea) revision 15161684'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ja' Physical Memory: 16229 MB
+OS: 'Windows 10  (10.0.19043) 64bit Professional' Language: 'ja' Physical Memory: 16229 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-C:\Users\izumo\OneDrive\Unity\Unity Hub\2020.3.27f1\Editor\Unity.exe
+C:\Program Files\Unity\2020.3.27f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
+C:/Users/0141e/Desktop/UnityProject/re.main/GameAward
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63001
-Successfully changed project path to: C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
-C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
+60249
+Successfully changed project path to: C:/Users/0141e/Desktop/UnityProject/re.main/GameAward
+C:/Users/0141e/Desktop/UnityProject/re.main/GameAward
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 40.06 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 37.83 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.27f1 (e759542391ea)
-[Subsystems] Discovering subsystems at path C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/2020.3.27f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/0141e/Desktop/UnityProject/re.main/GameAward/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
     Renderer: NVIDIA GeForce GTX 1650 with Max-Q Design (ID=0x1f91)
     Vendor:   
     VRAM:     3962 MB
-    Driver:   25.21.14.1788
+    Driver:   27.21.14.5167
 Initialize mono
-Mono path[0] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56224
+Mono path[0] = 'C:/Program Files/Unity/2020.3.27f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/2020.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/2020.3.27f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56196
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002611 seconds.
+Register platform support module: C:/Program Files/Unity/2020.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001932 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 36.90 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 34.34 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.567 seconds
+- Completed reload, in  0.530 seconds
 Domain Reload Profiling:
-	ReloadAssembly (567ms)
-		BeginReloadAssembly (67ms)
+	ReloadAssembly (531ms)
+		BeginReloadAssembly (62ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (426ms)
-			LoadAssemblies (64ms)
+		EndReloadAssembly (404ms)
+			LoadAssemblies (59ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (144ms)
+			SetupTypeCache (136ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (30ms)
-			SetupLoadedEditorAssemblies (155ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (146ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (37ms)
+				RefreshPlugins (34ms)
 				BeforeProcessingInitializeOnLoad (15ms)
-				ProcessInitializeOnLoadAttributes (71ms)
-				ProcessInitializeOnLoadMethodAttributes (27ms)
+				ProcessInitializeOnLoadAttributes (69ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006327 seconds.
+Registered in 0.004624 seconds.
 Begin MonoManager ReloadAssembly
+Symbol file data-0000025A0FB21480 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FA28090 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FAB2090 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FB21480 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FB71230 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FD4B020 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A106E6E30 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FE73010 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FAC78A0 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FEF5220 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FB21480 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0B5FE9F0 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FB21480 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FE9B620 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0F7EF010 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 35.13 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 33.68 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.080 seconds
+- Completed reload, in  0.997 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1081ms)
-		BeginReloadAssembly (152ms)
+	ReloadAssembly (997ms)
+		BeginReloadAssembly (137ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (18ms)
-		EndReloadAssembly (864ms)
-			LoadAssemblies (95ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (806ms)
+			LoadAssemblies (86ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (279ms)
+			SetupTypeCache (260ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (41ms)
-			SetupLoadedEditorAssemblies (346ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (320ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (35ms)
-				BeforeProcessingInitializeOnLoad (74ms)
-				ProcessInitializeOnLoadAttributes (214ms)
+				RefreshPlugins (34ms)
+				BeforeProcessingInitializeOnLoad (66ms)
+				ProcessInitializeOnLoadAttributes (203ms)
 				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (10ms)
+				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (6ms)
@@ -110,14 +140,14 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1901 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 98.9 MB.
 System memory in use after: 99.0 MB.
 
 Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2350.
-Total: 2.804200 ms (FindLiveObjects: 0.143700 ms CreateObjectMapping: 0.055300 ms MarkObjects: 2.506900 ms  DeleteObjects: 0.097500 ms)
+Total: 2.758800 ms (FindLiveObjects: 0.147000 ms CreateObjectMapping: 0.053300 ms MarkObjects: 2.477000 ms  DeleteObjects: 0.080700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,76 +161,106 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/Alpha/GameScene.unity
-  artifactKey: Guid(a1a5f8e2c4364c34796b4fea410e4cd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Alpha/GameScene.unity using Guid(a1a5f8e2c4364c34796b4fea410e4cd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c585c64791f6b5929abbd7707e1b150') in 0.015088 seconds 
-  Import took 0.018043 seconds .
+  path: Assets/New Terrain.asset
+  artifactKey: Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Terrain.asset using Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83857c9b3db919032caab7489607961c') in 0.045002 seconds 
+  Import took 0.047525 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 166.362967 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/Life.prefab
-  artifactKey: Guid(0f7ae593d9860b54aa1aa2b412dc35ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/Life.prefab using Guid(0f7ae593d9860b54aa1aa2b412dc35ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1385de6819e67d795d19510d4c99c034') in 0.061353 seconds 
-  Import took 0.064975 seconds .
+  Time since last request: 15.025251 seconds.
+  path: Assets/Member/Sawamura/BehaviorTreeTestScene.unity
+  artifactKey: Guid(4875681414db0e64ab0efdc9ac44f018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/BehaviorTreeTestScene.unity using Guid(4875681414db0e64ab0efdc9ac44f018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bc306697b80c9e46158fb838cbad209') in 0.007330 seconds 
+  Import took 0.009917 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000403 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/star-1.jpg
-  artifactKey: Guid(3f99fa5c1ffb40f4ea798fd5d91b9175) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/star-1.jpg using Guid(3f99fa5c1ffb40f4ea798fd5d91b9175) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44d6bcefd2c6a12020f471d695629fd6') in 0.107449 seconds 
-  Import took 0.110075 seconds .
+  Time since last request: 104.396253 seconds.
+  path: Assets/Member/Sawamura/MyScript
+  artifactKey: Guid(4bb709611d0bbe642801215631717300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/MyScript using Guid(4bb709611d0bbe642801215631717300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '834f4b8f28cd42927fc1d9a80feffdc3') in 0.009410 seconds 
+  Import took 0.012515 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000402 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/ハサミ.jpg
-  artifactKey: Guid(cfdd1fd08552b42479a09728ba25f9e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/ハサミ.jpg using Guid(cfdd1fd08552b42479a09728ba25f9e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c5821b9e614b3d9a0aa43e67ff6409a') in 0.020534 seconds 
-  Import took 0.023108 seconds .
+  Time since last request: 6.964120 seconds.
+  path: Assets/Member/Sawamura/MyScript/GuardAI
+  artifactKey: Guid(80c03523174716b47a9aceac733139b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/MyScript/GuardAI using Guid(80c03523174716b47a9aceac733139b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a153ce5a0a57a98abb9862591aa765cf') in 0.007315 seconds 
+  Import took 0.010653 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000344 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/star000.png
-  artifactKey: Guid(bcc84d485b2d7ac42bd19f034cb86bf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/star000.png using Guid(bcc84d485b2d7ac42bd19f034cb86bf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7067852dc86f92b9f1a404a10be1b01') in 0.017165 seconds 
-  Import took 0.020662 seconds .
+  Time since last request: 2.490563 seconds.
+  path: Assets/Member/Sawamura/MyScript/GuardAI/TaskGoToTarget.cs
+  artifactKey: Guid(5fa1c2af65c34f34e8eae0b9fc27d396) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/MyScript/GuardAI/TaskGoToTarget.cs using Guid(5fa1c2af65c34f34e8eae0b9fc27d396) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e63fbc3dc4e52497cb037babaf63b988') in 0.016452 seconds 
+  Import took 0.019279 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.005851 seconds.
+Registered in 0.006874 seconds.
 Begin MonoManager ReloadAssembly
+Symbol file data-0000025A1097B390 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A111A9830 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FD9F020 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A11152770 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0BA12C40 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0BA2BD80 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FD9F020 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0BA2BD80 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FD9F020 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A13751700 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A11152770 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0F642010 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A1097B390 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0FCC8430 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000025A0B98B2C0 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.38 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.986 seconds
+- Completed reload, in  0.935 seconds
 Domain Reload Profiling:
-	ReloadAssembly (986ms)
-		BeginReloadAssembly (118ms)
+	ReloadAssembly (935ms)
+		BeginReloadAssembly (113ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (31ms)
-		EndReloadAssembly (805ms)
-			LoadAssemblies (97ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (762ms)
+			LoadAssemblies (98ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (268ms)
+			SetupTypeCache (257ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (37ms)
-			SetupLoadedEditorAssemblies (315ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (293ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (77ms)
-				ProcessInitializeOnLoadAttributes (215ms)
+				BeforeProcessingInitializeOnLoad (67ms)
+				ProcessInitializeOnLoadAttributes (206ms)
 				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (9ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (6ms)
@@ -208,11 +268,11 @@ Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.39 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1893 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 101.8 MB.
-System memory in use after: 102.0 MB.
+System memory in use before: 98.7 MB.
+System memory in use after: 98.9 MB.
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2358.
-Total: 2.800500 ms (FindLiveObjects: 0.163800 ms CreateObjectMapping: 0.057900 ms MarkObjects: 2.563300 ms  DeleteObjects: 0.014100 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2352.
+Total: 2.969300 ms (FindLiveObjects: 0.126900 ms CreateObjectMapping: 0.062700 ms MarkObjects: 2.765800 ms  DeleteObjects: 0.013000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -224,4 +284,3 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
