@@ -107,6 +107,15 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cut2"",
+                    ""type"": ""Button"",
+                    ""id"": ""be890c32-4b42-47ee-927a-4141f3cb0061"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -483,6 +492,17 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""action"": ""Aniticlockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1159b25-646e-4f31-8958-c0edb4198b36"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cut2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -528,6 +548,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         m_Player_Test = m_Player.FindAction("Test", throwIfNotFound: true);
         m_Player_Clockwise = m_Player.FindAction("Clockwise", throwIfNotFound: true);
         m_Player_Aniticlockwise = m_Player.FindAction("Aniticlockwise", throwIfNotFound: true);
+        m_Player_Cut2 = m_Player.FindAction("Cut2", throwIfNotFound: true);
         // New action map
         m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
         m_Newactionmap_Newaction = m_Newactionmap.FindAction("New action", throwIfNotFound: true);
@@ -599,6 +620,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Test;
     private readonly InputAction m_Player_Clockwise;
     private readonly InputAction m_Player_Aniticlockwise;
+    private readonly InputAction m_Player_Cut2;
     public struct PlayerActions
     {
         private @ControlBinds m_Wrapper;
@@ -612,6 +634,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         public InputAction @Test => m_Wrapper.m_Player_Test;
         public InputAction @Clockwise => m_Wrapper.m_Player_Clockwise;
         public InputAction @Aniticlockwise => m_Wrapper.m_Player_Aniticlockwise;
+        public InputAction @Cut2 => m_Wrapper.m_Player_Cut2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -648,6 +671,9 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @Aniticlockwise.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAniticlockwise;
                 @Aniticlockwise.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAniticlockwise;
                 @Aniticlockwise.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAniticlockwise;
+                @Cut2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCut2;
+                @Cut2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCut2;
+                @Cut2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCut2;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -679,6 +705,9 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @Aniticlockwise.started += instance.OnAniticlockwise;
                 @Aniticlockwise.performed += instance.OnAniticlockwise;
                 @Aniticlockwise.canceled += instance.OnAniticlockwise;
+                @Cut2.started += instance.OnCut2;
+                @Cut2.performed += instance.OnCut2;
+                @Cut2.canceled += instance.OnCut2;
             }
         }
     }
@@ -727,6 +756,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         void OnTest(InputAction.CallbackContext context);
         void OnClockwise(InputAction.CallbackContext context);
         void OnAniticlockwise(InputAction.CallbackContext context);
+        void OnCut2(InputAction.CallbackContext context);
     }
     public interface INewactionmapActions
     {
