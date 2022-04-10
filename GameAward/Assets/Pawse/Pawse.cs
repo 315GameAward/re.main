@@ -10,19 +10,19 @@ public class Pawse : MonoBehaviour
 {
     public RandomMovement target;
 
-    void OnDisable()
-    {
-        target.OnDestroyed.RemoveAllListeners();
-    }
+    //void OnDisable()
+    //{
+    //    target.OnDestroyed.RemoveAllListeners();
+    //}
 
     void OnEnable()
     {
         //中カッコ内にオブジェクトが消えた時の処理を加える
-        target.OnDestroyed.AddListener
-        (() =>
-        {
-           
-        });
+        //target.OnDestroyed.AddListener
+        //(() =>
+        //{
+        //   
+        //});
     }
 
     // Start is called before the first frame update
