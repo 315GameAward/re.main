@@ -90,7 +90,11 @@ public class PlayerControl : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         // スーと切る時は処理を行わない
-        if (bSmoothCut) return;
+        if (bSmoothCut)
+        {
+            _moveStickValue = Vector2.zero; // 方向の初期化
+            return;
+        }
 
         //Moveアクションの入力取得
         _moveStickValue = context.ReadValue<Vector2>();
