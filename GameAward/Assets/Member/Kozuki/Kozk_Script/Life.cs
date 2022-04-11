@@ -45,6 +45,13 @@ public class Life : MonoBehaviour
         {
             DelLife();        
         }
+
+        // 下矢印を押したら体力増加
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            AddLife();
+            nLife++;
+        }
     }
 
     //========================
@@ -57,6 +64,7 @@ public class Life : MonoBehaviour
         // 引数2はどのオブジェクトの子にするかで、引数3は子にする際に以前の位置を保つか(LayoutGroup系ではfalseにしないとおかしくなる)
         GameObject instance = Instantiate(prefab, transform, false);
         hearts.Add(instance);
+        
     }
 
     //========================
