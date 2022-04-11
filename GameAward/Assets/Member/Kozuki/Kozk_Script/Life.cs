@@ -17,14 +17,15 @@ public class Life : MonoBehaviour
 
     public int nLife;   // 体力
 
-    List<GameObject> hearts = new List<GameObject>();   // 生成したハートを入れる
+    List<GameObject> hearts = new List<GameObject>();   // 生成したライフを入れる
    
     // Start is called before the first frame update
     void Start()
     {
         for (int i = nLife; i > 0; i--)
         {
-            Increase();
+            // 体力を設定していく
+            AddLife();
         }
     }
 
@@ -39,10 +40,6 @@ public class Life : MonoBehaviour
             Debug.Log("ゲームオーバー");
         }
 
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            DelLife();
-        }
         // スペースを押したら体力消費
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -55,7 +52,7 @@ public class Life : MonoBehaviour
     // ハートを1つ増やす関数
     //
     //========================
-    public void Increase()
+    public void AddLife()
     {
         // 引数2はどのオブジェクトの子にするかで、引数3は子にする際に以前の位置を保つか(LayoutGroup系ではfalseにしないとおかしくなる)
         GameObject instance = Instantiate(prefab, transform, false);
