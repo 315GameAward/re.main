@@ -41,16 +41,16 @@ public class Life : MonoBehaviour
         }
 
         // スペースを押したら体力消費
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            DelLife();        
+            AddLife();
+            nLife++;
         }
 
         // 下矢印を押したら体力増加
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            AddLife();
-            nLife++;
+            DelLife();
         }
     }
 
