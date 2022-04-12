@@ -17,7 +17,8 @@ public class Life : MonoBehaviour
 
     public int nLife;   // 体力
 
-    List<GameObject> hearts = new List<GameObject>();   // 生成したライフを入れる
+    // 配列
+    List<GameObject> Lifes = new List<GameObject>();   // 生成したライフを入れる
    
     // Start is called before the first frame update
     void Start()
@@ -63,7 +64,7 @@ public class Life : MonoBehaviour
     {
         // 引数2はどのオブジェクトの子にするかで、引数3は子にする際に以前の位置を保つか(LayoutGroup系ではfalseにしないとおかしくなる)
         GameObject instance = Instantiate(prefab, transform, false);
-        hearts.Add(instance);
+        Lifes.Add(instance);
         
     }
 
@@ -74,8 +75,8 @@ public class Life : MonoBehaviour
     //========================
     public void DelLife()
     {
-        Destroy(hearts[0]);
-        hearts.RemoveAt(0);
+        Destroy(Lifes[0]);
+        Lifes.RemoveAt(0);
         nLife--;
     }
 
