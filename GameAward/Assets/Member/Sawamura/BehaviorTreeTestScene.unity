@@ -654,12 +654,25 @@ Animator:
   m_Controller: {fileID: 9100000, guid: fa28fea145cce5a41b8ff24e66582b8c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1008969526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008969522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.05, z: 0.01}
+  m_Center: {x: 0, y: 0.025, z: -0.005}
 --- !u!1 &1139341965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 25eb89a941f9ecc48a432d36d75dd25a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.487
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 25eb89a941f9ecc48a432d36d75dd25a, type: 3}
       propertyPath: m_LocalPosition.z
