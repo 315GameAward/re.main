@@ -593,7 +593,7 @@ public class MeshCut : MonoBehaviour
 
 
         //カット後のオブジェクト生成、いろいろといれる
-        GameObject obj = new GameObject("cut obj", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshCut), typeof(Ground));
+        GameObject obj = new GameObject("Plane", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshCut), typeof(Ground));
         var mesh = new Mesh();
         mesh.vertices = list1.ToArray();
         mesh.triangles = triangles1.ToArray();
@@ -612,7 +612,7 @@ public class MeshCut : MonoBehaviour
         obj.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
         obj.GetComponent<MeshCut>().skinWidth = skinWidth;
 
-        GameObject obj2 = new GameObject("cut obj", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshCut),typeof(Ground));
+        GameObject obj2 = new GameObject("Plane", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshCut),typeof(Ground));
         var mesh2 = new Mesh();
         mesh2.vertices = list2.ToArray();
         mesh2.triangles = triangles2.ToArray();
