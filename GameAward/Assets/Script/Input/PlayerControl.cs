@@ -32,6 +32,7 @@ public class PlayerControl : MonoBehaviour
     private Vector3 _moveDir;   // プレイヤーの動く向き
     private bool bSmoothCut  = false;    // スーと切る切ってるか
     private double dDelayTime = 0.0f;   // ディレイ用
+    Animator anime; // アニメーター変数
 
     // システム用変数(パッドとかキーボードとかの)
     public float motorDelay = 0.1f;               //パッド振動のディレイ
@@ -41,7 +42,7 @@ public class PlayerControl : MonoBehaviour
     public AudioClip se1;       // SEを入れる変数
     public AudioClip se2;       // SEを入れる変数
     AudioSource audioSource;    // AudioSourceの取得用 
-
+    public GameObject Scisser;
     private void Awake()
     {
         //Rigidbody取得
@@ -52,6 +53,10 @@ public class PlayerControl : MonoBehaviour
 
         //InputActionインスタンス生成
         _gameInputs = new ControlBinds();
+
+        //アニーメーション機能の取得
+        anime = GetComponent<Animator>();
+
 
         //Moveイベント登録
         _gameInputs.Player.Move.started += OnMove;
@@ -127,7 +132,9 @@ public class PlayerControl : MonoBehaviour
             audioSource.PlayOneShot(se1);
         }
 
-
+        Scisser.GetComponent<PlayerAnimation>().anime = true;
+        //Debug.Log("CutOn");
+        //anime.SetBool("Cut1", true);
         //WaitForSecondsRealtime(3.0f);
     }
 
@@ -148,6 +155,7 @@ public class PlayerControl : MonoBehaviour
         bSmoothCut = false;
         _moveDir = Vector3.zero;
         bLeftClick = false;
+        Scisser.GetComponent<PlayerAnimation>().anime = false;
     }
     private void OnCutOff(InputAction.CallbackContext context)
     {
