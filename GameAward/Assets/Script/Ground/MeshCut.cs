@@ -636,12 +636,14 @@ public class MeshCut : MonoBehaviour
         {
             obj2.GetComponent<Rigidbody>().useGravity = false;   // d—Í‚Ì–³Œø‰»
             obj2.GetComponent<Rigidbody>().isKinematic = true;   // ‰^“®‚ğ–³Œø‰» 
+            obj.GetComponent<Renderer>().material.color = Color.gray;
 
         }
         else
         {
             obj.GetComponent<Rigidbody>().useGravity = false;   // d—Í‚Ì–³Œø‰»
             obj.GetComponent<Rigidbody>().isKinematic = true;   // ‰^“®‚ğ–³Œø‰» 
+            obj2.GetComponent<Renderer>().material.color = Color.gray;
 
         }
         
