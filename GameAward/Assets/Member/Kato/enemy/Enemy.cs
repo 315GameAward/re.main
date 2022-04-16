@@ -125,19 +125,14 @@ public class Enemy : MonoBehaviour
 
     // Let the rigidbody take control and detect collisions.
 
-    //public void EnableRagdoll()
-    //{
-    //    Gravity();
-    //
-    //}
-    //public void Gravity()
-    //{
-    //    //var Gra = rb.isKinematic = false;
-    //    //var Shock = rb.detectCollisions = true;
-    //    rb.isKinematic = true;
-    //    rb.detectCollisions = false;
-    //    //UnityEngine.Debug.Log("Hello World");
-    //}
+    public void EnableRagdoll()
+    {
+        Gravity();
+    }
+    public static void Gravity()
+    {
+       UnityEngine.Debug.Log("Hello World");
+    }
     //
     //
     //// Let animation control the rigidbody and ignore collisions.

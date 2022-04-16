@@ -23,7 +23,9 @@ public class EnemyTurn : FSMnord
 }
 public class Enemymove : FSMnord
 {
+    
     Enemy enemy;
+
     public override void Start(FSMcontllole Contloller)
     {
         base.Start(Contloller);
@@ -39,6 +41,7 @@ public class Enemymove : FSMnord
 
         if (enemy.Hitray == false)
         {
+            enemy.EnableRagdoll();
             Contloller.changenode("turn");
 
         }
