@@ -43,7 +43,10 @@ public class CutterPoint : MonoBehaviour
 
     public MeshCut ground;
 
+    // デバッグ用
     private bool triggerFlg = false;    // デバック用トリガーフラグ
+    public bool AddPointOnOff = true;   // ポイントを追加するかどうか 
+    
 
     // 線文用変数
     public Vector2 v;
@@ -94,6 +97,11 @@ public class CutterPoint : MonoBehaviour
                 // ヒットした座標と最後に格納した座標が違うときリストに格納したい
                 if (hit.point != CutPointTest[CutPointTest.Count - 1])
                 {
+                    //if (AddPointOnOff)
+                    //{
+                    //    CutPointTest.Add(hit.point);    // ヒットした座標を格納
+
+                    //}
                     CutPointTest.Add(hit.point);    // ヒットした座標を格納
                     if (hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane")
                     {
@@ -125,10 +133,16 @@ public class CutterPoint : MonoBehaviour
             }
             else //テスト用のポイントがないとき
             {
+                //if (AddPointOnOff)
+                //{
+                //    CutPointTest.Add(hit.point);    // ヒットした座標を格納
+                //}
                 CutPointTest.Add(hit.point);    // ヒットした座標を格納
             }
 
         }
+
+        if (AddPointOnOff)
 
         // カットポイントの始点と終点ををポリゴンの返上におきたい(カットポイントが増えるたびに処理)
         if (CutPointTest.Count >= 2)

@@ -39,10 +39,16 @@ public class PlayerControl : MonoBehaviour
     public bool m_bPlayerMove = false;       //移動しているか
     private bool bLeftClick = false;    // 左クリックを押してるかどうか
 
+    // SE用の変数
     public AudioClip se1;       // SEを入れる変数
     public AudioClip se2;       // SEを入れる変数
+    public AudioClip smoothCutSE;       // SEを入れる変数
     AudioSource audioSource;    // AudioSourceの取得用 
+    private bool bSmoothCutSE = false;  // スーと切るSE用のトリガー
+
+    // アニメーション用変数
     public GameObject Scisser;
+
     private void Awake()
     {
         //Rigidbody取得
@@ -124,11 +130,13 @@ public class PlayerControl : MonoBehaviour
 
         // SEの再生
         if (gameObject.GetComponent<CutterPoint>().bPurposeObj)
-        {
+        {  
+            // 紙を切る時
             audioSource.PlayOneShot(se2);
         }
         else
         {
+            // きるものがないときの切る時
             audioSource.PlayOneShot(se1);
         }
 
@@ -156,6 +164,7 @@ public class PlayerControl : MonoBehaviour
         _moveDir = Vector3.zero;
         bLeftClick = false;
         Scisser.GetComponent<PlayerAnimation>().anime = false;
+        bSmoothCutSE = false;
     }
     private void OnCutOff(InputAction.CallbackContext context)
     {
@@ -202,9 +211,32 @@ public class PlayerControl : MonoBehaviour
         if (bSmoothCut)
         {
             _moveDir = transform.forward;   // 方向の代入
+
+            // SEの再生
+            if (gameObject.GetComponent<CutterPoint>().bPurposeObj)
+            {
+                if(!bSmoothCutSE)
+                {
+                    // 紙を切る時
+                    audioSource.clip = smoothCutSE;
+                    audioSource.Play();   // スーと切るSE
+                    bSmoothCutSE = true;    // スーと切るSEフラグON
+                }
+               if(audioSource.time > 0.75f && bSmoothCutSE)
+                {
+                    audioSource.time = 0.45f;
+                    bSmoothCutSE = false;
+                }
+               
+            }
         }
 
-       
+        if (!gameObject.GetComponent<CutterPoint>().bPurposeObj)
+        {
+            bSmoothCutSE = false;
+        }
+           
+
     }
 
     //ディレイ入れるコルーチン!
