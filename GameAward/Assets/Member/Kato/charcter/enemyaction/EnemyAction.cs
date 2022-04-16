@@ -23,7 +23,7 @@ public class EnemyTurn : FSMnord
 }
 public class Enemymove : FSMnord
 {
-    
+
     Enemy enemy;
 
     public override void Start(FSMcontllole Contloller)
@@ -41,17 +41,24 @@ public class Enemymove : FSMnord
 
         if (enemy.Hitray == false)
         {
-            enemy.EnableRagdoll();
+            //enemy.EnableRagdoll();
             Contloller.changenode("turn");
+            
 
         }
         if (enemy.isnullTarget == false)
         {
             if (enemy.Distance < 3.0f)
             {
-                Contloller.changenode("assault");
+                //Contloller.changenode("assault");
+                Contloller.changenode("Foll");
             }
+
         }
+        //if (enemy.HitGround == false)
+        //{
+        //    Contloller.changenode("Foll");
+        //}
 
 
     }
@@ -94,3 +101,45 @@ public class EnemyPlayerAssault : FSMnord
     }
 }
 
+public class EnemyFoll : FSMnord
+{
+    Enemy enemy;
+    public float gravity = 20.0f;
+
+    private Vector3 moveDirection = Vector3.zero;
+    private CharacterController controller;
+
+    public override void Start(FSMcontllole Contloller)
+    {
+        enemy = Contloller.Parent.gameObject.GetComponent<Enemy>();
+        base.Start(Contloller);
+
+    }
+    public override void Update(FSMcontllole Contloller)
+    {
+        enemy.EnableRagdoll();
+        base.Update(Contloller);
+    }
+
+    public override void End(FSMcontllole Contloller)
+    {
+        base.End(Contloller);
+    }
+}
+public class EnemyDelete : FSMnord
+{
+    Enemy enemy;
+    public override void Start(FSMcontllole Contloller)
+    {
+        enemy = Contloller.Parent.gameObject.GetComponent<Enemy>();
+        base.Start(Contloller);
+    }
+    public override void Update(FSMcontllole Contloller)
+    {
+        base.Update(Contloller);
+    }
+    public override void End(FSMcontllole Contloller)
+    {
+        base.End(Contloller);
+    }
+}
