@@ -56,17 +56,49 @@ public class StageSelect : MonoBehaviour
         //現在のシーン名取得
         Scene currentScene = SceneManager.GetActiveScene();
         
-        if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
+        //if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
+        if (currentScene.name == "MichidukaScene")       //デバッグ用
         {
-            //GameObject selectBtn = GameObject.Find("^_^");
+            GameObject selectBtn = GameObject.Find("Selecting");
             if (_moveStickValue.x < 0.0f)  //下
             {
-
+                if (stageSelect == 0)
+                {
+                    stageSelect = 1;
+                    // 0 ↓
+                    //selectBtn.transform.localPosition= new Vector3(-850.0f, -50.0f, transform.position.z);
+                    selectBtn.transform.localPosition= new Vector3(-850.0f, -250.0f, transform.position.z);
+                }
+                else if (stageSelect == 1)
+                {
+                    stageSelect = 2;
+                    selectBtn.transform.localPosition= new Vector3(-850.0f, -550.0f, transform.position.z);
+                }
+                else if (stageSelect == 2)
+                {
+                    stageSelect = 3;
+                    selectBtn.transform.localPosition= new Vector3(-850.0f, -850.0f, transform.position.z);
+                }
             }
 
             if (_moveStickValue.x > 0.0f)  //上
             {
-
+                if (stageSelect == 1)
+                {
+                    stageSelect = 0;
+                    Debug.Log("StageSelect: 0");
+                    selectBtn.transform.localPosition= new Vector3(-850.0f, 50.0f, transform.position.z);
+                }
+                else if (stageSelect == 2)
+                {
+                    stageSelect = 1;
+                    selectBtn.transform.localPosition= new Vector3(-850.0f, -250.0f, transform.position.z);
+                }
+                else if (stageSelect == 3)
+                {
+                    stageSelect = 2;
+                    selectBtn.transform.localPosition= new Vector3(-850.0f, -550.0f, transform.position.z);
+                }
             }
         }
     }
@@ -78,15 +110,23 @@ public class StageSelect : MonoBehaviour
         
         if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
         {
+            //教室ステージ
             if (stageSelect == 0)
             {
 
             }
+            //理科室ステージ
             else if (stageSelect == 1)
             {
                 
             }
+            //体育館ステージ
             else if (stageSelect == 2)
+            {
+                
+            }
+            //タイトルへ
+            else if (stageSelect == 3)
             {
                 
             }
