@@ -28,14 +28,13 @@ namespace StateMachineCompass
 
         public float speed = 0.1f;
         private float rotationSmooth = 1f;
-        private float turretRotationSmooth = 0.8f;
         private float attackInterval = 2f;
 
-        private float pursuitSqrDistance = 2500f;
-        private float attackSqrDistance = 900f;
-        private float margin = 50f;
+        private float pursuitSqrDistance = 25f;
+        private float attackSqrDistance = 20f;
+        private float margin = 5f;
 
-        private float changeTargetSqrDistance = 40f;
+        private float changeTargetSqrDistance = 20f;
 
         // ゲーム開始時
         private void Start()
@@ -88,6 +87,8 @@ namespace StateMachineCompass
 
                 // 目標地点との距離が小さければ、次のランダムな目標地点を設定する
                 float sqrDistanceToTarget = Vector3.SqrMagnitude(owner.transform.position - targetPosition);
+
+                Debug.Log(sqrDistanceToTarget);
                 if (sqrDistanceToTarget < owner.changeTargetSqrDistance)
                 {
                     targetPosition = GetRandomPositionOnLevel();
@@ -136,8 +137,8 @@ namespace StateMachineCompass
                 }
 
                 // プレイヤーの方向を向く
-                Quaternion targetRotation = Quaternion.LookRotation(owner.player.position - owner.transform.position);
-                owner.transform.rotation = Quaternion.Slerp(owner.transform.rotation, targetRotation, Time.deltaTime * owner.rotationSmooth);
+               // Quaternion targetRotation = Quaternion.LookRotation(owner.player.position - owner.transform.position);
+                //owner.transform.rotation = Quaternion.Slerp(owner.transform.rotation, targetRotation, Time.deltaTime * owner.rotationSmooth);
 
                 // 前方に進む
                 owner.transform.Translate(Vector3.forward * owner.speed * Time.deltaTime);
@@ -164,7 +165,7 @@ namespace StateMachineCompass
                 float sqrDistanceToPlayer = Vector3.SqrMagnitude(owner.transform.position - owner.player.position);
                 if (sqrDistanceToPlayer > owner.attackSqrDistance + owner.margin)
                 {
-                    owner.ChangeState(CompassState.MOVEPLAYER);
+                    owner.ChangeState(CompassState.MOVE);
                 }
 
                 
