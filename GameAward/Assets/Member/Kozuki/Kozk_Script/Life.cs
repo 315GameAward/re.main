@@ -33,7 +33,7 @@ public class Life : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(nLife);
+       // Debug.Log(nLife);
 
         if (nLife <= 0)
         {
