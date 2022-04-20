@@ -37,7 +37,7 @@ public class CreateGround : MonoBehaviour
         vtx.Add(new Vector3(-3, 0, -3));
         vtx.Add(new Vector3(-3, 0, 3));
         vtx.Add(new Vector3(3, 0, 3));
-        vtx.Add(new Vector3(3, 0, -3));
+        //vtx.Add(new Vector3(3, 0, -3));
 
         mesh.SetVertices(vtx);
 
@@ -45,16 +45,16 @@ public class CreateGround : MonoBehaviour
         idx.Add(1);
         idx.Add(2);
 
-        idx.Add(2);
-        idx.Add(3);
-        idx.Add(0);
+        //idx.Add(2);
+        //idx.Add(3);
+        //idx.Add(0);
 
         mesh.SetTriangles(idx, 0);
 
         normal.Add(Vector3.up);
         normal.Add(Vector3.up);
         normal.Add(Vector3.up);
-        normal.Add(Vector3.up);
+       // normal.Add(Vector3.up);
 
         mesh.SetNormals(normal);
 

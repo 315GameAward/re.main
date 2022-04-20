@@ -33,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     private bool bSmoothCut  = false;    // スーと切る切ってるか
     private double dDelayTime = 0.0f;   // ディレイ用
     Animator anime; // アニメーター変数
+    private bool bAddPoint = false; // ポイントを追加したか
 
     // システム用変数(パッドとかキーボードとかの)
     public float motorDelay = 0.1f;               //パッド振動のディレイ
@@ -141,6 +142,8 @@ public class PlayerControl : MonoBehaviour
         }
 
         Scisser.GetComponent<PlayerAnimation>().anime = true;
+
+        bAddPoint = true;
         //Debug.Log("CutOn");
         //anime.SetBool("Cut1", true);
         //WaitForSecondsRealtime(3.0f);
@@ -235,8 +238,13 @@ public class PlayerControl : MonoBehaviour
         {
             bSmoothCutSE = false;
         }
-           
 
+        //gameObject.GetComponent<CutterPoint>().AddCutPoint();
+        if (bAddPoint)
+        {
+            
+            //bAddPoint = gameObject.GetComponent<CutterPoint>().AddCutPoint();
+        }
     }
 
     //ディレイ入れるコルーチン!

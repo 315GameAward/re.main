@@ -15,6 +15,8 @@ public class MeshDivision2 : MonoBehaviour
     // メッシュの変数
     private MeshFilter attachedMeshFilter;
     private Mesh attachedMesh;
+    static Vector3 vBgnP;  // カットポイントの始点
+    static List<Vector3> vtx = new List<Vector3>();
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,8 @@ public class MeshDivision2 : MonoBehaviour
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
 
+        
+        
     }
 
     // Update is called once per frame
@@ -38,6 +42,16 @@ public class MeshDivision2 : MonoBehaviour
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
 
+        //　でっばく用
+        vBgnP = cutPoint[0];
+        for(int i = 0;i < attachedMesh.vertices.Length;i++)
+        {
+            vtx.Add(attachedMesh.vertices[i]);
+        }
+
+
+       
+
         // 変数
         Vector3 p0, p1, p2;    // メッシュのポリゴンの頂点
         var uvs1 = new List<Vector2>(); // テクスチャ
@@ -50,19 +64,15 @@ public class MeshDivision2 : MonoBehaviour
         //var normals2 = new List<Vector3>();
         Vector3 edge = new Vector3();
         var crossVertices = new List<Vector3>();
+
         //カットしたいオブジェクトのメッシュをトライアングルごとに処理
         for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
         {
             //メッシュの3つの頂点を取得
-            p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]]);
-            p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]);
-            p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]);
-
-            // 頂点リストに追加
-            vertices1.Add(p0);
-            vertices1.Add(p1);
-            vertices1.Add(p2);
-
+            p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]])     ;//+ Vector3.one * 0.0001f;
+            p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]) ;//+ Vector3.one * 0.0001f;
+            p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]); //+ Vector3.one * 0.0001f;
+           
             // カットポイントの始点がポリゴンの辺の上にあるか
             double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
             double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[0].x + (p0.x - p2.x) * cutPoint[0].z);
@@ -71,44 +81,233 @@ public class MeshDivision2 : MonoBehaviour
             // まずは三角形の中にあるか
             if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
             {       // 三角形の中にある
-                    // 辺の上にあるか
+
+                // 頂点リストに追加
+                vertices1.Add(p0 - transform.position);
+                vertices1.Add(p1 - transform.position);
+                vertices1.Add(p2 - transform.position);
+
+                // 辺の上にあるか
                 if (t < 0.001f) // 辺S上
                 {
-                    edge = p2 - p0; // 辺p0p2
+                    Debug.Log("辺S上");
+                    edge = p1 - p0; // 辺p0p2
 
-                    vertices1.Add(cutPoint[1]); // 中点の追加
-                    vertices1.Add(cutPoint[1] - edge * 0.001f); // ４番目の頂点の追加
-                    vertices1.Add(cutPoint[1] + edge * 0.001f); // ４番目の頂点の追加
-                    
+                    vertices1.Add(cutPoint[0] + edge * 0.01f - transform.position); // 3番目の頂点の追加
+                    vertices1.Add(cutPoint[0] - edge * 0.01f - transform.position); // 4番目の頂点の追加
+                    vertices1.Add(cutPoint[1] - transform.position); // 5番目の頂点
+                    vertices1.Add(cutPoint[1] - transform.position); // 6番目の頂点
+
+                    // 頂点のインデックス
+                    int _0 = vertices1.Count - 7;
+                    int _1 = vertices1.Count - 6;
+                    int _2 = vertices1.Count - 5;
+                    int _3 = vertices1.Count - 4;
+                    int _4 = vertices1.Count - 3;
+                    int _5 = vertices1.Count - 2;
+                    int _6 = vertices1.Count - 1;   // 使わない
+
+                    // インデックスの振り分け
+                    triangles1.Add(_5);
+                    triangles1.Add(_2);
+                    triangles1.Add(_0);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_0);
+                    triangles1.Add(_4);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_3);
+                    triangles1.Add(_1);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_1);
+                    triangles1.Add(_2);
                 }
                 else if (s < 0.001f)    // 辺T上
                 {
-                    edge = p1 - p0; // 辺p0p1
+                    Debug.Log("辺T上");
+                    edge = p2 - p0; // 辺p0p1
 
-                    vertices1.Add(cutPoint[1]);// 中点の追加
-                    vertices1.Add(cutPoint[1] - edge * 0.001f); // ４番目の頂点の追加
-                    vertices1.Add(cutPoint[1] + edge * 0.001f); // ４番目の頂点の追加
+                    vertices1.Add(cutPoint[0] - edge * 0.01f - transform.position); // 3番目の頂点の追加
+                    vertices1.Add(cutPoint[0] + edge * 0.01f - transform.position); // 4番目の頂点の追加
+                    vertices1.Add(cutPoint[1] - transform.position); // 5番目の頂点
+                    vertices1.Add(cutPoint[1] - transform.position); // 6番目の頂点
+
+                    // 頂点のインデックス
+                    int _0 = vertices1.Count - 7;
+                    int _1 = vertices1.Count - 6;
+                    int _2 = vertices1.Count - 5;
+                    int _3 = vertices1.Count - 4;
+                    int _4 = vertices1.Count - 3;
+                    int _5 = vertices1.Count - 2;
+                    int _6 = vertices1.Count - 1;   // 使わない
+
+                    // インデックスの振り分け
+                    triangles1.Add(_5);
+                    triangles1.Add(_1);
+                    triangles1.Add(_2);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_2);
+                    triangles1.Add(_4);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_3);
+                    triangles1.Add(_0);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_0);
+                    triangles1.Add(_1);
 
                 }
                 else if (s + t > 0.98f) // 辺S+T上
                 {
+                    Debug.Log("辺S + T上");
                     edge = p2 - p1; // 辺p1p2
 
-                    vertices1.Add(cutPoint[1]);// 中点の追加
-                    vertices1.Add(cutPoint[1] - edge * 0.001f); // ４番目の頂点の追加
-                    vertices1.Add(cutPoint[1] + edge * 0.001f); // ４番目の頂点の追加
+                    vertices1.Add(cutPoint[0] + edge * 0.01f - transform.position); // 3番目の頂点の追加
+                    vertices1.Add(cutPoint[0] - edge * 0.01f - transform.position); // 4番目の頂点の追加
+                    vertices1.Add(cutPoint[1] - transform.position); // 5番目の頂点
+                    vertices1.Add(cutPoint[1] - transform.position); // 6番目の頂点
 
+                    // 頂点のインデックス
+                    int _0 = vertices1.Count - 7;
+                    int _1 = vertices1.Count - 6;
+                    int _2 = vertices1.Count - 5;
+                    int _3 = vertices1.Count - 4;
+                    int _4 = vertices1.Count - 3;
+                    int _5 = vertices1.Count - 2;
+                    int _6 = vertices1.Count - 1;   // 使わない
+
+
+                    // インデックスの振り分け
+                    triangles1.Add(_5);
+                    triangles1.Add(_0);
+                    triangles1.Add(_1);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_1);
+                    triangles1.Add(_4);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_3);
+                    triangles1.Add(_2);
+
+                    triangles1.Add(_5);
+                    triangles1.Add(_2);
+                    triangles1.Add(_0);
                 }
+
+                Debug.Log("s:" + s);
+                Debug.Log("t:" + t);
+                Debug.Log("s + t:" + s + t);
             }
             else    // 三角形の中にない
             {
                 Debug.Log("ポリゴンの中にありません");
+                Debug.Log("s:" + s);
+                Debug.Log("t:" + t);
+                Debug.Log("s + t:"+ s + t);
             }
 
-            // インデックスの振り分け
-
-
+            
         }
 
+
+        // 分割後のオブジェクト生成、いろいろといれる
+        GameObject obj = new GameObject("Plane1", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshDivision2));
+        var mesh = new Mesh();
+        mesh.vertices = vertices1.ToArray();
+        mesh.triangles = triangles1.ToArray();
+        //mesh.uv = uvs1.ToArray();
+
+       
+        //mesh.normals = normals1.ToArray();
+        Debug.Log("mesh.normals.Length" + mesh.normals.Length);
+        obj.GetComponent<MeshFilter>().mesh = mesh;
+        obj.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
+        obj.GetComponent<MeshCollider>().sharedMesh = mesh;
+        obj.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
+        obj.GetComponent<MeshCollider>().convex = false;
+        obj.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+        obj.transform.position = transform.position;
+        obj.transform.rotation = transform.rotation;
+        obj.transform.localScale = transform.localScale;
+        //obj.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
+        //obj.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
+        //obj.GetComponent<MeshCut>().skinWidth = skinWidth;
+
+
+        obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
+        obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+
+
+
+        //このオブジェクトをデストロイ
+        Destroy(gameObject);
+
+    }
+
+    // ギズモの表示
+    private void OnDrawGizmos()
+    {
+        if (!attachedMesh) return;
+
+        if (vBgnP.z != 0.0f)
+        {
+            Gizmos.color = new Color(25, 0, 25, 1);   // 色の指定
+            for (int j = 0; j < 3; j++)
+            {
+                Gizmos.DrawLine(vBgnP , vtx[j] + transform.position);  // 球の表示
+
+            }
+        }
+
+        //for (int i = 0; i < attachedMesh.vertices.Length; i++)
+        //{
+        //    if (CrossNum.Count > 0)
+        //    {
+        //        for (int j = 0; j < CrossNum.Count; j++)
+        //        {
+        //            if (CrossNum[j] == i)
+        //            {
+        //                Gizmos.color = new Color(0, 0, 225, 1);   // 色の指定
+        //                break;
+        //            }
+        //            else
+        //            {
+        //                Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
+        //            }
+
+        //        }
+
+
+        //    }
+        //    else
+        //    {
+        //        Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
+        //    }
+
+        //    Gizmos.DrawSphere(attachedMesh.vertices[i] + transform.position, 0.05f);  // 球の表示
+
+        //}
+
+        for(int i = 0;i < attachedMesh.vertices.Length; i ++)
+        {
+            Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
+            Gizmos.DrawSphere(attachedMesh.vertices[i] + transform.position,0.01f);
+        }
+
+        for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
+        {
+            Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
+            for (int j = 0; j < 3; j++)
+            {
+                Gizmos.DrawLine(attachedMesh.vertices[attachedMesh.triangles[i + j]] + transform.position, attachedMesh.vertices[attachedMesh.triangles[i + (j + 1) % 3]] + transform.position);  // 球の表示
+
+            }
+
+        }
     }
 }
