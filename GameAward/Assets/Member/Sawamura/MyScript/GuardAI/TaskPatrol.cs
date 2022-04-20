@@ -39,6 +39,8 @@ public class TaskPatrol : Node
         else
         {
             Transform wp = __waypoints[__currentWaypointIndex];
+            //Distance距離を図る関数
+            //sqrMagnitudeの方がいいという記事もある
             if (Vector3.Distance(__transform.position,wp.position) < 0.01f)
             {
                 __transform.position = wp.position;
@@ -50,7 +52,9 @@ public class TaskPatrol : Node
             }
             else
             {
+                //Vector3.MoveTowards「現在地」から「目的地」まで「一定速度」で移動させてくれる関数
                 __transform.position = Vector3.MoveTowards(__transform.position, wp.position, GuardBT.speed * Time.deltaTime);
+                //LookAt 指定した方向を見る関数
                 __transform.LookAt(wp.position);
             }
             

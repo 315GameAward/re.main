@@ -216,6 +216,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &598120718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792911478497085273, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976581947457593449, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_Name
+      value: StageSelectUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622543228108564980, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622543228108564980, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622543228108564980, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.81960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622543228108564980, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8cbc01239329c0e4eab1eb66d664b0f3, type: 3}
 --- !u!1 &1088259248
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +301,7 @@ GameObject:
   - component: {fileID: 1088259250}
   - component: {fileID: 1088259249}
   - component: {fileID: 1088259252}
+  - component: {fileID: 1088259253}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -313,3 +387,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleTest: {fileID: 6628019217059038093, guid: 615794125d6d3b049933865a069ded83, type: 3}
+--- !u!114 &1088259253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088259248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1818db6cf3df03b43abe9efa6f16d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
