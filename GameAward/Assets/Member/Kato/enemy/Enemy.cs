@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class Enemy : MonoBehaviour
     bool enemyfoll;
     Vector3 direction;
     Vector3 targetchar;
-    public CharacterController controller;
+    // public CharacterController controller;
     FSM FSM;
     [SerializeField] Transform Target;
     float distance;
@@ -64,7 +63,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
 
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
         //rb = GetComponent<Rigidbody>();
         FSM = GetComponent<FSM>();
         FSM.addnode("move", new Enemymove());
@@ -136,13 +135,13 @@ public class Enemy : MonoBehaviour
     }
     void Gravity()
     {
-        Rigidbody rd;
-        
-        rd = this.GetComponent<Rigidbody>();
-        rd.useGravity = true;
-        //rd.isKinematic = true;
-       
-        //UnityEngine.Debug.Log("Hello World");
+        //Rigidbody rd;
+        //
+        //rd = this.GetComponent<Rigidbody>();
+        //rd.useGravity = true;
+        //rd.isKinematic = false;
+
+        // UnityEngine.Debug.Log("Hello World");
     }
 
 }
