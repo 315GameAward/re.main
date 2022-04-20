@@ -16,6 +16,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 //ゲームステート
@@ -35,6 +36,9 @@ public class GameManager : MonoBehaviour
     //いじりたい値をシリアライズして
     //インスペクターで触れるようにする
 
+    //インプット
+    private ControlBinds _gameInputs;               
+    
     //スコア表示用テキスト
     [SerializeField]
     Text scoreText;
@@ -61,6 +65,15 @@ public class GameManager : MonoBehaviour
     //インスタンス化後実行用関数
     void Awake()
     {
+        //InputActionインスタンス生成
+        _gameInputs = new ControlBinds();
+        
+        //Selectイベント登録
+        _gameInputs.Player.GameEnd.started += OnGameEnd;
+        
+        //InputAction有効化
+        _gameInputs.Enable();
+        
         SetGameState(GameState.Title);
         InitGame();
     }
@@ -73,7 +86,14 @@ public class GameManager : MonoBehaviour
         g_fTime = 100.0f;
     }
 
-    
+    private void OnGameEnd(InputAction.CallbackContext context)
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
     //澤村追加
     void Start()
