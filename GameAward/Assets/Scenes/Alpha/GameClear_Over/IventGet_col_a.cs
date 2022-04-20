@@ -44,9 +44,15 @@ public class IventGet_col_a : MonoBehaviour
     void Update()
     {
         //澤村追加
-        if (status_col == ColGame_a.GameOver)
+        // コウヅキ改変
+        // Cキーでも表示できるようにしました
+        if (status_col == ColGame_a.GameOver || Input.GetKeyUp(KeyCode.C))
         {
             gameoverUI.SetActive(true);
+        }
+        if( Input.GetKeyUp(KeyCode.R))
+        {
+            gameoverUI.SetActive(false);
         }
     }
 }

@@ -41,9 +41,13 @@ public class IventGet_Dest_a : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (status_dest == DestGame_a.GameClear)
+        if (status_dest == DestGame_a.GameClearÅ@|| Input.GetKeyUp(KeyCode.V))
         {
             clearUI.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            clearUI.SetActive(false);
         }
     }
 }
