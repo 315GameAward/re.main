@@ -41,17 +41,17 @@ public class Enemymove : FSMnord
 
         if (enemy.Hitray == false)
         {
-            //enemy.EnableRagdoll();
+            enemy.EnableRagdoll();
             Contloller.changenode("turn");
-            
+
 
         }
         if (enemy.isnullTarget == false)
         {
             if (enemy.Distance < 3.0f)
             {
-                //Contloller.changenode("assault");
-                Contloller.changenode("Foll");
+                Contloller.changenode("assault");
+                //Contloller.changenode("Foll");
             }
 
         }
