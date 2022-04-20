@@ -116,6 +116,15 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GameEnd"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e1d9675-21bf-491c-ae38-d74448d2eb0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -525,6 +534,17 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""action"": ""Cut2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""615d755a-d1e5-4ed0-aae9-e4609b6daba4"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GameEnd"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -571,6 +591,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         m_Player_Clockwise = m_Player.FindAction("Clockwise", throwIfNotFound: true);
         m_Player_Aniticlockwise = m_Player.FindAction("Aniticlockwise", throwIfNotFound: true);
         m_Player_Cut2 = m_Player.FindAction("Cut2", throwIfNotFound: true);
+        m_Player_GameEnd = m_Player.FindAction("GameEnd", throwIfNotFound: true);
         // New action map
         m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
         m_Newactionmap_Newaction = m_Newactionmap.FindAction("New action", throwIfNotFound: true);
@@ -643,6 +664,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Clockwise;
     private readonly InputAction m_Player_Aniticlockwise;
     private readonly InputAction m_Player_Cut2;
+    private readonly InputAction m_Player_GameEnd;
     public struct PlayerActions
     {
         private @ControlBinds m_Wrapper;
@@ -657,6 +679,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         public InputAction @Clockwise => m_Wrapper.m_Player_Clockwise;
         public InputAction @Aniticlockwise => m_Wrapper.m_Player_Aniticlockwise;
         public InputAction @Cut2 => m_Wrapper.m_Player_Cut2;
+        public InputAction @GameEnd => m_Wrapper.m_Player_GameEnd;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -696,6 +719,9 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @Cut2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCut2;
                 @Cut2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCut2;
                 @Cut2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCut2;
+                @GameEnd.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGameEnd;
+                @GameEnd.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGameEnd;
+                @GameEnd.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGameEnd;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -730,6 +756,9 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 @Cut2.started += instance.OnCut2;
                 @Cut2.performed += instance.OnCut2;
                 @Cut2.canceled += instance.OnCut2;
+                @GameEnd.started += instance.OnGameEnd;
+                @GameEnd.performed += instance.OnGameEnd;
+                @GameEnd.canceled += instance.OnGameEnd;
             }
         }
     }
@@ -779,6 +808,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         void OnClockwise(InputAction.CallbackContext context);
         void OnAniticlockwise(InputAction.CallbackContext context);
         void OnCut2(InputAction.CallbackContext context);
+        void OnGameEnd(InputAction.CallbackContext context);
     }
     public interface INewactionmapActions
     {
