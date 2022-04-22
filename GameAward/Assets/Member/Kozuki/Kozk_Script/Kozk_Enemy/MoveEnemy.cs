@@ -35,7 +35,9 @@ public class MoveEnemy : MonoBehaviour
     private EnemyState state;
     //　プレイヤーTransform
     private Transform playerTransform;
-
+    // 床当たり判定
+    bool hitray;
+    bool hitground;
     // Use this for initialization
     void Start()
     {
@@ -89,6 +91,11 @@ public class MoveEnemy : MonoBehaviour
         }
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
+        Dosperecast();  // 床判定取得
+        if(hitray)
+        {
+          //  setPosition.CreateRandomPosition();
+        }
     }
 
     //　敵キャラクターの状態変更メソッド
@@ -122,5 +129,24 @@ public class MoveEnemy : MonoBehaviour
     public EnemyState GetState()
     {
         return state;
+    }
+    void Dosperecast()
+    {
+        int mask = LayerMask.GetMask("Default");
+        RaycastHit rayhit;
+        rayhit = new RaycastHit();
+        Vector3 hiku;
+        hiku = new Vector3(0, 1, 0);
+        float en = 0.1f;
+        Vector3 angle = transform.forward - hiku;
+        hitray = Physics.SphereCast(transform.position, en, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+        //hitray = Physics.Raycast(controller.transform.position, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore,);
+        Vector3 foll;
+        foll = new Vector3(0, -1, 0);
+        hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+
+        //Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
+        // Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
+
     }
 }
