@@ -34,6 +34,14 @@ public class PlayerControl : MonoBehaviour
     private double dDelayTime = 0.0f;   // ディレイ用
     Animator anime; // アニメーター変数
     private bool bAddPoint = false; // ポイントを追加したか
+    enum CutMode
+    {
+        CUT_ONE = 0,
+        CUT_SMOOTH,
+
+        MAX_CUT_MODE
+    };
+    private CutMode eCutMode = 0;   // カットモード
 
     // システム用変数(パッドとかキーボードとかの)
     public float motorDelay = 0.1f;               //パッド振動のディレイ
@@ -92,6 +100,9 @@ public class PlayerControl : MonoBehaviour
         _gameInputs.Player.Clockwise.started += ClockwiseMove;
         _gameInputs.Player.Clockwise.performed += ClockwiseMove;
 
+        // CutModeChangeイベント登録
+        _gameInputs.Player.CutModeChange.started += CutModeChange;
+
         //InputAction有効化
         _gameInputs.Enable();
     }
@@ -101,21 +112,26 @@ public class PlayerControl : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext context)
     {
+
+        
         // スーと切る時は処理を行わない
-        if (bSmoothCut)
+        if (eCutMode == CutMode.CUT_SMOOTH && bLeftClick)
         {
             _moveStickValue = Vector2.zero; // 方向の初期化
+           
             return;
         }
 
         //Moveアクションの入力取得
         _moveStickValue = context.ReadValue<Vector2>();
 
-        //Debug.Log(_moveStickValue.y);
+        
     }
 
     private void OnCut(InputAction.CallbackContext context)
     {
+        if (eCutMode != CutMode.CUT_ONE) return;
+
         //切った時の移動
         transform.position += transform.forward * .2f;
 
@@ -147,9 +163,7 @@ public class PlayerControl : MonoBehaviour
         // カットポイントの追加
         gameObject.GetComponent<CutPoint2>().AddCPPoint();
         bAddPoint = true;
-        //Debug.Log("CutOn");
-        //anime.SetBool("Cut1", true);
-        //WaitForSecondsRealtime(3.0f);
+        
     }
 
     // スーと切る処理の始め(途中)
@@ -157,8 +171,6 @@ public class PlayerControl : MonoBehaviour
     {
         bLeftClick = true;
         Scisser.GetComponent<PlayerAnimation>().anime = true;
-
-
 
     }
 
@@ -173,6 +185,44 @@ public class PlayerControl : MonoBehaviour
         Scisser.GetComponent<PlayerAnimation>().anime = false;
         bSmoothCutSE = false;
     }
+
+    // カットモードチェンジ
+    private void CutModeChange(InputAction.CallbackContext context)
+    {
+        eCutMode++;
+        if(eCutMode >= CutMode.MAX_CUT_MODE)
+        {
+            eCutMode = 0;
+        }
+        switch (eCutMode)
+        {
+            case CutMode.CUT_ONE:
+                //gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            case CutMode.CUT_SMOOTH:
+                //gameObject.GetComponent<Renderer>().material.color = Color.red;
+                break;
+        }
+
+        Debug.Log("カットモード" + eCutMode);
+    }
+
+    // モードによるカットの変更
+    private void ModeCut(InputAction.CallbackContext context)
+    {
+        switch (eCutMode)
+        {
+            case CutMode.CUT_ONE:
+                
+                break;
+            case CutMode.CUT_SMOOTH:
+                
+                break;
+        }
+    }
+
+
+    //
     private void OnCutOff(InputAction.CallbackContext context)
     {
         m_bPlayerMove = false;
@@ -205,17 +255,18 @@ public class PlayerControl : MonoBehaviour
         _rigidbody.AddForce(_moveDir * _moveForce);
         transform.position += _moveDir * 0.1f;
 
-        // ディレイ用
-        if (bLeftClick)
-            dDelayTime += 0.1f;
-        if (dDelayTime >= 3.0)
-        {
-            bSmoothCut = true;  // スーと切るフラグon
-            dDelayTime = 3.0f;  // カウントのストップ
-        }
+        //// ディレイ用
+        //if (bLeftClick)
+        //    dDelayTime += 0.1f;
+        //if (dDelayTime >= 3.0)
+        //{
+        //    bSmoothCut = true;  // スーと切るフラグon
+        //    dDelayTime = 3.0f;  // カウントのストップ
+        //}
 
         // スーと切るフラグonの時
-        if (bSmoothCut)
+        if(bLeftClick)
+        if (eCutMode == CutMode.CUT_SMOOTH)
         {
             _moveDir = transform.forward;   // 方向の代入
 

@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CutModeChange",
+                    "type": "Button",
+                    "id": "671c10f3-5a9f-4190-9de5-e1f8e5d67344",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -521,6 +530,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "GameEnd",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5df4a77c-660f-467f-9351-8e4c68198f14",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CutModeChange",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
