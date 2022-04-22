@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     private ControlBinds _gameInputs;        //インプット
     private Vector2 _moveStickValue;        //スティック移動量
     private Vector3 _moveDir;   // プレイヤーの動く向き
-    private bool bSmoothCut  = false;    // スーと切る切ってるか
+    private bool bSmoothCut = false;    // スーと切る切ってるか
     private double dDelayTime = 0.0f;   // ディレイ用
     Animator anime; // アニメーター変数
     private bool bAddPoint = false; // ポイントを追加したか
@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour
         _gameInputs.Player.Move.started += OnMove;
         _gameInputs.Player.Move.performed += OnMove;
         _gameInputs.Player.Move.canceled += OnMove;
-       
+
 
 
 
@@ -131,7 +131,7 @@ public class PlayerControl : MonoBehaviour
 
         // SEの再生
         if (gameObject.GetComponent<CutterPoint>().bPurposeObj)
-        {  
+        {
             // 紙を切る時
             audioSource.PlayOneShot(se2);
         }
@@ -141,8 +141,11 @@ public class PlayerControl : MonoBehaviour
             audioSource.PlayOneShot(se1);
         }
 
+        // 切るアニメーションの再生
         Scisser.GetComponent<PlayerAnimation>().anime = true;
 
+        // カットポイントの追加
+        gameObject.GetComponent<CutPoint2>().AddCPPoint();
         bAddPoint = true;
         //Debug.Log("CutOn");
         //anime.SetBool("Cut1", true);
@@ -203,8 +206,8 @@ public class PlayerControl : MonoBehaviour
         transform.position += _moveDir * 0.1f;
 
         // ディレイ用
-        if(bLeftClick)
-        dDelayTime += 0.1f;
+        if (bLeftClick)
+            dDelayTime += 0.1f;
         if (dDelayTime >= 3.0)
         {
             bSmoothCut = true;  // スーと切るフラグon
@@ -219,19 +222,19 @@ public class PlayerControl : MonoBehaviour
             // SEの再生
             if (gameObject.GetComponent<CutterPoint>().bPurposeObj)
             {
-                if(!bSmoothCutSE)
+                if (!bSmoothCutSE)
                 {
                     // 紙を切る時
                     audioSource.clip = smoothCutSE;
                     audioSource.Play();   // スーと切るSE
                     bSmoothCutSE = true;    // スーと切るSEフラグON
                 }
-               if(audioSource.time > 0.75f && bSmoothCutSE)
+                if (audioSource.time > 0.75f && bSmoothCutSE)
                 {
                     audioSource.time = 0.45f;
                     bSmoothCutSE = false;
                 }
-               
+
             }
         }
 
@@ -240,11 +243,11 @@ public class PlayerControl : MonoBehaviour
             bSmoothCutSE = false;
         }
 
-        //gameObject.GetComponent<CutterPoint>().AddCutPoint();
+        bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
         if (bAddPoint)
         {
-            
-            //bAddPoint = gameObject.GetComponent<CutterPoint>().AddCutPoint();
+
+            bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
         }
     }
 

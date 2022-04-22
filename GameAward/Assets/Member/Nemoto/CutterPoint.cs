@@ -46,7 +46,7 @@ public class CutterPoint : MonoBehaviour
     // デバッグ用
     private bool triggerFlg = false;    // デバック用トリガーフラグ
     public bool AddPointOnOff = true;   // ポイントを追加するかどうか 
-    
+
 
     // 線文用変数
     public Vector2 v;
@@ -78,7 +78,7 @@ public class CutterPoint : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
         // レイキャストして正確な頂点を作成
@@ -356,6 +356,10 @@ public class CutterPoint : MonoBehaviour
 
     }
 
+    private void a()
+    {
+
+    }
 
     // 関数
     //public bool AddCutPoint()
@@ -620,54 +624,6 @@ public class CutterPoint : MonoBehaviour
         }
 
 
-        //if (test)
-        //{
-        //    if (hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices.Length > 0)
-        //    {
-        //        for (int i = 0; i < hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices.Length; i++)
-        //        {
-        //            Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
-        //            Gizmos.DrawSphere(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[i] + hit.collider.gameObject.transform.position, 0.05f);  // 球の表示
-        //        }
-
-        //        for (int i = 0; i < hit.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i += 3)
-        //        {
-        //            for (int j = 0; j < 3; j++)
-        //            {
-        //                int idx1 = hit.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + j];
-        //                int idx2 = hit.collider.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + ((j + 1) % 3)];
-        //                Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
-        //                Gizmos.DrawLine(hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[idx1] + hit.collider.gameObject.transform.position, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[idx2] + hit.collider.gameObject.transform.position);  // 線の表示
-        //            }
-        //        }
-
-
-
-        //    }
-
-
-        //}
-
-        //if (CutPointTest.Count >= 2)
-        //    if (hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices.Length > 0)
-        //    {
-        //        for (int i = 0; i < hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices.Length; i++)
-        //        {
-        //            Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
-        //            Gizmos.DrawSphere(hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[i] + hitGameObject.gameObject.transform.position, 0.05f);  // 球の表示
-        //        }
-
-        //        for (int i = 0; i < hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i += 3)
-        //        {
-        //            for (int j = 0; j < 3; j++)
-        //            {
-        //                int idx1 = hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + j];
-        //                int idx2 = hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + ((j + 1) % 3)];
-        //                Gizmos.color = new Color(25, 0, 0, 1);   // 色の指定
-        //                Gizmos.DrawLine(hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[idx1] + hitGameObject.gameObject.transform.position, hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[idx2] + hitGameObject.gameObject.transform.position);  // 線の表示
-        //            }
-        //        }
-        //    }
 
         // 一個前のカットポイントの表示
         if (CutPoint.Count > 0)
