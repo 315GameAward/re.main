@@ -10,7 +10,7 @@ public class MoveEnemy : MonoBehaviour
         Wait,
         Chase
     };
-
+    SearchGround ground;
     private CharacterController enemyController;
     private Animator animator;
     //　目的地
@@ -92,10 +92,7 @@ public class MoveEnemy : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
         Dosperecast();  // 床判定取得
-        if(hitray)
-        {
-          //  setPosition.CreateRandomPosition();
-        }
+    
     }
 
     //　敵キャラクターの状態変更メソッド
