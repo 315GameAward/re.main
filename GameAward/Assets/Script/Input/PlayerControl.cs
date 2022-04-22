@@ -294,11 +294,12 @@ public class PlayerControl : MonoBehaviour
             bSmoothCutSE = false;
         }
 
+        if(gameObject.GetComponent<CutPoint2>())
         bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
         if (bAddPoint)
         {
 
-            bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
+            //bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
         }
     }
 
