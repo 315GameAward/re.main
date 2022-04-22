@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class SearchGround : MonoBehaviour
 {
-    // °‚É“–‚Á‚Ä‚¢‚é
-    public bool HitGround = true;
-
+    
+    public float speed;
     //OnCollisionExit()
-    private void OnCollisionExit(Collision collision)
+    void OnTriggerStay(Collider collision)
     {
-        // Cube‚ªPlane‚©‚ç—£‚ê‚½ê‡
-        if (collision.gameObject.name == "Ground")
+        // Š÷‚Æ“–‚Á‚Ä‚¢‚½ê‡
+        if (collision.CompareTag("Ground"))
         {
-            HitGround = false;
+                Debug.Log("“–‚Á‚Ä‚é");
+                this.transform.Translate(Vector3.right * speed);
         }
-    }
-    public bool GetHitGround
-    {
-        get
-        { 
-        return HitGround;
-        }
+            else
+            {
+                Debug.Log("“–‚Á‚Ä‚È‚¢");
+            }
     }
 }
