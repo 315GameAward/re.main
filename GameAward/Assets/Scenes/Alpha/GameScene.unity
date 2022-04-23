@@ -2180,6 +2180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: nomarukesigomu
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 25eb89a941f9ecc48a432d36d75dd25a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25eb89a941f9ecc48a432d36d75dd25a, type: 3}
 --- !u!1 &1196675375 stripped
@@ -2194,7 +2198,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196675375}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d92bafcad872e304e9a986ce9f47e235, type: 3}
   m_Name: 
@@ -2280,6 +2284,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+--- !u!114 &1196675382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196675375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ae0c08eb97cf045ac9738ec847af1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCollisioned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1219656064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,6 +2992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888915295}
   - component: {fileID: 1888915294}
+  - component: {fileID: 1888915296}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -3009,6 +3029,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888915296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888915293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d50478361966604b811b785ca520573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameoverUI: {fileID: 634692424}
+  status_col: 0
+  target: {fileID: 1196675382}
 --- !u!1 &1889299199
 GameObject:
   m_ObjectHideFlags: 0
