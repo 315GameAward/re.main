@@ -297,16 +297,38 @@ public class MeshDivision2 : MonoBehaviour
             // 同じ座標じゃなかったスルー
             if (vertices1[i] != vertices1[i + 1]) continue;
 
+            // 切る方向に対して垂直に点を移動溜めの処理
             edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
             edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
-            edge = Vector3.Cross(edge1, edge2);
-            //edgeNormal = -1 / (edge.z / edge.);
-
+            edge = Vector3.Cross(edge1, edge2);            
 
             vertices1[i] = vertices1[i] - edge * 0.1f;
             vertices1[i + 1] = vertices1[i + 1] + edge * 0.1f;
         }
 
+        //カットしたいオブジェクトのメッシュをトライアングルごとに処理
+        for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
+        {
+            //メッシュの3つの頂点を取得
+            p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]]);//+ Vector3.one * 0.0001f;
+            p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]);//+ Vector3.one * 0.0001f;
+            p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]); //+ Vector3.one * 0.0001f;
+
+            // カットポイントの始点がポリゴンの辺の上にあるか
+            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+            double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 1].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 1].z);
+            double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 1].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 1].z);
+
+            // まずは三角形の中にあるか
+            if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
+            {
+                // インデックスの消去
+                triangles1.RemoveRange(i,i+2);
+
+            } 
+        }
+
+        // メッシュに代入
         attachedMesh.SetVertices(vertices1.ToArray());
         attachedMesh.SetTriangles(triangles1.ToArray(), 0);
 
