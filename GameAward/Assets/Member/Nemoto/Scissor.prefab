@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2246881300938537683}
   - component: {fileID: 2246881300938537679}
   - component: {fileID: 3545073390886320251}
+  - component: {fileID: -7541063649181527932}
+  - component: {fileID: 300881699183995539}
   m_Layer: 0
   m_Name: Scissor
   m_TagString: Untagged
@@ -120,7 +122,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.8092476
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -209,6 +211,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &-7541063649181527932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246881300938537682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32014ef77f9a7b04498fcd2f92aa58a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image_gameOver: {fileID: 0}
+--- !u!65 &300881699183995539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246881300938537682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3069753, y: 1, z: 0.71341705}
+  m_Center: {x: 0.018490016, y: 0, z: -0.14329147}
 --- !u!1 &2246881301111235703
 GameObject:
   m_ObjectHideFlags: 0
