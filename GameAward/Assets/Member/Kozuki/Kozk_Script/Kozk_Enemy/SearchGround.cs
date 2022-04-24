@@ -12,8 +12,9 @@ public class SearchGround : MonoBehaviour
         // Š÷‚Æ“–‚Á‚Ä‚¢‚½ê‡
         if (collision.CompareTag("Ground"))
         {
-                Debug.Log("“–‚Á‚Ä‚é");
-                this.transform.Translate(Vector3.right * speed);
+            Debug.Log("“–‚Á‚Ä‚é");
+            this.transform.Translate(Vector3.right * speed);
+            GetComponent<GuardBT>().enabled = false;
         }
             else
             {
