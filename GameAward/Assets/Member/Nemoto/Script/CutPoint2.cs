@@ -79,12 +79,14 @@ public class CutPoint2 : MonoBehaviour
                 // ヒットした座標と最後に格納した座標が違うときリストに格納したい
                 if (hit.point != CutPointTest[CutPointTest.Count - 1])
                 {
-                    //if (AddPointOnOff)
-                    //{
-                    //    CutPointTest.Add(hit.point);    // ヒットした座標を格納
-
-                    //}
+                    // カットポイントの追加
                     CutPointTest.Add(hit.point);    // ヒットした座標を格納
+
+                    // 頂点を広げる処理
+                    if (CutPointTest.Count >= 3)
+                    hit.collider.gameObject.GetComponent<MeshDivision2>().DiviosionMeshMiddle(CutPointTest);
+
+                    // エフェクトの生成
                     if (hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane")
                     {
                         ParticleSystem newParticle = Instantiate(particle);
@@ -93,6 +95,7 @@ public class CutPoint2 : MonoBehaviour
                         Destroy(newParticle.gameObject, 2.0f);
                     }
 
+                    // なにこれ？
                     test = true;
 
                     // ヒットした物が切りたいものと違うときは一個前のポイントを削除したい。なんなら全部削除してもいいのか？          
@@ -109,7 +112,7 @@ public class CutPoint2 : MonoBehaviour
                     }
 
                     // ヒットしたメッシュのポリゴン数
-                    Debug.Log("頂点数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices.Length);
+                    //Debug.Log("頂点数" + hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices.Length);
                     //Debug.Log("ポリゴン数" + hit.triangleIndex);
                 }
             }
@@ -123,10 +126,7 @@ public class CutPoint2 : MonoBehaviour
 
         if (AddPointOnOff)
 
-            // 頂点を広げる処理
-            if (CutPointTest.Count >= 3)
-                hitGameObject.gameObject.GetComponent<MeshDivision2>().DiviosionMeshMiddle(CutPointTest);
-
+           
 
         // カットポイントの始点と終点ををポリゴンの返上におきたい(カットポイントが増えるたびに処理)
         if (CutPointTest.Count >= 2)
@@ -190,97 +190,97 @@ public class CutPoint2 : MonoBehaviour
                         }
                 }
 
-
+                
 
                 // 切りたい物体から離れた時
                 if (bStartP)
-                    if (hit.collider.gameObject.name != "Plane" && hit.collider.gameObject.name != "DivisionPlane")
-                        for (int i = 0; i < hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i += 3)
+                if (hit.collider.gameObject.name != "Plane" && hit.collider.gameObject.name != "DivisionPlane")
+                    for (int i = 0; i < hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length; i += 3)
+                    {
+                        if (hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length > 0)
+                        for (int j = 0; j < 3; j++)
                         {
-                            if (hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles.Length > 0)
-                                for (int j = 0; j < 3; j++)
+
+                            // 切りたい物体用の変数
+                            int hitIdx_s = hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + j];  // 始点
+                            int hitIdx_v = hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + ((j + 1) % 3)];  // 終点
+
+                            Vector2 hitVtx_s = new Vector2(hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_s].x + hitGameObject.gameObject.transform.position.x, hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_s].z + hitGameObject.gameObject.transform.position.z);    // 始点
+                            Vector2 hitVtx_v = new Vector2(hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_v].x + hitGameObject.gameObject.transform.position.x, hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_v].z + hitGameObject.gameObject.transform.position.z);    // 終点
+
+                            // カットポイント用変数
+                            int cp_s = CutPointTest.Count - 2;   // 始点
+                            int cp_v = CutPointTest.Count - 1;   // 終点
+
+                            // 線分と線分の始点をつないだベクトル
+                            v = new Vector2(hitVtx_s.x - CutPointTest[cp_s].x, hitVtx_s.y - CutPointTest[cp_s].z);
+
+                            // 線分
+                            v1 = new Vector2(CutPointTest[cp_v].x - CutPointTest[cp_s].x, CutPointTest[cp_v].z - CutPointTest[cp_s].z);
+                            v2 = new Vector2(hitVtx_v.x - hitVtx_s.x, hitVtx_v.y - hitVtx_s.y);
+
+                            // 線分の始点から交点のベクトル
+                            t1 = (v.x * v2.y - v2.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
+                            t2 = (v.x * v1.y - v1.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
+
+                            // 交点
+                            p = new Vector2(hitVtx_s.x, hitVtx_s.y) + new Vector2(v2.x * t2, v2.y * t2);
+
+                            // 線分と線分が交わっているか
+                            const float eps = 0.00001f;
+                            if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
+                            {
+                                // Debug.Log("交差してない");
+                            }
+                            else // ここで切り終わる
+                            {
+                                //Debug.Log("終点セット");
+                                //Debug.Log("終点の座標:" + p);
+
+                                // 終点のセット                        
+                                CutPointTest[cp_v] = new Vector3(p.x, hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].y + hitGameObject.gameObject.transform.position.y, p.y);
+
+                                // 二個前のカットポイントを削除
+                                if (CutPoint.Count > 0)
                                 {
-
-                                    // 切りたい物体用の変数
-                                    int hitIdx_s = hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + j];  // 始点
-                                    int hitIdx_v = hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.triangles[i + ((j + 1) % 3)];  // 終点
-
-                                    Vector2 hitVtx_s = new Vector2(hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_s].x + hitGameObject.gameObject.transform.position.x, hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_s].z + hitGameObject.gameObject.transform.position.z);    // 始点
-                                    Vector2 hitVtx_v = new Vector2(hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_v].x + hitGameObject.gameObject.transform.position.x, hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[hitIdx_v].z + hitGameObject.gameObject.transform.position.z);    // 終点
-
-                                    // カットポイント用変数
-                                    int cp_s = CutPointTest.Count - 2;   // 始点
-                                    int cp_v = CutPointTest.Count - 1;   // 終点
-
-                                    // 線分と線分の始点をつないだベクトル
-                                    v = new Vector2(hitVtx_s.x - CutPointTest[cp_s].x, hitVtx_s.y - CutPointTest[cp_s].z);
-
-                                    // 線分
-                                    v1 = new Vector2(CutPointTest[cp_v].x - CutPointTest[cp_s].x, CutPointTest[cp_v].z - CutPointTest[cp_s].z);
-                                    v2 = new Vector2(hitVtx_v.x - hitVtx_s.x, hitVtx_v.y - hitVtx_s.y);
-
-                                    // 線分の始点から交点のベクトル
-                                    t1 = (v.x * v2.y - v2.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
-                                    t2 = (v.x * v1.y - v1.x * v.y) / (v1.x * v2.y - v2.x * v1.y);
-
-                                    // 交点
-                                    p = new Vector2(hitVtx_s.x, hitVtx_s.y) + new Vector2(v2.x * t2, v2.y * t2);
-
-                                    // 線分と線分が交わっているか
-                                    const float eps = 0.00001f;
-                                    if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
-                                    {
-                                        // Debug.Log("交差してない");
-                                    }
-                                    else // ここで切り終わる
-                                    {
-                                        //Debug.Log("終点セット");
-                                        //Debug.Log("終点の座標:" + p);
-
-                                        // 終点のセット                        
-                                        CutPointTest[cp_v] = new Vector3(p.x, hitGameObject.gameObject.GetComponent<MeshFilter>().mesh.vertices[i].y + hitGameObject.gameObject.transform.position.y, p.y);
-
-                                        // 二個前のカットポイントを削除
-                                        if (CutPoint.Count > 0)
-                                        {
-                                            CutPoint.Clear();
-                                        }
-
-                                        // カットポイントの保存                               
-                                        for (int k = 0; k < CutPointTest.Count; k++)
-                                        {
-                                            CutPoint.Add(CutPointTest[k]);
-
-                                        }
-
-                                        // メッシュの分割
-                                        //hitGameObject.gameObject.GetComponent<MeshDivision2>().DivisionMesh(CutPointTest);
-                                        //hitGameObject = GameObject.Find("DivisionPlane");
-
-                                        //for (int l = 0; l < CutPoint.Count; l++)
-                                        //{
-                                        //    if (GameObject.Find("DivisionPlane" + l)) hitGameObject = GameObject.Find("DivisionPlane" + l);
-                                        //    hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, l);
-
-                                        //    hitGameObject = GameObject.Find("DivisionPlane" + l);
-
-                                        //}
-                                        //hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, 0);
-                                        //hitGameObject = GameObject.Find("DivisionPlane0");
-                                        //hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, 1);
-                                        //hitGameObject = GameObject.Find("DivisionPlane1");
-                                        //// メッシュのカット
-                                        //hitGameObject.gameObject.GetComponent<MeshDivision>().CutMesh();
-
-                                        // 今のカットポイントの削除
-                                        CutPointTest.RemoveRange(0, CutPointTest.Count - 1);
-
-                                        bStartP = false;
-                                        return true;
-                                    }
+                                    CutPoint.Clear();
                                 }
 
+                                // カットポイントの保存                               
+                                for (int k = 0; k < CutPointTest.Count; k++)
+                                {
+                                    CutPoint.Add(CutPointTest[k]);
+
+                                }
+
+                                // メッシュの分割
+                                //hitGameObject.gameObject.GetComponent<MeshDivision2>().DivisionMesh(CutPointTest);
+                                //hitGameObject = GameObject.Find("DivisionPlane");
+
+                                //for (int l = 0; l < CutPoint.Count; l++)
+                                //{
+                                //    if (GameObject.Find("DivisionPlane" + l)) hitGameObject = GameObject.Find("DivisionPlane" + l);
+                                //    hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, l);
+
+                                //    hitGameObject = GameObject.Find("DivisionPlane" + l);
+
+                                //}
+                                //hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, 0);
+                                //hitGameObject = GameObject.Find("DivisionPlane0");
+                                //hitGameObject.gameObject.GetComponent<MeshDivision>().DivisionMesh(CutPoint, 1);
+                                //hitGameObject = GameObject.Find("DivisionPlane1");
+                                //// メッシュのカット
+                                //hitGameObject.gameObject.GetComponent<MeshDivision>().CutMesh();
+
+                                // 今のカットポイントの削除
+                                CutPointTest.RemoveRange(0, CutPointTest.Count - 1);
+
+                                bStartP = false;
+                                return true;
+                            }
                         }
+
+                    }
 
             }
 

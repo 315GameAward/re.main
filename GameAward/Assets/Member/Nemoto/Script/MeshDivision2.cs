@@ -254,8 +254,10 @@ public class MeshDivision2 : MonoBehaviour
     // 途中のカットポイントでの分割
     public bool DiviosionMeshMiddle(List<Vector3> cutPoint)
     {
-        if (cutPoint.Count > 3) return false;
-
+        Debug.Log("前" + cutPoint.Count);
+       
+        if (cutPoint.Count < 3) return false;
+        Debug.Log("後");
         // メッシュのアタッチ
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
@@ -319,18 +321,56 @@ public class MeshDivision2 : MonoBehaviour
             double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[cutPoint.Count - 1].x + (p0.x - p2.x) * cutPoint[cutPoint.Count - 1].z);
             double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[cutPoint.Count - 1].x + (p1.x - p0.x) * cutPoint[cutPoint.Count - 1].z);
 
-            // まずは三角形の中にあるか
+            // 三角形の中にあるか
             if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
             {
-                // インデックスの消去
-                triangles1.RemoveRange(i,i+2);
+                // 頂点の追加(あとで分けるため二つ追加)
+                vertices1.Add(cutPoint[cutPoint.Count - 1]-transform.position);
+                vertices1.Add(cutPoint[cutPoint.Count - 1]-transform.position);
 
-            } 
+                // インデックスの割り当て
+                int _0 = attachedMesh.triangles[i];
+                int _1 = attachedMesh.triangles[i+1];
+                int _2 = attachedMesh.triangles[i+2];
+                int _3 = vertices1.Count - 2;
+                int _4 = vertices1.Count - 1; // 使わない  
+
+                triangles1.Add(_3);
+                triangles1.Add(_0);
+                triangles1.Add(_1);
+
+                triangles1.Add(_3);
+                triangles1.Add(_1);
+                triangles1.Add(_2);
+
+                triangles1.Add(_3);
+                triangles1.Add(_2);
+                triangles1.Add(_0);
+
+                // インデックスの消去
+                Debug.Log("triangle:" + triangles1[i]);
+                
+                triangles1.RemoveAt(i);
+                triangles1.RemoveAt(i);
+                triangles1.RemoveAt(i);
+                
+                Debug.Log("a:" + triangles1[i ]);
+
+
+            }
+        }
+
+        // ノーマルの設定
+        var normal = new List<Vector3>();
+        for (int i = 0; i < vertices1.Count; i++)
+        {
+            normal.Add(Vector3.up);
         }
 
         // メッシュに代入
         attachedMesh.SetVertices(vertices1.ToArray());
         attachedMesh.SetTriangles(triangles1.ToArray(), 0);
+        attachedMesh.SetNormals(normal);
 
 
         return true;
