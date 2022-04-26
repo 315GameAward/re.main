@@ -12,13 +12,13 @@ public class SearchGround : MonoBehaviour
         // Š÷‚Æ“–‚Á‚Ä‚¢‚½ê‡
         if (collision.CompareTag("Ground"))
         {
-            Debug.Log("“–‚Á‚Ä‚é");
+           // Debug.Log("“–‚Á‚Ä‚é");
             this.transform.Translate(Vector3.right * speed);
             GetComponent<GuardBT>().enabled = false;
         }
             else
             {
-                Debug.Log("“–‚Á‚Ä‚È‚¢");
+               // Debug.Log("“–‚Á‚Ä‚È‚¢");
             }
     }
 }

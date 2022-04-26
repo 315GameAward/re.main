@@ -3,12 +3,14 @@ using System.Collections;
 
 public class MoveEnemy : MonoBehaviour
 {
+    private Transform player;
 
     public enum EnemyState
     {
         Walk,
         Wait,
-        Chase
+        Chase,
+        Attack
     };
     SearchGround ground;
     private CharacterController enemyController;
@@ -31,6 +33,9 @@ public class MoveEnemy : MonoBehaviour
     private float waitTime = 5f;
     //　経過時間
     private float elapsedTime;
+    // 攻撃間隔時間
+    public float timeOut;
+    private float timeTrigger;
     // 敵の状態
     private EnemyState state;
     //　プレイヤーTransform
@@ -54,8 +59,11 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 始めにプレイヤーの位置を取得できるようにする
+        player = GameObject.FindWithTag("Player").transform;
+
         //　見回りまたはキャラクターを追いかける状態
-        if (state == EnemyState.Walk || state == EnemyState.Chase)
+        if (state != EnemyState.Attack && state == EnemyState.Walk || state == EnemyState.Chase)
         {
             //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == EnemyState.Chase)
@@ -89,6 +97,7 @@ public class MoveEnemy : MonoBehaviour
                 SetState(EnemyState.Walk);
             }
         }
+        
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
         Dosperecast();  // 床判定取得
@@ -120,6 +129,21 @@ public class MoveEnemy : MonoBehaviour
             arrived = true;
             velocity = Vector3.zero;
            // animator.SetFloat("Speed", 0f);
+        }
+        else if (tempState == EnemyState.Attack)
+        {
+            elapsedTime = 0f;
+            state = tempState;
+            arrived = true;
+
+
+            // 一定間隔で攻撃
+            if (Time.time > timeTrigger)
+            {
+                // 攻撃
+                Debug.Log("攻撃しました");
+                timeTrigger = Time.time + timeOut;
+            }
         }
     }
     //　敵キャラクターの状態取得メソッド
