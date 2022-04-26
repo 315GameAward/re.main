@@ -17,15 +17,17 @@ public class IventGet_Dest_a : MonoBehaviour
     GameObject clearUI;
 
     public DestGame_a status_dest;
-    public IventPush_Dest_a target;
+    public IventPush_Dest_a[] target;
+
+    int i = 0;
 
     void OnDisable()
     {
-        target.OnDestroyed.RemoveAllListeners();
+        target[i].OnDestroyed.RemoveAllListeners();
     }
     void OnEnable()
     {
-        target.OnDestroyed.AddListener(() => {
+        target[i].OnDestroyed.AddListener(() => {
             Debug.Log("target‚ªíœ‚³‚ê‚Ü‚µ‚½");
             // ‚±‚±‚Éˆ—‚ğ’Ç‰Á
             status_dest = DestGame_a.GameClear;

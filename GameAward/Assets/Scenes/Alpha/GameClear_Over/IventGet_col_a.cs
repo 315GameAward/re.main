@@ -18,15 +18,17 @@ public class IventGet_col_a : MonoBehaviour
     GameObject gameoverUI;
 
     public ColGame_a status_col;
-    public IventPush_col_a target;
+    public IventPush_col_a[] target;
+
+    int i = 0;
 
     void OnDisable()
     {
-        target.OnCollisioned.RemoveAllListeners();
+        target[i].OnCollisioned.RemoveAllListeners();
     }
     void OnEnable()
     {
-        target.OnCollisioned.AddListener(() => {
+        target[i].OnCollisioned.AddListener(() => {
             Debug.Log("target‚ª‚Ô‚Â‚©‚è‚Ü‚µ‚½");
             // ‚±‚±‚Éˆ—‚ğ’Ç‰Á
             status_col = ColGame_a.GameOver;
