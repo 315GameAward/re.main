@@ -18,18 +18,33 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-
+    bool fade = false;
+    float alpha = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // このオブジェクトを削除
-        if (gameObject.transform.position.y < -50) Destroy(gameObject);
+        if (fade)
+        {
+            alpha -= 0.003f;
+            gameObject.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, alpha);
+            if (alpha < 0.0f) Destroy(gameObject);
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Plane (2)")
+        {
+            fade = true;
+        }
     }
 }
