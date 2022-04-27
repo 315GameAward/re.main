@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,11 @@ public class EnemyTurn : FSMnord
     public override void Start(FSMcontllole Contloller)
     {
         float rand = Random.Range(-90, 90);
+        float retu = Random.Range(-5, 5);
         Vector3 Rote = Contloller.Parent.gameObject.transform.rotation.eulerAngles;
         base.Start(Contloller);
         Contloller.changenode("move");
-        Contloller.Parent.gameObject.transform.rotation = Quaternion.Euler(Rote.x, Rote.y + 180 + rand, Rote.z);
+        Contloller.Parent.gameObject.transform.rotation = Quaternion.Euler(Rote.x, Rote.y + 180 + retu, Rote.z);
     }
     public override void Update(FSMcontllole Contloller)
     {
@@ -39,12 +41,13 @@ public class Enemymove : FSMnord
         velocity = Contloller.Parent.gameObject.transform.forward * Time.deltaTime * 6;
         Contloller.Parent.gameObject.transform.position += velocity;
 
+        if (enemy.HitEnemy == enemy)
+        {
+            Contloller.changenode("turn");
+        }
         if (enemy.Hitray == false)
         {
-            enemy.EnableRagdoll();
             Contloller.changenode("turn");
-
-
         }
         if (enemy.isnullTarget == false)
         {
