@@ -27,7 +27,7 @@ public class ParticleManager : MonoBehaviour
     {
         StartCoroutine(DelayMethod(1f, () =>
         {
-            ParticleTestSpawn(1f, new Vector3(0, 0, 0));
+            ParticleTestSpawn(3f, new Vector3(0, 0, 0));
         }));
     }
 
