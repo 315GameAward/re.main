@@ -10,7 +10,8 @@ public class MoveEnemy : MonoBehaviour
         Walk,
         Wait,
         Chase,
-        Attack
+        Attack,
+        Back
     };
     SearchGround ground;
     private CharacterController enemyController;
@@ -43,13 +44,14 @@ public class MoveEnemy : MonoBehaviour
     // 床当たり判定
     bool hitray;
     bool hitground;
+
     // Use this for initialization
     void Start()
     {
         enemyController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
-        setPosition.CreateRandomPosition();
+        setPosition.CreateRandomPosition(true);
         velocity = Vector3.zero;
         arrived = false;
         elapsedTime = 0f;
@@ -63,7 +65,7 @@ public class MoveEnemy : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
 
         //　見回りまたはキャラクターを追いかける状態
-        if (state != EnemyState.Attack && state == EnemyState.Walk || state == EnemyState.Chase)
+        if (!(state == EnemyState.Attack) && state == EnemyState.Walk || state == EnemyState.Chase)
         {
             //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == EnemyState.Chase)
@@ -112,7 +114,7 @@ public class MoveEnemy : MonoBehaviour
             arrived = false;
             elapsedTime = 0f;
             state = tempState;
-            setPosition.CreateRandomPosition();
+            setPosition.CreateRandomPosition( true );
         }
         else if (tempState == EnemyState.Chase)
         {
@@ -144,6 +146,11 @@ public class MoveEnemy : MonoBehaviour
                 Debug.Log("攻撃しました");
                 timeTrigger = Time.time + timeOut;
             }
+        }
+        else if (tempState == EnemyState.Back)
+        {
+            setPosition.CreateRandomPosition(false);
+
         }
     }
     //　敵キャラクターの状態取得メソッド
