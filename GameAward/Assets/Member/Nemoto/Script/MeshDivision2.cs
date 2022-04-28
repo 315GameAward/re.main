@@ -599,10 +599,6 @@ public class MeshDivision2 : MonoBehaviour
                                 // カットポイントのあるポリゴンのインデックスの削除&追加
                                 triangles1.RemoveRange(i, 3);
                                 triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-                                triangles1.Add(_3);
                                 triangles1.Add(_1);
                                 triangles1.Add(_2);
 
@@ -610,12 +606,12 @@ public class MeshDivision2 : MonoBehaviour
                                 triangles1.Add(_2);
                                 triangles1.Add(_5);
 
+                                triangles1.Add(_3);
+                                triangles1.Add(_0);
+                                triangles1.Add(_1);
+
                                 // 出来た三角形インデックスの保存
                                 idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-
                                 idxMemory.Add(_3);
                                 idxMemory.Add(_1);
                                 idxMemory.Add(_2);
@@ -623,13 +619,17 @@ public class MeshDivision2 : MonoBehaviour
                                 idxMemory.Add(_3);
                                 idxMemory.Add(_2);
                                 idxMemory.Add(_5);
+
+                                idxMemory.Add(_3);
+                                idxMemory.Add(_0);
+                                idxMemory.Add(_1);
                                 break;
                             }
 
                         }
 
                     }
-                    else if (idxMemory.Count < 10)
+                    else if (idxMemory.Count < 10)  // 記憶された三角形インデックスの数が10よりも少ないとき(三角形が3個)
                     {
                         if (attachedMesh.triangles[i] == idxMemory[j] && attachedMesh.triangles[i + 1] == idxMemory[j + 1] && attachedMesh.triangles[i + 2] == idxMemory[j + 2])
                         {
@@ -673,13 +673,10 @@ public class MeshDivision2 : MonoBehaviour
                             {
                                 Debug.Log("j = 3");
 
-                                triangles1[i + j] = _5;
+                                triangles1[i + j - 3] = _5;
+                                //triangles1[i + j] = _5;
                                 // カットポイントのあるポリゴンのインデックスの削除&追加
                                 triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
                                 triangles1.Add(_3);
                                 triangles1.Add(_1);
                                 triangles1.Add(_2);
@@ -688,12 +685,12 @@ public class MeshDivision2 : MonoBehaviour
                                 triangles1.Add(_2);
                                 triangles1.Add(_5);
 
+                                triangles1.Add(_3);
+                                triangles1.Add(_0);
+                                triangles1.Add(_1);
+
                                 // 出来た三角形インデックスの保存
                                 idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-
                                 idxMemory.Add(_3);
                                 idxMemory.Add(_1);
                                 idxMemory.Add(_2);
@@ -701,22 +698,27 @@ public class MeshDivision2 : MonoBehaviour
                                 idxMemory.Add(_3);
                                 idxMemory.Add(_2);
                                 idxMemory.Add(_5);
+
+                                idxMemory.Add(_3);
+                                idxMemory.Add(_0);
+                                idxMemory.Add(_1);
                                 break;
                             }
                             if (j == 6)
                             {
                                 Debug.Log("j = 6");
+                                Debug.Log("j = " + j);
+                                Debug.Log("j + i = " + (j+i));
+                                Debug.Log("2回目");
+
                                 // インデックスの変更
-                                //triangles1[i + j - 6] = _5;
-                                //triangles1[i + j ] = _5;
+                                
+                                triangles1[i - 3 ] = _5;
+                                triangles1[i - 6 ] = _5;
                                 //triangles1[i + j + 3] = _5;
 
                                 // カットポイントのあるポリゴンのインデックスの削除&追加
                                 triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
                                 triangles1.Add(_3);
                                 triangles1.Add(_1);
                                 triangles1.Add(_2);
@@ -725,12 +727,12 @@ public class MeshDivision2 : MonoBehaviour
                                 triangles1.Add(_2);
                                 triangles1.Add(_5);
 
+                                triangles1.Add(_3);
+                                triangles1.Add(_0);
+                                triangles1.Add(_1);
+
                                 // 出来た三角形インデックスの保存
                                 idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-
                                 idxMemory.Add(_3);
                                 idxMemory.Add(_1);
                                 idxMemory.Add(_2);
@@ -738,6 +740,10 @@ public class MeshDivision2 : MonoBehaviour
                                 idxMemory.Add(_3);
                                 idxMemory.Add(_2);
                                 idxMemory.Add(_5);
+
+                                idxMemory.Add(_3);
+                                idxMemory.Add(_0);
+                                idxMemory.Add(_1);
                                 break;
                             }
                         }

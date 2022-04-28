@@ -22,6 +22,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerControl : MonoBehaviour
 {
+    // ’è”
+    public const float moveForce = 0.5f;   
+
 
     [SerializeField] private float _moveForce = 5;  //‹­§ˆÚ“®—Ê
 
@@ -133,7 +136,7 @@ public class PlayerControl : MonoBehaviour
         if (eCutMode != CutMode.CUT_ONE) return;
 
         //Ø‚Á‚½‚ÌˆÚ“®
-        transform.position += transform.forward * .2f;
+        transform.position += transform.forward * moveForce;
 
         //ƒpƒbƒh‚ÌU“®İ’è
         Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);

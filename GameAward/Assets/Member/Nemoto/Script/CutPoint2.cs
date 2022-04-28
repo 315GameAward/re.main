@@ -83,7 +83,7 @@ public class CutPoint2 : MonoBehaviour
                     CutPointTest.Add(hit.point);    // ヒットした座標を格納
 
                     // 頂点を広げる処理
-                    if (CutPointTest.Count >= 3)
+                    if (CutPointTest.Count >= 3 && hit.collider.gameObject.name == "Plane")
                     hit.collider.gameObject.GetComponent<MeshDivision2>().DiviosionMeshMiddle(CutPointTest);
 
                     // エフェクトの生成
