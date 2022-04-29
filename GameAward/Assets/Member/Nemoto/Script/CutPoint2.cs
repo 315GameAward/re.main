@@ -243,8 +243,8 @@ public class CutPoint2 : MonoBehaviour
                             }
                             else // ここで切り終わる
                             {
-                                Debug.Log("終点セット");
-                                Debug.Log("終点の座標:" + p);
+                                //Debug.Log("終点セット");
+                                //Debug.Log("終点の座標:" + p);
 
                                 // 交点の保存
                                 intersectionMemory.Add(p);
