@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class SearchGround : MonoBehaviour
 {
-    
+    ParticleManager fallparticle;
     public float speed;
     //OnCollisionExit()
+
+    // もし床から離れたら
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Ground"))
+        {
+            // エフェクト呼び出し
+
+            Debug.Log("床から落ちました");
+        }
+    }
+
     void OnTriggerStay(Collider collision)
     {
-        // 机と当っていた場合
-        if (collision.CompareTag("Ground"))
+        // デッドゾーンと当っていた場合
+        if (collision.CompareTag("DeadZone"))
         {
-           // Debug.Log("当ってる");
+             Debug.Log("当ってる");
+           
             this.transform.Translate(Vector3.right * speed);
             GetComponent<GuardBT>().enabled = false;
         }
