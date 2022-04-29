@@ -61,6 +61,9 @@ public class PlayerControl : MonoBehaviour
     // アニメーション用変数
     public GameObject Scisser;
 
+    // 接続されているコントローラの名前を調べる
+    string[] controllerNames ;
+
     private void Awake()
     {
         //Rigidbody取得
@@ -75,13 +78,13 @@ public class PlayerControl : MonoBehaviour
         //アニーメーション機能の取得
         anime = GetComponent<Animator>();
 
-
+        
         //Moveイベント登録
         _gameInputs.Player.Move.started += OnMove;
         _gameInputs.Player.Move.performed += OnMove;
         _gameInputs.Player.Move.canceled += OnMove;
 
-
+        controllerNames = Input.GetJoystickNames();
 
 
 
@@ -138,14 +141,19 @@ public class PlayerControl : MonoBehaviour
         //切った時の移動
         transform.position += transform.forward * moveForce;
 
-        //パッドの振動設定
-        Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);
-
-        //ディレイのコルーチン実行
-        StartCoroutine(DelayMethod(motorDelay, () =>
+        // パッドの処理
+        if (!(controllerNames[0] == ""))
         {
-            Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
-        }));
+            //パッドの振動設定                   
+            Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);
+
+            //ディレイのコルーチン実行
+            StartCoroutine(DelayMethod(motorDelay, () =>
+            {              
+                Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
+            }));
+        }
+       
         m_bPlayerMove = true;
 
         // SEの再生
