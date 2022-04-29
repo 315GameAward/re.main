@@ -87,9 +87,11 @@ public class MeshDivision2 : MonoBehaviour
             p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]); //+ Vector3.one * 0.0001f;
 
             // カットポイントの始点がポリゴンの辺の上にあるか
-            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z) + 0.5f;
             double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[0].x + (p0.x - p2.x) * cutPoint[0].z);
             double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[0].x + (p1.x - p0.x) * cutPoint[0].z);
+
+            Debug.Log("Area"+Area);
 
             // まずは三角形の中にあるか
             if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
@@ -326,10 +328,9 @@ public class MeshDivision2 : MonoBehaviour
     // 途中のカットポイントでの分割
     public bool DiviosionMeshMiddle(List<Vector3> cutPoint)
     {
-        Debug.Log("前" + cutPoint.Count);
-
+       
         if (cutPoint.Count < 3) return false;
-        Debug.Log("後");
+      
         // メッシュのアタッチ
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
@@ -914,6 +915,65 @@ public class MeshDivision2 : MonoBehaviour
 
 
         return true;
+    }
+
+    // メッシュの分割(2分割)
+    public void DivisionMeshTwice(List<Vector3> cutPoint)
+    {
+        Debug.Log("DivisionMeshTwice");
+        // メッシュのアタッチ
+        attachedMeshFilter = GetComponent<MeshFilter>();
+        attachedMesh = attachedMeshFilter.mesh;
+
+        // 変数
+        //Vector3 p0, p1, p2;    // メッシュのポリゴンの頂点
+        var uvs1 = new List<Vector2>(); // テクスチャ
+        var vertices1 = new List<Vector3>();   // 頂点
+        var triangles1 = new List<int>();       // 三角形インデックス
+        var normals1 = new List<Vector3>();     // 法線
+        Vector3 edge = new Vector3();
+        Vector3 edge1 = new Vector3();
+        Vector3 edge2 = new Vector3();       
+
+        // 頂点とインデックスの代入
+        for (int i = 0; i < attachedMesh.vertices.Length; i++)
+        {
+            vertices1.Add(attachedMesh.vertices[i]);
+        }
+        for (int i = 0; i < attachedMesh.triangles.Length; i++)
+        {
+            triangles1.Add(attachedMesh.triangles[i]);
+        }
+
+
+        // 同じ座標に頂点があったら広げる
+        for (int i = 0; i < vertices1.Count - 1; i++)
+        {
+            // 同じ座標じゃなかったスルー
+            if (vertices1[i] != vertices1[i + 1]) continue;
+            Debug.Log("広げる処理");
+            // 切る方向に対して垂直に点を移動溜めの処理
+            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+            edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
+            edge = Vector3.Cross(edge1, edge2);
+
+            vertices1[i] = vertices1[i] - edge * 0.3f;
+            vertices1[i + 1] = vertices1[i + 1] + edge * 0.3f;
+        }
+
+        // ノーマルの設定
+        var normal = new List<Vector3>();
+        for (int i = 0; i < vertices1.Count; i++)
+        {
+            normal.Add(Vector3.up);
+        }
+
+        // メッシュに代入
+        attachedMesh.SetVertices(vertices1.ToArray());
+        attachedMesh.SetTriangles(triangles1.ToArray(), 0);
+        attachedMesh.SetNormals(normal);
+
+
     }
 
     // ギズモの表示

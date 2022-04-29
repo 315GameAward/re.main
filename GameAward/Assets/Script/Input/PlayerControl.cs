@@ -62,7 +62,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject Scisser;
 
     // 接続されているコントローラの名前を調べる
-    string[] controllerNames ;
+    string[] controllerNames = new string[4];
 
     private void Awake()
     {
@@ -142,7 +142,7 @@ public class PlayerControl : MonoBehaviour
         transform.position += transform.forward * moveForce;
 
         // パッドの処理
-        if (!(controllerNames[0] == ""))
+        if (!(controllerNames.Length == 0))
         {
             //パッドの振動設定                   
             Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);

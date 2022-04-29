@@ -267,6 +267,7 @@ public class CutPoint2 : MonoBehaviour
                             // 交点の代入
                             p = intersectionMemory[k];
                         }
+                        hitGameObject.gameObject.GetComponent<MeshDivision2>().DivisionMeshTwice(CutPointTest);
 
                         // 終点のセット                        
                         CutPointTest[CutPointTest.Count-1] = new Vector3(p.x, hitGameObject.transform.position.y, p.y);
