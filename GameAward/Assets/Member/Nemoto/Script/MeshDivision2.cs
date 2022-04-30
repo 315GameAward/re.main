@@ -1128,7 +1128,7 @@ public class MeshDivision2 : MonoBehaviour
             //}
 
             PointInTriangle(cp,v2P0,v2P1,v2P2);
-             double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
+            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
             double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cp.x + (p0.x - p2.x) * cp.y);
             double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cp.x + (p1.x - p0.x) * cp.y);
             // ŽOŠpŒ`‚Ì’†‚É‚ ‚é‚©

@@ -42,9 +42,14 @@ public class Ground : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Plane (2)")
-        {
-            fade = true;
-        }
+        //if (collision.gameObject.name == "Plane (2)")
+        //{
+        //    fade = true;
+        //}
+    }
+
+    public void StartFadeOut()
+    {
+        fade = true;
     }
 }

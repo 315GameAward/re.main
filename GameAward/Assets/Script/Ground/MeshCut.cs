@@ -637,14 +637,14 @@ public class MeshCut : MonoBehaviour
             obj2.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
             obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
             obj.GetComponent<Renderer>().material.color = Color.gray;
-
+            obj.GetComponent<Ground>().StartFadeOut();
         }
         else
         {
             obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
             obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
             obj2.GetComponent<Renderer>().material.color = Color.gray;
-
+            obj2.GetComponent<Ground>().StartFadeOut();
         }
         
         //このオブジェクトをデストロイ
