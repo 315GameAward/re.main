@@ -638,6 +638,9 @@ public class MeshCut : MonoBehaviour
             obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
             obj.GetComponent<Renderer>().material.color = Color.gray;
             obj.GetComponent<Ground>().StartFadeOut();
+            obj.GetComponent<Rigidbody>().mass = 0.5f;
+            obj.GetComponent<Rigidbody>().drag = 7.0f;
+
         }
         else
         {
@@ -645,6 +648,8 @@ public class MeshCut : MonoBehaviour
             obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
             obj2.GetComponent<Renderer>().material.color = Color.gray;
             obj2.GetComponent<Ground>().StartFadeOut();
+            obj2.GetComponent<Rigidbody>().mass = 0.5f;
+            obj2.GetComponent<Rigidbody>().drag = 7.0f;
         }
         
         //このオブジェクトをデストロイ

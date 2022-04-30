@@ -33,7 +33,7 @@ public class Ground : MonoBehaviour
         // このオブジェクトを削除
         if (fade)
         {
-            alpha -= 0.003f;
+            alpha -= 0.013f;
             gameObject.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, alpha);
             if (alpha < 0.0f) Destroy(gameObject);
         }
