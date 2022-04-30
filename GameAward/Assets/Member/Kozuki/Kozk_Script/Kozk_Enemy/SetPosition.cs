@@ -8,7 +8,7 @@ public class SetPosition : MonoBehaviour
 
     public float span = 120f;  // ray用、spanで測定間隔を測る
     private float times;// ray用、経過時間を当てはめる
-
+    public bool isGround = true;
     //初期位置
     private Vector3 startPosition;
     //目的地
@@ -31,10 +31,11 @@ public class SetPosition : MonoBehaviour
         if(times > span) { 
         Vector3 rayPosition = transform.position + new Vector3(0.0f, -0.5f, 0.0f);
         Ray ray = new Ray(rayPosition, Vector3.down);
-        bool isGround = Physics.Raycast(ray, distance);
+        isGround = Physics.Raycast(ray, distance);
         Debug.DrawRay(rayPosition, Vector3.down * distance, Color.red);
 
         Debug.Log(isGround);
+        times = 0.0f;
         }
     }
 
@@ -65,6 +66,12 @@ public class SetPosition : MonoBehaviour
     //　目的地を取得する
     public Vector3 GetDestination()
     {
+        if (isGround == false)
+        {
+            Debug.Log("反転します");
+            destination.x = -destination.x;
+            destination.z = -destination.z;
+        }
         return destination;
     }
 }
