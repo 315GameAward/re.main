@@ -16,6 +16,11 @@ public class MoveEnemy : MonoBehaviour
     SearchGround ground;
     private CharacterController enemyController;
     private Animator animator;
+
+    // 設定したフラグの名前
+    private const string key_isWalk = "isWalk";
+    private const string key_isAttack = "isAttack";
+
     //　目的地
     private Vector3 destination;
     //　歩くスピード
@@ -85,14 +90,15 @@ public class MoveEnemy : MonoBehaviour
             if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 0.5f)
             {
                 SetState(EnemyState.Wait);
-               // animator.SetFloat("Speed", 0.0f);
+                // animator.SetFloat("Speed", 0.0f);
+                
             }
             //　到着していたら一定時間待つ
         }
         else if (state == EnemyState.Wait)
         {
             elapsedTime += Time.deltaTime;
-
+            
             //　待ち時間を越えたら次の目的地を設定
             if (elapsedTime > waitTime)
             {
@@ -102,8 +108,6 @@ public class MoveEnemy : MonoBehaviour
         
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
-        Dosperecast();  // 床判定取得
-    
     }
 
     //　敵キャラクターの状態変更メソッド
@@ -111,26 +115,34 @@ public class MoveEnemy : MonoBehaviour
     {
         if (tempState == EnemyState.Walk)
         {
+            Debug.Log("歩行");
             arrived = false;
             elapsedTime = 0f;
             state = tempState;
             setPosition.CreateRandomPosition( true );
+            this.animator.SetBool(key_isWalk, true);
+
         }
         else if (tempState == EnemyState.Chase)
         {
+            Debug.Log("選択");
             state = tempState;
             //　待機状態から追いかける場合もあるのでOff
             arrived = false;
             //　追いかける対象をセット
             playerTransform = targetObj;
+            this.animator.SetBool(key_isWalk, false);
+            this.animator.SetBool(key_isAttack, false);
         }
         else if (tempState == EnemyState.Wait)
         {
+            Debug.Log("待機");
             elapsedTime = 0f;
             state = tempState;
             arrived = true;
             velocity = Vector3.zero;
-           // animator.SetFloat("Speed", 0f);
+            this.animator.SetBool(key_isWalk, false);
+            // animator.SetFloat("Speed", 0f);
         }
         else if (tempState == EnemyState.Attack)
         {
@@ -138,43 +150,25 @@ public class MoveEnemy : MonoBehaviour
             state = tempState;
             arrived = true;
 
-
             // 一定間隔で攻撃
             if (Time.time > timeTrigger)
             {
                 // 攻撃
                 Debug.Log("攻撃しました");
+                this.animator.SetBool(key_isAttack, true);
                 timeTrigger = Time.time + timeOut;
             }
         }
         else if (tempState == EnemyState.Back)
         {
+            Debug.Log("下がる");
             setPosition.CreateRandomPosition(false);
-
+            this.animator.SetBool(key_isWalk, true);
         }
     }
     //　敵キャラクターの状態取得メソッド
     public EnemyState GetState()
     {
         return state;
-    }
-    void Dosperecast()
-    {
-        int mask = LayerMask.GetMask("Default");
-        RaycastHit rayhit;
-        rayhit = new RaycastHit();
-        Vector3 hiku;
-        hiku = new Vector3(0, 1, 0);
-        float en = 0.1f;
-        Vector3 angle = transform.forward - hiku;
-        hitray = Physics.SphereCast(transform.position, en, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
-        //hitray = Physics.Raycast(controller.transform.position, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore,);
-        Vector3 foll;
-        foll = new Vector3(0, -1, 0);
-        hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
-
-        //Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
-        // Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
-
     }
 }
