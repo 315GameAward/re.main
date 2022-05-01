@@ -92,24 +92,24 @@ public class MeshDivision2 : MonoBehaviour
         for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
         {
             //メッシュの3つの頂点を取得
-            p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]    ]);//+ Vector3.one * 0.0001f;
+            p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]]);//+ Vector3.one * 0.0001f;
             p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 1]]);//+ Vector3.one * 0.0001f;
             p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i + 2]]); //+ Vector3.one * 0.0001f;
 
 
             // カットポイントの終点がポリゴンの中にあるか
-            Vector2 cp = new Vector2(cutPoint[0].x -transform.position.x, cutPoint[0].z - transform.position.z);
+            Vector2 cp = new Vector2(cutPoint[0].x - transform.position.x, cutPoint[0].z - transform.position.z);
             var v2P0 = new Vector2(p0.x, p0.z);
             var v2P1 = new Vector2(p1.x, p1.z);
             var v2P2 = new Vector2(p2.x, p2.z);
 
-           
+
             // カットポイントの始点がポリゴンの辺の上にあるか
-            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z) ;
+            double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
             double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * cutPoint[0].x + (p0.x - p2.x) * cutPoint[0].z);
             double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * cutPoint[0].x + (p1.x - p0.x) * cutPoint[0].z);
 
-            Debug.Log("Area"+Area);
+            Debug.Log("Area" + Area);
 
             // まずは三角形の中にあるか
             if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
@@ -132,14 +132,14 @@ public class MeshDivision2 : MonoBehaviour
                     vertices1.Add(cutPoint[1] - transform.position); // 6番目の頂点
 
                     // 頂点のインデックス
-                    int _0 = attachedMesh.triangles[i]    ;
+                    int _0 = attachedMesh.triangles[i];
                     int _1 = attachedMesh.triangles[i + 1];
                     int _2 = attachedMesh.triangles[i + 2];
                     int _3 = vertices1.Count - 4;
                     int _4 = vertices1.Count - 3;
                     int _5 = vertices1.Count - 2;
                     int _6 = vertices1.Count - 1;   // 使わない
-                                                   
+
                     // カットポイントのあるポリゴンのインデックスの削除&追加
                     triangles1.RemoveRange(i, 3);
 
@@ -300,7 +300,7 @@ public class MeshDivision2 : MonoBehaviour
             }
             else    // 三角形の中にない
             {
-              
+
             }
 
 
@@ -317,16 +317,16 @@ public class MeshDivision2 : MonoBehaviour
         attachedMesh.SetVertices(vertices1.ToArray());
         attachedMesh.SetTriangles(triangles1.ToArray(), 0);
         attachedMesh.SetNormals(normal);
-       
+
 
     }
 
     // 途中のカットポイントでの分割
     public bool DiviosionMeshMiddle(List<Vector3> cutPoint)
     {
-       
+
         if (cutPoint.Count < 3) return false;
-      
+
         // メッシュのアタッチ
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
@@ -347,6 +347,7 @@ public class MeshDivision2 : MonoBehaviour
         Vector3 edge = new Vector3();
         Vector3 edge1 = new Vector3();
         Vector3 edge2 = new Vector3();
+        Vector3 edge3 = new Vector3();
 
 
         var crossVertices = new List<Vector3>();
@@ -368,13 +369,29 @@ public class MeshDivision2 : MonoBehaviour
             // 同じ座標じゃなかったスルー
             if (vertices1[i] != vertices1[i + 1]) continue;
 
-            // 切る方向に対して垂直に点を移動溜めの処理
-            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
-            edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
-            edge = Vector3.Cross(edge1, edge2);
+            // 切る方向に対して点を移動するめの処理
+            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 3];
+            edge2 = cutPoint[cutPoint.Count - 1] - cutPoint[cutPoint.Count - 2];
+            edge3 = edge1 + edge2;
 
-            vertices1[i] = vertices1[i] - edge.normalized * 0.08f;
-            vertices1[i + 1] = vertices1[i + 1] + edge.normalized * 0.08f;
+
+            // カットポイントが一直線だったら
+            // 垂直に点を広げる
+            if (edge3 == Vector3.zero)
+            {
+                edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
+                edge = Vector3.Cross(edge2, edge1);
+            }
+            else
+            {
+                edge = Vector3.Cross(edge3, Vector3.up);
+
+            }
+
+            // 頂点に格納
+            vertices1[i] = vertices1[i] + edge.normalized * 0.08f;
+            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.08f;
         }
 
         //カットしたいオブジェクトのメッシュをトライアングルごとに処理
@@ -459,10 +476,21 @@ public class MeshDivision2 : MonoBehaviour
                                     // 同じ座標じゃなかったスルー
                                     if (vertices1[l] != vertices1[l + 1]) continue;
 
-                                    // 切る方向に対して垂直に点を移動溜めの処理
-                                    edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
-                                    edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
-                                    edge = Vector3.Cross(edge1, edge2);
+                                    // 切る方向に対して点を移動するめの処理
+                                    edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 3];
+                                    edge2 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                    edge = edge1 + edge2;
+
+                                    Debug.Log("edge" + edge);
+
+                                    // カットポイントが一直線だったら
+                                    // 垂直に点を広げる
+                                    if (edge == Vector3.zero)
+                                    {
+                                        edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                        edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
+                                        edge = Vector3.Cross(edge1, edge2);
+                                    }
 
                                     vertices1[l] = vertices1[l] - edge.normalized * 0.08f;
                                     vertices1[l + 1] = vertices1[l + 1] + edge.normalized * 0.08f;
@@ -573,8 +601,8 @@ public class MeshDivision2 : MonoBehaviour
                             {
                                 Debug.Log("j = 6");
                                 // インデックスの変更
-                                triangles1[i +j - 6] = _5;
-                                triangles1[i +j - 3] = _5;
+                                triangles1[i + j - 6] = _5;
+                                triangles1[i + j - 3] = _5;
                                 triangles1[i + j + 3] = _5;
 
                                 // カットポイントのあるポリゴンのインデックスの削除&追加
@@ -725,13 +753,13 @@ public class MeshDivision2 : MonoBehaviour
                             {
                                 Debug.Log("j = 6");
                                 Debug.Log("j = " + j);
-                                Debug.Log("j + i = " + (j+i));
+                                Debug.Log("j + i = " + (j + i));
                                 Debug.Log("2回目");
 
                                 // インデックスの変更
-                                
-                                triangles1[i - 3 ] = _5;
-                                triangles1[i - 6 ] = _5;
+
+                                triangles1[i - 3] = _5;
+                                triangles1[i - 6] = _5;
                                 //triangles1[i + j + 3] = _5;
 
                                 // カットポイントのあるポリゴンのインデックスの削除&追加
@@ -809,7 +837,8 @@ public class MeshDivision2 : MonoBehaviour
         var normals1 = new List<Vector3>();     // 法線
         Vector3 edge = new Vector3();
         Vector3 edge1 = new Vector3();
-        Vector3 edge2 = new Vector3();       
+        Vector3 edge2 = new Vector3();
+        Vector3 edge3 = new Vector3();
 
         // 頂点とインデックスの代入
         for (int i = 0; i < attachedMesh.vertices.Length; i++)
@@ -830,20 +859,37 @@ public class MeshDivision2 : MonoBehaviour
         {
             // 同じ座標じゃなかったスルー
             if (vertices1[i] != vertices1[i + 1]) continue;
-            
-            // 切る方向に対して垂直に点を移動するめの処理
-            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
-            edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
-            edge = Vector3.Cross(edge1, edge2);
 
-            vertices1[i] = vertices1[i] - edge.normalized * 0.08f;
-            vertices1[i + 1] = vertices1[i + 1] + edge.normalized * 0.08f;
+
+            // 切る方向に対して点を移動するめの処理
+            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 3];
+            edge2 = cutPoint[cutPoint.Count - 1] - cutPoint[cutPoint.Count - 2];
+            edge3 = edge1 + edge2;
+
+
+            // カットポイントが一直線だったら
+            // 垂直に点を広げる
+            if (edge3 == Vector3.zero)
+            {
+                edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
+                edge = Vector3.Cross(edge2, edge1);
+            }
+            else
+            {
+                edge = Vector3.Cross(edge3, Vector3.up);
+
+            }
+
+            // 頂点に格納
+            vertices1[i] = vertices1[i] + edge.normalized * 0.08f;
+            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.08f;
         }
 
-        
+
 
         // メッシュのポリゴンの数だけループ
-        for (int i = 0;i < attachedMesh.triangles.Length;i+=3)
+        for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
         {
             //メッシュの3つの頂点を取得
             p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[i]]);//+ Vector3.one * 0.0001f;
@@ -852,12 +898,12 @@ public class MeshDivision2 : MonoBehaviour
 
             // カットポイントの終点がポリゴンの中にあるか
             Vector2 cp = new Vector2(cutPoint[cutPoint.Count - 2].x + (cutPoint[cutPoint.Count - 1].x - cutPoint[cutPoint.Count - 2].x) * 0.40f - transform.position.x, cutPoint[cutPoint.Count - 2].z + (cutPoint[cutPoint.Count - 1].z - cutPoint[cutPoint.Count - 2].z) * 0.40f - transform.position.z);
-            var v2P0 = new Vector2(p0.x,p0.z);
-            var v2P1 = new Vector2(p1.x,p1.z);
-            var v2P2 = new Vector2(p2.x,p2.z);
-         
+            var v2P0 = new Vector2(p0.x, p0.z);
+            var v2P1 = new Vector2(p1.x, p1.z);
+            var v2P2 = new Vector2(p2.x, p2.z);
+
             double Area = 0.5 * (-p1.z * p2.x + p0.z * (-p1.x + p2.x) + p0.x * (p1.z - p2.z) + p1.x * p2.z);
-            double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * (cp.x +transform.position.x) + (p0.x - p2.x) * (cp.y + transform.position.z));
+            double s = 1 / (2 * Area) * (p0.z * p2.x - p0.x * p2.z + (p2.z - p0.z) * (cp.x + transform.position.x) + (p0.x - p2.x) * (cp.y + transform.position.z));
             double t = 1 / (2 * Area) * (p0.x * p1.z - p0.z * p1.x + (p0.z - p1.z) * (cp.x + transform.position.x) + (p1.x - p0.x) * (cp.y + transform.position.z));
             // 三角形の中にあるか
             if ((0 <= s && s <= 1) && (0 <= t && t <= 1) && (0 <= 1 - s - t && 1 - s - t <= 1))
@@ -886,7 +932,7 @@ public class MeshDivision2 : MonoBehaviour
                             // カットポイントのあるポリゴンのインデックスの削除&追加
 
                             triangles1.RemoveRange(i, 3);
-                            
+
                             // 三角形インデックスの振り分け
                             triangles1.Add(_4);
                             triangles1.Add(_2);
@@ -898,7 +944,7 @@ public class MeshDivision2 : MonoBehaviour
 
                             // 出来た三角形インデックスの保存
                             idxMemory.Clear();
-                           
+
                             idxMemory.Add(_3);
                             idxMemory.Add(_2);
                             idxMemory.Add(_5);
@@ -911,16 +957,18 @@ public class MeshDivision2 : MonoBehaviour
                         if (j == 3)
                         {
                             Debug.Log("j = 3");
+                            Debug.Log("え、ここだよね？");
 
-                            triangles1[i + j - 3] = _5;
-                            
+                            triangles1[i + j] = _5;
+                            //triangles1[i  - 3] = _5;
+
                             //triangles1[i + j] = _5;
                             // カットポイントのあるポリゴンのインデックスの削除&追加
                             triangles1.RemoveRange(i, 3);
                             triangles1.Add(_4);
                             triangles1.Add(_2);
-                            triangles1.Add(_0);
-                          
+                            triangles1.Add(_5);
+
                             triangles1.Add(_3);
                             triangles1.Add(_0);
                             triangles1.Add(_1);
@@ -929,8 +977,8 @@ public class MeshDivision2 : MonoBehaviour
                             idxMemory.Clear();
                             idxMemory.Add(_4);
                             idxMemory.Add(_2);
-                            idxMemory.Add(_0);
-                          
+                            idxMemory.Add(_5);
+
                             idxMemory.Add(_3);
                             idxMemory.Add(_0);
                             idxMemory.Add(_1);
