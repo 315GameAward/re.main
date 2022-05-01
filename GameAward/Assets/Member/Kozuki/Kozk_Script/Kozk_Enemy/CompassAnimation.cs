@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class CompassAnimation : MonoBehaviour
 {
-
     // Animator コンポーネント
     private Animator animator;
-
+    private MoveEnemy enemy;
+    private GameObject Cmps;
     // 設定したフラグの名前
     private const string key_isWalk = "isWalk";
     private const string key_isAttack = "isAttack";
-
+   
     // 初期化メソッド
     void Start()
     {
-        // 自分に設定されているAnimatorコンポーネントを習得する
-        this.animator = GetComponent<Animator>();
+        Cmps = GameObject.Find("Compass");
+        enemy = Cmps.GetComponent<MoveEnemy>();
+
+       // 自分に設定されているAnimatorコンポーネントを習得する
+       this.animator = GetComponent<Animator>();
+        
     }
 
     // 1フレームに1回コールされる
     void Update()
     {
+        
+        if (enemy.state == MoveEnemy.EnemyState.Walk)
+        {
+            Debug.Log(enemy.state);
+            this.animator.SetBool(key_isWalk, true);
+            this.animator.SetBool(key_isAttack, false);
+        }
+        else if(enemy.state == MoveEnemy.EnemyState.Attack)
+        {
+            this.animator.SetBool(key_isWalk, false);
+            this.animator.SetBool(key_isAttack, true);
 
+        }
         // 矢印下ボタンを押下している
         if (Input.GetKey(KeyCode.DownArrow))
         {

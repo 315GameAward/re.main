@@ -38,7 +38,8 @@ public class MoveEnemy : MonoBehaviour
     public float timeOut;
     private float timeTrigger;
     // 敵の状態
-    private EnemyState state;
+    public EnemyState state;
+    
     //　プレイヤーTransform
     private Transform playerTransform;
     // 床当たり判定
