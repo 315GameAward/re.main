@@ -15,11 +15,6 @@ public class MoveEnemy : MonoBehaviour
     };
     SearchGround ground;
     private CharacterController enemyController;
-    private Animator animator;
-
-    // 設定したフラグの名前
-    private const string key_isWalk = "isWalk";
-    private const string key_isAttack = "isAttack";
 
     //　目的地
     private Vector3 destination;
@@ -54,7 +49,6 @@ public class MoveEnemy : MonoBehaviour
     void Start()
     {
         enemyController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
         setPosition.CreateRandomPosition(true);
         velocity = Vector3.zero;
@@ -80,7 +74,7 @@ public class MoveEnemy : MonoBehaviour
             if (enemyController.isGrounded)
             {
                 velocity = Vector3.zero;
-               // animator.SetFloat("Speed", 2.0f);
+               //animator.SetFloat("Walk", 1.0f);
                 direction = (setPosition.GetDestination() - transform.position).normalized;
                 transform.LookAt(new Vector3(setPosition.GetDestination().x, transform.position.y, setPosition.GetDestination().z));
                 velocity = direction * walkSpeed;
@@ -90,7 +84,7 @@ public class MoveEnemy : MonoBehaviour
             if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 0.5f)
             {
                 SetState(EnemyState.Wait);
-                // animator.SetFloat("Speed", 0.0f);
+              //  animator.SetFloat("Walk", 0.0f);
                 
             }
             //　到着していたら一定時間待つ
@@ -120,7 +114,7 @@ public class MoveEnemy : MonoBehaviour
             elapsedTime = 0f;
             state = tempState;
             setPosition.CreateRandomPosition( true );
-            this.animator.SetBool(key_isWalk, true);
+            
 
         }
         else if (tempState == EnemyState.Chase)
@@ -131,8 +125,7 @@ public class MoveEnemy : MonoBehaviour
             arrived = false;
             //　追いかける対象をセット
             playerTransform = targetObj;
-            this.animator.SetBool(key_isWalk, false);
-            this.animator.SetBool(key_isAttack, false);
+           
         }
         else if (tempState == EnemyState.Wait)
         {
@@ -141,8 +134,8 @@ public class MoveEnemy : MonoBehaviour
             state = tempState;
             arrived = true;
             velocity = Vector3.zero;
-            this.animator.SetBool(key_isWalk, false);
-            // animator.SetFloat("Speed", 0f);
+           
+        //    animator.SetFloat("Walk", 0f);
         }
         else if (tempState == EnemyState.Attack)
         {
@@ -155,7 +148,7 @@ public class MoveEnemy : MonoBehaviour
             {
                 // 攻撃
                 Debug.Log("攻撃しました");
-                this.animator.SetBool(key_isAttack, true);
+           
                 timeTrigger = Time.time + timeOut;
             }
         }
@@ -163,7 +156,7 @@ public class MoveEnemy : MonoBehaviour
         {
             Debug.Log("下がる");
             setPosition.CreateRandomPosition(false);
-            this.animator.SetBool(key_isWalk, true);
+          
         }
     }
     //　敵キャラクターの状態取得メソッド

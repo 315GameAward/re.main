@@ -9,9 +9,9 @@ public class SetPosition : MonoBehaviour
     public float span = 120f;  // ray用、spanで測定間隔を測る
     private float times;// ray用、経過時間を当てはめる
     public bool isGround = true;
-    public Vector3 rayPosition; // 変更可能
+    public Vector3 rayPosition = Vector3.zero; // 変更可能
     private Vector3 RayPosition;
-    public Vector3 rayVector;
+    public Vector3 rayVector = Vector3.down;
     //初期位置
     private Vector3 startPosition;
     //目的地
@@ -23,16 +23,14 @@ public class SetPosition : MonoBehaviour
         //　初期位置を設定
         startPosition = transform.position;
         SetDestination(transform.position);
-
-        rb = GetComponent<Rigidbody>();
-        
         distance = 1.0f;
     }
     private void Update()
     {
+        Vector3 trans = new Vector3(this.transform.position.x, 0.0f, this.transform.position.z);
         times += Time.deltaTime;    // 測定経過時間
         if(times > span) {
-        RayPosition = transform.position + rayPosition;
+        RayPosition = trans + rayPosition;
         Ray ray = new Ray(RayPosition, rayVector);
         isGround = Physics.Raycast(ray, distance);
             Debug.DrawRay(RayPosition, rayVector * distance, Color.red);
