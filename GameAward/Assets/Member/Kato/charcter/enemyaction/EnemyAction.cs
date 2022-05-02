@@ -49,6 +49,10 @@ public class Enemymove : FSMnord
         {
             Contloller.changenode("turn");
         }
+        if(enemy.HitGround==true)
+        {
+            Contloller.changenode("Foll");
+        }
         if (enemy.isnullTarget == false)
         {
             if (enemy.Distance < 3.0f)
@@ -107,10 +111,8 @@ public class EnemyPlayerAssault : FSMnord
 public class EnemyFoll : FSMnord
 {
     Enemy enemy;
-    public float gravity = 20.0f;
 
-    private Vector3 moveDirection = Vector3.zero;
-    private CharacterController controller;
+    //private CharacterController controller;
 
     public override void Start(FSMcontllole Contloller)
     {
@@ -120,7 +122,7 @@ public class EnemyFoll : FSMnord
     }
     public override void Update(FSMcontllole Contloller)
     {
-        enemy.EnableRagdoll();
+
         base.Update(Contloller);
     }
 

@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     bool hitray;
     bool hitenemy;
     bool hitground;
+    
     bool enemyfoll;
     Vector3 direction;
     Vector3 targetchar;
@@ -103,6 +104,7 @@ public class Enemy : MonoBehaviour
     {
         int mask = LayerMask.GetMask("Default");
         int dark = LayerMask.GetMask("Enemy");
+        int back = LayerMask.GetMask("BackGround");
         RaycastHit rayhit;
         rayhit = new RaycastHit();
         Vector3 hiku;
@@ -114,7 +116,7 @@ public class Enemy : MonoBehaviour
 
         Vector3 foll;
         foll = new Vector3(0, -1, 0);
-        hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
+        hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, back, QueryTriggerInteraction.Ignore);
 
         //Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
         // Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
