@@ -70,7 +70,7 @@ public class MoveEnemy : MonoBehaviour
             //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == EnemyState.Chase)
             {
-                setPosition.SetDestination(playerTransform.position);
+                setPosition.SetDestination(new Vector3(playerTransform.position.x,0.0f, playerTransform.position.z));
             }
             if (enemyController.isGrounded)
             {
