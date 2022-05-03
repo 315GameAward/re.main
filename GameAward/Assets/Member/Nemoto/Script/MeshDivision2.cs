@@ -415,6 +415,299 @@ public class MeshDivision2 : MonoBehaviour
                 {
                     // あるとき
                     Debug.Log("ある");
+
+                    // カットポイントの場所に頂点の追加(あとで分けるため二つ追加)
+                    vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+                    vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+
+                    // インデックスの割り当て
+                    int _0 = attachedMesh.triangles[i];
+                    int _1 = attachedMesh.triangles[i + 1];
+                    int _2 = attachedMesh.triangles[i + 2];
+                    int _3 = vertices1.Count - 2; // 7
+                    int _4 = vertices1.Count - 1; // 使わない  
+                    int _5 = vertices1.Count - 3; // 6
+
+                    // 記憶された三角形インデックスの数だけループ
+                    for (int j = 0; j < idxMemory.Count; j += 3)
+                    {
+                        // 記憶された三角形インデクスと一致した時
+                        if (idxMemory.Count > 9)
+                        {
+                            if (attachedMesh.triangles[i] == idxMemory[j] && attachedMesh.triangles[i + 1] == idxMemory[j + 1] && attachedMesh.triangles[i + 2] == idxMemory[j + 2])
+                            {
+                                Debug.Log(idxMemory[j] + "" + idxMemory[j + 1] + "" + idxMemory[j + 2]);
+                                if (j == 0)
+                                {
+                                    Debug.Log("j = 0");
+                                    // インデックスの変更
+                                    triangles1[i + j + 3] = _5;
+
+                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+
+                                    triangles1.RemoveRange(i, 3);
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_1);
+                                    triangles1.Add(_2);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_2);
+                                    triangles1.Add(_5);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_0);
+                                    triangles1.Add(_1);
+
+                                    // 出来た三角形インデックスの保存
+                                    idxMemory.Clear();
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_1);
+                                    idxMemory.Add(_2);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_2);
+                                    idxMemory.Add(_5);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_0);
+                                    idxMemory.Add(_1);
+                                    break;
+                                }
+                                if (j == 3)
+                                {
+                                    Debug.Log("j = 3");
+                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+                                    triangles1.RemoveRange(i, 3);
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_1);
+                                    triangles1.Add(_2);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_2);
+                                    triangles1.Add(_5);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_0);
+                                    triangles1.Add(_1);
+
+                                    // 出来た三角形インデックスの保存
+                                    idxMemory.Clear();
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_1);
+                                    idxMemory.Add(_2);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_2);
+                                    idxMemory.Add(_5);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_0);
+                                    idxMemory.Add(_1);
+                                    break;
+                                }
+                                if (j == 6)
+                                {
+                                    Debug.Log("j = 6");
+                                    // インデックスの変更
+                                    triangles1[i + 3] = _5;
+                                    triangles1[i - 3] = _5;
+                                    triangles1[i - 6] = _5;
+
+                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+                                    triangles1.RemoveRange(i, 3);
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_1);
+                                    triangles1.Add(_2);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_2);
+                                    triangles1.Add(_5);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_0);
+                                    triangles1.Add(_1);
+
+
+                                    // 出来た三角形インデックスの保存
+                                    idxMemory.Clear();
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_1);
+                                    idxMemory.Add(_2);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_2);
+                                    idxMemory.Add(_5);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_0);
+                                    idxMemory.Add(_1);
+                                    break;
+                                }
+                                if (j == 9)
+                                {
+                                    Debug.Log("j = 9");
+                                    triangles1[i + j - 9] = _5;
+                                    triangles1[i + j - 15] = _5;
+                                    triangles1[i + j - 18] = _5;
+
+                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+                                    triangles1.RemoveRange(i, 3);
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_1);
+                                    triangles1.Add(_2);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_2);
+                                    triangles1.Add(_5);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_0);
+                                    triangles1.Add(_1);
+
+                                    // 出来た三角形インデックスの保存
+                                    idxMemory.Clear();
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_1);
+                                    idxMemory.Add(_2);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_2);
+                                    idxMemory.Add(_5);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_0);
+                                    idxMemory.Add(_1);
+                                    break;
+                                }
+
+                            }
+
+                        }
+                        else if (idxMemory.Count < 10)  // 記憶された三角形インデックスの数が10よりも少ないとき(三角形が3個)
+                        {
+                            if (attachedMesh.triangles[i] == idxMemory[j] && attachedMesh.triangles[i + 1] == idxMemory[j + 1] && attachedMesh.triangles[i + 2] == idxMemory[j + 2])
+                            {
+                                if (j == 0)
+                                {
+                                    Debug.Log("j = 0");
+                                    // インデックスの変更
+                                    triangles1[i + j + 3] = _5;
+
+                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+
+                                    triangles1.RemoveRange(i, 3);
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_1);
+                                    triangles1.Add(_2);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_2);
+                                    triangles1.Add(_5);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_0);
+                                    triangles1.Add(_1);
+
+                                    // 出来た三角形インデックスの保存
+                                    idxMemory.Clear();
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_1);
+                                    idxMemory.Add(_2);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_2);
+                                    idxMemory.Add(_5);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_0);
+                                    idxMemory.Add(_1);
+                                    break;
+                                }
+                                if (j == 3)
+                                {
+                                    Debug.Log("j = 3");
+
+                                    triangles1[i + j - 3] = _5;
+                                    //triangles1[i + j] = _5;
+                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+                                    triangles1.RemoveRange(i, 3);
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_1);
+                                    triangles1.Add(_2);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_2);
+                                    triangles1.Add(_5);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_0);
+                                    triangles1.Add(_1);
+
+                                    // 出来た三角形インデックスの保存
+                                    idxMemory.Clear();
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_1);
+                                    idxMemory.Add(_2);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_2);
+                                    idxMemory.Add(_5);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_0);
+                                    idxMemory.Add(_1);
+                                    break;
+                                }
+                                if (j == 6)
+                                {
+                                    Debug.Log("j = 6");
+                                    Debug.Log("j = " + j);
+                                    Debug.Log("j + i = " + (j + i));
+                                    Debug.Log("2回目");
+
+                                    // インデックスの変更
+
+                                    triangles1[i - 3] = _5;
+                                    triangles1[i - 6] = _5;
+                                    //triangles1[i + j + 3] = _5;
+
+                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+                                    triangles1.RemoveRange(i, 3);
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_1);
+                                    triangles1.Add(_2);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_2);
+                                    triangles1.Add(_5);
+
+                                    triangles1.Add(_3);
+                                    triangles1.Add(_0);
+                                    triangles1.Add(_1);
+
+                                    // 出来た三角形インデックスの保存
+                                    idxMemory.Clear();
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_1);
+                                    idxMemory.Add(_2);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_2);
+                                    idxMemory.Add(_5);
+
+                                    idxMemory.Add(_3);
+                                    idxMemory.Add(_0);
+                                    idxMemory.Add(_1);
+                                    break;
+                                }
+                            }
+
+                        }
+
+
+
+                    }
+
                 }
                 else
                 {
@@ -424,10 +717,15 @@ public class MeshDivision2 : MonoBehaviour
                     // --- 線分と線分の交点に頂点を追加したい ---
 
                     // 
-
+                    int vtxCount = vertices1.Count;
                     // ポリゴンごとに処理
                     for (int j = 0; j < attachedMesh.triangles.Length; j += 3)
                     {
+                        if (vtxCount != vertices1.Count) break;
+
+                        // 交差した点の数
+                        int interPointCnt = 0;
+
                         for (int k = 0; k < 3; k++)
                         {
                             // ポリゴンの2頂点
@@ -460,50 +758,24 @@ public class MeshDivision2 : MonoBehaviour
                             const float eps = 0.00001f;
                             if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
                             {
-                                // Debug.Log("交差してない");
+                               
+                                continue;
+                               
                             }
                             else
                             {
                                 Debug.Log("交差してる");
 
-                                // 交点をもとに頂点を追加
-                                vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
-                                vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
-
-                                // 同じ座標に頂点があったら広げる
-                                for (int l = 0; l < vertices1.Count - 1; l++)
-                                {
-                                    // 同じ座標じゃなかったスルー
-                                    if (vertices1[l] != vertices1[l + 1]) continue;
-
-                                    // 切る方向に対して点を移動するめの処理
-                                    edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 3];
-                                    edge2 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
-                                    edge = edge1 + edge2;
-
-                                    Debug.Log("edge" + edge);
-
-                                    // カットポイントが一直線だったら
-                                    // 垂直に点を広げる
-                                    if (edge == Vector3.zero)
-                                    {
-                                        edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
-                                        edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
-                                        edge = Vector3.Cross(edge1, edge2);
-                                    }
-
-                                    vertices1[l] = vertices1[l] - edge.normalized * 0.08f;
-                                    vertices1[l + 1] = vertices1[l + 1] + edge.normalized * 0.08f;
-                                }
+                                // 交点カウントを足す
+                                interPointCnt++;
 
                                 // 交点をちょっとずらす
                                 var interPoint = new Vector2(cutPoint[cutPoint.Count - 2].x + ((p.x + transform.position.x) - cutPoint[cutPoint.Count - 2].x) * 0.8f - transform.position.x, cutPoint[cutPoint.Count - 2].z + ((p.y + transform.position.z) - cutPoint[cutPoint.Count - 2].z) * 0.8f - transform.position.z);
 
                                 //vertices1.Add(new Vector3(interPoint.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, interPoint.y));
 
-                               
-                                
-                                // 交差している点がどのポリゴンにいるか調べる
+                                // --- 2分割する処理 ---                             
+                                // ちょっとずらした交点がどのポリゴンにいるか調べる
                                 for (int n = 0;n < attachedMesh.triangles.Length;n += 3)
                                 {              
                                     //メッシュの3つの頂点を取得
@@ -511,55 +783,431 @@ public class MeshDivision2 : MonoBehaviour
                                     var _p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 1]]);//+ Vector3.one * 0.0001f;
                                     var _p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 2]]); //+ Vector3.one * 0.0001f;
 
-                                    // カットポイントの始点がポリゴンの中にあるか
+                                    // ちょっとずらした交点がポリゴンの中にあるか
                                     double _Area = 0.5 * (-_p1.z * _p2.x + _p0.z * (-_p1.x + _p2.x) + _p0.x * (_p1.z - _p2.z) + _p1.x * _p2.z);
                                     double _s2 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * (interPoint.x + transform.position.x) + (_p0.x - _p2.x) * (interPoint.y + transform.position.z));
                                     double _t2 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * (interPoint.x + transform.position.x) + (_p1.x - _p0.x) * (interPoint.y + transform.position.z));
                                     
-                                    // インデックスの割り当て
-                                    int idx0 = attachedMesh.triangles[n];
-                                    int idx1 = attachedMesh.triangles[n + 1];
-                                    int idx2 = attachedMesh.triangles[n + 2];
-                                    int idx3 = vertices1.Count - 2; // 7
-                                    int idx4 = vertices1.Count - 1; // 使わない  
-                                    int idx5 = vertices1.Count - 3; // 6
-
+                                  
                                     // 三角形の中にあるか
                                     if ((0 <= _s2 && _s2 <= 1) && (0 <= _t2 && _t2 <= 1) && (0 <= 1 - _s2 - _t2 && 1 - _s2 - _t2 <= 1))
                                     {
                                         Debug.Log("交差している点がポリゴンの中にある");
-                                        Debug.Log("ポリゴン番号" + attachedMesh.triangles[n] + "," + attachedMesh.triangles[n + 1] + "," + attachedMesh.triangles[n + 2]);
-
+                                       
                                         // 記憶された三角形インデックスの数だけループ
                                         for (int a = 0; a < idxMemory.Count; a += 3)
                                         {
+                                            // ちょっとずらした交点がどの記憶された三角形インデックスの中にあるか分岐
                                             if (attachedMesh.triangles[n] == idxMemory[a] && attachedMesh.triangles[n + 1] == idxMemory[a + 1] && attachedMesh.triangles[n + 2] == idxMemory[a + 2])
                                             {
                                                 if (a == 0)
                                                 {
-                                                  
+                                                    Debug.Log("ポリゴン番号" + attachedMesh.triangles[n] + "," + attachedMesh.triangles[n + 1] + "," + attachedMesh.triangles[n + 2]);
+
+                                                    Debug.Log("a = 0");
+
+                                                    // 交点をもとに頂点を追加
+                                                    vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
+                                                    vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
+
+                                                    // 同じ座標に頂点があったら広げる
+                                                    for (int l = 0; l < vertices1.Count - 1; l++)
+                                                    {
+                                                        // 同じ座標じゃなかったスルー
+                                                        if (vertices1[l] != vertices1[l + 1]) continue;
+
+                                                        // 切る方向に対して点を移動するめの処理
+                                                        edge1 = new Vector3(polyVtx_v.x,0, polyVtx_v.y) - new Vector3(polyVtx_s.x, 0, polyVtx_s.y);
+                                                        edge2 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                                        edge = edge1;
+
+                                                        Debug.Log("edge" + edge);
+
+                                                        // カットポイントが一直線だったら
+                                                        // 垂直に点を広げる
+                                                        if (edge == Vector3.zero)
+                                                        {
+                                                            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                                            edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
+                                                            edge = Vector3.Cross(edge1, edge2);
+                                                        }
+
+                                                        vertices1[l] = vertices1[l] + edge.normalized * 0.08f;
+                                                        vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.08f;
+                                                    }
+
+                                                    // インデックスの割り当て
+                                                    int idx0 = attachedMesh.triangles[n];
+                                                    int idx1 = attachedMesh.triangles[n + 1];
+                                                    int idx2 = attachedMesh.triangles[n + 2];
+                                                    int idx3 = vertices1.Count - 2; // 7
+                                                    int idx4 = vertices1.Count - 1; // 使わない  
+                                                    int idx5 = vertices1.Count - 3; // 6
+
+
+                                                    // インデックスの変更
+                                                    triangles1[n + 3] = idx5;
+
+                                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+
+                                                    triangles1.RemoveRange(n, 3);
+                                                    triangles1.Add(idx4);
+                                                    triangles1.Add(idx2);
+                                                    triangles1.Add(idx5);
+
+                                                    triangles1.Add(idx3);
+                                                    triangles1.Add(idx0);
+                                                    triangles1.Add(idx1);
+
+                                                    // 出来た三角形インデックスの保存
+                                                    //idxMemory.Clear();
+                                                    //idxMemory.Add(idx3);
+                                                    //idxMemory.Add(idx2);
+                                                    //idxMemory.Add(idx5);
+
+                                                    //idxMemory.Add(idx3);
+                                                    //idxMemory.Add(idx0);
+                                                    //idxMemory.Add(idx1);
+
+                                                    break;
                                                 }
                                                 if (a == 3)
                                                 {
-                                                  
+                                                    Debug.Log("a = 3");
+                                                    // 交点をもとに頂点を追加
+                                                    vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
+                                                    vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
 
+                                                    // 同じ座標に頂点があったら広げる
+                                                    for (int l = 0; l < vertices1.Count - 1; l++)
+                                                    {
+                                                        // 同じ座標じゃなかったスルー
+                                                        if (vertices1[l] != vertices1[l + 1]) continue;
+
+                                                        // 切る方向に対して点を移動するめの処理
+                                                        edge1 = new Vector3(polyVtx_v.x, 0, polyVtx_v.y) - new Vector3(polyVtx_s.x, 0, polyVtx_s.y);
+                                                        edge2 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                                        edge = edge1;
+
+                                                        Debug.Log("edge" + edge);
+
+                                                        // カットポイントが一直線だったら
+                                                        // 垂直に点を広げる
+                                                        if (edge == Vector3.zero)
+                                                        {
+                                                            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                                            edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
+                                                            edge = Vector3.Cross(edge1, edge2);
+                                                        }
+
+                                                        vertices1[l] = vertices1[l] + edge.normalized * 0.08f;
+                                                        vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.08f;
+                                                    }
+
+                                                    // インデックスの割り当て
+                                                    int idx0 = attachedMesh.triangles[n];
+                                                    int idx1 = attachedMesh.triangles[n + 1];
+                                                    int idx2 = attachedMesh.triangles[n + 2];
+                                                    int idx3 = vertices1.Count - 2; // 7
+                                                    int idx4 = vertices1.Count - 1; // 使わない  
+                                                    int idx5 = vertices1.Count - 3; // 6
+
+                                                    // インデックスの変更
+                                                    //triangles1[n + 3] = idx5;
+
+                                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+                                                    triangles1.RemoveRange(n, 3);
+                                                    triangles1.Add(idx4);
+                                                    triangles1.Add(idx2);
+                                                    triangles1.Add(idx5);
+
+                                                    triangles1.Add(idx3);
+                                                    triangles1.Add(idx0);
+                                                    triangles1.Add(idx1);
+
+                                                    break; 
                                                 }
                                                 if (a == 6)
                                                 {
-                                                 
+                                                    Debug.Log("a = 6");
+                                                    // 交点をもとに頂点を追加
+                                                    vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
+                                                    vertices1.Add(new Vector3(p.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, p.y));
+
+                                                    // 同じ座標に頂点があったら広げる
+                                                    for (int l = 0; l < vertices1.Count - 1; l++)
+                                                    {
+                                                        // 同じ座標じゃなかったスルー
+                                                        if (vertices1[l] != vertices1[l + 1]) continue;
+
+                                                        // 切る方向に対して点を移動するめの処理
+                                                        edge1 = new Vector3(polyVtx_v.x, 0, polyVtx_v.y) - new Vector3(polyVtx_s.x, 0, polyVtx_s.y);
+                                                        edge2 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                                        edge = edge1;
+
+                                                        Debug.Log("edge" + edge);
+
+                                                        // カットポイントが一直線だったら
+                                                        // 垂直に点を広げる
+                                                        if (edge == Vector3.zero)
+                                                        {
+                                                            edge1 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
+                                                            edge2 = (cutPoint[cutPoint.Count - 1] + Vector3.up) - cutPoint[cutPoint.Count - 1];
+                                                            edge = Vector3.Cross(edge1, edge2);
+                                                        }
+
+                                                        vertices1[l] = vertices1[l] + edge.normalized * 0.08f;
+                                                        vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.08f;
+                                                    }
+
+                                                    // インデックスの割り当て
+                                                    int idx0 = attachedMesh.triangles[n];
+                                                    int idx1 = attachedMesh.triangles[n + 1];
+                                                    int idx2 = attachedMesh.triangles[n + 2];
+                                                    int idx3 = vertices1.Count - 2; // 7
+                                                    int idx4 = vertices1.Count - 1; // 使わない  
+                                                    int idx5 = vertices1.Count - 3; // 6
+
+                                                    // インデックスの変更
+                                                    triangles1[n - 6] = idx5;
+                                                    triangles1[n - 3] = idx5;
+
+                                                    // カットポイントのあるポリゴンのインデックスの削除&追加
+                                                    triangles1.RemoveRange(n, 3);
+                                                    triangles1.Add(idx4);
+                                                    triangles1.Add(idx2);
+                                                    triangles1.Add(idx5);
+
+                                                    triangles1.Add(idx3);
+                                                    triangles1.Add(idx0);
+                                                    triangles1.Add(idx1);
+
+                                                    // ここまで来たら三角形を二等分するのは終了
+                                                    break;
                                                 }
 
-                                            }
-
-                                         
+                                            }                                        
                                         }
 
-                                      
+                                        
                                     }
                                 }
-                            }
-                        }
 
+                                // --- 4分割する処理 ---
+                                // カットポイントの終点ががどのポリゴンにいるか調べる
+                                for (int n = 0;n < attachedMesh.triangles.Length;n += 3)
+                                {
+                                    //メッシュの3つの頂点を取得
+                                    var _p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n]]);//+ Vector3.one * 0.0001f;
+                                    var _p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 1]]);//+ Vector3.one * 0.0001f;
+                                    var _p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 2]]); //+ Vector3.one * 0.0001f;
+
+                                    // カットポイントの終点がポリゴンの中にあるか
+                                    double _Area = 0.5 * (-_p1.z * _p2.x + _p0.z * (-_p1.x + _p2.x) + _p0.x * (_p1.z - _p2.z) + _p1.x * _p2.z);
+                                    double _s2 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * cutPoint[cutPoint.Count - 1].x + (_p0.x - _p2.x) * cutPoint[cutPoint.Count - 1].z);
+                                    double _t2 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * cutPoint[cutPoint.Count - 1].x + (_p1.x - _p0.x) * cutPoint[cutPoint.Count - 1].z);
+
+                                    // 三角形の中にあるか
+                                    if ((0 <= _s2 && _s2 <= 1) && (0 <= _t2 && _t2 <= 1) && (0 <= 1 - _s2 - _t2 && 1 - _s2 - _t2 <= 1))
+                                    {  
+                                        // あるとき
+                                        Debug.Log("ポリゴン番号" + attachedMesh.triangles[n] + "," + attachedMesh.triangles[n + 1] + "," + attachedMesh.triangles[n + 2]);
+
+                                        // ベクトルの係数の計算
+                                        double _s3 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * (p.x + transform.position.x) + (_p0.x - _p2.x) * (p.y + transform.position.z));
+                                        double _t3 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * (p.x + transform.position.x) + (_p1.x - _p0.x) * (p.y + transform.position.z));
+
+                                        // カットポイントの終点に頂点の追加
+                                        vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+                                        vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+
+                                        // 交点がどのポリゴンの辺にいるのか
+                                        if (_t3 < 0.002f) // 辺S上
+                                        {
+                                            Debug.Log("辺S上");
+
+                                            // インデックスの割り当て
+                                            int idx0 = attachedMesh.triangles[n];
+                                            int idx1 = attachedMesh.triangles[n + 1];
+                                            int idx2 = attachedMesh.triangles[n + 2];
+                                            int idx3 = vertices1.Count - 4; // 
+                                            int idx4 = vertices1.Count - 3; // 
+                                            int idx5 = vertices1.Count - 2; // 
+                                            int idx6 = vertices1.Count - 1; // 
+
+
+                                            // カットポイントのあるポリゴンのインデックスの削除&追加
+                                            triangles1.RemoveRange(i, 3);
+
+                                            // インデックスの振り分け
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx2);
+                                            triangles1.Add(idx0);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx0);
+                                            triangles1.Add(idx4);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx3);
+                                            triangles1.Add(idx1);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx1);
+                                            triangles1.Add(idx2);
+
+                                            // 出来た三角形インデックスの保存
+                                            idxMemory.Clear();
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx2);
+                                            idxMemory.Add(idx0);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx0);
+                                            idxMemory.Add(idx4);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx3);
+                                            idxMemory.Add(idx1);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx1);
+                                            idxMemory.Add(idx2);
+                                        }
+                                        else if (_s3 < 0.002f)    // 辺T上
+                                        {
+                                            Debug.Log("辺T上");
+
+                                            // インデックスの割り当て
+                                            int idx0 = attachedMesh.triangles[n];
+                                            int idx1 = attachedMesh.triangles[n + 1];
+                                            int idx2 = attachedMesh.triangles[n + 2];
+                                            int idx3 = vertices1.Count - 4; // 
+                                            int idx4 = vertices1.Count - 3; // 
+                                            int idx5 = vertices1.Count - 2; // 
+                                            int idx6 = vertices1.Count - 1; // 
+
+                                            // カットポイントのあるポリゴンのインデックスの削除&追加
+                                            triangles1.RemoveRange(n, 3);
+
+                                            // インデックスの振り分け
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx1);
+                                            triangles1.Add(idx2);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx2);
+                                            triangles1.Add(idx4);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx3);
+                                            triangles1.Add(idx0);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx0);
+                                            triangles1.Add(idx1);
+
+                                            // 出来た三角形インデックスの保存
+                                            idxMemory.Clear();
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx1);
+                                            idxMemory.Add(idx2);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx2);
+                                            idxMemory.Add(idx4);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx3);
+                                            idxMemory.Add(idx0);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx0);
+                                            idxMemory.Add(idx1);
+
+                                        }
+                                        else if (_s3 + _t3 > 0.98f) // 辺S+T上
+                                        {
+                                            Debug.Log("辺S + T上");
+
+                                            // インデックスの割り当て
+                                            int idx0 = attachedMesh.triangles[n];
+                                            int idx1 = attachedMesh.triangles[n + 1];
+                                            int idx2 = attachedMesh.triangles[n + 2];
+                                            int idx3 = vertices1.Count - 4; // 
+                                            int idx4 = vertices1.Count - 3; // 
+                                            int idx5 = vertices1.Count - 2; // 
+                                            int idx6 = vertices1.Count - 1; // 
+
+                                            // カットポイントのあるポリゴンのインデックスの削除&追加
+                                            triangles1.RemoveRange(i, 3);
+
+                                            // インデックスの振り分け
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx0);
+                                            triangles1.Add(idx1);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx1);
+                                            triangles1.Add(idx4);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx3);
+                                            triangles1.Add(idx2);
+
+                                            triangles1.Add(idx5);
+                                            triangles1.Add(idx2);
+                                            triangles1.Add(idx0);
+
+                                            // 出来た三角形インデックスの保存
+                                            idxMemory.Clear();
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx0);
+                                            idxMemory.Add(idx1);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx1);
+                                            idxMemory.Add(idx4);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx3);
+                                            idxMemory.Add(idx2);
+
+                                            idxMemory.Add(idx5);
+                                            idxMemory.Add(idx2);
+                                            idxMemory.Add(idx0);
+                                        }
+                                        else
+                                        {
+                                            Debug.Log("どの辺にもない");
+                                        }
+
+                                    }
+
+
+                                }
+
+                                // ここまで来たら終了
+                                //break;
+
+                            }
+
+                            // ポリゴンに含まれる交点が1個の時
+                            if(interPointCnt == 1)
+                            {
+                                Debug.Log("1個");
+                                
+                            }
+                            else if(interPointCnt == 2)
+                            {   // ポリゴンに含まれる交点が2個の時
+                                Debug.Log("2個");
+                            }
+
+                            // ここまで来たら終了
+                            //break;
+                        }
+                        // ここまで来たら終了
+                        //break;
                     }
 
 
@@ -567,298 +1215,7 @@ public class MeshDivision2 : MonoBehaviour
                 }
 
 
-                // カットポイントの場所に頂点の追加(あとで分けるため二つ追加)
-                vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
-                vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
-
-                // インデックスの割り当て
-                int _0 = attachedMesh.triangles[i];
-                int _1 = attachedMesh.triangles[i + 1];
-                int _2 = attachedMesh.triangles[i + 2];
-                int _3 = vertices1.Count - 2; // 7
-                int _4 = vertices1.Count - 1; // 使わない  
-                int _5 = vertices1.Count - 3; // 6
-
-                // 記憶された三角形インデックスの数だけループ
-                for (int j = 0; j < idxMemory.Count; j += 3)
-                {
-                    // 記憶された三角形インデクスと一致した時
-                    if (idxMemory.Count > 9)
-                    {
-                        if (attachedMesh.triangles[i] == idxMemory[j] && attachedMesh.triangles[i + 1] == idxMemory[j + 1] && attachedMesh.triangles[i + 2] == idxMemory[j + 2])
-                        {
-                            Debug.Log(idxMemory[j] + "" + idxMemory[j + 1] + "" + idxMemory[j + 2]);
-                            if (j == 0)
-                            {
-                                Debug.Log("j = 0");
-                                // インデックスの変更
-                                triangles1[i + j + 3] = _5;
-
-                                // カットポイントのあるポリゴンのインデックスの削除&追加
-
-                                triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_1);
-                                triangles1.Add(_2);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_2);
-                                triangles1.Add(_5);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-                                // 出来た三角形インデックスの保存
-                                idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_1);
-                                idxMemory.Add(_2);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_2);
-                                idxMemory.Add(_5);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-                                break;
-                            }
-                            if (j == 3)
-                            {
-                                Debug.Log("j = 3");
-                                // カットポイントのあるポリゴンのインデックスの削除&追加
-                                triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_1);
-                                triangles1.Add(_2);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_2);
-                                triangles1.Add(_5);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-                                // 出来た三角形インデックスの保存
-                                idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_1);
-                                idxMemory.Add(_2);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_2);
-                                idxMemory.Add(_5);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-                                break;
-                            }
-                            if (j == 6)
-                            {
-                                Debug.Log("j = 6");
-                                // インデックスの変更
-                                triangles1[i + 3] = _5;
-                                triangles1[i - 3] = _5;
-                                triangles1[i - 6] = _5;
-
-                                // カットポイントのあるポリゴンのインデックスの削除&追加
-                                triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_1);
-                                triangles1.Add(_2);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_2);
-                                triangles1.Add(_5);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-
-                                // 出来た三角形インデックスの保存
-                                idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_1);
-                                idxMemory.Add(_2);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_2);
-                                idxMemory.Add(_5);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-                                break;
-                            }
-                            if (j == 9)
-                            {
-                                Debug.Log("j = 9");
-                                triangles1[i + j - 9] = _5;
-                                triangles1[i + j - 15] = _5;
-                                triangles1[i + j - 18] = _5;
-
-                                // カットポイントのあるポリゴンのインデックスの削除&追加
-                                triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_1);
-                                triangles1.Add(_2);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_2);
-                                triangles1.Add(_5);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-                                // 出来た三角形インデックスの保存
-                                idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_1);
-                                idxMemory.Add(_2);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_2);
-                                idxMemory.Add(_5);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-                                break;
-                            }
-
-                        }
-
-                    }
-                    else if (idxMemory.Count < 10)  // 記憶された三角形インデックスの数が10よりも少ないとき(三角形が3個)
-                    {
-                        if (attachedMesh.triangles[i] == idxMemory[j] && attachedMesh.triangles[i + 1] == idxMemory[j + 1] && attachedMesh.triangles[i + 2] == idxMemory[j + 2])
-                        {
-                            if (j == 0)
-                            {
-                                Debug.Log("j = 0");
-                                // インデックスの変更
-                                triangles1[i + j + 3] = _5;
-
-                                // カットポイントのあるポリゴンのインデックスの削除&追加
-
-                                triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_1);
-                                triangles1.Add(_2);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_2);
-                                triangles1.Add(_5);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-                                // 出来た三角形インデックスの保存
-                                idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_1);
-                                idxMemory.Add(_2);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_2);
-                                idxMemory.Add(_5);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-                                break;
-                            }
-                            if (j == 3)
-                            {
-                                Debug.Log("j = 3");
-
-                                triangles1[i + j - 3] = _5;
-                                //triangles1[i + j] = _5;
-                                // カットポイントのあるポリゴンのインデックスの削除&追加
-                                triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_1);
-                                triangles1.Add(_2);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_2);
-                                triangles1.Add(_5);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-                                // 出来た三角形インデックスの保存
-                                idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_1);
-                                idxMemory.Add(_2);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_2);
-                                idxMemory.Add(_5);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-                                break;
-                            }
-                            if (j == 6)
-                            {
-                                Debug.Log("j = 6");
-                                Debug.Log("j = " + j);
-                                Debug.Log("j + i = " + (j + i));
-                                Debug.Log("2回目");
-
-                                // インデックスの変更
-
-                                triangles1[i - 3] = _5;
-                                triangles1[i - 6] = _5;
-                                //triangles1[i + j + 3] = _5;
-
-                                // カットポイントのあるポリゴンのインデックスの削除&追加
-                                triangles1.RemoveRange(i, 3);
-                                triangles1.Add(_3);
-                                triangles1.Add(_1);
-                                triangles1.Add(_2);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_2);
-                                triangles1.Add(_5);
-
-                                triangles1.Add(_3);
-                                triangles1.Add(_0);
-                                triangles1.Add(_1);
-
-                                // 出来た三角形インデックスの保存
-                                idxMemory.Clear();
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_1);
-                                idxMemory.Add(_2);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_2);
-                                idxMemory.Add(_5);
-
-                                idxMemory.Add(_3);
-                                idxMemory.Add(_0);
-                                idxMemory.Add(_1);
-                                break;
-                            }
-                        }
-
-                    }
-
-
-
-                }
-
+               
                 Debug.Log(idxMemory.Count);
 
 
