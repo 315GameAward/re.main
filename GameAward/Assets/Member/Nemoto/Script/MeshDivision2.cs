@@ -721,6 +721,7 @@ public class MeshDivision2 : MonoBehaviour
                     // ポリゴンごとに処理
                     for (int j = 0; j < attachedMesh.triangles.Length; j += 3)
                     {
+                        // カットポイントが増えたら終了
                         if (vtxCount != vertices1.Count) break;
 
                         // 交差した点の数
@@ -1192,8 +1193,10 @@ public class MeshDivision2 : MonoBehaviour
 
                             }
 
+                            Debug.Log("interPointCnt"+ interPointCnt);
+
                             // ポリゴンに含まれる交点が1個の時
-                            if(interPointCnt == 1)
+                            if (interPointCnt == 1)
                             {
                                 Debug.Log("1個");
                                 
