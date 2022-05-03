@@ -29,14 +29,15 @@ public class SetPosition : MonoBehaviour
     {
         Vector3 trans = new Vector3(this.transform.position.x, 0.0f, this.transform.position.z);
         times += Time.deltaTime;    // 測定経過時間
-        if(times > span) {
-        RayPosition = trans + rayPosition;
-        Ray ray = new Ray(RayPosition, rayVector);
-        isGround = Physics.Raycast(ray, distance);
+        if (times > span)
+        {
+            RayPosition = trans + rayPosition;
+            Ray ray = new Ray(RayPosition, rayVector);
+            isGround = Physics.Raycast(ray, distance);
             Debug.DrawRay(RayPosition, rayVector * distance, Color.red);
 
-           // Debug.Log(isGround);
-        times = 0.0f;
+            // Debug.Log(isGround);
+            times = 0.0f;
         }
         Debug.DrawRay(RayPosition, rayVector * distance, Color.red);
     }
@@ -45,10 +46,10 @@ public class SetPosition : MonoBehaviour
     public void CreateRandomPosition(bool on)
     {
         if (on)
-        { 
-        var randDestination = Random.insideUnitCircle * 8;
-        //　現在地にランダムな位置を足して目的地とする
-        SetDestination(startPosition + new Vector3(randDestination.x, 0, randDestination.y));
+        {
+            var randDestination = Random.insideUnitCircle * 8;
+            //　現在地にランダムな位置を足して目的地とする
+            SetDestination(startPosition + new Vector3(randDestination.x, 0, randDestination.y));
         }
         else
         {

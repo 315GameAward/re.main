@@ -39,7 +39,7 @@ public class MoveEnemy : MonoBehaviour
     private float timeTrigger;
     // 敵の状態
     public EnemyState state;
-    
+
     //　プレイヤーTransform
     private Transform playerTransform;
     // 床当たり判定
@@ -70,12 +70,12 @@ public class MoveEnemy : MonoBehaviour
             //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == EnemyState.Chase)
             {
-                setPosition.SetDestination(new Vector3(playerTransform.position.x,0.0f, playerTransform.position.z));
+                setPosition.SetDestination(new Vector3(playerTransform.position.x, 0.0f, playerTransform.position.z));
             }
             if (enemyController.isGrounded)
             {
                 velocity = Vector3.zero;
-               //animator.SetFloat("Walk", 1.0f);
+                //animator.SetFloat("Walk", 1.0f);
                 direction = (setPosition.GetDestination() - transform.position).normalized;
                 transform.LookAt(new Vector3(setPosition.GetDestination().x, transform.position.y, setPosition.GetDestination().z));
                 velocity = direction * walkSpeed;
@@ -85,22 +85,22 @@ public class MoveEnemy : MonoBehaviour
             if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 0.5f)
             {
                 SetState(EnemyState.Wait);
-              //  animator.SetFloat("Walk", 0.0f);
-                
+                //  animator.SetFloat("Walk", 0.0f);
+
             }
             //　到着していたら一定時間待つ
         }
         else if (state == EnemyState.Wait)
         {
             elapsedTime += Time.deltaTime;
-            
+
             //　待ち時間を越えたら次の目的地を設定
             if (elapsedTime > waitTime)
             {
                 SetState(EnemyState.Walk);
             }
         }
-        
+
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
     }
@@ -114,19 +114,19 @@ public class MoveEnemy : MonoBehaviour
             arrived = false;
             elapsedTime = 0f;
             state = tempState;
-            setPosition.CreateRandomPosition( true );
-            
+            setPosition.CreateRandomPosition(true);
+
 
         }
         else if (tempState == EnemyState.Chase)
         {
-            Debug.Log("選択");
+            Debug.Log("追う");
             state = tempState;
             //　待機状態から追いかける場合もあるのでOff
             arrived = false;
             //　追いかける対象をセット
             playerTransform = targetObj;
-           
+
         }
         else if (tempState == EnemyState.Wait)
         {
@@ -135,8 +135,8 @@ public class MoveEnemy : MonoBehaviour
             state = tempState;
             arrived = true;
             velocity = Vector3.zero;
-           
-        //    animator.SetFloat("Walk", 0f);
+
+            //    animator.SetFloat("Walk", 0f);
         }
         else if (tempState == EnemyState.Attack)
         {
@@ -149,7 +149,7 @@ public class MoveEnemy : MonoBehaviour
             {
                 // 攻撃
                 Debug.Log("攻撃しました");
-           
+
                 timeTrigger = Time.time + timeOut;
             }
         }
@@ -157,7 +157,7 @@ public class MoveEnemy : MonoBehaviour
         {
             Debug.Log("下がる");
             setPosition.CreateRandomPosition(false);
-          
+
         }
     }
     //　敵キャラクターの状態取得メソッド
