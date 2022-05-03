@@ -1471,7 +1471,11 @@ public class MeshDivision2 : MonoBehaviour
         attachedMesh.SetTriangles(triangles1.ToArray(), 0);
         attachedMesh.SetNormals(normal);
 
+        // ポリゴンの数だけループ
+        for(int i = 0;i < attachedMesh.triangles.Length; i += 3)
+        {
 
+        }
     }
 
     // ギズモの表示

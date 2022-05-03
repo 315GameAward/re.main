@@ -19,10 +19,12 @@ public class PlayerAnimation : MonoBehaviour
         if(anime)
         {
             animator.SetBool("Cut1", true);
+            animator.SetBool("a", true);
         }
         else
         {
             animator.SetBool("Cut1", false);
+            animator.SetBool("a", false);
         }
     }
 }
