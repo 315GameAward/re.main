@@ -181,7 +181,7 @@ public class PlayerControl : MonoBehaviour
     private void MoveDir(InputAction.CallbackContext context)
     {
         bLeftClick = true;
-        Scisser.GetComponent<PlayerAnimation>().anime = true;
+        //Scisser.GetComponent<PlayerAnimation>().anime = true;
 
     }
 
