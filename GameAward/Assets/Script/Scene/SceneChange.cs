@@ -11,7 +11,7 @@ public class SceneChange : MonoBehaviour
 
     void Start()
     {
-        Node = SceneStructure.node;        
+        Node = SceneStructure.node;
     }
 
     // Update is called once per frame
