@@ -1471,11 +1471,143 @@ public class MeshDivision2 : MonoBehaviour
         attachedMesh.SetTriangles(triangles1.ToArray(), 0);
         attachedMesh.SetNormals(normal);
 
-        // ポリゴンの数だけループ
-        for(int i = 0;i < attachedMesh.triangles.Length; i += 3)
+        // --- 別々のオブジェクトに分ける処理 ---
+
+        // 変数宣言
+        int idx = 0;
+        int cnt = 0;
+        bool end = false;
+        var vertices2 = new List<Vector3>();   // 頂点
+        var triangles2 = new List<int>();       // 三角形インデックス
+        var removeList = new List<int>();       // 消す用のリスト
+        var normals2 = new List<Vector3>();     // 法線
+
+        // まず格納
+        triangles2.Add(triangles1[idx]);
+        triangles2.Add(triangles1[idx + 1]);
+        triangles2.Add(triangles1[idx + 2]);
+
+        Debug.Log("triangle2:" + triangles2[idx] + "" + triangles2[idx + 1] + "" + triangles2[idx + 2]);
+
+        // 同じ辺があるかを探索
+        while (!end)
         {
+            // 同じ辺が存在しているか変数
+            bool Existence = false;
+
+            // ポリゴンの数だけループ
+            for (int i = 0; i < triangles1.Count; i += 3)
+            {
+                Existence = false;
+                // インデックスとiが同じだったらスルー
+                //if (idx == i) continue;
+
+                // 三角形は3辺あるので3ループ
+                for (int k = 0; k < 3; k++)
+                {
+                    // 1辺に対して3辺調べるので3ループ
+                    for (int j = 0; j < 3; j++)
+                    {
+                        // 同じ辺があるか
+                        if ((triangles1[idx + k] == triangles1[i + j]           && triangles1[(idx + k + 1) % 3] == triangles1[i + (j + 1) % 3]) ||
+                            (triangles1[idx + k] == triangles1[i + (j + 1) % 3] && triangles1[(idx + k + 1) % 3] == triangles1[i + j]          )   )
+                        {
+                            Debug.Log("同じ辺があるとき");
+                            Debug.Log("ヒットしたポリゴン番号:" + triangles1[i] + "" + triangles1[i + 1] + "" + triangles1[i + 2]);
+                            Debug.Log("idxのポリゴン番号:" + triangles2[idx] + "" + triangles2[idx + 1] + "" + triangles2[idx + 2]);
+                            Debug.Log("triangle1[idx + k]:" + triangles1[idx + k] + "" + triangles1[(idx + k + 1) % 3]);
+                            Debug.Log("triangles1[i + j]:" + triangles1[i + j] + "" + triangles1[i + (j + 1) % 3]);
+                            Debug.Log("triangles1[i + (j + 1) % 3]:" + triangles1[i + (j + 1) % 3] + "" + triangles1[i + j]);
+
+                            // 同じ辺があるとき
+                            // それがすでに格納済みかどうか調べる                         
+                            for (int l = 0;l < triangles2.Count;l++)
+                            {
+                                // 追加したいインデックスと追加先のインデックスとの比較
+                                // なかったらスルー
+                                if (!(triangles2[l] == triangles1[i] && triangles2[l + 1] == triangles1[i + 1] && triangles2[l + 2] == triangles1[i + 2])) continue;
+
+                                // 存在している
+                                Existence = true;
+                            }
+
+                            // 存在したら次の探索へ
+                            if(Existence)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Debug.Log("存在しなかったら格納");
+                                // 存在しなかったら格納
+                                triangles2.Add(triangles1[i ]);
+                                triangles2.Add(triangles1[i  + 1]);
+                                triangles2.Add(triangles1[i  + 2]);
+
+                                // もう一方のリストからは削除
+                                //triangles1.RemoveRange(idx,3);
+                                removeList.Add(idx);
+
+
+                                // 次の探索へ
+                                idx = i ;    // 次の探索のポリゴンの最初のインデックス
+                                Existence = true;
+                                break;
+                            }
+                        }
+                      
+
+                    }
+
+                    // 存在したら次の探索へ
+                    if (Existence)
+                    {
+                        break;
+                    }
+                }
+
+                // 存在したら次の探索へ
+                if (Existence)
+                {
+                    break;
+                }
+              
+            }
+            // 存在しなかったら、つまり探索終了
+            if (!Existence)
+            {
+                Debug.Log("お腹減った");
+                // endフラグon
+                end = true;
+            }
+
+            cnt++;
+            if(cnt > vertices1.Count)
+            {
+                // endフラグon
+                end = true;
+            }
+
+
 
         }
+
+        Debug.Log("removeList.Count"+ removeList.Count);
+
+        for (int i = 0;i < removeList.Count;i++)
+        {
+            triangles1.RemoveRange(removeList[i], 3);
+            triangles1.Insert(removeList[i], 0);
+            triangles1.Insert(removeList[i], 0);
+            triangles1.Insert(removeList[i], 0);
+        }
+
+        Debug.Log("つらたん");
+        // メッシュに代入
+        attachedMesh.SetVertices(vertices1.ToArray());
+        attachedMesh.SetTriangles(triangles1.ToArray(), 0);
+        attachedMesh.SetNormals(normal);
+
     }
 
     // ギズモの表示
