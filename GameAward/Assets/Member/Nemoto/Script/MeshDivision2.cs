@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MeshDivision2 : MonoBehaviour
 {
@@ -1474,18 +1475,21 @@ public class MeshDivision2 : MonoBehaviour
         // --- 別々のオブジェクトに分ける処理 ---
 
         // 変数宣言
-        int idx = 0;
-        int cnt = 0;
-        bool end = false;
+        int idx = 0;    // 探索させるインデックス
+        var idxList = new List<int>();       // 探索させるインデックスのリスト
+        //int cnt = 0;
+        bool addFlg = false;    // 追加フラグ
+        bool end = false;   // 終了フラグ
         var vertices2 = new List<Vector3>();   // 頂点
         var triangles2 = new List<int>();       // 三角形インデックス
         var removeList = new List<int>();       // 消す用のリスト
         var normals2 = new List<Vector3>();     // 法線
 
         // まず格納
-        triangles2.Add(triangles1[idx]);
-        triangles2.Add(triangles1[idx + 1]);
-        triangles2.Add(triangles1[idx + 2]);
+        idxList.Add(0);
+        triangles2.Add(triangles1[idxList[0]]);
+        triangles2.Add(triangles1[idxList[0] + 1]);
+        triangles2.Add(triangles1[idxList[0] + 2]);
 
         Debug.Log("triangle2:" + triangles2[idx] + "" + triangles2[idx + 1] + "" + triangles2[idx + 2]);
 
@@ -1494,6 +1498,9 @@ public class MeshDivision2 : MonoBehaviour
         {
             // 同じ辺が存在しているか変数
             bool Existence = false;
+
+            // 追加フラグOFF
+            addFlg = false;
 
             // ポリゴンの数だけループ
             for (int i = 0; i < triangles1.Count; i += 3)
@@ -1509,12 +1516,12 @@ public class MeshDivision2 : MonoBehaviour
                     for (int j = 0; j < 3; j++)
                     {
                         // 同じ辺があるか
-                        if ((triangles1[idx + k] == triangles1[i + j]           && triangles1[(idx + k + 1) % 3] == triangles1[i + (j + 1) % 3]) ||
-                            (triangles1[idx + k] == triangles1[i + (j + 1) % 3] && triangles1[(idx + k + 1) % 3] == triangles1[i + j]          )   )
+                        if ((triangles1[idxList[0] + k] == triangles1[i + j]           && triangles1[idxList[0] + ( k + 1) % 3] == triangles1[i + (j + 1) % 3]) ||
+                            (triangles1[idxList[0] + k] == triangles1[i + (j + 1) % 3] && triangles1[idxList[0] + ( k + 1) % 3] == triangles1[i + j]          )   )
                         {
                             Debug.Log("同じ辺があるとき");
                             Debug.Log("ヒットしたポリゴン番号:" + triangles1[i] + "" + triangles1[i + 1] + "" + triangles1[i + 2]);
-                            Debug.Log("idxのポリゴン番号:" + triangles2[idx] + "" + triangles2[idx + 1] + "" + triangles2[idx + 2]);
+                            Debug.Log("idxのポリゴン番号:" + triangles1[idx] + "" + triangles1[idx + 1] + "" + triangles1[idx + 2]);
                             Debug.Log("triangle1[idx + k]:" + triangles1[idx + k] + "" + triangles1[(idx + k + 1) % 3]);
                             Debug.Log("triangles1[i + j]:" + triangles1[i + j] + "" + triangles1[i + (j + 1) % 3]);
                             Debug.Log("triangles1[i + (j + 1) % 3]:" + triangles1[i + (j + 1) % 3] + "" + triangles1[i + j]);
@@ -1529,6 +1536,7 @@ public class MeshDivision2 : MonoBehaviour
 
                                 // 存在している
                                 Existence = true;
+                                break;// ループ終了
                             }
 
                             // 存在したら次の探索へ
@@ -1544,14 +1552,11 @@ public class MeshDivision2 : MonoBehaviour
                                 triangles2.Add(triangles1[i  + 1]);
                                 triangles2.Add(triangles1[i  + 2]);
 
-                                // もう一方のリストからは削除
-                                //triangles1.RemoveRange(idx,3);
-                                removeList.Add(idx);
-
-
+                               
                                 // 次の探索へ
-                                idx = i ;    // 次の探索のポリゴンの最初のインデックス
-                                Existence = true;
+                                idxList.Add(i);
+                                //idx = i ;    // 次の探索のポリゴンの最初のインデックス
+                                addFlg = true;
                                 break;
                             }
                         }
@@ -1566,35 +1571,40 @@ public class MeshDivision2 : MonoBehaviour
                     }
                 }
 
+                // 追加したら次の探索へ
+                if (addFlg)
+                {
+                    continue;
+                }
+
                 // 存在したら次の探索へ
                 if (Existence)
                 {
-                    break;
+                    continue;
                 }
               
             }
-            // 存在しなかったら、つまり探索終了
-            if (!Existence)
+
+            // もう一方のリストからは削除
+            removeList.Add(idxList[0]);
+
+            // 探索しきったインデックスを消す
+            idxList.RemoveAt(0);       
+
+            // もし探索したいインデックスがなくなったら終了
+           if(idxList.Count == 0)
             {
                 Debug.Log("お腹減った");
                 // endフラグon
                 end = true;
             }
 
-            cnt++;
-            if(cnt > vertices1.Count)
-            {
-                // endフラグon
-                end = true;
-            }
-
-
-
         }
 
         Debug.Log("removeList.Count"+ removeList.Count);
 
-        for (int i = 0;i < removeList.Count;i++)
+        // triangles1に入ってたtriangles2を消す
+        for (int i = 0; i < removeList.Count; i++)
         {
             triangles1.RemoveRange(removeList[i], 3);
             triangles1.Insert(removeList[i], 0);
@@ -1602,7 +1612,158 @@ public class MeshDivision2 : MonoBehaviour
             triangles1.Insert(removeList[i], 0);
         }
 
+        // triangles1をもとにvertices1を生成し、それをもとにtriangles1を上書き
+        for (int i = 0; i < triangles1.Count; i++)
+        {
+            vertices1.Add(attachedMesh.vertices[triangles1[i]]);
+            for (int j = 0; j < vertices1.Count; j++)
+            {
+                // 追加した頂点が重複してなかったらそのまま終了
+                if (j == vertices1.Count - 1)
+                {
+                    // インデックスの上書き
+                    triangles1[i] = vertices1.Count - 1;
+                    break;
+                }
+                // 追加した頂点が重複してたら追加した頂点を消す
+                if (vertices1[j] == attachedMesh.vertices[triangles1[i]])
+                {
+                    // 頂点削除
+                    vertices1.RemoveAt(vertices1.Count - 1);
+
+                    // インデックスの上書き
+                    triangles1[i] = j;
+                    break;
+                }
+            }
+
+        }
+
+        normals1.Clear();
+        // ノーマルの設定       
+        for (int i = 0; i < vertices1.Count; i++)
+        {
+            normals1.Add(Vector3.up);
+        }
+
+        // triangles2をもとにvertices2を生成し、それをもとにtriangles2を上書き
+        for (int i = 0;i < triangles2.Count;i++)
+        {
+            vertices2.Add(attachedMesh.vertices[triangles2[i]]);
+            for(int j = 0;j < vertices2.Count;j++)
+            {
+                // 追加した頂点が重複してなかったらそのまま終了
+                if (j == vertices2.Count - 1)
+                {
+                    // インデックスの上書き
+                    triangles2[i] = vertices2.Count - 1;
+                    break;
+                }
+                // 追加した頂点が重複してたら追加した頂点を消す
+                if(vertices2[j] == attachedMesh.vertices[triangles2[i]])
+                {
+                    // 頂点削除
+                    vertices2.RemoveAt(vertices2.Count - 1);
+
+                    // インデックスの上書き
+                    triangles2[i] = j;
+                    break;
+                }
+            }
+
+        }
+
+
+
+        // ノーマルの設定       
+        for (int i = 0; i < vertices2.Count; i++)
+        {
+            normals2.Add(Vector3.up);
+        }
+
+        //カット後のオブジェクト生成、いろいろといれる
+        GameObject obj = new GameObject("Plane", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshDivision2), typeof(Ground));
+        var mesh = new Mesh();
+        mesh.vertices = vertices1.ToArray();
+        mesh.triangles = triangles1.ToArray();
+        //mesh.uv = uvs1.ToArray();
+        mesh.normals = normals1.ToArray();
+        obj.GetComponent<MeshFilter>().mesh = mesh;
+        obj.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
+        obj.GetComponent<MeshCollider>().sharedMesh = mesh;
+        obj.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
+        //obj.GetComponent<MeshCollider>().convex = false;
+        obj.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+        obj.transform.position = transform.position;
+        obj.transform.rotation = transform.rotation;
+        obj.transform.localScale = transform.localScale;
+        //obj.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
+        //obj.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
+        obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+
+        GameObject obj2 = new GameObject("Plane", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshDivision2), typeof(Ground));
+        var mesh2 = new Mesh();
+        mesh2.vertices = vertices2.ToArray();
+        mesh2.triangles = triangles2.ToArray();
+       
+        mesh2.normals = normals2.ToArray();
+        obj2.GetComponent<MeshFilter>().mesh = mesh2;
+        obj2.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
+        obj2.GetComponent<MeshCollider>().sharedMesh = mesh2;
+        obj2.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
+        //obj2.GetComponent<MeshCollider>().convex = false;
+        obj2.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+        obj2.transform.position = transform.position;
+        obj2.transform.rotation = transform.rotation;
+        obj2.transform.localScale = transform.localScale;
+        //obj2.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
+        //obj2.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
+        obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+        
+        Debug.Log("triangles2:" + triangles2.Count);
+        Debug.Log("vertices2:"+ vertices2.Count);
         Debug.Log("つらたん");
+
+        // 面積の計算
+        float s1 = 0;   // 面積1
+        float s2 = 0;   // 面積1
+
+        // 面積1の計算
+        for(int i = 0;i < triangles1.Count;i+=3)
+        {
+            s1 += CalculateArea1(new Vector2(vertices1[triangles1[i]].x, vertices1[triangles1[i]].z), new Vector2(vertices1[triangles1[i + 1]].x, vertices1[triangles1[i + 1]].z), new Vector2(vertices1[triangles1[i + 2]].x, vertices1[triangles1[i + 2]].z));
+        }
+
+        // 面積2の計算
+        for (int i = 0; i < triangles2.Count; i += 3)
+        {
+            s2 += CalculateArea1(new Vector2(vertices2[triangles2[i]].x, vertices2[triangles2[i]].z), new Vector2(vertices2[triangles2[i + 1]].x, vertices2[triangles2[i + 1]].z), new Vector2(vertices2[triangles2[i + 2]].x, vertices2[triangles2[i + 2]].z));
+        }
+
+        // 体積の比較(ここで体積が軽い方を落としています)
+        if (s1 < s2)
+        {
+            obj2.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
+            obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+            obj.GetComponent<Renderer>().material.color = Color.gray;
+            obj.GetComponent<Ground>().StartFadeOut();
+            obj.GetComponent<Rigidbody>().mass = 0.5f;
+            obj.GetComponent<Rigidbody>().drag = 7.0f;
+
+        }
+        else
+        {
+            obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
+            obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+            obj2.GetComponent<Renderer>().material.color = Color.gray;
+            obj2.GetComponent<Ground>().StartFadeOut();
+            obj2.GetComponent<Rigidbody>().mass = 0.5f;
+            obj2.GetComponent<Rigidbody>().drag = 7.0f;
+        }
+
+        //このオブジェクトをデストロイ
+        Destroy(gameObject);
+
         // メッシュに代入
         attachedMesh.SetVertices(vertices1.ToArray());
         attachedMesh.SetTriangles(triangles1.ToArray(), 0);
@@ -1610,6 +1771,53 @@ public class MeshDivision2 : MonoBehaviour
 
     }
 
+    // 面積の計算
+    private float CalculateArea1(Vector2 A, Vector2 B, Vector2 C)
+    {
+        float S, s;
+        float a = Vector2.Distance(B, C);
+        float b = Vector2.Distance(A, C);
+        float c = Vector2.Distance(A, B);
+
+        s = (a + b + c) / 2;
+        S = Mathf.Sqrt(s * (s - a) * (s - b) * (s - c));
+
+        return S;
+    }
+
+    // 体積の計算
+    public float VolumeOfMesh(Mesh mesh)
+    {
+        if (mesh == null) return 0;
+
+        Vector3[] vertics = mesh.vertices;
+        int[] triangles = mesh.triangles;
+
+        float volume = 0;
+        for (int i = 0; i < triangles.Length; i += 3)
+        {
+            Vector3 p1 = vertics[triangles[i + 0]];
+            Vector3 p2 = vertics[triangles[i + 1]];
+            Vector3 p3 = vertics[triangles[i + 2]];
+            volume += SignedVolumeOfTriangle(p1, p2, p3);
+
+        }
+
+
+        return Mathf.Abs(volume);
+    }
+
+    // 体積の計算で使う関数
+    public float SignedVolumeOfTriangle(Vector3 p1, Vector3 p2, Vector3 p3)
+    {
+        float v321 = p3.x * p2.y * p1.z;
+        float v231 = p2.x * p3.y * p1.z;
+        float v312 = p3.x * p1.y * p2.z;
+        float v132 = p1.x * p3.y * p2.z;
+        float v213 = p2.x * p1.y * p3.z;
+        float v123 = p1.x * p2.y * p3.z;
+        return (1.0f / 6.0f) * (-v321 + v231 + v312 - v132 - v213 + v123);
+    }
     // ギズモの表示
     private void OnDrawGizmos()
     {
@@ -1632,6 +1840,8 @@ public class MeshDivision2 : MonoBehaviour
             }
 
         }
+
+        
     }
 
     float sign(Vector2 p1, Vector2 p2, Vector2 p3)
