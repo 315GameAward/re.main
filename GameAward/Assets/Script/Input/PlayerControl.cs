@@ -29,6 +29,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float _moveForce = 5;  //強制移動量
 
     // プレイヤー用変数
+    public GameObject player;
     private Rigidbody _rigidbody;           //Rigidbody
     private ControlBinds _gameInputs;        //インプット
     private Vector2 _moveStickValue;        //スティック移動量
@@ -37,14 +38,14 @@ public class PlayerControl : MonoBehaviour
     private double dDelayTime = 0.0f;   // ディレイ用
     Animator anime; // アニメーター変数
     private bool bAddPoint = false; // ポイントを追加したか
-    enum CutMode
+    public enum CutMode
     {
         CUT_ONE = 0,
         CUT_SMOOTH,
 
         MAX_CUT_MODE
     };
-    private CutMode eCutMode = 0;   // カットモード
+    public CutMode eCutMode = 0;   // カットモード
 
     // システム用変数(パッドとかキーボードとかの)
     public float motorDelay = 0.1f;               //パッド振動のディレイ
@@ -208,10 +209,10 @@ public class PlayerControl : MonoBehaviour
         switch (eCutMode)
         {
             case CutMode.CUT_ONE:
-                //gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                player.GetComponent<Renderer>().material.color = Color.blue;
                 break;
             case CutMode.CUT_SMOOTH:
-                //gameObject.GetComponent<Renderer>().material.color = Color.red;
+                player.GetComponent<Renderer>().material.color = Color.red;
                 break;
         }
 
