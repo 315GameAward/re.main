@@ -87,7 +87,7 @@ public class PlayerControl : MonoBehaviour
 
         controllerNames = Input.GetJoystickNames();
 
-
+        gameObject.GetComponent<CutPoint2>().AddCPPoint();
 
         //CutƒCƒxƒ“ƒg“o˜^
         //_gameInputs.Player.Cut.started += OnCut;
@@ -299,15 +299,23 @@ public class PlayerControl : MonoBehaviour
                 }
 
             }
-        }
+
+                dDelayTime += 0.1f;
+                if (dDelayTime > 2)
+                {
+                    if (gameObject.GetComponent<CutPoint2>())
+                        bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
+
+                    dDelayTime = 0;
+                }
+
+            }
 
         if (!gameObject.GetComponent<CutterPoint>().bPurposeObj)
         {
             bSmoothCutSE = false;
         }
-
-        if(gameObject.GetComponent<CutPoint2>())
-        bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
+       
         if (bAddPoint)
         {
 

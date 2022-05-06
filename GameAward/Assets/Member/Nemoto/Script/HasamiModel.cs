@@ -25,12 +25,12 @@ public class HasamiModel : MonoBehaviour
             // ê¬êF
             case PlayerControl.CutMode.CUT_ONE:
                 gameObject.GetComponent<MeshRenderer>().material = blue;
-                Debug.Log("blue");
+                //Debug.Log("blue");
                 break;
             // ê‘êF
             case PlayerControl.CutMode.CUT_SMOOTH:
                 gameObject.GetComponent<MeshRenderer>().material = red;
-                Debug.Log("red");
+                //Debug.Log("red");
                 break;
         }
 

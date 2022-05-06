@@ -26,7 +26,9 @@ public class CreateGround : MonoBehaviour
     public List<Vector3> vtx = new List<Vector3>();
     public List<int> idx = new List<int>();
     List<Vector3> normal = new List<Vector3>();
-    
+    public float MeshSizeX = 10;
+    public float MeshSizeY = 10;
+    public float MeshSizeZ = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +36,10 @@ public class CreateGround : MonoBehaviour
         filter = GetComponent<MeshFilter>();
         mesh = new Mesh();
 
-        vtx.Add(new Vector3(-3, 0, -3));
-        vtx.Add(new Vector3(-3, 0, 3));
-        vtx.Add(new Vector3(3, 0, 3));
-        vtx.Add(new Vector3(3, 0, -3));
+        vtx.Add(new Vector3(-MeshSizeX/2, 0, -MeshSizeZ/2));
+        vtx.Add(new Vector3(-MeshSizeX/2, 0,  MeshSizeZ/2));
+        vtx.Add(new Vector3(MeshSizeX/2,  0,  MeshSizeZ/2));
+        vtx.Add(new Vector3(MeshSizeX/2,  0, -MeshSizeZ/2));
 
         mesh.SetVertices(vtx);
 
@@ -78,8 +80,8 @@ public class CreateGround : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(25, 0, 0, 0.1f);   // 色の指定
+        Gizmos.color = new Color(255, 0, 0, 0.1f);   // 色の指定
         //Gizmos.DrawMesh(filter.mesh);
-        Gizmos.DrawCube(transform.position, new Vector3(6, 0.1f, 6));
+        Gizmos.DrawCube(transform.position, new Vector3(MeshSizeX, 0.01f, MeshSizeZ));
     }
 }

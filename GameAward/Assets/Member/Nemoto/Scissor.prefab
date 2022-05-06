@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3545073390886320251}
   - component: {fileID: -7541063649181527932}
   - component: {fileID: 300881699183995539}
+  - component: {fileID: -288959966964775986}
   m_Layer: 0
   m_Name: Scissor
   m_TagString: Untagged
@@ -85,7 +86,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2246881300938537682}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f3fb2b4ebeda24dae2f2ff16e886bd, type: 3}
   m_Name: 
@@ -240,6 +241,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3069753, y: 1, z: 0.71341705}
   m_Center: {x: 0.018490016, y: 0, z: -0.14329147}
+--- !u!114 &-288959966964775986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246881300938537682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e0a1f6671b07f45af283750c22c65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_vCotPoint: []
+  CutPointTest: []
+  CutPoint: []
+  ground: {fileID: 0}
+  AddPointOnOff: 1
+  v: {x: 0, y: 0}
+  v1: {x: 0, y: 0}
+  v2: {x: 0, y: 0}
+  p: {x: 0, y: 0}
+  t1: 0
+  t2: 0
+  bCut: 0
+  bStartP: 0
+  bPurposeObj: 0
+  particle: {fileID: 1545283425084691684, guid: 59ca76512a7de4540bd6a076f6137380, type: 3}
 --- !u!1 &2246881301111235703
 GameObject:
   m_ObjectHideFlags: 0
