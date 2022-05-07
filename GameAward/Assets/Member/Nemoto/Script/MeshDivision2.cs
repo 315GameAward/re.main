@@ -292,7 +292,10 @@ public class MeshDivision2 : MonoBehaviour
                     idxMemory.Add(_2);
                     idxMemory.Add(_0);
                 }
+                else
+                {
 
+                }
                 Debug.Log("s:" + s);
                 Debug.Log("t:" + t);
                 Debug.Log("s + t:" + s + t);
@@ -715,10 +718,134 @@ public class MeshDivision2 : MonoBehaviour
                     // ないとき
                     Debug.Log("ない");
 
-                    // --- 線分と線分の交点に頂点を追加したい ---
+                    // --- ポリゴンの辺とカットポイントが交差した時の処理 ---
 
-                    // 
-                    int vtxCount = vertices1.Count;
+                    // 変数宣言              
+                    int vtxCount = vertices1.Count; // 何だったか忘れたww???
+                    var straddlePolyIdx = new List<int>();  // またいだポリゴン番号リスト
+                    var crossPolyIdx = new List<int>();  // 交差ポリゴン番号リスト
+                    var inerPolyIdx = new List<int>();  // カットポイントが中に入っているポリゴン番号
+                    var intersectPolyList = new List<List<Vector2>>();  // ポリゴンごとにある交差している点のリスト
+                    var intersectEdgList = new List<List<Vector2>>();  // ポリゴンごとにある交差している辺のリスト
+                    var intersectionList = new List<Vector2>(); // 交点のリスト
+                    var cp_s = new Vector2(cutPoint[cutPoint.Count - 2].x, cutPoint[cutPoint.Count - 2].z);    // カットポイントの終点の1個前
+                    var cp_v = new Vector2(cutPoint[cutPoint.Count - 1].x, cutPoint[cutPoint.Count - 1].z);    // カットポイントの終点
+                    var cpEdg = cp_v - cp_s;    // カットポイントの終点とカットポイントの終点の1個前をつないだ辺
+                    var checkCp = cp_s + cpEdg * 0.01f; // カットポイントの終点の1個前からカットポイントの終点の方向にちょっと伸ばした点
+                    var intersecBigin = new Vector2();
+                    var edgIdx2List = new List<List<int>>();   // 辺のインデックスのリストのリスト   
+
+                    // またいでるポリゴンと侵入しているポリゴンが何個あるか探す
+                    for (int j = 0; j < attachedMesh.triangles.Length; j += 3)
+                    {
+                        // 変数宣言             
+                        int interPointCnt = 0; // 交差した点の数
+                        var intersection = new List<Vector2>(); // 交点のリスト
+                        var edgList = new List<Vector2>(); //辺のリスト
+                        var edgIdxList = new List<int>();   // 辺のインデックスのリスト   
+
+                        // ポリゴンの辺の数だけループ
+                        for (int k = 0; k < 3; k++)
+                        {
+                            // ポリゴンの2頂点
+                            Vector2 polyVtx_s = new Vector2(attachedMesh.vertices[attachedMesh.triangles[j + k]].x, attachedMesh.vertices[attachedMesh.triangles[j + k]].z);  // 始点
+                            Vector2 polyVtx_v = new Vector2(attachedMesh.vertices[attachedMesh.triangles[j + (k + 1) % 3]].x, attachedMesh.vertices[attachedMesh.triangles[j + (k + 1) % 3]].z);  // 終点
+
+                            // ポリゴンの辺
+                            Vector2 polyEdge = polyVtx_v - polyVtx_s;   // 辺
+
+                            // カットポイントの2頂点
+                            Vector2 cpVtx_s = new Vector2(cutPoint[cutPoint.Count - 2].x - transform.position.x, cutPoint[cutPoint.Count - 2].z - transform.position.z); // 始点
+                            Vector2 cpVtx_v = new Vector2(cutPoint[cutPoint.Count - 1].x - transform.position.x, cutPoint[cutPoint.Count - 1].z - transform.position.z); // 終点
+
+                            // カットポイントの辺
+                            Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
+
+                            // カットポイントの始点の補正
+                            cpVtx_s += cpEdge * 0.05f;
+
+                            // ポリゴンの辺とカットポイントの辺の始点をつないだベクトル
+                            Vector2 v = polyVtx_s - cpVtx_s;
+
+                            // 線分の始点から交点のベクトルの係数(多分)
+                            float t1 = (v.x * polyEdge.y - polyEdge.x * v.y) / (cpEdge.x * polyEdge.y - polyEdge.x * cpEdge.y);
+                            float t2 = (v.x * cpEdge.y - cpEdge.x * v.y) / (cpEdge.x * polyEdge.y - polyEdge.x * cpEdge.y);
+
+                            // 交点
+                            Vector2 p = new Vector2(polyVtx_s.x, polyVtx_s.y) + new Vector2(polyEdge.x * t2, polyEdge.y * t2);
+
+                            // 線分と線分が交わっているか
+                            const float eps = 0.00001f;
+                            if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
+                            {
+                                // 交わってないときスルー
+                                continue;
+                            }
+                            else
+                            {
+                                // 交わってる時交点カウント++                               
+                                interPointCnt++;    // 交点カウント    
+                                intersection.Add(p);    // 交点の保存
+                                intersectionList.Add(p);// 交点の保存
+                                edgList.Add(polyEdge);
+                                edgIdxList.Add(attachedMesh.triangles[j + k]);
+                                edgIdxList.Add(attachedMesh.triangles[j + (k + 1) % 3]);
+                                Debug.Log("j + k" + attachedMesh.triangles[j + k]);
+                                Debug.Log("j + (k + 1) % 3" + attachedMesh.triangles[j + (k + 1) % 3]);
+
+                            }
+                        }
+
+                        // ポリゴン番号を保存
+                        if (interPointCnt == 2)// 交点カウント2個(ポリゴンをまたいでる時)
+                        {
+                            Debug.Log("2個あるで");
+                            Debug.Log("ポリゴン番号は" + attachedMesh.triangles[j] + "," + attachedMesh.triangles[j + 1] + "," + attachedMesh.triangles[j + 2]);
+
+                            straddlePolyIdx.Add(attachedMesh.triangles[j]);
+                            straddlePolyIdx.Add(attachedMesh.triangles[j + 1]);
+                            straddlePolyIdx.Add(attachedMesh.triangles[j + 2]);
+                            crossPolyIdx.Add(j);
+                            crossPolyIdx.Add(j + 1);
+                            crossPolyIdx.Add(j + 2);
+                            intersectPolyList.Add(intersection);
+                            intersectEdgList.Add(edgList);
+                            edgIdx2List.Add(edgIdxList);
+                        }
+                        else if (interPointCnt == 1)// 交点カウント1個(カットポイントの終点がポリゴンの中にあるとき)
+                        {
+                            Debug.Log("1個あるで");
+                            inerPolyIdx.Add(j);
+                            inerPolyIdx.Add(j + 1);
+                            inerPolyIdx.Add(j + 2);
+                            crossPolyIdx.Add(j);
+                            crossPolyIdx.Add(j + 1);
+                            crossPolyIdx.Add(j + 2);
+                            intersectPolyList.Add(intersection);
+                            intersectEdgList.Add(edgList);
+                        }
+                        else
+                        {
+                            // Debug.Log("3個あるで");
+                            // Debug.Log("ポリゴン番号は" + attachedMesh.triangles[j] + "," + attachedMesh.triangles[j + 1] + "," + attachedMesh.triangles[j + 2]);
+
+                        }
+                    }
+
+                    intersecBigin = intersectionList[0];
+                    // 交点の数だけループ
+                    for (int j = 0; j < intersectionList.Count; j++)
+                    {
+                        // 交点がより近いほうを格納
+                        if (Vector2.Distance(cp_s, new Vector2(intersecBigin.x + transform.position.x, intersecBigin.y + transform.position.z)) > Vector2.Distance(cp_s, new Vector2(intersectionList[j].x + transform.position.x, intersectionList[j].y + transform.position.z)))
+                        {
+                            intersecBigin = intersectionList[j];
+                        }
+                    }
+
+
+                    var _p = new Vector2();
+
                     // ポリゴンごとに処理
                     for (int j = 0; j < attachedMesh.triangles.Length; j += 3)
                     {
@@ -728,6 +855,7 @@ public class MeshDivision2 : MonoBehaviour
                         // 交差した点の数
                         int interPointCnt = 0;
 
+                        // ポリゴンの辺の数だけループ
                         for (int k = 0; k < 3; k++)
                         {
                             // ポリゴンの2頂点
@@ -760,9 +888,9 @@ public class MeshDivision2 : MonoBehaviour
                             const float eps = 0.00001f;
                             if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
                             {
-                               
+
                                 continue;
-                               
+
                             }
                             else
                             {
@@ -771,15 +899,17 @@ public class MeshDivision2 : MonoBehaviour
                                 // 交点カウントを足す
                                 interPointCnt++;
 
+                                // 変数宣言
                                 // 交点をちょっとずらす
                                 var interPoint = new Vector2(cutPoint[cutPoint.Count - 2].x + ((p.x + transform.position.x) - cutPoint[cutPoint.Count - 2].x) * 0.8f - transform.position.x, cutPoint[cutPoint.Count - 2].z + ((p.y + transform.position.z) - cutPoint[cutPoint.Count - 2].z) * 0.8f - transform.position.z);
-
-                                //vertices1.Add(new Vector3(interPoint.x, cutPoint[cutPoint.Count - 1].y - transform.position.y, interPoint.y));
+                                var idxList = new List<int>();// インデクスのリスト
+                                var edgIdx_s = new int[2];  // またいだ時の最初のインデックス
+                                var edgIdx_v = new int[2];  // またいだ時の最初のインデックス
 
                                 // --- 2分割する処理 ---                             
                                 // ちょっとずらした交点がどのポリゴンにいるか調べる
-                                for (int n = 0;n < attachedMesh.triangles.Length;n += 3)
-                                {              
+                                for (int n = 0; n < attachedMesh.triangles.Length; n += 3)
+                                {
                                     //メッシュの3つの頂点を取得
                                     var _p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n]]);//+ Vector3.one * 0.0001f;
                                     var _p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 1]]);//+ Vector3.one * 0.0001f;
@@ -789,19 +919,28 @@ public class MeshDivision2 : MonoBehaviour
                                     double _Area = 0.5 * (-_p1.z * _p2.x + _p0.z * (-_p1.x + _p2.x) + _p0.x * (_p1.z - _p2.z) + _p1.x * _p2.z);
                                     double _s2 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * (interPoint.x + transform.position.x) + (_p0.x - _p2.x) * (interPoint.y + transform.position.z));
                                     double _t2 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * (interPoint.x + transform.position.x) + (_p1.x - _p0.x) * (interPoint.y + transform.position.z));
-                                    
-                                  
+
+
                                     // 三角形の中にあるか
                                     if ((0 <= _s2 && _s2 <= 1) && (0 <= _t2 && _t2 <= 1) && (0 <= 1 - _s2 - _t2 && 1 - _s2 - _t2 <= 1))
                                     {
-                                        Debug.Log("交差している点がポリゴンの中にある");
-                                       
+                                        //Debug.Log("交差している点がポリゴンの中にある");
+
                                         // 記憶された三角形インデックスの数だけループ
                                         for (int a = 0; a < idxMemory.Count; a += 3)
                                         {
                                             // ちょっとずらした交点がどの記憶された三角形インデックスの中にあるか分岐
                                             if (attachedMesh.triangles[n] == idxMemory[a] && attachedMesh.triangles[n + 1] == idxMemory[a + 1] && attachedMesh.triangles[n + 2] == idxMemory[a + 2])
                                             {
+                                                // 候補に追加
+                                                Debug.Log("候補に追加");
+                                                idxList.Add(attachedMesh.triangles[n]);
+                                                idxList.Add(attachedMesh.triangles[n + 1]);
+                                                idxList.Add(attachedMesh.triangles[n + 2]);
+                                                edgIdx_s[0] = attachedMesh.triangles[j + k];  // 交点がある辺の始点
+                                                edgIdx_s[1] = attachedMesh.triangles[j + (k + 1) % 3];  // 交点がある辺の終点
+                                                _p = p; // 交点
+                                                // 分岐
                                                 if (a == 0)
                                                 {
                                                     Debug.Log("ポリゴン番号" + attachedMesh.triangles[n] + "," + attachedMesh.triangles[n + 1] + "," + attachedMesh.triangles[n + 2]);
@@ -819,7 +958,7 @@ public class MeshDivision2 : MonoBehaviour
                                                         if (vertices1[l] != vertices1[l + 1]) continue;
 
                                                         // 切る方向に対して点を移動するめの処理
-                                                        edge1 = new Vector3(polyVtx_v.x,0, polyVtx_v.y) - new Vector3(polyVtx_s.x, 0, polyVtx_s.y);
+                                                        edge1 = new Vector3(polyVtx_v.x, 0, polyVtx_v.y) - new Vector3(polyVtx_s.x, 0, polyVtx_s.y);
                                                         edge2 = cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1];
                                                         edge = edge1;
 
@@ -927,7 +1066,7 @@ public class MeshDivision2 : MonoBehaviour
                                                     triangles1.Add(idx0);
                                                     triangles1.Add(idx1);
 
-                                                    break; 
+                                                    break;
                                                 }
                                                 if (a == 6)
                                                 {
@@ -988,221 +1127,251 @@ public class MeshDivision2 : MonoBehaviour
                                                     break;
                                                 }
 
-                                            }                                        
+                                            }
                                         }
 
-                                        
+                                        break;
                                     }
                                 }
 
-                                // --- 4分割する処理 ---
-                                // カットポイントの終点ががどのポリゴンにいるか調べる
-                                for (int n = 0;n < attachedMesh.triangles.Length;n += 3)
+                                // --- 2分割する処理2 ---
+                                Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
+                                Debug.Log("idxList.Count" + idxList.Count);
+                                if(idxList.Count > 0)
                                 {
-                                    //メッシュの3つの頂点を取得
-                                    var _p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n]]);//+ Vector3.one * 0.0001f;
-                                    var _p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 1]]);//+ Vector3.one * 0.0001f;
-                                    var _p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 2]]); //+ Vector3.one * 0.0001f;
-
-                                    // カットポイントの終点がポリゴンの中にあるか
-                                    double _Area = 0.5 * (-_p1.z * _p2.x + _p0.z * (-_p1.x + _p2.x) + _p0.x * (_p1.z - _p2.z) + _p1.x * _p2.z);
-                                    double _s2 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * cutPoint[cutPoint.Count - 1].x + (_p0.x - _p2.x) * cutPoint[cutPoint.Count - 1].z);
-                                    double _t2 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * cutPoint[cutPoint.Count - 1].x + (_p1.x - _p0.x) * cutPoint[cutPoint.Count - 1].z);
-
-                                    // 三角形の中にあるか
-                                    if ((0 <= _s2 && _s2 <= 1) && (0 <= _t2 && _t2 <= 1) && (0 <= 1 - _s2 - _t2 && 1 - _s2 - _t2 <= 1))
-                                    {  
-                                        // あるとき
-                                        Debug.Log("ポリゴン番号" + attachedMesh.triangles[n] + "," + attachedMesh.triangles[n + 1] + "," + attachedMesh.triangles[n + 2]);
-
-                                        // ベクトルの係数の計算
-                                        double _s3 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * (p.x + transform.position.x) + (_p0.x - _p2.x) * (p.y + transform.position.z));
-                                        double _t3 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * (p.x + transform.position.x) + (_p1.x - _p0.x) * (p.y + transform.position.z));
-
-                                        // カットポイントの終点に頂点の追加
-                                        vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
-                                        vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
-
-                                        // 交点がどのポリゴンの辺にいるのか
-                                        if (_t3 < 0.002f) // 辺S上
+                                    for (int n = 0; n < straddlePolyIdx.Count; n += 3)
+                                    {
+                                        // 三角形は3辺あるので3ループ
+                                        for (int u = 0; u < 3; u++)
                                         {
-                                            Debug.Log("辺S上");
+                                            // 1辺に対して3辺調べるので3ループ
+                                            for (int m = 0; m < 3; m++)
+                                            {
+                                                // 同じ辺があるか
+                                                if ((straddlePolyIdx[n + u] == idxList[m] && straddlePolyIdx[n + (u + 1) % 3] == idxList[(m + 1) % 3]) ||
+                                                    (straddlePolyIdx[n + u] == idxList[(m + 1) % 3] && straddlePolyIdx[n + (u + 1) % 3] == idxList[m]))
+                                                {
+                                                    Debug.Log("おなじぇ辺がある");
+                                                    Debug.Log("ポリゴン番号は" + straddlePolyIdx[n] + "," + straddlePolyIdx[n + 1] + "," + straddlePolyIdx[n + 2]);
 
-                                            // インデックスの割り当て
-                                            int idx0 = attachedMesh.triangles[n];
-                                            int idx1 = attachedMesh.triangles[n + 1];
-                                            int idx2 = attachedMesh.triangles[n + 2];
-                                            int idx3 = vertices1.Count - 4; // 
-                                            int idx4 = vertices1.Count - 3; // 
-                                            int idx5 = vertices1.Count - 2; // 
-                                            int idx6 = vertices1.Count - 1; // 
+                                                    // 頂点の追加
+                                                    vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f, 0, intersectEdgList[n / 3][0].normalized.y * 0.08f));
+                                                    vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) - new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f, 0, intersectEdgList[n / 3][0].normalized.y * 0.08f));
 
+                                                    // インデックスの割り当て
+                                                    int idx0 = straddlePolyIdx[n];
+                                                    int idx1 = straddlePolyIdx[n + 1];
+                                                    int idx2 = straddlePolyIdx[n + 2];
+                                                    int idx3 = vertices1.Count - 4; // 7
+                                                    int idx4 = vertices1.Count - 3; // 使わない  
+                                                    int idx5 = vertices1.Count - 2; // 6
+                                                    int idx6 = vertices1.Count - 1; // 6
 
-                                            // カットポイントのあるポリゴンのインデックスの削除&追加
-                                            triangles1.RemoveRange(i, 3);
+                                                    // またいでるポリゴンの辺の交差している終点がある辺のインデックス
+                                                    edgIdx_v[0] = edgIdx2List[n / 3][2];
+                                                    edgIdx_v[1] = edgIdx2List[n / 3][3];
 
-                                            // インデックスの振り分け
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx2);
-                                            triangles1.Add(idx0);
+                                                    Debug.Log("edgIdx_s[0]:" + edgIdx_s[0]);
+                                                    Debug.Log("edgIdx_s[1]:" + edgIdx_s[1]);
+                                                    Debug.Log("edgIdx_v[0]:" + edgIdx_v[0]);
+                                                    Debug.Log("edgIdx_v[1]:" + edgIdx_v[1]);
 
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx0);
-                                            triangles1.Add(idx4);
+                                                    // 地獄の6分岐を2回行う
+                                                    for (int twice = 0; twice < 2; twice++)
+                                                    {
+                                                        // 地獄の6分岐
+                                                        if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) && (edgIdx_v[0] == straddlePolyIdx[n + 1] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n + 1]))
+                                                        {
+                                                            Debug.Log("地獄の6分岐1");
+                                                            // ポリゴンの数だけループ
+                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            {
+                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                triangles1.RemoveRange(b, 3);
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx3);
+                                                                triangles1.Add(idx1);
 
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx3);
-                                            triangles1.Add(idx1);
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx2);
+                                                                triangles1.Add(idx4);
 
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx1);
-                                            triangles1.Add(idx2);
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx0);
+                                                                triangles1.Add(idx4);
 
-                                            // 出来た三角形インデックスの保存
-                                            idxMemory.Clear();
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx2);
-                                            idxMemory.Add(idx0);
+                                                                break;
+                                                            }
+                                                            break;
+                                                        }
+                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) &&
+                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
+                                                        {
+                                                            Debug.Log("地獄の6分岐2");
+                                                            // ポリゴンの数だけループ
+                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            {
+                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                triangles1.RemoveRange(b, 3);
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx0);
+                                                                triangles1.Add(idx4);
 
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx0);
-                                            idxMemory.Add(idx4);
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx1);
+                                                                triangles1.Add(idx2);
 
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx3);
-                                            idxMemory.Add(idx1);
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx3);
+                                                                triangles1.Add(idx1);
 
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx1);
-                                            idxMemory.Add(idx2);
+                                                                break;
+                                                            }
+                                                            break;
+                                                        }
+                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n + 1] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n + 1]) &&
+                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 1]) && (edgIdx_v[1] == straddlePolyIdx[n + 1] || edgIdx_v[1] == straddlePolyIdx[n]))
+                                                        {
+                                                            Debug.Log("地獄の6分岐3");
+                                                            // ポリゴンの数だけループ
+                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            {
+                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                triangles1.RemoveRange(b, 3);
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx1);
+                                                                triangles1.Add(idx2);
+
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx3);
+                                                                triangles1.Add(idx2);
+
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx2);
+                                                                triangles1.Add(idx0);
+
+                                                                break;
+                                                            }
+                                                            break;
+                                                        }
+                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n + 1] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n + 1]) &&
+                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
+                                                        {
+                                                            Debug.Log("地獄の6分岐4");
+                                                            // ポリゴンの数だけループ
+                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            {
+                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                triangles1.RemoveRange(b, 3);
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx3);
+                                                                triangles1.Add(idx2);
+
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx1);
+                                                                triangles1.Add(idx4);
+
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx0);
+                                                                triangles1.Add(idx4);
+
+                                                                break;
+                                                            }
+                                                            break;
+                                                        }
+                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n]) &&
+                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 1]) && (edgIdx_v[1] == straddlePolyIdx[n + 1] || edgIdx_v[1] == straddlePolyIdx[n]))
+                                                        {
+                                                            Debug.Log("地獄の6分岐5");
+                                                            // ポリゴンの数だけループ
+                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            {
+                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                triangles1.RemoveRange(b, 3);
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx3);
+                                                                triangles1.Add(idx0);
+
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx1);
+                                                                triangles1.Add(idx2);
+
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx2);
+                                                                triangles1.Add(idx4);
+
+                                                                break;
+                                                            }
+                                                            break;
+                                                        }
+                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n]) &&
+                                                                    (edgIdx_v[0] == straddlePolyIdx[n + 1] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n + 2]))
+                                                        {
+                                                            Debug.Log("地獄の6分岐6");
+                                                            // ポリゴンの数だけループ
+                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            {
+                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                triangles1.RemoveRange(b, 3);
+                                                                triangles1.Add(idx6);
+                                                                triangles1.Add(idx2);
+                                                                triangles1.Add(idx4);
+
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx3);
+                                                                triangles1.Add(idx0);
+
+                                                                triangles1.Add(idx5);
+                                                                triangles1.Add(idx0);
+                                                                triangles1.Add(idx1);
+
+                                                                break;
+                                                            }
+                                                            break;
+                                                        }
+                                                        else
+                                                        {
+                                                            Debug.Log("aaa");
+                                                            edgIdx_v[0] = edgIdx2List[n / 3][0];
+                                                            edgIdx_v[1] = edgIdx2List[n / 3][1];
+
+                                                        }
+
+                                                    }
+
+                                                    // 候補から削除
+                                                    // straddlePolyIdx.RemoveRange(n, 3);
+                                                }
+
+                                            }
                                         }
-                                        else if (_s3 < 0.002f)    // 辺T上
+
+
+                                        if (straddlePolyIdx[n] == idxList[0] && straddlePolyIdx[n + 1] == idxList[1] && straddlePolyIdx[n + 2] == idxList[2])
                                         {
-                                            Debug.Log("辺T上");
-
-                                            // インデックスの割り当て
-                                            int idx0 = attachedMesh.triangles[n];
-                                            int idx1 = attachedMesh.triangles[n + 1];
-                                            int idx2 = attachedMesh.triangles[n + 2];
-                                            int idx3 = vertices1.Count - 4; // 
-                                            int idx4 = vertices1.Count - 3; // 
-                                            int idx5 = vertices1.Count - 2; // 
-                                            int idx6 = vertices1.Count - 1; // 
-
-                                            // カットポイントのあるポリゴンのインデックスの削除&追加
-                                            triangles1.RemoveRange(n, 3);
-
-                                            // インデックスの振り分け
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx1);
-                                            triangles1.Add(idx2);
-
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx2);
-                                            triangles1.Add(idx4);
-
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx3);
-                                            triangles1.Add(idx0);
-
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx0);
-                                            triangles1.Add(idx1);
-
-                                            // 出来た三角形インデックスの保存
-                                            idxMemory.Clear();
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx1);
-                                            idxMemory.Add(idx2);
-
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx2);
-                                            idxMemory.Add(idx4);
-
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx3);
-                                            idxMemory.Add(idx0);
-
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx0);
-                                            idxMemory.Add(idx1);
 
                                         }
-                                        else if (_s3 + _t3 > 0.98f) // 辺S+T上
-                                        {
-                                            Debug.Log("辺S + T上");
-
-                                            // インデックスの割り当て
-                                            int idx0 = attachedMesh.triangles[n];
-                                            int idx1 = attachedMesh.triangles[n + 1];
-                                            int idx2 = attachedMesh.triangles[n + 2];
-                                            int idx3 = vertices1.Count - 4; // 
-                                            int idx4 = vertices1.Count - 3; // 
-                                            int idx5 = vertices1.Count - 2; // 
-                                            int idx6 = vertices1.Count - 1; // 
-
-                                            // カットポイントのあるポリゴンのインデックスの削除&追加
-                                            triangles1.RemoveRange(i, 3);
-
-                                            // インデックスの振り分け
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx0);
-                                            triangles1.Add(idx1);
-
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx1);
-                                            triangles1.Add(idx4);
-
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx3);
-                                            triangles1.Add(idx2);
-
-                                            triangles1.Add(idx5);
-                                            triangles1.Add(idx2);
-                                            triangles1.Add(idx0);
-
-                                            // 出来た三角形インデックスの保存
-                                            idxMemory.Clear();
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx0);
-                                            idxMemory.Add(idx1);
-
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx1);
-                                            idxMemory.Add(idx4);
-
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx3);
-                                            idxMemory.Add(idx2);
-
-                                            idxMemory.Add(idx5);
-                                            idxMemory.Add(idx2);
-                                            idxMemory.Add(idx0);
-                                        }
-                                        else
-                                        {
-                                            Debug.Log("どの辺にもない");
-                                        }
-
                                     }
 
-
                                 }
+
+
+
 
                                 // ここまで来たら終了
                                 //break;
 
                             }
 
-                            Debug.Log("interPointCnt"+ interPointCnt);
+                            Debug.Log("interPointCnt" + interPointCnt);
 
                             // ポリゴンに含まれる交点が1個の時
                             if (interPointCnt == 1)
                             {
                                 Debug.Log("1個");
-                                
+
                             }
-                            else if(interPointCnt == 2)
+                            else if (interPointCnt == 2)
                             {   // ポリゴンに含まれる交点が2個の時
                                 Debug.Log("2個");
                             }
@@ -1215,11 +1384,205 @@ public class MeshDivision2 : MonoBehaviour
                     }
 
 
+                    // --- 4分割する処理 ---
+                    // カットポイントの終点ががどのポリゴンにいるか調べる
+                    for (int n = 0; n < attachedMesh.triangles.Length; n += 3)
+                    {
+                        //メッシュの3つの頂点を取得
+                        var _p0 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n]]);//+ Vector3.one * 0.0001f;
+                        var _p1 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 1]]);//+ Vector3.one * 0.0001f;
+                        var _p2 = transform.TransformPoint(attachedMesh.vertices[attachedMesh.triangles[n + 2]]); //+ Vector3.one * 0.0001f;
+
+                        // カットポイントの終点がポリゴンの中にあるか
+                        double _Area = 0.5 * (-_p1.z * _p2.x + _p0.z * (-_p1.x + _p2.x) + _p0.x * (_p1.z - _p2.z) + _p1.x * _p2.z);
+                        double _s2 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * cutPoint[cutPoint.Count - 1].x + (_p0.x - _p2.x) * cutPoint[cutPoint.Count - 1].z);
+                        double _t2 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * cutPoint[cutPoint.Count - 1].x + (_p1.x - _p0.x) * cutPoint[cutPoint.Count - 1].z);
+
+                        // 三角形の中にあるか
+                        if ((0 <= _s2 && _s2 <= 1) && (0 <= _t2 && _t2 <= 1) && (0 <= 1 - _s2 - _t2 && 1 - _s2 - _t2 <= 1))
+                        {
+                            // あるとき
+                            Debug.Log("ポリゴン番号" + attachedMesh.triangles[n] + "," + attachedMesh.triangles[n + 1] + "," + attachedMesh.triangles[n + 2]);
+
+                            // ベクトルの係数の計算
+                            double _s3 = 1 / (2 * _Area) * (_p0.z * _p2.x - _p0.x * _p2.z + (_p2.z - _p0.z) * (_p.x + transform.position.x) + (_p0.x - _p2.x) * (_p.y + transform.position.z));
+                            double _t3 = 1 / (2 * _Area) * (_p0.x * _p1.z - _p0.z * _p1.x + (_p0.z - _p1.z) * (_p.x + transform.position.x) + (_p1.x - _p0.x) * (_p.y + transform.position.z));
+
+                            // カットポイントの終点に頂点の追加
+                            vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+                            vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+
+                            // 交点がどのポリゴンの辺にいるのか
+                            if (_t3 < 0.002f) // 辺S上
+                            {
+                                Debug.Log("辺S上");
+
+                                // インデックスの割り当て
+                                int idx0 = attachedMesh.triangles[n];
+                                int idx1 = attachedMesh.triangles[n + 1];
+                                int idx2 = attachedMesh.triangles[n + 2];
+                                int idx3 = vertices1.Count - 4; // 
+                                int idx4 = vertices1.Count - 3; // 
+                                int idx5 = vertices1.Count - 2; // 
+                                int idx6 = vertices1.Count - 1; // 
+
+
+                                // カットポイントのあるポリゴンのインデックスの削除&追加
+                                triangles1.RemoveRange(i, 3);
+
+                                // インデックスの振り分け
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx2);
+                                triangles1.Add(idx0);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx0);
+                                triangles1.Add(idx4);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx3);
+                                triangles1.Add(idx1);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx1);
+                                triangles1.Add(idx2);
+
+                                // 出来た三角形インデックスの保存
+                                idxMemory.Clear();
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx2);
+                                idxMemory.Add(idx0);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx0);
+                                idxMemory.Add(idx4);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx3);
+                                idxMemory.Add(idx1);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx1);
+                                idxMemory.Add(idx2);
+                            }
+                            else if (_s3 < 0.002f)    // 辺T上
+                            {
+                                Debug.Log("辺T上");
+
+                                // インデックスの割り当て
+                                int idx0 = attachedMesh.triangles[n];
+                                int idx1 = attachedMesh.triangles[n + 1];
+                                int idx2 = attachedMesh.triangles[n + 2];
+                                int idx3 = vertices1.Count - 4; // 
+                                int idx4 = vertices1.Count - 3; // 
+                                int idx5 = vertices1.Count - 2; // 
+                                int idx6 = vertices1.Count - 1; // 
+
+                                // カットポイントのあるポリゴンのインデックスの削除&追加
+                                triangles1.RemoveRange(n, 3);
+
+                                // インデックスの振り分け
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx1);
+                                triangles1.Add(idx2);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx2);
+                                triangles1.Add(idx4);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx3);
+                                triangles1.Add(idx0);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx0);
+                                triangles1.Add(idx1);
+
+                                // 出来た三角形インデックスの保存
+                                idxMemory.Clear();
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx1);
+                                idxMemory.Add(idx2);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx2);
+                                idxMemory.Add(idx4);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx3);
+                                idxMemory.Add(idx0);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx0);
+                                idxMemory.Add(idx1);
+
+                            }
+                            else if (_s3 + _t3 > 0.98f) // 辺S+T上
+                            {
+                                Debug.Log("辺S + T上");
+
+                                // インデックスの割り当て
+                                int idx0 = attachedMesh.triangles[n];
+                                int idx1 = attachedMesh.triangles[n + 1];
+                                int idx2 = attachedMesh.triangles[n + 2];
+                                int idx3 = vertices1.Count - 4; // 
+                                int idx4 = vertices1.Count - 3; // 
+                                int idx5 = vertices1.Count - 2; // 
+                                int idx6 = vertices1.Count - 1; // 
+
+                                // カットポイントのあるポリゴンのインデックスの削除&追加
+                                triangles1.RemoveRange(i, 3);
+
+                                // インデックスの振り分け
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx0);
+                                triangles1.Add(idx1);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx1);
+                                triangles1.Add(idx4);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx3);
+                                triangles1.Add(idx2);
+
+                                triangles1.Add(idx5);
+                                triangles1.Add(idx2);
+                                triangles1.Add(idx0);
+
+                                // 出来た三角形インデックスの保存
+                                idxMemory.Clear();
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx0);
+                                idxMemory.Add(idx1);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx1);
+                                idxMemory.Add(idx4);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx3);
+                                idxMemory.Add(idx2);
+
+                                idxMemory.Add(idx5);
+                                idxMemory.Add(idx2);
+                                idxMemory.Add(idx0);
+                            }
+                            else
+                            {
+                                Debug.Log("どの辺にもない");
+                            }
+
+                        }
+
+
+                    }
+
 
                 }
 
 
-               
+
                 Debug.Log(idxMemory.Count);
 
 
@@ -1516,8 +1879,8 @@ public class MeshDivision2 : MonoBehaviour
                     for (int j = 0; j < 3; j++)
                     {
                         // 同じ辺があるか
-                        if ((triangles1[idxList[0] + k] == triangles1[i + j]           && triangles1[idxList[0] + ( k + 1) % 3] == triangles1[i + (j + 1) % 3]) ||
-                            (triangles1[idxList[0] + k] == triangles1[i + (j + 1) % 3] && triangles1[idxList[0] + ( k + 1) % 3] == triangles1[i + j]          )   )
+                        if ((triangles1[idxList[0] + k] == triangles1[i + j] && triangles1[idxList[0] + (k + 1) % 3] == triangles1[i + (j + 1) % 3]) ||
+                            (triangles1[idxList[0] + k] == triangles1[i + (j + 1) % 3] && triangles1[idxList[0] + (k + 1) % 3] == triangles1[i + j]))
                         {
                             Debug.Log("同じ辺があるとき");
                             Debug.Log("ヒットしたポリゴン番号:" + triangles1[i] + "" + triangles1[i + 1] + "" + triangles1[i + 2]);
@@ -1528,7 +1891,7 @@ public class MeshDivision2 : MonoBehaviour
 
                             // 同じ辺があるとき
                             // それがすでに格納済みかどうか調べる                         
-                            for (int l = 0;l < triangles2.Count;l++)
+                            for (int l = 0; l < triangles2.Count; l++)
                             {
                                 // 追加したいインデックスと追加先のインデックスとの比較
                                 // なかったらスルー
@@ -1540,7 +1903,7 @@ public class MeshDivision2 : MonoBehaviour
                             }
 
                             // 存在したら次の探索へ
-                            if(Existence)
+                            if (Existence)
                             {
                                 break;
                             }
@@ -1548,11 +1911,11 @@ public class MeshDivision2 : MonoBehaviour
                             {
                                 Debug.Log("存在しなかったら格納");
                                 // 存在しなかったら格納
-                                triangles2.Add(triangles1[i ]);
-                                triangles2.Add(triangles1[i  + 1]);
-                                triangles2.Add(triangles1[i  + 2]);
+                                triangles2.Add(triangles1[i]);
+                                triangles2.Add(triangles1[i + 1]);
+                                triangles2.Add(triangles1[i + 2]);
 
-                               
+
                                 // 次の探索へ
                                 idxList.Add(i);
                                 //idx = i ;    // 次の探索のポリゴンの最初のインデックス
@@ -1560,7 +1923,7 @@ public class MeshDivision2 : MonoBehaviour
                                 break;
                             }
                         }
-                      
+
 
                     }
 
@@ -1582,17 +1945,17 @@ public class MeshDivision2 : MonoBehaviour
                 {
                     continue;
                 }
-              
+
             }
 
             // もう一方のリストからは削除
             removeList.Add(idxList[0]);
 
             // 探索しきったインデックスを消す
-            idxList.RemoveAt(0);       
+            idxList.RemoveAt(0);
 
             // もし探索したいインデックスがなくなったら終了
-           if(idxList.Count == 0)
+            if (idxList.Count == 0)
             {
                 Debug.Log("お腹減った");
                 // endフラグon
@@ -1601,7 +1964,7 @@ public class MeshDivision2 : MonoBehaviour
 
         }
 
-        Debug.Log("removeList.Count"+ removeList.Count);
+        Debug.Log("removeList.Count" + removeList.Count);
 
         // triangles1に入ってたtriangles2を消す
         for (int i = 0; i < removeList.Count; i++)
@@ -1647,10 +2010,10 @@ public class MeshDivision2 : MonoBehaviour
         }
 
         // triangles2をもとにvertices2を生成し、それをもとにtriangles2を上書き
-        for (int i = 0;i < triangles2.Count;i++)
+        for (int i = 0; i < triangles2.Count; i++)
         {
             vertices2.Add(attachedMesh.vertices[triangles2[i]]);
-            for(int j = 0;j < vertices2.Count;j++)
+            for (int j = 0; j < vertices2.Count; j++)
             {
                 // 追加した頂点が重複してなかったらそのまま終了
                 if (j == vertices2.Count - 1)
@@ -1660,7 +2023,7 @@ public class MeshDivision2 : MonoBehaviour
                     break;
                 }
                 // 追加した頂点が重複してたら追加した頂点を消す
-                if(vertices2[j] == attachedMesh.vertices[triangles2[i]])
+                if (vertices2[j] == attachedMesh.vertices[triangles2[i]])
                 {
                     // 頂点削除
                     vertices2.RemoveAt(vertices2.Count - 1);
@@ -1705,7 +2068,7 @@ public class MeshDivision2 : MonoBehaviour
         var mesh2 = new Mesh();
         mesh2.vertices = vertices2.ToArray();
         mesh2.triangles = triangles2.ToArray();
-       
+
         mesh2.normals = normals2.ToArray();
         obj2.GetComponent<MeshFilter>().mesh = mesh2;
         obj2.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
@@ -1719,9 +2082,9 @@ public class MeshDivision2 : MonoBehaviour
         //obj2.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
         //obj2.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
         obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
-        
+
         Debug.Log("triangles2:" + triangles2.Count);
-        Debug.Log("vertices2:"+ vertices2.Count);
+        Debug.Log("vertices2:" + vertices2.Count);
         Debug.Log("つらたん");
 
         // 面積の計算
@@ -1729,7 +2092,7 @@ public class MeshDivision2 : MonoBehaviour
         float s2 = 0;   // 面積1
 
         // 面積1の計算
-        for(int i = 0;i < triangles1.Count;i+=3)
+        for (int i = 0; i < triangles1.Count; i += 3)
         {
             s1 += CalculateArea1(new Vector2(vertices1[triangles1[i]].x, vertices1[triangles1[i]].z), new Vector2(vertices1[triangles1[i + 1]].x, vertices1[triangles1[i + 1]].z), new Vector2(vertices1[triangles1[i + 2]].x, vertices1[triangles1[i + 2]].z));
         }
@@ -1841,7 +2204,7 @@ public class MeshDivision2 : MonoBehaviour
 
         }
 
-        
+
     }
 
     float sign(Vector2 p1, Vector2 p2, Vector2 p3)
