@@ -65,10 +65,10 @@ public class MoveEnemy : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
 
         //　見回りまたはキャラクターを追いかける状態
-        if (!(state == EnemyState.Attack) && state == EnemyState.Walk || state == EnemyState.Chase)
+        if (state == EnemyState.Walk || state == EnemyState.Chase || state == EnemyState.Attack)
         {
             //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
-            if (state == EnemyState.Chase)
+            if (state == EnemyState.Chase || state == EnemyState.Attack)
             {
                 setPosition.SetDestination(new Vector3(playerTransform.position.x, 0.0f, playerTransform.position.z));
             }
@@ -140,6 +140,7 @@ public class MoveEnemy : MonoBehaviour
         }
         else if (tempState == EnemyState.Attack)
         {
+            Debug.Log("攻撃");
             elapsedTime = 0f;
             state = tempState;
             arrived = true;
