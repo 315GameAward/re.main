@@ -762,7 +762,10 @@ public class MeshDivision2 : MonoBehaviour
                             Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
 
                             // カットポイントの始点の補正
-                            cpVtx_s += cpEdge * 0.05f;
+                            cpVtx_s += cpEdge * 0.1f;
+
+                            // カットポイントの辺の補正
+                            cpEdge = cpVtx_v - cpVtx_s; // 辺
 
                             // ポリゴンの辺とカットポイントの辺の始点をつないだベクトル
                             Vector2 v = polyVtx_s - cpVtx_s;
@@ -783,6 +786,7 @@ public class MeshDivision2 : MonoBehaviour
                             }
                             else
                             {
+                                //vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y , p.y));
                                 // 交わってる時交点カウント++                               
                                 interPointCnt++;    // 交点カウント    
                                 intersection.Add(p);    // 交点の保存
@@ -811,6 +815,7 @@ public class MeshDivision2 : MonoBehaviour
                             intersectPolyList.Add(intersection);
                             intersectEdgList.Add(edgList);
                             edgIdx2List.Add(edgIdxList);
+                            Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
                         }
                         else if (interPointCnt == 1)// 交点カウント1個(カットポイントの終点がポリゴンの中にあるとき)
                         {
@@ -821,8 +826,8 @@ public class MeshDivision2 : MonoBehaviour
                             crossPolyIdx.Add(j);
                             crossPolyIdx.Add(j + 1);
                             crossPolyIdx.Add(j + 2);
-                            intersectPolyList.Add(intersection);
-                            intersectEdgList.Add(edgList);
+                            //intersectPolyList.Add(intersection);
+                            //intersectEdgList.Add(edgList);
                         }
                         else
                         {
@@ -831,19 +836,7 @@ public class MeshDivision2 : MonoBehaviour
 
                         }
                     }
-
-                    intersecBigin = intersectionList[0];
-                    // 交点の数だけループ
-                    for (int j = 0; j < intersectionList.Count; j++)
-                    {
-                        // 交点がより近いほうを格納
-                        if (Vector2.Distance(cp_s, new Vector2(intersecBigin.x + transform.position.x, intersecBigin.y + transform.position.z)) > Vector2.Distance(cp_s, new Vector2(intersectionList[j].x + transform.position.x, intersectionList[j].y + transform.position.z)))
-                        {
-                            intersecBigin = intersectionList[j];
-                        }
-                    }
-
-
+                                   
                     var _p = new Vector2();
 
                     // ポリゴンごとに処理
@@ -1137,223 +1130,251 @@ public class MeshDivision2 : MonoBehaviour
                                 // --- 2分割する処理2 ---
                                 Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
                                 Debug.Log("idxList.Count" + idxList.Count);
-                                if(idxList.Count > 0)
+                                while (straddlePolyIdx.Count > 0)
                                 {
-                                    for (int n = 0; n < straddlePolyIdx.Count; n += 3)
+                                    if (idxList.Count > 0)
                                     {
-                                        // 三角形は3辺あるので3ループ
-                                        for (int u = 0; u < 3; u++)
+                                        bool triger = false;
+                                        for (int n = 0; n < straddlePolyIdx.Count; n += 3)
                                         {
-                                            // 1辺に対して3辺調べるので3ループ
-                                            for (int m = 0; m < 3; m++)
+                                            if (straddlePolyIdx.Count == 0) break;
+                                            // 三角形は3辺あるので3ループ
+                                            for (int u = 0; u < 3; u++)
                                             {
-                                                // 同じ辺があるか
-                                                if ((straddlePolyIdx[n + u] == idxList[m] && straddlePolyIdx[n + (u + 1) % 3] == idxList[(m + 1) % 3]) ||
-                                                    (straddlePolyIdx[n + u] == idxList[(m + 1) % 3] && straddlePolyIdx[n + (u + 1) % 3] == idxList[m]))
+                                                if (straddlePolyIdx.Count == 0) break;
+                                                // 1辺に対して3辺調べるので3ループ
+                                                for (int m = 0; m < 3; m++)
                                                 {
-                                                    Debug.Log("おなじぇ辺がある");
-                                                    Debug.Log("ポリゴン番号は" + straddlePolyIdx[n] + "," + straddlePolyIdx[n + 1] + "," + straddlePolyIdx[n + 2]);
-
-                                                    // 頂点の追加
-                                                    vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f, 0, intersectEdgList[n / 3][0].normalized.y * 0.08f));
-                                                    vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) - new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f, 0, intersectEdgList[n / 3][0].normalized.y * 0.08f));
-
-                                                    // インデックスの割り当て
-                                                    int idx0 = straddlePolyIdx[n];
-                                                    int idx1 = straddlePolyIdx[n + 1];
-                                                    int idx2 = straddlePolyIdx[n + 2];
-                                                    int idx3 = vertices1.Count - 4; // 7
-                                                    int idx4 = vertices1.Count - 3; // 使わない  
-                                                    int idx5 = vertices1.Count - 2; // 6
-                                                    int idx6 = vertices1.Count - 1; // 6
-
-                                                    // またいでるポリゴンの辺の交差している終点がある辺のインデックス
-                                                    edgIdx_v[0] = edgIdx2List[n / 3][2];
-                                                    edgIdx_v[1] = edgIdx2List[n / 3][3];
-
-                                                    Debug.Log("edgIdx_s[0]:" + edgIdx_s[0]);
-                                                    Debug.Log("edgIdx_s[1]:" + edgIdx_s[1]);
-                                                    Debug.Log("edgIdx_v[0]:" + edgIdx_v[0]);
-                                                    Debug.Log("edgIdx_v[1]:" + edgIdx_v[1]);
-
-                                                    // 地獄の6分岐を2回行う
-                                                    for (int twice = 0; twice < 2; twice++)
+                                                    // 同じ辺があるか
+                                                    if ((straddlePolyIdx[n + u] == idxList[m] && straddlePolyIdx[n + (u + 1) % 3] == idxList[(m + 1) % 3]) ||
+                                                        (straddlePolyIdx[n + u] == idxList[(m + 1) % 3] && straddlePolyIdx[n + (u + 1) % 3] == idxList[m]))
                                                     {
-                                                        // 地獄の6分岐
-                                                        if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) && (edgIdx_v[0] == straddlePolyIdx[n + 1] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n + 1]))
+                                                        Debug.Log("おなじぇ辺がある");
+                                                        Debug.Log("ポリゴン番号は" + straddlePolyIdx[n] + "," + straddlePolyIdx[n + 1] + "," + straddlePolyIdx[n + 2]);
+
+                                                        var cpEdg_v = cutPoint[cutPoint.Count - 1];
+                                                        var cpEdg_s = cutPoint[cutPoint.Count - 2];
+                                                        var cpEdg_b = cutPoint[cutPoint.Count - 3];
+                                                        var cpEdg_sv = cpEdg_v - cpEdg_s;
+                                                        var cpEdg_bs = cpEdg_s - cpEdg_b;
+                                                        var cpEdg_bv = cpEdg_sv + cpEdg_bs;
+                                                        var cpEdgNor = Vector3.Cross(cpEdg_bv,Vector3.up);
+
+                                                        // 頂点の追加
+                                                        vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f * (cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.08f * (cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z)) ));
+                                                        vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f *  -(cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.08f *  -(cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
+
+                                                        // インデックスの割り当て
+                                                        int idx0 = straddlePolyIdx[n];
+                                                        int idx1 = straddlePolyIdx[n + 1];
+                                                        int idx2 = straddlePolyIdx[n + 2];
+                                                        int idx3 = vertices1.Count - 4; // 7
+                                                        int idx4 = vertices1.Count - 3; // 使わない  
+                                                        int idx5 = vertices1.Count - 2; // 6
+                                                        int idx6 = vertices1.Count - 1; // 6
+
+                                                        // またいでるポリゴンの辺の交差している終点がある辺のインデックス
+                                                        edgIdx_v[0] = edgIdx2List[n / 3][2];
+                                                        edgIdx_v[1] = edgIdx2List[n / 3][3];
+
+                                                        Debug.Log("edgIdx_s[0]:" + edgIdx_s[0]);
+                                                        Debug.Log("edgIdx_s[1]:" + edgIdx_s[1]);
+                                                        Debug.Log("edgIdx_v[0]:" + edgIdx_v[0]);
+                                                        Debug.Log("edgIdx_v[1]:" + edgIdx_v[1]);
+
+                                                        // 地獄の6分岐を2回行う
+                                                        for (int twice = 0; twice < 2; twice++)
                                                         {
-                                                            Debug.Log("地獄の6分岐1");
-                                                            // ポリゴンの数だけループ
-                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            // 地獄の6分岐
+                                                            if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) && (edgIdx_v[0] == straddlePolyIdx[n + 1] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n + 1]))
                                                             {
-                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
-                                                                triangles1.RemoveRange(b, 3);
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx3);
-                                                                triangles1.Add(idx1);
+                                                                Debug.Log("地獄の6分岐1");
+                                                                // ポリゴンの数だけループ
+                                                                for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                                {
+                                                                    if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                    triangles1.RemoveRange(b, 3);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx3);
+                                                                    triangles1.Add(idx1);
 
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx2);
-                                                                triangles1.Add(idx4);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx2);
+                                                                    triangles1.Add(idx4);
 
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx0);
-                                                                triangles1.Add(idx4);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx0);
+                                                                    triangles1.Add(idx4);
 
+                                                                    break;
+                                                                }
                                                                 break;
                                                             }
-                                                            break;
-                                                        }
-                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) &&
-                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
-                                                        {
-                                                            Debug.Log("地獄の6分岐2");
-                                                            // ポリゴンの数だけループ
-                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) &&
+                                                                        (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
                                                             {
-                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
-                                                                triangles1.RemoveRange(b, 3);
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx0);
-                                                                triangles1.Add(idx4);
+                                                                Debug.Log("地獄の6分岐2");
+                                                                // ポリゴンの数だけループ
+                                                                for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                                {
+                                                                    if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                    triangles1.RemoveRange(b, 3);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx0);
+                                                                    triangles1.Add(idx4);
 
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx1);
-                                                                triangles1.Add(idx2);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx1);
+                                                                    triangles1.Add(idx2);
 
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx3);
-                                                                triangles1.Add(idx1);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx3);
+                                                                    triangles1.Add(idx1);
 
+                                                                    break;
+                                                                }
                                                                 break;
                                                             }
-                                                            break;
-                                                        }
-                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n + 1] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n + 1]) &&
-                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 1]) && (edgIdx_v[1] == straddlePolyIdx[n + 1] || edgIdx_v[1] == straddlePolyIdx[n]))
-                                                        {
-                                                            Debug.Log("地獄の6分岐3");
-                                                            // ポリゴンの数だけループ
-                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            else if ((edgIdx_s[0] == straddlePolyIdx[n + 1] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n + 1]) &&
+                                                                        (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 1]) && (edgIdx_v[1] == straddlePolyIdx[n + 1] || edgIdx_v[1] == straddlePolyIdx[n]))
                                                             {
-                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
-                                                                triangles1.RemoveRange(b, 3);
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx1);
-                                                                triangles1.Add(idx2);
+                                                                Debug.Log("地獄の6分岐3");
+                                                                // ポリゴンの数だけループ
+                                                                for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                                {
+                                                                    if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                    triangles1.RemoveRange(b, 3);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx1);
+                                                                    triangles1.Add(idx2);
 
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx3);
-                                                                triangles1.Add(idx2);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx3);
+                                                                    triangles1.Add(idx2);
 
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx2);
-                                                                triangles1.Add(idx0);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx2);
+                                                                    triangles1.Add(idx0);
 
+                                                                    break;
+                                                                }
                                                                 break;
                                                             }
-                                                            break;
-                                                        }
-                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n + 1] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n + 1]) &&
-                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
-                                                        {
-                                                            Debug.Log("地獄の6分岐4");
-                                                            // ポリゴンの数だけループ
-                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            else if ((edgIdx_s[0] == straddlePolyIdx[n + 1] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n + 1]) &&
+                                                                        (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
                                                             {
-                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
-                                                                triangles1.RemoveRange(b, 3);
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx3);
-                                                                triangles1.Add(idx2);
+                                                                Debug.Log("地獄の6分岐4");
+                                                                // ポリゴンの数だけループ
+                                                                for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                                {
+                                                                    if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                    triangles1.RemoveRange(b, 3);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx3);
+                                                                    triangles1.Add(idx2);
 
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx1);
-                                                                triangles1.Add(idx4);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx1);
+                                                                    triangles1.Add(idx4);
 
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx0);
-                                                                triangles1.Add(idx4);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx0);
+                                                                    triangles1.Add(idx4);
 
+                                                                    break;
+                                                                }
                                                                 break;
                                                             }
-                                                            break;
-                                                        }
-                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n]) &&
-                                                                    (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 1]) && (edgIdx_v[1] == straddlePolyIdx[n + 1] || edgIdx_v[1] == straddlePolyIdx[n]))
-                                                        {
-                                                            Debug.Log("地獄の6分岐5");
-                                                            // ポリゴンの数だけループ
-                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n]) &&
+                                                                        (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 1]) && (edgIdx_v[1] == straddlePolyIdx[n + 1] || edgIdx_v[1] == straddlePolyIdx[n]))
                                                             {
-                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
-                                                                triangles1.RemoveRange(b, 3);
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx3);
-                                                                triangles1.Add(idx0);
+                                                                Debug.Log("地獄の6分岐5");
+                                                                // ポリゴンの数だけループ
+                                                                for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                                {
+                                                                    if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                    triangles1.RemoveRange(b, 3);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx3);
+                                                                    triangles1.Add(idx0);
 
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx1);
-                                                                triangles1.Add(idx2);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx1);
+                                                                    triangles1.Add(idx2);
 
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx2);
-                                                                triangles1.Add(idx4);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx2);
+                                                                    triangles1.Add(idx4);
 
+                                                                    break;
+                                                                }
                                                                 break;
                                                             }
-                                                            break;
-                                                        }
-                                                        else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n]) &&
-                                                                    (edgIdx_v[0] == straddlePolyIdx[n + 1] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n + 2]))
-                                                        {
-                                                            Debug.Log("地獄の6分岐6");
-                                                            // ポリゴンの数だけループ
-                                                            for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                            else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 2]) && (edgIdx_s[1] == straddlePolyIdx[n + 2] || edgIdx_s[1] == straddlePolyIdx[n]) &&
+                                                                        (edgIdx_v[0] == straddlePolyIdx[n + 1] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n + 2]))
                                                             {
-                                                                if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
-                                                                triangles1.RemoveRange(b, 3);
-                                                                triangles1.Add(idx6);
-                                                                triangles1.Add(idx2);
-                                                                triangles1.Add(idx4);
+                                                                Debug.Log("地獄の6分岐6");
+                                                                // ポリゴンの数だけループ
+                                                                for (int b = 0; b < attachedMesh.triangles.Length; b += 3)
+                                                                {
+                                                                    if (!(straddlePolyIdx[n] == attachedMesh.triangles[b] && straddlePolyIdx[n + 1] == attachedMesh.triangles[b + 1] && straddlePolyIdx[n + 2] == attachedMesh.triangles[b + 2])) continue;
+                                                                    triangles1.RemoveRange(b, 3);
+                                                                    triangles1.Add(idx6);
+                                                                    triangles1.Add(idx2);
+                                                                    triangles1.Add(idx4);
 
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx3);
-                                                                triangles1.Add(idx0);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx3);
+                                                                    triangles1.Add(idx0);
 
-                                                                triangles1.Add(idx5);
-                                                                triangles1.Add(idx0);
-                                                                triangles1.Add(idx1);
+                                                                    triangles1.Add(idx5);
+                                                                    triangles1.Add(idx0);
+                                                                    triangles1.Add(idx1);
 
+                                                                    break;
+                                                                }
                                                                 break;
                                                             }
-                                                            break;
-                                                        }
-                                                        else
-                                                        {
-                                                            Debug.Log("aaa");
-                                                            edgIdx_v[0] = edgIdx2List[n / 3][0];
-                                                            edgIdx_v[1] = edgIdx2List[n / 3][1];
+                                                            else
+                                                            {
+                                                                Debug.Log("aaa");
+                                                                edgIdx_v[0] = edgIdx2List[n / 3][0];
+                                                                edgIdx_v[1] = edgIdx2List[n / 3][1];
+
+                                                            }
 
                                                         }
+
+                                                        // 候補から削除
+                                                        edgIdx_s[0] = edgIdx_v[0];
+                                                        edgIdx_s[1] = edgIdx_v[1];
+                                                        idxList.Clear();
+                                                        idxList.Add(straddlePolyIdx[n]);
+                                                        idxList.Add(straddlePolyIdx[n + 1]);
+                                                        idxList.Add(straddlePolyIdx[n + 2]);
+                                                        straddlePolyIdx.RemoveRange(n, 3);
+                                                        intersectPolyList.RemoveRange(n / 3, 1);
+                                                        intersectEdgList.RemoveRange(n / 3, 1);
+                                                        triger = true;
+                                                        break;
 
                                                     }
 
-                                                    // 候補から削除
-                                                    // straddlePolyIdx.RemoveRange(n, 3);
                                                 }
 
+                                                if (triger) break;
                                             }
+
+
                                         }
 
-
-                                        if (straddlePolyIdx[n] == idxList[0] && straddlePolyIdx[n + 1] == idxList[1] && straddlePolyIdx[n + 2] == idxList[2])
-                                        {
-
-                                        }
                                     }
-
+                                    else
+                                    {
+                                        break;
+                                    }
                                 }
+
 
 
 
