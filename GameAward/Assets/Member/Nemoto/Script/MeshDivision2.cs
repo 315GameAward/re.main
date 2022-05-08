@@ -1130,7 +1130,8 @@ public class MeshDivision2 : MonoBehaviour
                                 // --- 2•ªŠ„‚·‚éˆ—2 ---
                                 Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
                                 Debug.Log("idxList.Count" + idxList.Count);
-                                while (straddlePolyIdx.Count > 0)
+                                int whileCnt = 0;
+                                while (straddlePolyIdx.Count > 0 && whileCnt < 50)
                                 {
                                     if (idxList.Count > 0)
                                     {
@@ -1373,6 +1374,7 @@ public class MeshDivision2 : MonoBehaviour
                                     {
                                         break;
                                     }
+                                    whileCnt++;
                                 }
 
 
