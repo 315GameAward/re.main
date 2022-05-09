@@ -36,9 +36,11 @@ public class Enemymove : FSMnord
     public override void Update(FSMcontllole Contloller)
     {
         Vector3 velocity;
-
+        Vector3 ander;
+        ander=new Vector3 (0,90,0);
         base.Update(Contloller);
-        velocity = Contloller.Parent.gameObject.transform.forward * Time.deltaTime * 3;
+
+        velocity = Contloller.Parent.gameObject.transform.right * Time.deltaTime * 3;//forward * Time.deltaTime * 3;
         Contloller.Parent.gameObject.transform.position += velocity;
 
         if (enemy.HitEnemy == enemy)
