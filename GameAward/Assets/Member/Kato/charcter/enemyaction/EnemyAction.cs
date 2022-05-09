@@ -38,7 +38,7 @@ public class Enemymove : FSMnord
         Vector3 velocity;
 
         base.Update(Contloller);
-        velocity = Contloller.Parent.gameObject.transform.forward * Time.deltaTime * 6;
+        velocity = Contloller.Parent.gameObject.transform.forward * Time.deltaTime * 3;
         Contloller.Parent.gameObject.transform.position += velocity;
 
         if (enemy.HitEnemy == enemy)
