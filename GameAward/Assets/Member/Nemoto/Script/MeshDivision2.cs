@@ -732,7 +732,6 @@ public class MeshDivision2 : MonoBehaviour
                     var cp_v = new Vector2(cutPoint[cutPoint.Count - 1].x, cutPoint[cutPoint.Count - 1].z);    // カットポイントの終点
                     var cpEdg = cp_v - cp_s;    // カットポイントの終点とカットポイントの終点の1個前をつないだ辺
                     var checkCp = cp_s + cpEdg * 0.01f; // カットポイントの終点の1個前からカットポイントの終点の方向にちょっと伸ばした点
-                    var intersecBigin = new Vector2();
                     var edgIdx2List = new List<List<int>>();   // 辺のインデックスのリストのリスト   
 
                     // またいでるポリゴンと侵入しているポリゴンが何個あるか探す
@@ -762,7 +761,7 @@ public class MeshDivision2 : MonoBehaviour
                             Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
 
                             // カットポイントの始点の補正
-                            cpVtx_s += cpEdge * 0.1f;
+                            cpVtx_s += cpEdge * 0.01f;
 
                             // カットポイントの辺の補正
                             cpEdge = cpVtx_v - cpVtx_s; // 辺
@@ -1694,6 +1693,121 @@ public class MeshDivision2 : MonoBehaviour
             vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.08f;
         }
 
+        // 変数宣言              
+        int vtxCount = vertices1.Count; // 何だったか忘れたww???
+        var straddlePolyIdx = new List<int>();  // またいだポリゴン番号リスト
+        var crossPolyIdx = new List<int>();  // 交差ポリゴン番号リスト
+        var inerPolyIdx = new List<int>();  // カットポイントが中に入っているポリゴン番号
+        var intersectPolyList = new List<List<Vector2>>();  // ポリゴンごとにある交差している点のリスト
+        var intersectEdgList = new List<List<Vector2>>();  // ポリゴンごとにある交差している辺のリスト
+        var intersectionList = new List<Vector2>(); // 交点のリスト
+        var cp_s = new Vector2(cutPoint[cutPoint.Count - 2].x, cutPoint[cutPoint.Count - 2].z);    // カットポイントの終点の1個前
+        var cp_v = new Vector2(cutPoint[cutPoint.Count - 1].x, cutPoint[cutPoint.Count - 1].z);    // カットポイントの終点
+        var cpEdg = cp_v - cp_s;    // カットポイントの終点とカットポイントの終点の1個前をつないだ辺
+        var checkCp = cp_s + cpEdg * 0.01f; // カットポイントの終点の1個前からカットポイントの終点の方向にちょっと伸ばした点
+        var edgIdx2List = new List<List<int>>();   // 辺のインデックスのリストのリスト   
+
+        // またいでるポリゴンと侵入しているポリゴンが何個あるか探す
+        for (int j = 0; j < attachedMesh.triangles.Length; j += 3)
+        {
+            // 変数宣言             
+            int interPointCnt = 0; // 交差した点の数
+            var intersection = new List<Vector2>(); // 交点のリスト
+            var edgList = new List<Vector2>(); //辺のリスト
+            var edgIdxList = new List<int>();   // 辺のインデックスのリスト   
+
+            // ポリゴンの辺の数だけループ
+            for (int k = 0; k < 3; k++)
+            {
+                // ポリゴンの2頂点
+                Vector2 polyVtx_s = new Vector2(attachedMesh.vertices[attachedMesh.triangles[j + k]].x, attachedMesh.vertices[attachedMesh.triangles[j + k]].z);  // 始点
+                Vector2 polyVtx_v = new Vector2(attachedMesh.vertices[attachedMesh.triangles[j + (k + 1) % 3]].x, attachedMesh.vertices[attachedMesh.triangles[j + (k + 1) % 3]].z);  // 終点
+
+                // ポリゴンの辺
+                Vector2 polyEdge = polyVtx_v - polyVtx_s;   // 辺
+
+                // カットポイントの2頂点
+                Vector2 cpVtx_s = new Vector2(cutPoint[cutPoint.Count - 2].x - transform.position.x, cutPoint[cutPoint.Count - 2].z - transform.position.z); // 始点
+                Vector2 cpVtx_v = new Vector2(cutPoint[cutPoint.Count - 1].x - transform.position.x, cutPoint[cutPoint.Count - 1].z - transform.position.z); // 終点
+
+                // カットポイントの辺
+                Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
+
+                // カットポイントの始点の補正
+                cpVtx_s += cpEdge * 0.01f;
+
+                // カットポイントの辺の補正
+                cpEdge = cpVtx_v - cpVtx_s; // 辺
+
+                // ポリゴンの辺とカットポイントの辺の始点をつないだベクトル
+                Vector2 v = polyVtx_s - cpVtx_s;
+
+                // 線分の始点から交点のベクトルの係数(多分)
+                float t1 = (v.x * polyEdge.y - polyEdge.x * v.y) / (cpEdge.x * polyEdge.y - polyEdge.x * cpEdge.y);
+                float t2 = (v.x * cpEdge.y - cpEdge.x * v.y) / (cpEdge.x * polyEdge.y - polyEdge.x * cpEdge.y);
+
+                // 交点
+                Vector2 p = new Vector2(polyVtx_s.x, polyVtx_s.y) + new Vector2(polyEdge.x * t2, polyEdge.y * t2);
+
+                // 線分と線分が交わっているか
+                const float eps = 0.00001f;
+                if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
+                {
+                    // 交わってないときスルー
+                    continue;
+                }
+                else
+                {
+                    //vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y , p.y));
+                    // 交わってる時交点カウント++                               
+                    interPointCnt++;    // 交点カウント    
+                    intersection.Add(p);    // 交点の保存
+                    intersectionList.Add(p);// 交点の保存
+                    edgList.Add(polyEdge);
+                    edgIdxList.Add(attachedMesh.triangles[j + k]);
+                    edgIdxList.Add(attachedMesh.triangles[j + (k + 1) % 3]);
+                    Debug.Log("j + k" + attachedMesh.triangles[j + k]);
+                    Debug.Log("j + (k + 1) % 3" + attachedMesh.triangles[j + (k + 1) % 3]);
+
+                }
+            }
+
+            // ポリゴン番号を保存
+            if (interPointCnt == 2)// 交点カウント2個(ポリゴンをまたいでる時)
+            {
+                Debug.Log("2個あるで");
+                Debug.Log("ポリゴン番号は" + attachedMesh.triangles[j] + "," + attachedMesh.triangles[j + 1] + "," + attachedMesh.triangles[j + 2]);
+
+                straddlePolyIdx.Add(attachedMesh.triangles[j]);
+                straddlePolyIdx.Add(attachedMesh.triangles[j + 1]);
+                straddlePolyIdx.Add(attachedMesh.triangles[j + 2]);
+                crossPolyIdx.Add(j);
+                crossPolyIdx.Add(j + 1);
+                crossPolyIdx.Add(j + 2);
+                intersectPolyList.Add(intersection);
+                intersectEdgList.Add(edgList);
+                edgIdx2List.Add(edgIdxList);
+                Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
+            }
+            else if (interPointCnt == 1)// 交点カウント1個(カットポイントの終点がポリゴンの中にあるとき)
+            {
+                Debug.Log("1個あるで");
+                inerPolyIdx.Add(j);
+                inerPolyIdx.Add(j + 1);
+                inerPolyIdx.Add(j + 2);
+                crossPolyIdx.Add(j);
+                crossPolyIdx.Add(j + 1);
+                crossPolyIdx.Add(j + 2);
+                //intersectPolyList.Add(intersection);
+                //intersectEdgList.Add(edgList);
+            }
+            else
+            {
+                // Debug.Log("3個あるで");
+                // Debug.Log("ポリゴン番号は" + attachedMesh.triangles[j] + "," + attachedMesh.triangles[j + 1] + "," + attachedMesh.triangles[j + 2]);
+
+            }
+        }
 
 
         // メッシュのポリゴンの数だけループ
@@ -1879,6 +1993,8 @@ public class MeshDivision2 : MonoBehaviour
         triangles2.Add(triangles1[idxList[0] + 2]);
 
         Debug.Log("triangle2:" + triangles2[idx] + "" + triangles2[idx + 1] + "" + triangles2[idx + 2]);
+
+       
 
         // 同じ辺があるかを探索
         while (!end)
