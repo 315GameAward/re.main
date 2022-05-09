@@ -1152,6 +1152,7 @@ public class MeshDivision2 : MonoBehaviour
                                                     {
                                                         Debug.Log("おなじぇ辺がある");
                                                         Debug.Log("ポリゴン番号は" + straddlePolyIdx[n] + "," + straddlePolyIdx[n + 1] + "," + straddlePolyIdx[n + 2]);
+                                                        Debug.Log("idxList番号は" + idxList[0] + "," + idxList[1] + "," + idxList[ 2]);
 
                                                         var cpEdg_v = cutPoint[cutPoint.Count - 1];
                                                         var cpEdg_s = cutPoint[cutPoint.Count - 2];
@@ -1212,7 +1213,7 @@ public class MeshDivision2 : MonoBehaviour
                                                                 break;
                                                             }
                                                             else if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) &&
-                                                                        (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
+                                                                     (edgIdx_v[0] == straddlePolyIdx[n] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n]))
                                                             {
                                                                 Debug.Log("地獄の6分岐2");
                                                                 // ポリゴンの数だけループ
