@@ -1178,14 +1178,15 @@ public class MeshDivision2 : MonoBehaviour
                                                         edgIdx_v[0] = edgIdx2List[n / 3][2];
                                                         edgIdx_v[1] = edgIdx2List[n / 3][3];
 
-                                                        Debug.Log("edgIdx_s[0]:" + edgIdx_s[0]);
-                                                        Debug.Log("edgIdx_s[1]:" + edgIdx_s[1]);
-                                                        Debug.Log("edgIdx_v[0]:" + edgIdx_v[0]);
-                                                        Debug.Log("edgIdx_v[1]:" + edgIdx_v[1]);
-
+                                                       
                                                         // ínçñÇÃ6ï™äÚÇ2âÒçsÇ§
                                                         for (int twice = 0; twice < 2; twice++)
                                                         {
+                                                            Debug.Log("edgIdx_s[0]:" + edgIdx_s[0]);
+                                                            Debug.Log("edgIdx_s[1]:" + edgIdx_s[1]);
+                                                            Debug.Log("edgIdx_v[0]:" + edgIdx_v[0]);
+                                                            Debug.Log("edgIdx_v[1]:" + edgIdx_v[1]);
+
                                                             // ínçñÇÃ6ï™äÚ
                                                             if ((edgIdx_s[0] == straddlePolyIdx[n] || edgIdx_s[0] == straddlePolyIdx[n + 1]) && (edgIdx_s[1] == straddlePolyIdx[n + 1] || edgIdx_s[1] == straddlePolyIdx[n]) && (edgIdx_v[0] == straddlePolyIdx[n + 1] || edgIdx_v[0] == straddlePolyIdx[n + 2]) && (edgIdx_v[1] == straddlePolyIdx[n + 2] || edgIdx_v[1] == straddlePolyIdx[n + 1]))
                                                             {
@@ -1347,6 +1348,7 @@ public class MeshDivision2 : MonoBehaviour
                                                         }
 
                                                         // åÛï‚Ç©ÇÁçÌèú
+                                                        
                                                         edgIdx_s[0] = edgIdx_v[0];
                                                         edgIdx_s[1] = edgIdx_v[1];
                                                         idxList.Clear();
