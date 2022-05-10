@@ -47,6 +47,10 @@ public class Enemymove : FSMnord
         {
             Contloller.changenode("turn");
         }
+        if (enemy.Hitbrock == true)
+        {
+            Contloller.changenode("turn");
+        }
         if (enemy.Hitray == false)
         {
             Contloller.changenode("turn");
@@ -55,6 +59,7 @@ public class Enemymove : FSMnord
         {
             Contloller.changenode("Foll");
         }
+        
         if (enemy.isnullTarget == false)
         {
             if (enemy.Distance < 3.0f)
