@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     bool hitenemy;
     bool hitground;
     bool hitbrock;
-    
+
     bool enemyfoll;
     Vector3 direction;
     Vector3 targetchar;
@@ -109,6 +109,7 @@ public class Enemy : MonoBehaviour
     }
     void Dosperecast()
     {
+
         int mask = LayerMask.GetMask("Default");
         int dark = LayerMask.GetMask("Enemy");
         int back = LayerMask.GetMask("BackGround");
@@ -119,7 +120,7 @@ public class Enemy : MonoBehaviour
         Vector3 hiku;
         hiku = new Vector3(0, 1, 0);
         float en = 0.1f;
-        Vector3 angle = transform.right - hiku;
+        Vector3 angle = transform.right * -1 - hiku;
 
         hitray = Physics.SphereCast(transform.position, en, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
         hitenemy = Physics.SphereCast(transform.position, en, angle.normalized, out rayhit, 1, dark, QueryTriggerInteraction.Ignore);
@@ -128,7 +129,7 @@ public class Enemy : MonoBehaviour
         foll = new Vector3(0, -1, 0);
         hitground = Physics.Raycast(transform.position, foll, out rayhit, 1, back, QueryTriggerInteraction.Ignore);
 
-        //Debug.DrawRay(transform.position, angle.normalized, Color.green);
+        Debug.DrawRay(transform.position, angle.normalized, Color.green);
         // Debug.DrawRay(controller.transform.position, angle.normalized, Color.green);
 
     }
