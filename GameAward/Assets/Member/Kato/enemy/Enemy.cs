@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
         Vector3 hiku;
         hiku = new Vector3(0, 1, 0);
         float en = 0.1f;
-        Vector3 angle = transform.right * -1 - hiku;
+        Vector3 angle = transform.right - hiku;
 
         hitray = Physics.SphereCast(transform.position, en, angle.normalized, out rayhit, 1, mask, QueryTriggerInteraction.Ignore);
         hitenemy = Physics.SphereCast(transform.position, en, angle.normalized, out rayhit, 1, dark, QueryTriggerInteraction.Ignore);
