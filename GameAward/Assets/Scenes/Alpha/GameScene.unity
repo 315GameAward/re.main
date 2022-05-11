@@ -3421,6 +3421,10 @@ PrefabInstance:
       value: nomarukesigomu
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 25eb89a941f9ecc48a432d36d75dd25a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 25eb89a941f9ecc48a432d36d75dd25a, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -4925,9 +4929,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9a0615fc65c4547b6acd19715c5992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  span: 0.8
+  span: 0.1
   isGround: 1
-  rayPosition: {x: 0, y: 0.5, z: 0.3}
+  rayPosition: {x: 0, y: 0.5, z: 0}
   rayVector: {x: 0, y: -1, z: 0}
 --- !u!114 &1829170673
 MonoBehaviour:
@@ -5654,9 +5658,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1994739691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d250e98a1bf362b41972d9d6abc50f91, type: 3}
+  m_Script: {fileID: 11500000, guid: d0c39351fe9035f45a7c7e094c9dd8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kiraPrefab: {fileID: 6080124440151009729, guid: 8140ab7060a44994892a6da82d310c9f, type: 3}
 --- !u!65 &1994739693
 BoxCollider:
   m_ObjectHideFlags: 0
