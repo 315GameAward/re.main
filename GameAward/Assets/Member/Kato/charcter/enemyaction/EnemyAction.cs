@@ -7,6 +7,7 @@ public class EnemyTurn : FSMnord
 
     public override void Start(FSMcontllole Contloller)
     {
+
         float rand = Random.Range(-90, 90);
         float retu = Random.Range(-5, 5);
         Vector3 Rote = Contloller.Parent.gameObject.transform.rotation.eulerAngles;
@@ -35,12 +36,13 @@ public class Enemymove : FSMnord
     }
     public override void Update(FSMcontllole Contloller)
     {
+
         Vector3 velocity;
         Vector3 ander;
-        ander=new Vector3 (0,90,0);
+        ander = new Vector3(0, 90, 0);
         base.Update(Contloller);
 
-        velocity = Contloller.Parent.gameObject.transform.right * Time.deltaTime * 3;//forward * Time.deltaTime * 3;
+        velocity = Contloller.Parent.gameObject.transform.right  * Time.deltaTime * 3;//forward * Time.deltaTime * 3 *-1;
         Contloller.Parent.gameObject.transform.position += velocity;
 
         if (enemy.HitEnemy == enemy)
@@ -55,11 +57,11 @@ public class Enemymove : FSMnord
         {
             Contloller.changenode("turn");
         }
-        if(enemy.HitGround==true)
+        if (enemy.HitGround == true)
         {
             Contloller.changenode("Foll");
         }
-        
+
         if (enemy.isnullTarget == false)
         {
             if (enemy.Distance < 3.0f)
