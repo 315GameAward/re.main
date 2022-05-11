@@ -30,27 +30,29 @@ public class tondekee : MonoBehaviour
     {
         //テスト用
         //StartCoroutine("Tondekee");
+        SpawnParticle();
     }
 
     void SpawnParticle()
     {
-        targetParticleInstance = GameObject.Instantiate(targetParticle, spawnPos, transform.rotation) as GameObject;    //パーティクル設置
+        //パーティクル設置
+        //targetParticleInstance = GameObject.Instantiate(targetParticle, spawnPos, transform.rotation) as GameObject;
+        targetParticleInstance = GameObject.Instantiate(targetParticle, new Vector3(0, 0, 0), transform.rotation) as GameObject;
+        StartCoroutine("Tondekee");
     }
 
     IEnumerator Tondekee()
     {
         while (pos.y < 3.0f)
         {
-            pos = targetParticle.transform.position;
-            transform.Translate(0, 0.02f, 0);
+            pos = targetParticleInstance.transform.position;
+            targetParticleInstance.transform.Translate(0, 0.02f, 0);
             yield return new WaitForSeconds(0.01f);
         }
 
-        while (pos.x < 3.0f)
-        {
-            pos = targetParticle.transform.position;
-            transform.Translate(0.02f, 0, 0);
-            yield return new WaitForSeconds(0.01f);
-        }
+        //while (pos.x < 3.0f)
+        //{
+        //    yield return new WaitForSeconds(0.01f);
+        //}
     }
 }
