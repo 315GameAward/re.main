@@ -9,7 +9,7 @@ public class KiraMove : MonoBehaviour
 {
     public Vector3 kiramove;
 
-    public float timer;
+    private float timer = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
