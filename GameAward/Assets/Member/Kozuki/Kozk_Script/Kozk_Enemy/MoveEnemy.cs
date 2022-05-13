@@ -150,7 +150,7 @@ public class MoveEnemy : MonoBehaviour
             {
                 // UŒ‚
                 Debug.Log("UŒ‚‚µ‚Ü‚µ‚½");
-
+                Life.instance.DelLife();
                 timeTrigger = Time.time + timeOut;
             }
         }

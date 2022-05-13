@@ -16,10 +16,17 @@ public class Life : MonoBehaviour
     GameObject prefab;  // インスペクターからハートのプレハブを割り当てる
 
     public int nLife;   // 体力
-
+    public static Life instance;
     // 配列
     List<GameObject> Lifes = new List<GameObject>();   // 生成したライフを入れる
-   
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
