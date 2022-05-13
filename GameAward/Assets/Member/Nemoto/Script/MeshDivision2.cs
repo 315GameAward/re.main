@@ -445,16 +445,13 @@ public class MeshDivision2 : MonoBehaviour
             Vector2 cpV = new Vector2(cutPoint[cutPoint.Count - 1].x - transform.position.x, cutPoint[cutPoint.Count - 1].z - transform.position.z);
             Vector2 p = cpV;
             var idxList = new List<int>();  // 1個前に分割したインデックスのリスト
+            var rastIdxList = new List<int>();  // 2個に分割する処理をした最後のインデックス保存用のリスト
 
             // カットポイントの始点がどのポリゴンの辺にいるのか
             for (int i = 0; i < intersectPolyList2.Count; i++)
             {
                 for(int j = 0;j < intersectPolyList2[i].Count;j++)
                 {
-
-                    //Debug.Log("Vector2.Distance(cpV, p)" + Vector2.Distance(cpV, p));
-                    //Debug.Log("Vector2.Distance(cpV, intersectPolyList2[i][j])" + Vector2.Distance(cpV, intersectPolyList2[i][j]));
-
                     // カットポイントの始点の1個後と交点との距離が一番遠い(始点になる)点を探す
                     if (Vector2.Distance(cpV, p) > Vector2.Distance(cpV, intersectPolyList2[i][j])) continue;
 
@@ -465,37 +462,39 @@ public class MeshDivision2 : MonoBehaviour
                 }                
             }
 
-            Vector2 pEdge = intersectEdgList2[firstNum][secondNum];
             Debug.Log("pEdgeCount" + intersectEdgList2[firstNum].Count);
             Debug.Log("pEdge1" + intersectEdgList2[firstNum][0]);
             Debug.Log("pEdge2" + intersectEdgList2[firstNum][1]);
             
-
            // 最初に2分割する処理
            {
                 var cpNormal = Vector3.Cross((cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1]), Vector3.up);
                 var cpNormalAbs =  new Vector3(cpNormal.x / Mathf.Abs(cpNormal.x), 0, cpNormal.z / Mathf.Abs(cpNormal.z)) ;
                 var pEnd = intersectPolyList2[firstNum][1];    // 交点の終点
-                var pEdge2 = intersectEdgList2[firstNum][1];     // 交点の終点の辺ベクトル
+                var pEdge = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][secondNum].x) , Mathf.Abs(intersectEdgList2[firstNum][secondNum].y)) ;                
+                var pEdge2 = new Vector2();     // 交点の終点の辺ベクトル
 
                 // 頂点の追加
                 if (secondNum == 0)
                 {
                     pEnd   = intersectPolyList2[firstNum][1];    // 交点の終点
-                    pEdge2 = intersectEdgList2[firstNum][1];     // 交点の終点の辺ベクトル
+                    pEdge2 = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][1].x), Mathf.Abs(intersectEdgList2[firstNum][1].y));// 交点の終点の辺ベクトル                    
+                    idxList.Add(edgIdx2List2[firstNum][2]); // 候補の追加
+                    idxList.Add(edgIdx2List2[firstNum][3]); // 候補の追加
                 }
                 else if(secondNum == 1)
                 {
-                   pEnd = intersectPolyList2[firstNum][0];    // 交点の終点
-                   pEdge2 = intersectEdgList2[firstNum][0];   // 交点の終点の辺ベクトル                   
+                    pEnd = intersectPolyList2[firstNum][0];    // 交点の終点
+                    pEdge2 = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][0].x), Mathf.Abs(intersectEdgList2[firstNum][0].y));// 交点の終点の辺ベクトル                                
+                    idxList.Add(edgIdx2List2[firstNum][0]); // 候補の追加
+                    idxList.Add(edgIdx2List2[firstNum][1]); // 候補の追加
                 }
 
                 // カットポイントの始点   
                 vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * -cpNormalAbs.z));
                 vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * cpNormalAbs.z));
-                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) - new Vector3(pEdge2.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * -cpNormalAbs.z));
-                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) - new Vector3(pEdge2.normalized.x * 0.08f *  cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f *  cpNormalAbs.z));
-
+                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f *  -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f *  -cpNormalAbs.z));
+                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f *  cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f *  cpNormalAbs.z));
 
                 // インデックスの割り当て
                 int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -506,9 +505,7 @@ public class MeshDivision2 : MonoBehaviour
                 int idx5 = vertices1.Count - 2; // 
                 int idx6 = vertices1.Count - 1; // 
                 int removeIdx = -1;
-                idxList.Add(straddlePolyIdx[(firstNum * 3)]); 
-                idxList.Add(straddlePolyIdx[(firstNum * 3)+1]); 
-                idxList.Add(straddlePolyIdx[(firstNum * 3)+2]); 
+                
                 // 削除する三角形の検索
                 for (int a = 0;a < attachedMesh.triangles.Length;a += 3)
                 {
@@ -651,6 +648,7 @@ public class MeshDivision2 : MonoBehaviour
                     edgIdx2List2[firstNum].RemoveRange(0, 2);
                     edgIdx2List2[firstNum].Add(numChange[0]);
                     edgIdx2List2[firstNum].Add(numChange[1]);
+
                     // 01-12インデックス
                     if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx1)) &&
                         ((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)))
@@ -757,20 +755,381 @@ public class MeshDivision2 : MonoBehaviour
                         triangles1.Add(idx4);
                     }
 
+                    numChange.RemoveRange(0, 2);
+                    numChange.Add(edgIdx2List2[firstNum][0]);
+                    numChange.Add(edgIdx2List2[firstNum][1]);
+                    edgIdx2List2[firstNum].RemoveRange(0, 2);
+                    edgIdx2List2[firstNum].Add(numChange[0]);
+                    edgIdx2List2[firstNum].Add(numChange[1]);
+
+                }
+
+            }
+
+            // 最初に2分割した後にする2分割にする処理
+            {
+                //--- 変数宣言 ---
+                int count = 0;
+                var idxCnt = straddlePolyIdx;
+                idxCnt.RemoveRange(firstNum * 3, 3); // 候補保存用
+                //Debug.Log("idxCnt.Count" + idxCnt.Count);
+                Debug.Log("idxList.Count" + idxList.Count);
+
+                // 交点が2個あるポリゴンの候補がなくなるかカウントが一定以上になるまでループ
+                while (count < 50 && idxCnt.Count > 0)
+                {
+                    bool end = false;
+
+                    // 候補の数だけループ
+                    for(int k = 0;k < idxCnt.Count;k += 3)
+                    {
+                        // 辺の数だけループ
+                        for(int h = 0;h < 3;h++)
+                        {
+                            // 候補と一致しなかったらスルー、一致したら分割対象のインデックスが分かる
+                            if (!((idxCnt[k + h] == idxList[0] || idxCnt[k + h] == idxList[1]) && (idxCnt[k + ((h + 1)%3)] == idxList[0] || straddlePolyIdx[k + ((h + 1) % 3)] == idxList[1]))) continue;
+                            
+                            // 保存された候補リストから今回使ったインデックスを削除
+                            for(int g = 0; g < straddlePolyIdx.Count;g += 3)
+                            {
+                                // 候補と一致しなかったらスルー
+                                if (!(idxCnt[k] == straddlePolyIdx[g] && idxCnt[k + 1] == straddlePolyIdx[g + 1] && idxCnt[k + 2] == straddlePolyIdx[g + 2])) continue;
+
+                                // 変数宣言
+                                var cpNormal = Vector3.Cross((cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1]), Vector3.up);
+                                var cpNormalAbs = new Vector3(cpNormal.x / Mathf.Abs(cpNormal.x), 0, cpNormal.z / Mathf.Abs(cpNormal.z));
+                                var pEnd = intersectPolyList2[firstNum][1];    // 交点の終点
+                                var pEdge = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][secondNum].x), Mathf.Abs(intersectEdgList2[firstNum][secondNum].y));
+                                var pEdge2 = new Vector2();     // 交点の終点の辺ベクトル
+
+                                // ポリゴンのインデックスの最初の番号
+                                firstNum = g/3;
+
+                                Debug.Log("edgIdx2List2[firstNum][0]:" + edgIdx2List2[firstNum][0]);
+                                Debug.Log("edgIdx2List2[firstNum][1]:" + edgIdx2List2[firstNum][1]);
+                                Debug.Log("edgIdx2List2[firstNum][2]:" + edgIdx2List2[firstNum][2]);
+                                Debug.Log("edgIdx2List2[firstNum][3]:" + edgIdx2List2[firstNum][3]);
+
+                                // どっちが交点の始点か調べる
+                                if ((edgIdx2List2[firstNum][0] == idxList[0] || edgIdx2List2[firstNum][0] == idxList[1]) && (edgIdx2List2[firstNum][1] == idxList[1] || edgIdx2List2[firstNum][1] == idxList[0]) )
+                                {
+                                    Debug.Log("頂点の追加");
+                                    secondNum = 0;
+                                    pEnd = intersectPolyList2[firstNum][1];    // 交点の終点
+                                    pEdge2 = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][1].x), Mathf.Abs(intersectEdgList2[firstNum][1].y));// 交点の終点の辺ベクトル                                                      
+                                    idxList.Clear();    // 候補の削除
+                                    idxList.Add(edgIdx2List2[firstNum][2]); // 候補の追加
+                                    idxList.Add(edgIdx2List2[firstNum][3]); // 候補の追加
+                                    rastIdxList.Clear();    // 候補の削除
+                                    rastIdxList.Add(edgIdx2List2[firstNum][2]);// 候補の追加
+                                    rastIdxList.Add(edgIdx2List2[firstNum][3]);// 候補の追加
+                                }
+                                else if ((edgIdx2List2[firstNum][2] == idxList[0] || edgIdx2List2[firstNum][2] == idxList[1]) && (edgIdx2List2[firstNum][3] == idxList[1] || edgIdx2List2[firstNum][3] == idxList[0]))
+                                {
+                                    Debug.Log("頂点の追加");
+                                    secondNum = 1;
+                                    pEnd = intersectPolyList2[firstNum][0];    // 交点の終点
+                                    pEdge2 = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][0].x), Mathf.Abs(intersectEdgList2[firstNum][0].y));// 交点の終点の辺ベクトル                    
+                                    idxList.Clear();    // 候補の削除
+                                    idxList.Add(edgIdx2List2[firstNum][0]); // 候補の追加
+                                    idxList.Add(edgIdx2List2[firstNum][1]); // 候補の追加
+                                    rastIdxList.Clear();    // 候補の削除
+                                    rastIdxList.Add(edgIdx2List2[firstNum][0]);// 候補の追加
+                                    rastIdxList.Add(edgIdx2List2[firstNum][1]);// 候補の追加
+                                }
+
+                                // 頂点の追加
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * -cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * cpNormalAbs.z));
+
+                                // インデックスの割り当て
+                                int idx0 = straddlePolyIdx[(firstNum * 3)];
+                                int idx1 = straddlePolyIdx[(firstNum * 3) + 1];
+                                int idx2 = straddlePolyIdx[(firstNum * 3) + 2];
+                                int idx3 = vertices1.Count - 4; // 
+                                int idx4 = vertices1.Count - 3; //  
+                                int idx5 = vertices1.Count - 2; // 
+                                int idx6 = vertices1.Count - 1; // 
+                                int removeIdx = -1;
+
+                                // 削除する三角形の検索
+                                for (int a = 0; a < attachedMesh.triangles.Length; a += 3)
+                                {
+                                    if (!(attachedMesh.triangles[a] == idx0 && attachedMesh.triangles[a + 1] == idx1 && attachedMesh.triangles[a + 2] == idx2)) continue;
+                                    removeIdx = a;
+                                }
+
+                                // インデックスの割り振り
+                                if (secondNum == 0)
+                                {
+                                    // edgIdx2List2[firstNum][0]、edgIdx2List2[firstNum][1]が始点の交点
+
+                                    // インデックスの削除
+                                    triangles1.RemoveRange(removeIdx, 3);
+
+                                    // 01-12インデックス
+                                    if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                        ((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)))
+                                    {
+                                        Debug.Log("01-12インデックス");
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx1);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx0);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx4);
+                                    }
+                                    // 01-02インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx0)))
+                                    {
+                                        Debug.Log("01-02インデックス");
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx1);
+
+                                    }
+                                    // 02-12インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx0)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)))
+                                    {
+                                        Debug.Log("02-12インデックス");
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx0);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx1);
+                                    }
+                                    // 02-01インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx0)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx1 || edgIdx2List2[firstNum][3] == idx0)))
+                                    {
+                                        Debug.Log("02-01インデックス");
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx0);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx4);
+
+
+                                    }
+                                    // 12-01インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx1 || edgIdx2List2[firstNum][3] == idx0)))
+                                    {
+                                        Debug.Log("12-01インデックス");
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx0);
+                                    }
+                                    // 12-20インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx2 || edgIdx2List2[firstNum][2] == idx0) && (edgIdx2List2[firstNum][3] == idx0 || edgIdx2List2[firstNum][3] == idx2)))
+                                    {
+                                        Debug.Log(" 12-02インデックス");
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx4);
+                                    }
+
+                                }
+                                else if (secondNum == 1)
+                                {
+                                    // インデックスの削除
+                                    triangles1.RemoveRange(removeIdx, 3);
+
+                                    // インデックスの並び替え
+                                    var numChange = new List<int>();
+                                    numChange.Add(edgIdx2List2[firstNum][0]);
+                                    numChange.Add(edgIdx2List2[firstNum][1]);
+                                    edgIdx2List2[firstNum].RemoveRange(0, 2);
+                                    edgIdx2List2[firstNum].Add(numChange[0]);
+                                    edgIdx2List2[firstNum].Add(numChange[1]);
+
+                                    // 01-12インデックス
+                                    if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                        ((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)))
+                                    {
+                                        Debug.Log("01-12インデックス");
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx1);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx0);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx4);
+                                    }
+                                    // 01-02インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx0)))
+                                    {
+                                        Debug.Log("01-02インデックス");
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx1);
+
+                                    }
+                                    // 02-12インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx0)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)))
+                                    {
+                                        Debug.Log("02-12インデックス");
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx0);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx1);
+                                    }
+                                    // 02-01インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx0)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx1 || edgIdx2List2[firstNum][3] == idx0)))
+                                    {
+                                        Debug.Log("02-01インデックス");
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx0);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx4);
+
+
+                                    }
+                                    // 12-01インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx1 || edgIdx2List2[firstNum][3] == idx0)))
+                                    {
+                                        Debug.Log("12-01インデックス");
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx2);
+                                        triangles1.Add(idx0);
+                                    }
+                                    // 12-20インデックス
+                                    else if (((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)) &&
+                                             ((edgIdx2List2[firstNum][2] == idx2 || edgIdx2List2[firstNum][2] == idx0) && (edgIdx2List2[firstNum][3] == idx0 || edgIdx2List2[firstNum][3] == idx2)))
+                                    {
+                                        Debug.Log(" 12-02インデックス");
+                                        triangles1.Add(idx5);
+                                        triangles1.Add(idx3);
+                                        triangles1.Add(idx2);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx1);
+                                        triangles1.Add(idx4);
+
+                                        triangles1.Add(idx6);
+                                        triangles1.Add(idx0);
+                                        triangles1.Add(idx4);
+                                    }
+
+                                    numChange.RemoveRange(0, 2);
+                                    numChange.Add(edgIdx2List2[firstNum][0]);
+                                    numChange.Add(edgIdx2List2[firstNum][1]);
+                                    edgIdx2List2[firstNum].RemoveRange(0, 2);
+                                    edgIdx2List2[firstNum].Add(numChange[0]);
+                                    edgIdx2List2[firstNum].Add(numChange[1]);
+
+                                }
+
+                                // 候補から削除
+                                idxCnt.RemoveRange(k, 3);
+
+                                // ここまで来たら終了
+                                end = true;
+                                break;
+                            }
+                            if (end) break;
+                        }
+
+                        if (end) break;
+                    }
+
+                    // カウント++
+                    count++;
                 }
             }
 
-           
-
+            // 最後に4分割する処理
+            {
+                // 交点の始点がどの辺にあるか
+                //if(inerPolyIdx[0] == )
+            }
         }
 
 
 
-        // 最初の次に2分割する処理
-        for (int i = 0;i < straddlePolyIdx.Count;i+=3)
-        {
-
-        }
+       
 
       
         // 分割後のオブジェクト生成、いろいろといれる
