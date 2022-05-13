@@ -172,7 +172,7 @@ public class MeshDivision2 : MonoBehaviour
                 Debug.Log("2個あるで");
                 Debug.Log("ポリゴン番号は" + attachedMesh.triangles[j] + "," + attachedMesh.triangles[j + 1] + "," + attachedMesh.triangles[j + 2]);
 
-                straddlePolyIdx.Add(attachedMesh.triangles[j]);
+                straddlePolyIdx.Add(attachedMesh.triangles[j]    );
                 straddlePolyIdx.Add(attachedMesh.triangles[j + 1]);
                 straddlePolyIdx.Add(attachedMesh.triangles[j + 2]);
                 crossPolyIdx.Add(j);
@@ -186,9 +186,9 @@ public class MeshDivision2 : MonoBehaviour
             else if (interPointCnt == 1)// 交点カウント1個(カットポイントの終点がポリゴンの中にあるとき)
             {
                 Debug.Log("1個あるで");
-                inerPolyIdx.Add(j);
-                inerPolyIdx.Add(j + 1);
-                inerPolyIdx.Add(j + 2);
+                inerPolyIdx.Add(attachedMesh.triangles[j]    );
+                inerPolyIdx.Add(attachedMesh.triangles[j + 1]);
+                inerPolyIdx.Add(attachedMesh.triangles[j + 2]);
                 crossPolyIdx.Add(j);
                 crossPolyIdx.Add(j + 1);
                 crossPolyIdx.Add(j + 2);
@@ -1122,8 +1122,71 @@ public class MeshDivision2 : MonoBehaviour
 
             // 最後に4分割する処理
             {
+                Debug.Log("4分割する処理");
+                Debug.Log("edgIdx2List[0][0]:"+ edgIdx2List[0][0]);
+                Debug.Log("edgIdx2List[0][0]:"+ edgIdx2List[0][1]);
+                Debug.Log("inerPolyIdx.Count:" + inerPolyIdx.Count);
+                Debug.Log("inerPolyIdx[0]:" + inerPolyIdx[0]);
+                Debug.Log("inerPolyIdx[1]:" + inerPolyIdx[1]);
+                Debug.Log("inerPolyIdx[2]:" + inerPolyIdx[2]);
+
+                // 対象のインデックスの削除
+                for(int a = 0;a < triangles1.Count;a+=3)
+                {
+                    // 一致しなかったらスルー
+                    if (!(triangles1[a] == inerPolyIdx[0] && triangles1[a +1] == inerPolyIdx[1]&& triangles1[a +2] == inerPolyIdx[2])) continue;
+
+                    triangles1.RemoveRange(a, 3);
+                    break;
+                }
+
+                // 頂点の追加
+                vertices1.Add(cutPoint[cutPoint.Count-1] -transform.position);
+                vertices1.Add(cutPoint[cutPoint.Count-1] - transform.position);
+                
+                // インデックスの割り当て
+                int idx0 = inerPolyIdx[0];
+                int idx1 = inerPolyIdx[1];
+                int idx2 = inerPolyIdx[2];
+                int idx3 = vertices1.Count - 4; // 
+                int idx4 = vertices1.Count - 3; //  
+                int idx5 = vertices1.Count - 2; // 
+                int idx6 = vertices1.Count - 1; // 
+                
                 // 交点の始点がどの辺にあるか
-                //if(inerPolyIdx[0] == )
+                // 辺01の上
+                if ((edgIdx2List[0][0] == inerPolyIdx[0] || edgIdx2List[0][0] == inerPolyIdx[1])&&
+                   (edgIdx2List[0][1] == inerPolyIdx[1] || edgIdx2List[0][1] == inerPolyIdx[0] ))
+                {
+                    Debug.Log("辺01の上");
+                    triangles1.Add(idx5);
+                    triangles1.Add(idx1);
+                    triangles1.Add(idx2);
+
+                    triangles1.Add(idx5);
+                    triangles1.Add(idx2);
+                    triangles1.Add(idx4);
+
+                    triangles1.Add(idx5);
+                    triangles1.Add(idx3);
+                    triangles1.Add(idx0);
+
+                    triangles1.Add(idx5);
+                    triangles1.Add(idx0);
+                    triangles1.Add(idx1);
+                }
+                // 辺12の上
+                else if ((edgIdx2List[0][0] == inerPolyIdx[1] || edgIdx2List[0][0] == inerPolyIdx[2]) &&
+                   (edgIdx2List[0][1] == inerPolyIdx[2] || edgIdx2List[0][1] == inerPolyIdx[1]))
+                {
+                    Debug.Log("辺12の上");
+                }
+                // 辺20の上
+                else if ((edgIdx2List[0][0] == inerPolyIdx[2] || edgIdx2List[0][0] == inerPolyIdx[0]) &&
+                   (edgIdx2List[0][1] == inerPolyIdx[0] || edgIdx2List[0][1] == inerPolyIdx[2]))
+                {
+                    Debug.Log("辺20の上");
+                }
             }
         }
 
