@@ -15,6 +15,10 @@ public class Life : MonoBehaviour
     [SerializeField]
     GameObject prefab;  // インスペクターからハートのプレハブを割り当てる
 
+    // 効果音
+    public AudioClip sound;
+    AudioSource audioSource;
+
     public int nLife;   // 体力
     public static Life instance;
     // 配列
@@ -32,6 +36,9 @@ public class Life : MonoBehaviour
     {
         for (int i = nLife; i > 0; i--)
         {
+            // 効果音取得
+            audioSource = GetComponent<AudioSource>();
+            
             // 体力を設定していく
             AddLife();
         }
@@ -45,21 +52,21 @@ public class Life : MonoBehaviour
         if (nLife <= 0)
         {
             // ゲームオーバー呼び出し
-            Debug.Log("ゲームオーバー");
+            // Debug.Log("ゲームオーバー");
         }
 
-        // スペースを押したら体力消費
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            AddLife();
-            nLife++;
-        }
+        //// スペースを押したら体力消費
+        //if (Input.GetKeyUp(KeyCode.UpArrow))
+        //{
+        //    AddLife();
+        //    nLife++;
+        //}
 
-        // 下矢印を押したら体力増加
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            DelLife();
-        }
+        //// 下矢印を押したら体力増加
+        //if (Input.GetKeyUp(KeyCode.DownArrow))
+        //{
+        //    DelLife();
+        //}
     }
 
     //========================
@@ -82,8 +89,17 @@ public class Life : MonoBehaviour
     //========================
     public void DelLife()
     {
+        if(nLife <= 0)
+        {
+            return;
+        }
+
         Destroy(Lifes[0]);
         Lifes.RemoveAt(0);
+
+        //音を鳴らす
+        audioSource.PlayOneShot(sound);
+
         nLife--;
     }
 
