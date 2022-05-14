@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!320 &40571066
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &93698146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93698145}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &93698148
 Camera:
   m_ObjectHideFlags: 0
@@ -2665,7 +2665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &763751315
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2724,13 +2724,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763751314}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 9, z: -0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &781201534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,7 +3157,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.21
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &863950610
 GameObject:
@@ -4077,7 +4077,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1177751259
 MonoBehaviour:
@@ -5096,8 +5096,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418564325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2011, y: -0.48, z: -0.8243}
-  m_LocalScale: {x: 9.645086, y: 0.09129369, z: 9.632604}
+  m_LocalPosition: {x: 0.2, y: -0.5, z: -0.85}
+  m_LocalScale: {x: 10, y: 0.02, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -5619,7 +5619,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1628981810}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.23
   m_Height: 1.2
   m_Direction: 1
