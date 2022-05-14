@@ -13,7 +13,7 @@ public class EnemyTurn : FSMnord
         Vector3 Rote = Contloller.Parent.gameObject.transform.rotation.eulerAngles;
         base.Start(Contloller);
         Contloller.changenode("move");
-        Contloller.Parent.gameObject.transform.rotation = Quaternion.Euler(Rote.x, Rote.y + 180 + retu, Rote.z);
+        Contloller.Parent.gameObject.transform.rotation = Quaternion.Euler(Rote.x, Rote.y  + retu, Rote.z+180);
     }
     public override void Update(FSMcontllole Contloller)
     {
