@@ -10,6 +10,9 @@ using UnityEngine;
 public class DeadZone : MonoBehaviour
 {
     public GameObject kiraPrefab;
+    private Vector3 pos;
+    private float Deadtaime = 5.0f;
+    private bool bDead = false;
 
     void OnTriggerStay(Collider collision)
     {
@@ -17,20 +20,28 @@ public class DeadZone : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             // 生成位置
-            Vector3 pos = collision.transform.position;
+            pos = collision.transform.position;
+            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            collision.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
-            // プレハブを指定位置に生成
-            Instantiate(kiraPrefab, pos, Quaternion.identity);
-
-            // this.transform.Translate(Vector3.right * speed);
-            // GetComponent<GuardBT>().enabled = false;
+            Invoke(nameof(InsKira), Deadtaime);
 
             // エネミー消去
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject,Deadtaime);
         }
         else
         {
             // Debug.Log("当ってない");
         }
+    }
+
+    public void InsKira()
+    {
+       if(bDead == true) { return; }
+
+        // プレハブを指定位置に生成
+        Instantiate(kiraPrefab, pos, Quaternion.identity);
+
+        bDead = true;
     }
 }
