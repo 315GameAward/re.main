@@ -5,11 +5,14 @@ using UnityEngine;
 public class Demo : MonoBehaviour
 {
     [SerializeField] Timer timer1;
+
+    public int second;
+
     //[SerializeField] Timer SetDuration;
     // Start is called before the first frame update
     private void Start()
     {
-        timer1.SetDuration(10).Begin();
+        timer1.SetDuration(second).Begin();
     }
 
     // Update is called once per frame
