@@ -43,16 +43,18 @@ public class tondekee : MonoBehaviour
 
     IEnumerator Tondekee()
     {
-        while (pos.y < 3.0f)
+        while (pos.y < 6.35f)
         {
             pos = targetParticleInstance.transform.position;
             targetParticleInstance.transform.Translate(0, 0.02f, 0);
             yield return new WaitForSeconds(0.01f);
         }
 
-        //while (pos.x < 3.0f)
-        //{
-        //    yield return new WaitForSeconds(0.01f);
-        //}
+        while (pos.x < 3.1f)
+        {
+            pos = targetParticleInstance.transform.position;
+            targetParticleInstance.transform.Translate(0.02f, 0, 0);
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }
