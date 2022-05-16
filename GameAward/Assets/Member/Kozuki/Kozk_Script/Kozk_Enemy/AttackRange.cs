@@ -10,7 +10,7 @@ public class AttackRange : MonoBehaviour
 
     void Start()
     {
-        moveEnemy = GetComponentInParent<MoveEnemy>();
+        moveEnemy = this.gameObject.GetComponentInParent<MoveEnemy>();
 
     }
     void OnTriggerStay(Collider col)

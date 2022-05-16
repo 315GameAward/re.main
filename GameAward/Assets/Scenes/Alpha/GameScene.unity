@@ -3241,6 +3241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc1bd8b46350e428330596a11983ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackR: {fileID: 857785613}
 --- !u!95 &836214341
 Animator:
   serializedVersion: 3
@@ -6059,10 +6060,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9a0615fc65c4547b6acd19715c5992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  span: 0.2
+  span: 0.5
   isGround: 1
-  rayPosition: {x: 0, y: 0.5, z: 0}
-  rayVector: {x: 0, y: -1, z: 0}
+  rayPosition: {x: 0, y: 0.5, z: 0.1}
+  rayVector: {x: 0, y: 1, z: 0}
 --- !u!143 &1628981814
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6250,10 +6251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9a0615fc65c4547b6acd19715c5992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  span: 0.2
+  span: 0.8
   isGround: 1
-  rayPosition: {x: 0, y: 0.5, z: 0}
-  rayVector: {x: 0, y: -1, z: 0}
+  rayPosition: {x: 0, y: 0.5, z: 0.1}
+  rayVector: {x: 0, y: 1, z: 0}
 --- !u!143 &1775352922
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7417,6 +7418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc1bd8b46350e428330596a11983ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackR: {fileID: 1796704770}
 --- !u!95 &2042083467
 Animator:
   serializedVersion: 3

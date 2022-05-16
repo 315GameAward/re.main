@@ -8,7 +8,7 @@ public class CompassAnimation : MonoBehaviour
     private Animator animator;
     private MoveEnemy enemy;
     private GameObject Cmps;
-    private GameObject AttackR;
+   public GameObject AttackR;
     private AttackRange Pcol;
     // 設定したフラグの名前
     private const string key_isWalk = "isWalk";
@@ -17,10 +17,11 @@ public class CompassAnimation : MonoBehaviour
     // 初期化メソッド
     void Start()
     {
+
         Cmps = GameObject.Find("Compass");
-        AttackR = GameObject.Find("AttackRange");
+     // AttackR = GameObject.Find("AttackRange");
         enemy = Cmps.GetComponent<MoveEnemy>();
-        Pcol = AttackR.GetComponent<AttackRange>();
+       Pcol = AttackR.gameObject.GetComponent<AttackRange>();
 
         // 自分に設定されているAnimatorコンポーネントを習得する
         this.animator = GetComponent<Animator>();

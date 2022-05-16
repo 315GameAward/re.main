@@ -17,7 +17,7 @@ public class ResultTransition : MonoBehaviour
     void Update()
     {
         ResultTest = GameObject.FindGameObjectsWithTag("kesigomu");
-        Debug.Log("Á‚µƒSƒ€‚Ì”" + ResultTest.Length);
+       // Debug.Log("Á‚µƒSƒ€‚Ì”" + ResultTest.Length);
         if (ResultTest.Length == 0)
         {
             Debug.Log("ƒV[ƒ“‚ÌˆÚ“®");
