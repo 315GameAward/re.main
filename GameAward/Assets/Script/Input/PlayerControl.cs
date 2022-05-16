@@ -137,7 +137,12 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCut(InputAction.CallbackContext context)
     {
-        if (eCutMode != CutMode.CUT_ONE) return;
+        if (eCutMode != CutMode.CUT_ONE)
+        {
+            // カットポイントの追加
+            gameObject.GetComponent<CutPoint2>().AddCPPoint();
+            return;
+        }
 
         //切った時の移動
         transform.position += transform.forward * moveForce;
