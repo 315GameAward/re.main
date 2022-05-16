@@ -49,8 +49,8 @@ public class MoveEnemy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        enemyController = GetComponent<CharacterController>();
-        setPosition = GetComponent<SetPosition>();
+        enemyController = this.gameObject.GetComponent<CharacterController>();
+        setPosition = this.gameObject.GetComponent<SetPosition>();
         setPosition.CreateRandomPosition(true);
         velocity = Vector3.zero;
         arrived = false;
