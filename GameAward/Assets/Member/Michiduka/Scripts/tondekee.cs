@@ -26,8 +26,6 @@ public class tondekee : MonoBehaviour
     private Vector3 spawnPos;
     private Vector3 pos;    //座標
 
-    public Life life;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +47,8 @@ public class tondekee : MonoBehaviour
         //targetParticleInstance = GameObject.Instantiate(targetParticle, spawnPos, transform.rotation) as GameObject;
         targetParticleInstance = GameObject.Instantiate(targetParticle, new Vector3(0, 0, 0), transform.rotation) as GameObject;
         //z 1.5
-        targetParticleInstance.transform.Translate(0, 0, 1.95f);
+        targetParticleInstance.transform.Translate(0, 0, 1.45f);
         StartCoroutine("Tondekee");
-        //ライフ消去
-        life.DelLife();
     }
 
     IEnumerator Tondekee()
@@ -61,10 +57,11 @@ public class tondekee : MonoBehaviour
         while (pos.x < 2.1f)
         {
             pos = targetParticleInstance.transform.position;
-            targetParticleInstance.transform.Translate(0, 0.05f, 0);
+            targetParticleInstance.transform.Translate(0, 0.061f, 0);
             targetParticleInstance.transform.Translate(0.02f, 0, 0);
             yield return new WaitForSeconds(0.01f);
         }
-        
+        //ライフ消去
+        Life.instance.DelLife();
     }
 }
