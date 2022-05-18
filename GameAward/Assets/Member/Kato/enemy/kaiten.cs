@@ -8,7 +8,7 @@ public class kaiten : MonoBehaviour
     float z;
     void Update()
     {
-        z += Time.deltaTime * 100;
+        z += Time.deltaTime * 1;
         transform.Rotate(0, z, 0);
         
         //transform.rotation = Quaternion.Euler(y, 0, 0);
