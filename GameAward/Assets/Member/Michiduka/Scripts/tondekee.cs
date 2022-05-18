@@ -23,13 +23,18 @@ public class tondekee : MonoBehaviour
     [SerializeField] private GameObject targetParticle;
     private GameObject targetParticleInstance;
 
-    private Vector3 spawnPos;
-    private Vector3 pos;    //座標
+    private Vector3 spawnPos;   //スポーン座標
+    private Vector3 pos;        //座標
+
+    //対象ライフ
+    [SerializeField] private GameObject targetLife;
+
+    public Animator targetAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //targetLife.GetComponent<Animator>();
     }
 
     void Update()
@@ -61,7 +66,18 @@ public class tondekee : MonoBehaviour
             targetParticleInstance.transform.Translate(0.02f, 0, 0);
             yield return new WaitForSeconds(0.01f);
         }
+
+        //ライフ設置
+        targetLife.SetActive(true);
+        Debug.Log("おわり");
+
         //ライフ消去
         Life.instance.DelLife();
+
+        targetAnimator.Play("Life");
+        yield return new WaitForSeconds(.5f);
+
+        targetLife.SetActive(false);
+
     }
 }
