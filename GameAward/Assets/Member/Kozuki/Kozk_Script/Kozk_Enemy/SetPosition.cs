@@ -6,8 +6,8 @@ public class SetPosition : MonoBehaviour
     private Rigidbody rb;
     private float distance;
 
-    public float span = 120f;  // ray用、spanで測定間隔を測る
-    private float times;// ray用、経過時間を当てはめる
+    public float span = 0.0f;  // ray用、spanで測定間隔を測る
+    private float times;        // ray用、経過時間を当てはめる
     public bool isGround = true;
     public Vector3 rayPosition = Vector3.zero; // 変更可能
     private Vector3 RayPosition;
@@ -29,19 +29,19 @@ public class SetPosition : MonoBehaviour
     {
         Vector3 trans = new Vector3(this.transform.position.x, 0.0f, this.transform.position.z);
         times += Time.deltaTime;    // 測定経過時間
+                                    //
+        Vector3 angle = transform.forward - rayVector;
         //
-                Vector3 angle = transform.forward - rayVector;
-        //
-       if (times > span)
-       {
+        if (times > span)
+        {
             RayPosition = trans + rayPosition;
             Ray ray = new Ray(RayPosition, angle.normalized);
             isGround = Physics.Raycast(ray, distance);
             Debug.DrawRay(RayPosition, angle.normalized, Color.red);
             // Debug.Log(isGround);
             times = 0.0f;
-       }
-        
+        }
+
     }
 
     //　ランダムな位置の作成
