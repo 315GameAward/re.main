@@ -23,6 +23,8 @@ public class Life : MonoBehaviour
     static public int nlife;
 
     public static Life instance;
+    public GameObject image_gameOver;
+
     // 配列
     List<GameObject> Lifes = new List<GameObject>();   // 生成したライフを入れる
     public void Awake()
@@ -54,7 +56,7 @@ public class Life : MonoBehaviour
         if (nLife <= 0)
         {
             // ゲームオーバー呼び出し
-            // Debug.Log("ゲームオーバー");
+            image_gameOver.GetComponent<GameOver>().ShowGameOver();
         }
 
         // スペースを押したら体力消費
