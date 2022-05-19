@@ -1,9 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MoveEnemy : MonoBehaviour
 {
     private Transform player;
+
+    // 煙
+    public GameObject SmkPrefab;
+    private float fSmkTime = 1.0f;
+    private float fSmkTimeTrigger;
 
     public enum EnemyState
     {
@@ -101,6 +107,20 @@ public class MoveEnemy : MonoBehaviour
             }
         }
 
+        // 一定間隔で煙表示
+        if (Time.time > fSmkTimeTrigger)
+        {
+            Vector3 pos = new Vector3(this.gameObject.transform.position.x,
+                this.gameObject.transform.position.y - 0.1f,
+                this.gameObject.transform.position.z);
+            if (state == EnemyState.Walk)
+            {
+                Instantiate(SmkPrefab, pos, Quaternion.identity);
+            }
+            // タイマー更新
+            fSmkTimeTrigger = Time.time + fSmkTime;
+        }
+
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
     }
@@ -115,8 +135,6 @@ public class MoveEnemy : MonoBehaviour
             elapsedTime = 0f;
             state = tempState;
             setPosition.CreateRandomPosition(true);
-
-
         }
         else if (tempState == EnemyState.Chase)
         {

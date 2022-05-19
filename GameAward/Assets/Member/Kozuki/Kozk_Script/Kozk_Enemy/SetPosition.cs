@@ -6,6 +6,7 @@ public class SetPosition : MonoBehaviour
     private Rigidbody rb;
     private float distance;
 
+    [SerializeField]
     public float span = 0.0f;  // ray用、spanで測定間隔を測る
     private float times;        // ray用、経過時間を当てはめる
     public bool isGround = true;
