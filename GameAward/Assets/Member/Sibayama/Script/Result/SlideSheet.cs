@@ -29,4 +29,18 @@ public class SlideSheet : MonoBehaviour
         // 特定の位置まで下げる
         slide.transform.position -= new Vector3(0.0f, moveDistance, 0.0f);
     }
+
+    // キャンバスのサイズ取得
+    static Vector2 GetRectSize(RectTransform self)
+    {
+        // asはCで言うところの型キャスト
+        // スクリプトを指定した親のUI情報を入れる
+        var parent = self.parent as RectTransform;
+        if (parent == null)
+        {
+            return new Vector2(self.rect.width, self.rect.height);
+        }
+
+        return new Vector2();
+    }
 }
