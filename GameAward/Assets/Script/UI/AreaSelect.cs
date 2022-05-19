@@ -9,6 +9,9 @@
 
 //================================================
 // 開発履歴
+// 2022/05/19 作成開始2
+// 編集者: 道塚悠基
+//
 // 2022/04/04 作成開始
 // 編集者: 道塚悠基
 //================================================
@@ -24,13 +27,15 @@ public class AreaSelect : MonoBehaviour
 {
     private ControlBinds _gameInputs;               //インプット
     private Vector2 _moveStickValue;                //スティック移動量
-    private int stageSelect;                        //何を選択しているか
+    private int areaSelect;                         //何を選択しているか
 
+    [SerializeField] private GameObject areas;
 
+    public float rotateSpeed = 1.0f;                //回転スピード
 
     private void Awake()
     {
-        //InputActionインスタンス生成
+        //InputActionインスタンス生成 
         _gameInputs = new ControlBinds();
 
         //項目移動イベント登録
@@ -48,12 +53,12 @@ public class AreaSelect : MonoBehaviour
 
     private void Start()
     {
-        stageSelect = 0;
+        areaSelect = 0;
     }
 
     private void Update()
     {
-        GameObject areas = GameObject.Find("Areas");
+        Debug.Log(areaSelect);
         //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
     }
 
@@ -66,51 +71,45 @@ public class AreaSelect : MonoBehaviour
 
         if (currentScene.name == "AreaSelect")     //ステージセレクトシーン内の場合
         {
-            GameObject areas = GameObject.Find("Areas");
-            if (_moveStickValue.x > 0.0f)  //左
+            if (_moveStickValue.x > 0.0f)  //right arrow
             {
-                if (stageSelect == 0)
+                if (areaSelect == 0)
                 {
-                    stageSelect = 1;
-                    Debug.Log("1");
-                    while (areas.transform.rotation.y < 90.0f)
-                    {
-                        areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
-                    }
+                    StartCoroutine("ChangeAreaR");
                 }
-                else if (stageSelect == 1)
+                else if (areaSelect == 1)
                 {
-                    stageSelect = 2;
-                    Debug.Log("2");
-                    areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+                    StartCoroutine("ChangeAreaR");
                 }
-                else if (stageSelect == 2)
+                else if (areaSelect == 2)
                 {
-                    stageSelect = 3;
-                    Debug.Log("3");
-                    areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+                    StartCoroutine("ChangeAreaR");
+                }
+                else if (areaSelect == 3)
+                {
+                    StartCoroutine("ChangeAreaR");
                 }
             }
 
             if (_moveStickValue.x < -0.0f)  //下
             {
-                if (stageSelect == 1)
+                if (areaSelect == 1)
                 {
-                    stageSelect = 0;
-                    Debug.Log("StageSelect: 0");
-                    areas.transform.rotation = Quaternion.Euler(0, -90, 0);
+                    areaSelect = 0;
+                    Debug.Log("areaSelect: 0");
+                    //areas.transform.rotation = Quaternion.Euler(0, -90, 0);
                 }
-                else if (stageSelect == 2)
+                else if (areaSelect == 2)
                 {
-                    stageSelect = 1;
-                    Debug.Log("StageSelect: 1");
-                    areas.transform.rotation = Quaternion.Euler(0, -180, 0);
+                    areaSelect = 1;
+                    Debug.Log("areaSelect: 1");
+                    //areas.transform.rotation = Quaternion.Euler(0, -180, 0);
                 }
-                else if (stageSelect == 3)
+                else if (areaSelect == 3)
                 {
-                    stageSelect = 2;
+                    areaSelect = 2;
                     Debug.Log("StageSelect: 2");
-                    areas.transform.rotation = Quaternion.Euler(0, -270, 0);
+                    //areas.transform.rotation = Quaternion.Euler(0, -270, 0);
                 }
             }
         }
@@ -124,23 +123,24 @@ public class AreaSelect : MonoBehaviour
         if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
         {
             //教室ステージ
-            if (stageSelect == 0)
+            if (areaSelect == 0)
             {
 
             }
             //理科室ステージ
-            else if (stageSelect == 1)
+            else if (areaSelect == 1)
             {
 
             }
             //体育館ステージ
-            else if (stageSelect == 2)
+            else if (areaSelect == 2)
             {
 
             }
             //タイトルへ
-            else if (stageSelect == 3)
+            else if (areaSelect == 3)
             {
+                
 
             }
         }
@@ -157,5 +157,61 @@ public class AreaSelect : MonoBehaviour
         }
     }
 
+    IEnumerator ChangeAreaR()
+    {
+        if (areaSelect == 0)
+        {
+            while (areas.transform.eulerAngles.y < 90.0f)
+            {
+                //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+                areas.transform.Rotate(Vector3.up * rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
 
+            areaSelect = 1;
+        }
+        else if (areaSelect == 1)
+        {
+            while (areas.transform.eulerAngles.y < 180.0f)
+            {
+                //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+                areas.transform.Rotate(Vector3.up * rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            areaSelect = 2;
+        }
+        else if (areaSelect == 2)
+        {
+            while (areas.transform.eulerAngles.y < 270.0f)
+            {
+                //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+                areas.transform.Rotate(Vector3.up * rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            areaSelect = 3;
+        }
+        else if (areaSelect == 3)
+        {
+            while (areas.transform.eulerAngles.y < 359.9f)
+            {
+                //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+                areas.transform.Rotate(Vector3.up * rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            areaSelect = 0;
+        }
+    }
+
+    IEnumerator ChangeAreaL()
+    {
+        while (areas.transform.eulerAngles.y < -90.0f)
+        {
+            //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+            areas.transform.Rotate(Vector3.up * -rotateSpeed);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
 }
