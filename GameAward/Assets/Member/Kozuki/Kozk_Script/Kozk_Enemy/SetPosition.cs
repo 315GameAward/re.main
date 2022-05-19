@@ -39,7 +39,7 @@ public class SetPosition : MonoBehaviour
             Ray ray = new Ray(RayPosition, angle.normalized);
             isGround = Physics.Raycast(ray, distance);
             Debug.DrawRay(RayPosition, angle.normalized, Color.red);
-            // Debug.Log(isGround);
+             Debug.Log(isGround);
             times = 0.0f;
         }
 
