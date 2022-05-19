@@ -15,11 +15,11 @@ C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50177
+57735
 Successfully changed project path to: C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
 C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 107.24 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 52.63 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.27f1 (e759542391ea)
 [Subsystems] Discovering subsystems at path C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Resources/UnitySubsystems
@@ -35,670 +35,119 @@ Initialize mono
 Mono path[0] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56280
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56896
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003868 seconds.
+Registered in 0.002226 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 170.98 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 42.07 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.493 seconds
+- Completed reload, in  0.599 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1493ms)
-		BeginReloadAssembly (155ms)
+	ReloadAssembly (599ms)
+		BeginReloadAssembly (66ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1177ms)
-			LoadAssemblies (143ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (460ms)
+			LoadAssemblies (63ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (337ms)
+			SetupTypeCache (158ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (100ms)
-			SetupLoadedEditorAssemblies (511ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (171ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (18ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (171ms)
-				BeforeProcessingInitializeOnLoad (40ms)
-				ProcessInitializeOnLoadAttributes (222ms)
-				ProcessInitializeOnLoadMethodAttributes (59ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (42ms)
+				BeforeProcessingInitializeOnLoad (15ms)
+				ProcessInitializeOnLoadAttributes (79ms)
+				ProcessInitializeOnLoadMethodAttributes (29ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010490 seconds.
+Registered in 0.005775 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-000001C364A5D830 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file data-0000024C8F6D5120 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362EA8D10 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-0000024C8EBFDA30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3642E7CD0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-0000024C8F825010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364BDC080 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-0000024C8F6D5120 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362D83E70 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-0000024C8EE6A230 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36478D010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-0000024C8CA23FA0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362D83E70 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-0000024C8F855030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36406A030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-0000024C8CA23FA0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362D83E70 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000024C8EE6A230 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362D2C220 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-0000024C8F855030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364317CF0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-0000024C8F6D5120 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362DF1050 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file data-0000024C8EC12010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364A5D830 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-0000024C8F8BBCE0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364092640 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-0000024C8FE6D430 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364A75010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file data-0000024C8F3BD020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 117.41 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 40.30 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.387 seconds
+- Completed reload, in  1.166 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2389ms)
-		BeginReloadAssembly (275ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (35ms)
-		EndReloadAssembly (2005ms)
-			LoadAssemblies (170ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (639ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (92ms)
-			SetupLoadedEditorAssemblies (872ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (118ms)
-				BeforeProcessingInitializeOnLoad (182ms)
-				ProcessInitializeOnLoadAttributes (534ms)
-				ProcessInitializeOnLoadMethodAttributes (13ms)
-				AfterProcessingInitializeOnLoad (17ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (12ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2082 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 106.1 MB.
-System memory in use after: 106.2 MB.
-
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2533.
-Total: 7.341600 ms (FindLiveObjects: 0.438700 ms CreateObjectMapping: 0.246300 ms MarkObjects: 6.491500 ms  DeleteObjects: 0.163300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/Member/Kozuki/Kirakira.prefab
-  artifactKey: Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kirakira.prefab using Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8efe538e0b17d9de273d4bc5c2f25d70') in 0.318270 seconds 
-  Import took 0.325991 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 15.514268 seconds.
-  path: Assets/Member/Michiduka/Prefab/LifeAnim.prefab
-  artifactKey: Guid(c4127d8d338a8d941b13613bfb75410a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/LifeAnim.prefab using Guid(c4127d8d338a8d941b13613bfb75410a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '598f816a3a2607fa85fda79619beec28') in 0.068456 seconds 
-  Import took 0.080699 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000998 seconds.
-  path: Assets/Member/Michiduka/Prefab
-  artifactKey: Guid(e19fc738f20dfc54abad5d504749a197) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab using Guid(e19fc738f20dfc54abad5d504749a197) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b77148af076cd2d585ed249e36585c6') in 0.028067 seconds 
-  Import took 0.040392 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.954477 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/flame.prefab
-  artifactKey: Guid(f0624d11a701f0e459fb501d07371990) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/flame.prefab using Guid(f0624d11a701f0e459fb501d07371990) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37a31201ce91b0ef8b143bffe90a4e73') in 0.098097 seconds 
-  Import took 0.105368 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000674 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/Smoke.prefab
-  artifactKey: Guid(27a9d53b670f98a49978e973770dedf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/Smoke.prefab using Guid(27a9d53b670f98a49978e973770dedf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b33bc155a321a72140d1aa7b3cf73a53') in 0.044815 seconds 
-  Import took 0.051735 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000411 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles
-  artifactKey: Guid(134c7efcaaad5dc4ab3757ea0789db0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles using Guid(134c7efcaaad5dc4ab3757ea0789db0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9b2ac5debfbeb6b370c3f59790bd04c') in 0.007949 seconds 
-  Import took 0.013512 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000380 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/Lightning.prefab
-  artifactKey: Guid(c620490f041541d45b51ec72056ab964) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/Lightning.prefab using Guid(c620490f041541d45b51ec72056ab964) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11635b94b1ff03ae0e8b425f5981c26f') in 0.026494 seconds 
-  Import took 0.031250 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000426 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/SmallSmoke.prefab
-  artifactKey: Guid(ca2ae1f233ec1224db9cb4780fa4967a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/SmallSmoke.prefab using Guid(ca2ae1f233ec1224db9cb4780fa4967a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c483d1bc1b5ff2d1b6210d67a57e81a') in 0.020091 seconds 
-  Import took 0.024502 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 50.687114 seconds.
-  path: Assets/Member/Kozuki/P_Smoke.prefab
-  artifactKey: Guid(5340ee8dc676c4a4386b6d651c01e411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/P_Smoke.prefab using Guid(5340ee8dc676c4a4386b6d651c01e411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd206f2154c6e28757dea8bf9dd5a3cd9') in 0.009264 seconds 
-  Import took 0.013684 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.636807 seconds.
-  path: Assets/Member/Michiduka/Material/smoke.mat
-  artifactKey: Guid(936315490198b414ebfa4cee8c938635) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Material/smoke.mat using Guid(936315490198b414ebfa4cee8c938635) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f17849a4086dedb5c5a6c459866cdad') in 0.041176 seconds 
-  Import took 0.045576 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 18.518420 seconds.
-  path: Assets/Member/Kozuki/SmallSmoke.prefab
-  artifactKey: Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/SmallSmoke.prefab using Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d2e4ee193b12e95f8fba9eb834b89d5') in 0.082131 seconds 
-  Import took 0.087163 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.259432 seconds.
-  path: Assets/Member/Kozuki/P_Smoke.prefab
-  artifactKey: Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/P_Smoke.prefab using Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff06d6f13b295390f798aeb48f6cb0dd') in 0.030011 seconds 
-  Import took 0.038503 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 37.043418 seconds.
-  path: Assets/Member/Kozuki/P_Kirakira.prefab
-  artifactKey: Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/P_Kirakira.prefab using Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '613a843eaef62a4bc6b90cc666c1e29e') in 0.051207 seconds 
-  Import took 0.055654 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 28.318385 seconds.
-  path: Assets/Member/Kozuki/Kozk_Script/Smoke.cs
-  artifactKey: Guid(658ae1603a0e3344a9bab67baf15ff06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk_Script/Smoke.cs using Guid(658ae1603a0e3344a9bab67baf15ff06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33971b3516748ad454a4466344dc78e9') in 0.009478 seconds 
-  Import took 0.013626 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010563 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001C3625A3030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C368C09FB0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3688E7040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364258820 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362768230 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C365C3F020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3688E7040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C365C3F020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C365282470 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C363E58020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364258820 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362457010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3625A3030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364480020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364480020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.96 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.046 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2047ms)
-		BeginReloadAssembly (214ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (10ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (53ms)
-		EndReloadAssembly (1724ms)
-			LoadAssemblies (184ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (690ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (86ms)
-			SetupLoadedEditorAssemblies (582ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (135ms)
-				ProcessInitializeOnLoadAttributes (402ms)
-				ProcessInitializeOnLoadMethodAttributes (23ms)
-				AfterProcessingInitializeOnLoad (13ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (12ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.2 MB.
-System memory in use after: 109.3 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2578.
-Total: 6.427000 ms (FindLiveObjects: 0.442600 ms CreateObjectMapping: 0.195400 ms MarkObjects: 5.704900 ms  DeleteObjects: 0.081100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 13.569096 seconds.
-  path: Assets/Member/Kozuki/Kozk_Script/KiraMove.cs
-  artifactKey: Guid(8c612e6c12871794eadc162ba3f5dac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk_Script/KiraMove.cs using Guid(8c612e6c12871794eadc162ba3f5dac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29ac24fef7b5965c08ff17349540f296') in 0.022777 seconds 
-  Import took 0.030674 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.219870 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001C36858F010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362E871D0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36456A010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364B7D020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CF449B0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362B83F10 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36456A010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362CFE010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C365282470 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362597010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364B7D020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3625ACD40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36858F010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3674AEA30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364273020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.768 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1768ms)
-		BeginReloadAssembly (137ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (37ms)
-		EndReloadAssembly (1477ms)
-			LoadAssemblies (170ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (669ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (77ms)
-			SetupLoadedEditorAssemblies (362ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (89ms)
-				ProcessInitializeOnLoadAttributes (251ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (8ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.3 MB.
-System memory in use after: 109.4 MB.
-
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2580.
-Total: 8.167500 ms (FindLiveObjects: 0.564300 ms CreateObjectMapping: 0.288500 ms MarkObjects: 7.268500 ms  DeleteObjects: 0.042800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 142.576025 seconds.
-  path: Assets/Member/Kozuki/Kozk_Script/Smoke.cs
-  artifactKey: Guid(658ae1603a0e3344a9bab67baf15ff06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk_Script/Smoke.cs using Guid(658ae1603a0e3344a9bab67baf15ff06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1785b4d0d69053e1d62dac8ddce5575c') in 0.033385 seconds 
-  Import took 0.045130 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 63.098950 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/Falling/Kirakira.prefab
-  artifactKey: Guid(8140ab7060a44994892a6da82d310c9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/Falling/Kirakira.prefab using Guid(8140ab7060a44994892a6da82d310c9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9374f7ea53475691d358adb44a0fb345') in 0.156708 seconds 
-  Import took 0.162948 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000467 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/Falling/Sweat.prefab
-  artifactKey: Guid(9f4a2f4290df71c44a12efb464a02cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/Falling/Sweat.prefab using Guid(9f4a2f4290df71c44a12efb464a02cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff749aa1313478817235e739c2b0fcd5') in 0.125490 seconds 
-  Import took 0.130363 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000376 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/Falling
-  artifactKey: Guid(5eda8e2d7a4862847b1c83ce5bfbdc77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/Falling using Guid(5eda8e2d7a4862847b1c83ce5bfbdc77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97002a0f4d4dc3ee16bef38826501d35') in 0.012420 seconds 
-  Import took 0.017361 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000407 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/Falling/Red.prefab
-  artifactKey: Guid(a696e7a9c43a2774f95d785bdba1320f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/Falling/Red.prefab using Guid(a696e7a9c43a2774f95d785bdba1320f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38f7388597367c0889c62269d7a5c866') in 0.027857 seconds 
-  Import took 0.032452 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.639469 seconds.
-  path: Assets/Member/Michiduka/Prefab/Particles/Falling/Kirakira.prefab
-  artifactKey: Guid(8140ab7060a44994892a6da82d310c9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Prefab/Particles/Falling/Kirakira.prefab using Guid(8140ab7060a44994892a6da82d310c9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90e0c8f5013006d63c51702a13a1e8c9') in 0.015855 seconds 
-  Import took 0.019830 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.553821 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/Life.prefab
-  artifactKey: Guid(0f7ae593d9860b54aa1aa2b412dc35ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/Life.prefab using Guid(0f7ae593d9860b54aa1aa2b412dc35ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f995c8a63186a2af8e232e8b16a9f374') in 0.036947 seconds 
-  Import took 0.044054 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000478 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/はさみ ライフ2.png
-  artifactKey: Guid(3c3702187317a274a8b6cf1d8ba088cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/はさみ ライフ2.png using Guid(3c3702187317a274a8b6cf1d8ba088cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e099926fa2a1e2db75fffe39831f614') in 0.136445 seconds 
-  Import took 0.141281 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000388 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/はさみ ライフ.png
-  artifactKey: Guid(08e5e9ee08651fa4e9c727606af0120b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/はさみ ライフ.png using Guid(08e5e9ee08651fa4e9c727606af0120b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9c8179df203d7de71ac005df4efbe41') in 0.035519 seconds 
-  Import took 0.039829 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008582 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001C362BD4600 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36907ACD0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36809F030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CAF6880 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36C955B90 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36406A030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3641A99F0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CA462F0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36909ED70 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36C806570 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36C866670 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C5200D0090 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36920FC90 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C368E62F40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364B4E010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.702 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1702ms)
-		BeginReloadAssembly (230ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (63ms)
-		EndReloadAssembly (1329ms)
-			LoadAssemblies (321ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (436ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (56ms)
-			SetupLoadedEditorAssemblies (433ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (87ms)
-				ProcessInitializeOnLoadAttributes (320ms)
-				ProcessInitializeOnLoadMethodAttributes (11ms)
-				AfterProcessingInitializeOnLoad (10ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.3 MB.
-System memory in use after: 109.4 MB.
-
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2585.
-Total: 3.829000 ms (FindLiveObjects: 0.191600 ms CreateObjectMapping: 0.086300 ms MarkObjects: 3.533300 ms  DeleteObjects: 0.017100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 27.476470 seconds.
-  path: Assets/Member/Kozuki/Kozk_SceneFolder/CM vcam1Timeline.playable
-  artifactKey: Guid(1a05920aeeab3c348b2ff3416a2bbda9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk_SceneFolder/CM vcam1Timeline.playable using Guid(1a05920aeeab3c348b2ff3416a2bbda9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0825bcb5a0cba1749f2a3c86b0c0d6ee') in 0.052563 seconds 
-  Import took 0.057161 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000406 seconds.
-  path: Assets/Member/Kozuki/Kozk_SceneFolder/TimelineCameraTimeline.playable
-  artifactKey: Guid(4a9a67b53e0f53c4bb77bd4db301dc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk_SceneFolder/TimelineCameraTimeline.playable using Guid(4a9a67b53e0f53c4bb77bd4db301dc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bc24a02aba1efb6e6003150dd648559') in 0.019227 seconds 
-  Import took 0.023010 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.007772 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-000001C362BD4600 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C520F3B750 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36C9135C0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CAF6880 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C368FAC3F0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36D3BFF60 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3674EC020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C369035D90 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C365282470 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C521071C40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36451C430 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362457010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36920FC90 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3690AAC70 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C520132020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.75 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.805 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1805ms)
-		BeginReloadAssembly (144ms)
+	ReloadAssembly (1167ms)
+		BeginReloadAssembly (162ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (41ms)
-		EndReloadAssembly (1540ms)
-			LoadAssemblies (144ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (944ms)
+			LoadAssemblies (101ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (596ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (73ms)
-			SetupLoadedEditorAssemblies (447ms)
+			SetupTypeCache (302ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (50ms)
+			SetupLoadedEditorAssemblies (386ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (106ms)
-				ProcessInitializeOnLoadAttributes (311ms)
-				ProcessInitializeOnLoadMethodAttributes (13ms)
-				AfterProcessingInitializeOnLoad (10ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (40ms)
+				BeforeProcessingInitializeOnLoad (68ms)
+				ProcessInitializeOnLoadAttributes (255ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.78 ms, found 2 plugins.
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.3 MB.
-System memory in use after: 109.4 MB.
+Unloading 2083 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.1 MB.
+System memory in use after: 106.2 MB.
 
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2587.
-Total: 4.527400 ms (FindLiveObjects: 0.228300 ms CreateObjectMapping: 0.114300 ms MarkObjects: 4.163700 ms  DeleteObjects: 0.019900 ms)
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2534.
+Total: 2.920800 ms (FindLiveObjects: 0.173000 ms CreateObjectMapping: 0.076200 ms MarkObjects: 2.574900 ms  DeleteObjects: 0.095700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -712,87 +161,354 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 16.142774 seconds.
   path: Assets/Member/Kozuki/P_Smoke.prefab
   artifactKey: Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/P_Smoke.prefab using Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '091dd8a2ef3c06035208a574b0af51d4') in 0.099463 seconds 
-  Import took 0.105001 seconds .
+Start importing Assets/Member/Kozuki/P_Smoke.prefab using Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '091dd8a2ef3c06035208a574b0af51d4') in 0.115570 seconds 
+  Import took 0.118768 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000416 seconds.
+  path: Assets/Member/Kozuki/P_Kirakira.prefab
+  artifactKey: Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/P_Kirakira.prefab using Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '613a843eaef62a4bc6b90cc666c1e29e') in 0.018227 seconds 
+  Import took 0.021457 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.408332 seconds.
+  path: Assets/Member/tanakarin 1
+  artifactKey: Guid(f63befcc82d6a4144b3d964b9646f27e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/tanakarin 1 using Guid(f63befcc82d6a4144b3d964b9646f27e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c17616e4750c2868c75739cf97ffae54') in 0.007401 seconds 
+  Import took 0.011112 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.295075 seconds.
+  path: Assets/Member/tanakarin
+  artifactKey: Guid(ff48f53fc61b2d840a319c2b71ea9e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/tanakarin using Guid(ff48f53fc61b2d840a319c2b71ea9e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cc0500444bb7b211ccfb86707bd73e5') in 0.007491 seconds 
+  Import took 0.011268 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.179432 seconds.
+  path: Assets/Member/tanakarin
+  artifactKey: Guid(ff48f53fc61b2d840a319c2b71ea9e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/tanakarin using Guid(ff48f53fc61b2d840a319c2b71ea9e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '664245f56e793a45bfe4d04e0ca5f10c') in 0.002996 seconds 
+  Import took 0.007951 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.313771 seconds.
+  path: Assets/Member/tanakarin/GameScene.unity
+  artifactKey: Guid(2cf64adf214b37f4db3bd2c51692cb3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/tanakarin/GameScene.unity using Guid(2cf64adf214b37f4db3bd2c51692cb3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb878a6f5f8228c4408b6a0f0a995fa4') in 0.005773 seconds 
+  Import took 0.008700 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.027044 seconds.
+  path: Assets/Member/Kozuki/Kozk_SceneFolder/CM vcam1Timeline.playable
+  artifactKey: Guid(1a05920aeeab3c348b2ff3416a2bbda9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_SceneFolder/CM vcam1Timeline.playable using Guid(1a05920aeeab3c348b2ff3416a2bbda9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0825bcb5a0cba1749f2a3c86b0c0d6ee') in 0.014880 seconds 
+  Import took 0.018860 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000475 seconds.
+  path: Assets/Member/Kozuki/Kozk_SceneFolder/TimelineCameraTimeline.playable
+  artifactKey: Guid(4a9a67b53e0f53c4bb77bd4db301dc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_SceneFolder/TimelineCameraTimeline.playable using Guid(4a9a67b53e0f53c4bb77bd4db301dc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bc24a02aba1efb6e6003150dd648559') in 0.010129 seconds 
+  Import took 0.014241 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.933410 seconds.
+  path: Assets/Member/Kozuki/Kozk_SceneFolder/Kozk_Scenes.unity
+  artifactKey: Guid(345691a70d773b547bd494f52e614727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_SceneFolder/Kozk_Scenes.unity using Guid(345691a70d773b547bd494f52e614727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62dc3e9436af8b3dbe2acf3ce4416f64') in 0.006843 seconds 
+  Import took 0.009935 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.007672 seconds.
+Registered in 0.005893 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-000001C362BD4600 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file data-0000024C8F6D5120 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C520E8CB80 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-0000024C8EB90020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C520B4B040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-0000024C97AAF7B0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CAF6880 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-0000024C8D029550 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36C866670 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-0000024C8F22D230 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3625EE010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-0000024C93406040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CFCD010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-0000024C97AAF7B0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36421F010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-0000024C93406040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C365F21020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000024C97AAF7B0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C3690AAC70 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-0000024C932B8830 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36451C430 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-0000024C8D029550 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362457010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file data-0000024C8EC12010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36920FC90 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-0000024C8F6D5120 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C368E62F40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-0000024C9342E650 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C367950040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file data-0000024C8D0C9020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.73 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.946 seconds
+- Completed reload, in  0.949 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1946ms)
-		BeginReloadAssembly (183ms)
+	ReloadAssembly (950ms)
+		BeginReloadAssembly (113ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (51ms)
-		EndReloadAssembly (1667ms)
-			LoadAssemblies (156ms)
+			CreateAndSetChildDomain (30ms)
+		EndReloadAssembly (781ms)
+			LoadAssemblies (91ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (565ms)
+			SetupTypeCache (270ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (101ms)
-			SetupLoadedEditorAssemblies (624ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (293ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (162ms)
-				ProcessInitializeOnLoadAttributes (432ms)
-				ProcessInitializeOnLoadMethodAttributes (11ms)
-				AfterProcessingInitializeOnLoad (10ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (66ms)
+				ProcessInitializeOnLoadAttributes (208ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.2 MB.
-System memory in use after: 109.3 MB.
+System memory in use before: 108.9 MB.
+System memory in use after: 109.0 MB.
 
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2590.
-Total: 5.439700 ms (FindLiveObjects: 0.269100 ms CreateObjectMapping: 0.151200 ms MarkObjects: 4.992200 ms  DeleteObjects: 0.025600 ms)
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2543.
+Total: 2.949000 ms (FindLiveObjects: 0.159600 ms CreateObjectMapping: 0.064700 ms MarkObjects: 2.710500 ms  DeleteObjects: 0.013200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 49.701475 seconds.
+  path: Assets/Member/Kozuki/Compass.prefab
+  artifactKey: Guid(c11c5dcff0c28b047af48abda6f7dd65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Compass.prefab using Guid(c11c5dcff0c28b047af48abda6f7dd65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3876694b873674ae7848827e32e6b9eb') in 0.025243 seconds 
+  Import took 0.028133 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.100224 seconds.
+  path: Assets/Member/Kozuki/Compass.prefab
+  artifactKey: Guid(c11c5dcff0c28b047af48abda6f7dd65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Compass.prefab using Guid(c11c5dcff0c28b047af48abda6f7dd65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90c3ad9eabe25e18c85c9a902bfaa275') in 0.050711 seconds 
+  Import took 0.054489 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005533 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000024C8F5D1BC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C978E2E30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C922FE040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C932C2230 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C977A3C30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C92138030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97BC5220 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97711810 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C93D0E130 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C93D60700 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C93DADB30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8EC12010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C92E32C50 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97F5C020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C93FE1BF0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.975 seconds
+Domain Reload Profiling:
+	ReloadAssembly (975ms)
+		BeginReloadAssembly (109ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (807ms)
+			LoadAssemblies (91ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (291ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (301ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (68ms)
+				ProcessInitializeOnLoadAttributes (214ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.0 MB.
+System memory in use after: 109.1 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2546.
+Total: 2.727400 ms (FindLiveObjects: 0.156400 ms CreateObjectMapping: 0.074700 ms MarkObjects: 2.481400 ms  DeleteObjects: 0.013900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 245.913125 seconds.
+  path: Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy
+  artifactKey: Guid(a8358a3f5d2f18e42b32b692c77ea482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy using Guid(a8358a3f5d2f18e42b32b692c77ea482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42d9b30d2060ffdce0a1664c6ce51f37') in 0.009990 seconds 
+  Import took 0.013724 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.741377 seconds.
+  path: Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/SetPosition.cs
+  artifactKey: Guid(da9a0615fc65c4547b6acd19715c5992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/SetPosition.cs using Guid(da9a0615fc65c4547b6acd19715c5992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2598c3ceb58cfff33e22ca25bae1585b') in 0.017405 seconds 
+  Import took 0.021972 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005811 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000024C8D2C7270 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C978E2E30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CA9F010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C977A3C30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C9753AFA0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97BC5220 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97F08030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C93D0E130 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C93FE1BF0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8D3A9C60 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8D2C7270 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C93418010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8F1F6020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.051 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1052ms)
+		BeginReloadAssembly (117ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (874ms)
+			LoadAssemblies (103ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (280ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (371ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (67ms)
+				ProcessInitializeOnLoadAttributes (284ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.0 MB.
+System memory in use after: 109.1 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2548.
+Total: 3.019800 ms (FindLiveObjects: 0.157500 ms CreateObjectMapping: 0.079400 ms MarkObjects: 2.766700 ms  DeleteObjects: 0.015200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -807,57 +523,57 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.009148 seconds.
+Registered in 0.008079 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-000001C362BD4600 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file data-0000024C8D110B40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C5204D98E0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-0000024C978E2E30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C520B2B040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-0000024C8CC8F030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CAF6880 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CFCD010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-0000024C8F26B850 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36D4D1CB0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-0000024C97741E30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36445E020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-0000024C8CC8F030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C364BB3020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-0000024C97F08030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36CFCD010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000024C8F26B850 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362A8E010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-0000024C92B70890 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C520E65DF0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C362457010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file data-0000024C8EC12010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36920FC90 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-0000024C8D110B40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C36C81CAF0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-0000024C93418010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-000001C367950040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file data-0000024C8F1F6020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.435 seconds
+- Completed reload, in  1.478 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1436ms)
-		BeginReloadAssembly (139ms)
+	ReloadAssembly (1479ms)
+		BeginReloadAssembly (161ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
+			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (36ms)
-		EndReloadAssembly (1208ms)
-			LoadAssemblies (128ms)
+			CreateAndSetChildDomain (43ms)
+		EndReloadAssembly (1222ms)
+			LoadAssemblies (143ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (433ms)
+			SetupTypeCache (435ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (45ms)
+			RebuildScriptCaches (55ms)
 			SetupLoadedEditorAssemblies (461ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
@@ -871,14 +587,186 @@ Domain Reload Profiling:
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.3 MB.
-System memory in use after: 109.4 MB.
+System memory in use before: 109.0 MB.
+System memory in use after: 109.1 MB.
 
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2592.
-Total: 4.377500 ms (FindLiveObjects: 0.198800 ms CreateObjectMapping: 0.110500 ms MarkObjects: 4.048100 ms  DeleteObjects: 0.018600 ms)
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2550.
+Total: 3.875900 ms (FindLiveObjects: 0.182100 ms CreateObjectMapping: 0.101100 ms MarkObjects: 3.563800 ms  DeleteObjects: 0.027600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007691 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000024C97F981A0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C978E2E30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CC8F030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97F5C020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C926C8D40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CC8F030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97F08030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97F5C020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97CFF060 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8EC12010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97F981A0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C929529F0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8F1F6020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.095 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1096ms)
+		BeginReloadAssembly (116ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (30ms)
+		EndReloadAssembly (918ms)
+			LoadAssemblies (97ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (327ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (353ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (86ms)
+				ProcessInitializeOnLoadAttributes (247ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.9 MB.
+System memory in use after: 109.0 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2552.
+Total: 3.035400 ms (FindLiveObjects: 0.170900 ms CreateObjectMapping: 0.089300 ms MarkObjects: 2.758800 ms  DeleteObjects: 0.015300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006811 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000024C97435CA0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C978E2E30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024CB95C0040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C9295EA10 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C9244C010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024CB95C0040 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97F08030 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C9295EA10 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97CFF060 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8CE0EBC0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8EC12010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C97435CA0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8FCC2010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000024C8F1F6020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.237 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1237ms)
+		BeginReloadAssembly (128ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (1040ms)
+			LoadAssemblies (113ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (353ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (58ms)
+			SetupLoadedEditorAssemblies (403ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (97ms)
+				ProcessInitializeOnLoadAttributes (281ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (9ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2073 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.9 MB.
+System memory in use after: 109.1 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2554.
+Total: 3.965400 ms (FindLiveObjects: 0.199600 ms CreateObjectMapping: 0.093100 ms MarkObjects: 3.652300 ms  DeleteObjects: 0.019500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
