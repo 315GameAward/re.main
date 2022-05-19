@@ -273,8 +273,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40571065}
-  m_LocalRotation: {x: 0.01753949, y: -0.9578153, z: 0.19606917, w: 0.20937802}
-  m_LocalPosition: {x: 79.50131, y: 14.775029, z: 60.185402}
+  m_LocalRotation: {x: -0.051610757, y: 0.66923964, z: 0.02838505, w: 0.7407084}
+  m_LocalPosition: {x: -0.1386888, y: 11.9550295, z: -20.424597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438732810}
@@ -331,7 +331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &67588789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,9 +341,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 67588788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b6e3db344ea39408dda047efbe1f0c, type: 3}
+  m_Script: {fileID: 11500000, guid: ba67704211c431a49b2aebfbcf36d4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlPanel: {fileID: 40571065}
 --- !u!4 &67588790
 Transform:
   m_ObjectHideFlags: 0
@@ -6254,6 +6255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1141f57243e90740923c8eb1aaa0845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmkPrefab: {fileID: 0}
   walkSpeed: 1
   waitTime: 5
   timeOut: 5
@@ -6445,6 +6447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1141f57243e90740923c8eb1aaa0845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmkPrefab: {fileID: 0}
   walkSpeed: 1
   waitTime: 5
   timeOut: 5

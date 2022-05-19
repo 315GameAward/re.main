@@ -23,7 +23,7 @@ public class skip : MonoBehaviour
        // director.time = 10;
         
         // スペースキーを押したら
-        if(Keyboard.current.spaceKey.isPressed)
+        if(Keyboard.current.oKey.isPressed)
         {
             director.initialTime = 10;
             // Time.e = 30;
