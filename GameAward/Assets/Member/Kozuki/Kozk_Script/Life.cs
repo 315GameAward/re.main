@@ -20,6 +20,8 @@ public class Life : MonoBehaviour
     AudioSource audioSource;
 
     public int nLife;   // 体力
+    static public int nlife;
+
     public static Life instance;
     // 配列
     List<GameObject> Lifes = new List<GameObject>();   // 生成したライフを入れる
@@ -103,4 +105,10 @@ public class Life : MonoBehaviour
         nLife--;
     }
 
+    // 体力数取得用関数
+    public int GetLife()
+    {
+        nlife = nLife;
+        return nlife;
+    }
 }
