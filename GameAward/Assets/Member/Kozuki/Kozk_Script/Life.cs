@@ -34,11 +34,11 @@ public class Life : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 効果音取得
+        audioSource = GetComponent<AudioSource>();
+
         for (int i = nLife; i > 0; i--)
         {
-            // 効果音取得
-            audioSource = GetComponent<AudioSource>();
-            
             // 体力を設定していく
             AddLife();
         }
@@ -55,18 +55,18 @@ public class Life : MonoBehaviour
             // Debug.Log("ゲームオーバー");
         }
 
-        //// スペースを押したら体力消費
-        //if (Input.GetKeyUp(KeyCode.UpArrow))
-        //{
-        //    AddLife();
-        //    nLife++;
-        //}
+        // スペースを押したら体力消費
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            AddLife();
+            nLife++;
+        }
 
-        //// 下矢印を押したら体力増加
-        //if (Input.GetKeyUp(KeyCode.DownArrow))
-        //{
-        //    DelLife();
-        //}
+        // 下矢印を押したら体力増加
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            DelLife();
+        }
     }
 
     //========================
