@@ -9,11 +9,11 @@ public class EnemyTurn : FSMnord
     {
 
         float rand = Random.Range(-90, 90);
-        float retu = Random.Range(-5, 5);
+        float retu = Random.Range(-20, 20);
         Vector3 Rote = Contloller.Parent.gameObject.transform.rotation.eulerAngles;
         base.Start(Contloller);
         Contloller.changenode("move");
-        Contloller.Parent.gameObject.transform.rotation = Quaternion.Euler(Rote.x, Rote.y  + retu, Rote.z+180);
+        Contloller.Parent.gameObject.transform.rotation = Quaternion.Euler(Rote.x, Rote.y + retu, Rote.z + 180);
     }
     public override void Update(FSMcontllole Contloller)
     {
@@ -42,7 +42,7 @@ public class Enemymove : FSMnord
         ander = new Vector3(0, 90, 0);
         base.Update(Contloller);
 
-        velocity = Contloller.Parent.gameObject.transform.right  * Time.deltaTime * 3;//forward * Time.deltaTime * 3 *-1;
+        velocity = Contloller.Parent.gameObject.transform.right * Time.deltaTime * 3;//forward * Time.deltaTime * 3 *-1;
         Contloller.Parent.gameObject.transform.position += velocity;
 
         if (enemy.HitEnemy == enemy)
@@ -87,12 +87,16 @@ public class Enemymove : FSMnord
 public class EnemyPlayerAssault : FSMnord
 {
     Enemy enemy;
+
     public override void Start(FSMcontllole Contloller)
     {
+
         enemy = Contloller.Parent.gameObject.GetComponent<Enemy>();
         base.Start(Contloller);
+
         enemy.transform.LookAt(enemy.tage);
         enemy.transform.rotation = Quaternion.Euler(0, enemy.transform.rotation.eulerAngles.y, 0);
+
     }
     public override void Update(FSMcontllole Contloller)
     {
@@ -100,9 +104,16 @@ public class EnemyPlayerAssault : FSMnord
 
         base.Update(Contloller);
 
-
+        UnityEngine.Quaternion vec = Contloller.Parent.gameObject.transform.rotation;
         Vector3 velocity = Contloller.Parent.gameObject.transform.forward * Time.deltaTime * 12;
-        Contloller.Parent.gameObject.transform.position += velocity;
+        if (vec.z == 0)
+        {
+            Contloller.Parent.gameObject.transform.position += velocity;
+        }
+        if (vec.z == 180)
+        {
+            Contloller.Parent.gameObject.transform.position -= velocity;
+        }
         if (enemy.Hitray == false)
         {
             Contloller.changenode("turn");
