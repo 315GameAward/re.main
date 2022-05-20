@@ -23,7 +23,7 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     // ’è”
-    public const float moveForce = 0.5f;   
+    public const float moveForce = 0.35f;    // ˆÚ“®—Ê  
 
 
     [SerializeField] private float _moveForce = 5;  //‹­§ˆÚ“®—Ê
@@ -306,7 +306,7 @@ public class PlayerControl : MonoBehaviour
             }
 
                 dDelayTime += 0.1f;
-                if (dDelayTime > 2)
+                if (dDelayTime > 1.0f)
                 {
                     if (gameObject.GetComponent<CutPoint2>())
                         bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();

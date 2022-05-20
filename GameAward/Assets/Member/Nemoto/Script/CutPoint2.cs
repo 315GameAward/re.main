@@ -38,6 +38,7 @@ public class CutPoint2 : MonoBehaviour
     private int count = -1;
 
     RaycastHit hit; // 当たった物の情報を格納する変数
+    RaycastHit hit2; // 当たった物の情報を格納する変数
     GameObject hitGameObject;// 切りたい物体保存用
 
     private bool test = false;      // テスト用フラグ
@@ -57,7 +58,7 @@ public class CutPoint2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      
     }
     public bool AddCPPoint()
     {
@@ -321,6 +322,7 @@ public class CutPoint2 : MonoBehaviour
                             // ポリゴン分割
                             hitGameObject.gameObject.GetComponent<MeshDivision2>().DivisionMeshTwice(CutPointTest);
 
+                            
 
                             // 二個前のカットポイントを削除
                             if (CutPoint.Count > 0)
@@ -339,7 +341,7 @@ public class CutPoint2 : MonoBehaviour
 
                             // カット終了フラグOFF
                             bStartP = false;
-
+                            AddCPPoint();
                             return true;    // ここで終了
                         }
 
@@ -393,33 +395,33 @@ public class CutPoint2 : MonoBehaviour
 
 
 
-        // 一個前のカットポイントの表示
-        if (CutPoint.Count > 0)
-        {
-            // 始点のカットポイントギズモ
-            Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
-            Gizmos.DrawSphere(CutPoint[0], 0.01f);  // 球の表示
+        //// 一個前のカットポイントの表示
+        //if (CutPoint.Count > 0)
+        //{
+        //    // 始点のカットポイントギズモ
+        //    Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
+        //    Gizmos.DrawSphere(CutPoint[0], 0.01f);  // 球の表示
 
-            // 途中のカットポイントギズモ
-            for (int i = 1; i < CutPoint.Count; i++)
-            {
-                Gizmos.color = new Color(0, 1, 0, 1);   // 色の指定
-                Gizmos.DrawSphere(CutPoint[i], 0.01f);  // 球の表示
-            }
+        //    // 途中のカットポイントギズモ
+        //    for (int i = 1; i < CutPoint.Count; i++)
+        //    {
+        //        Gizmos.color = new Color(0, 1, 0, 1);   // 色の指定
+        //        Gizmos.DrawSphere(CutPoint[i], 0.01f);  // 球の表示
+        //    }
 
-            // 終点のカットポイントギズモ
-            Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
-            Gizmos.DrawSphere(CutPoint[CutPoint.Count - 1], 0.01f);  // 球の表示
-        }
-        //  一個前のカットポイントをつなぐ線を表示したい
-        if (CutPoint.Count >= 2)
-        {
-            for (int i = 1; i < CutPoint.Count; i++)
-            {
-                Gizmos.color = new Color(0, 0.5f, 0, 1);    // 色の指定                
-                Gizmos.DrawLine(CutPoint[i - 1], CutPoint[i]);  // 線の表示
-            }
-        }
+        //    // 終点のカットポイントギズモ
+        //    Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
+        //    Gizmos.DrawSphere(CutPoint[CutPoint.Count - 1], 0.01f);  // 球の表示
+        //}
+        ////  一個前のカットポイントをつなぐ線を表示したい
+        //if (CutPoint.Count >= 2)
+        //{
+        //    for (int i = 1; i < CutPoint.Count; i++)
+        //    {
+        //        Gizmos.color = new Color(0, 0.5f, 0, 1);    // 色の指定                
+        //        Gizmos.DrawLine(CutPoint[i - 1], CutPoint[i]);  // 線の表示
+        //    }
+        //}
     }
 
 

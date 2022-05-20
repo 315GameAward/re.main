@@ -161,6 +161,17 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""63c2dd33-fee0-4ade-8f4f-4681ea3f6703"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cut"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""be1395dc-f145-4c05-8149-0342ab0a10c2"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -537,6 +548,17 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""3ff7cc9b-1493-4824-abc4-d6cdef8cb797"",
                     ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cut2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c402947-38e1-418f-bc5c-9bc776f47efd"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
