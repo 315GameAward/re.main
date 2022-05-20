@@ -568,6 +568,28 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a99c8f2d-d269-4fa5-bffa-d2c53fd9ad64"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cut2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79c65ebb-f35b-444c-8d9b-9681753be298"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cut2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""615d755a-d1e5-4ed0-aae9-e4609b6daba4"",
                     ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",
