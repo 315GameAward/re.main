@@ -20,7 +20,11 @@ public class Life : MonoBehaviour
     AudioSource audioSource;
 
     public int nLife;   // 体力
+    static public int nlife;
+
     public static Life instance;
+    public GameObject image_gameOver;
+
     // 配列
     List<GameObject> Lifes = new List<GameObject>();   // 生成したライフを入れる
     public void Awake()
@@ -34,11 +38,11 @@ public class Life : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 効果音取得
+        audioSource = GetComponent<AudioSource>();
+
         for (int i = nLife; i > 0; i--)
         {
-            // 効果音取得
-            audioSource = GetComponent<AudioSource>();
-            
             // 体力を設定していく
             AddLife();
         }
@@ -52,21 +56,21 @@ public class Life : MonoBehaviour
         if (nLife <= 0)
         {
             // ゲームオーバー呼び出し
-            // Debug.Log("ゲームオーバー");
+            image_gameOver.GetComponent<GameOver>().ShowGameOver();
         }
 
-        //// スペースを押したら体力消費
-        //if (Input.GetKeyUp(KeyCode.UpArrow))
-        //{
-        //    AddLife();
-        //    nLife++;
-        //}
+        // スペースを押したら体力消費
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            AddLife();
+            nLife++;
+        }
 
-        //// 下矢印を押したら体力増加
-        //if (Input.GetKeyUp(KeyCode.DownArrow))
-        //{
-        //    DelLife();
-        //}
+        // 下矢印を押したら体力増加
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            DelLife();
+        }
     }
 
     //========================
@@ -103,4 +107,10 @@ public class Life : MonoBehaviour
         nLife--;
     }
 
+    // 体力数取得用関数
+    public int GetLife()
+    {
+        nlife = nLife;
+        return nlife;
+    }
 }

@@ -426,7 +426,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""05cff9eb-77ba-445f-9789-65795ccf802e"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -437,7 +437,7 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""41e9fc0a-763f-43c2-ba84-8324c5979633"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
