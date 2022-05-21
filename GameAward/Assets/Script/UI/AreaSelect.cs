@@ -20,6 +20,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -30,8 +31,9 @@ public class AreaSelect : MonoBehaviour
     private int areaSelect;                         //何を選択しているか
 
     [SerializeField] private GameObject areas;
-
     public float rotateSpeed = 1.0f;                //回転スピード
+
+    [SerializeField] private Text areaText;         //選択中エリア表示用テキスト
 
     private void Awake()
     {
@@ -54,6 +56,7 @@ public class AreaSelect : MonoBehaviour
     private void Start()
     {
         areaSelect = 0;
+        areaText.text = "教室ステージ";
     }
 
     private void Update()
@@ -61,6 +64,23 @@ public class AreaSelect : MonoBehaviour
         Debug.Log(areaSelect);
         //Debug.Log(areas.transform.localEulerAngles.y);
         //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
+
+        //if (areaSelect == 0)
+        //{
+            
+        //}
+        //else if (areaSelect == 1)
+        //{
+            
+        //}
+        //else if (areaSelect == 2)
+        //{
+            
+        //}
+        //else if (areaSelect == 3)
+        //{
+            
+        //}
     }
 
     private void OnMoveSelect(InputAction.CallbackContext context)
@@ -119,28 +139,28 @@ public class AreaSelect : MonoBehaviour
         //現在のシーン名取得
         Scene currentScene = SceneManager.GetActiveScene();
 
-        if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
+        if (currentScene.name == "AreaSelect")     //ステージセレクトシーン内の場合
         {
             //教室ステージ
             if (areaSelect == 0)
             {
-
+                Debug.Log("教室ステージ選択");
+                SceneManager.LoadScene("GameScene");
             }
-            //理科室ステージ
+            //音楽室ステージ
             else if (areaSelect == 1)
             {
-
+                Debug.Log("音楽室ステージ選択");
             }
             //体育館ステージ
             else if (areaSelect == 2)
             {
-
+                Debug.Log("体育館ステージ選択");
             }
-            //タイトルへ
+            //理科室へ
             else if (areaSelect == 3)
             {
-                
-
+                Debug.Log("理科室ステージ選択");
             }
         }
     }
@@ -169,6 +189,7 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 1;
+            areaText.text = "音楽室ステージ";
         }
         else if (areaSelect == 1)
         {
@@ -180,6 +201,7 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 2;
+            areaText.text = "体育館ステージ";
         }
         else if (areaSelect == 2)
         {
@@ -191,6 +213,7 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 3;
+            areaText.text = "理科室ステージ";
         }
         else if (areaSelect == 3)
         {
@@ -202,6 +225,7 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 0;
+            areaText.text = "教室ステージ";
         }
     }
 
@@ -216,10 +240,12 @@ public class AreaSelect : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
 
-            areaSelect = 1;
+            areaSelect = 3;
+            areaText.text = "理科室ステージ";
         }
-        else if (areaSelect == 1)
+        else if (areaSelect == 3)
         {
+            areas.transform.eulerAngles = new Vector3(0, 270.0f, 0);
             while (areas.transform.eulerAngles.y > 180.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
@@ -227,19 +253,23 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 2;
+            areaText.text = "体育館ステージ";
         }
         else if (areaSelect == 2)
         {
+            areas.transform.eulerAngles = new Vector3(0, 180.0f, 0);
             while (areas.transform.eulerAngles.y > 90.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
 
-            areaSelect = 3;
+            areaSelect = 1;
+            areaText.text = "音楽室ステージ";
         }
-        else if (areaSelect == 3)
+        else if (areaSelect == 1)
         {
+            areas.transform.eulerAngles = new Vector3(0, 90.0f, 0);
             while (areas.transform.eulerAngles.y < 359.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
@@ -247,6 +277,7 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 0;
+            areaText.text = "教室ステージ";
         }
     }
 }
