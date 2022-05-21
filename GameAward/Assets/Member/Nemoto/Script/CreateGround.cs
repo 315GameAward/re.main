@@ -21,7 +21,7 @@ public class CreateGround : MonoBehaviour
 
     Mesh mesh;
     MeshFilter filter;
-    MeshRenderer renderer;
+    //MeshRenderer renderer;
     Triangle current;
     public List<Vector3> vtx = new List<Vector3>();
     public List<int> idx = new List<int>();
