@@ -29,10 +29,11 @@ public class AreaSelect : MonoBehaviour
     private ControlBinds _gameInputs;               //インプット
     private Vector2 _moveStickValue;                //スティック移動量
     private int areaSelect;                         //何を選択しているか
-
+    private bool areaRotating;                      //回転中
+    
     [SerializeField] private GameObject areas;
-    public float rotateSpeed = 1.0f;                //回転スピード
-
+    public float rotateSpeed = 1.5f;                //回転スピード
+    
     [SerializeField] private Text areaText;         //選択中エリア表示用テキスト
 
     private void Awake()
@@ -56,6 +57,7 @@ public class AreaSelect : MonoBehaviour
     private void Start()
     {
         areaSelect = 0;
+        areaRotating = false;
         areaText.text = "教室ステージ";
     }
 
@@ -94,41 +96,48 @@ public class AreaSelect : MonoBehaviour
         {
             if (_moveStickValue.x == 1.0f)  //right arrow
             {
-                if (areaSelect == 0)
+                if (!areaRotating)
                 {
-                    StartCoroutine("ChangeAreaR");
-                }
-                else if (areaSelect == 1)
-                {
-                    StartCoroutine("ChangeAreaR");
-                }
-                else if (areaSelect == 2)
-                {
-                    StartCoroutine("ChangeAreaR");
-                }
-                else if (areaSelect == 3)
-                {
-                    StartCoroutine("ChangeAreaR");
+                    if (areaSelect == 0)
+                    {
+                        areaRotating = true;
+                        StartCoroutine("ChangeAreaR");
+                    }
+                    else if (areaSelect == 1)
+                    {
+                        StartCoroutine("ChangeAreaR");
+                    }
+                    else if (areaSelect == 2)
+                    {
+                        StartCoroutine("ChangeAreaR");
+                    }
+                    else if (areaSelect == 3)
+                    {
+                        StartCoroutine("ChangeAreaR");
+                    }
                 }
             }
 
             if (_moveStickValue.x == -1.0f)  //left arrow
             {
-                if (areaSelect == 0)
+                if (!areaRotating)
                 {
-                    StartCoroutine("ChangeAreaL");
-                }
-                else if (areaSelect == 1)
-                {
-                    StartCoroutine("ChangeAreaL");
-                }
-                else if (areaSelect == 2)
-                {
-                    StartCoroutine("ChangeAreaL");
-                }
-                else if (areaSelect == 3)
-                {
-                    StartCoroutine("ChangeAreaL");
+                    if (areaSelect == 0)
+                    {
+                        StartCoroutine("ChangeAreaL");
+                    }
+                    else if (areaSelect == 1)
+                    {
+                        StartCoroutine("ChangeAreaL");
+                    }
+                    else if (areaSelect == 2)
+                    {
+                        StartCoroutine("ChangeAreaL");
+                    }
+                    else if (areaSelect == 3)
+                    {
+                        StartCoroutine("ChangeAreaL");
+                    }
                 }
             }
         }
@@ -178,6 +187,8 @@ public class AreaSelect : MonoBehaviour
 
     IEnumerator ChangeAreaR()
     {
+        areaRotating = true;
+        
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, 0.0f, 0);
@@ -227,10 +238,14 @@ public class AreaSelect : MonoBehaviour
             areaSelect = 0;
             areaText.text = "教室ステージ";
         }
+
+        areaRotating = false;
     }
 
     IEnumerator ChangeAreaL()
     {
+        areaRotating = true;
+        
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, -0.1f, 0);
@@ -279,5 +294,7 @@ public class AreaSelect : MonoBehaviour
             areaSelect = 0;
             areaText.text = "教室ステージ";
         }
+
+        areaRotating = false;
     }
 }
