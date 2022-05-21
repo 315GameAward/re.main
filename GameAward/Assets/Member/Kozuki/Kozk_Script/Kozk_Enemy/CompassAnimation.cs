@@ -8,20 +8,24 @@ public class CompassAnimation : MonoBehaviour
     private Animator animator;
     private MoveEnemy enemy;
     private GameObject Cmps;
-   public GameObject AttackR;
+    public GameObject AttackR;
     private AttackRange Pcol;
     // 設定したフラグの名前
     private const string key_isWalk = "isWalk";
     private const string key_isAttack = "isAttack";
+
+    // 時間
+    private float timeOut = 4.5f;
+    private float timeElapsed = 0.0f;
 
     // 初期化メソッド
     void Start()
     {
 
         Cmps = GameObject.Find("Compass");
-     // AttackR = GameObject.Find("AttackRange");
+        // AttackR = GameObject.Find("AttackRange");
         enemy = Cmps.GetComponent<MoveEnemy>();
-       Pcol = AttackR.gameObject.GetComponent<AttackRange>();
+        Pcol = AttackR.gameObject.GetComponent<AttackRange>();
 
         // 自分に設定されているAnimatorコンポーネントを習得する
         this.animator = GetComponent<Animator>();
@@ -33,11 +37,18 @@ public class CompassAnimation : MonoBehaviour
     {
         if (Pcol.GetPcol() == true)
         {
-            this.animator.SetTrigger("AttackT");
+            timeElapsed += Time.deltaTime;
+
+            if (timeElapsed >= timeOut)
+            {
+                this.animator.SetTrigger("AttackT");
+                timeElapsed = 0.0f;
+            }
         }
         else
         {
             this.animator.SetTrigger("WalkT");
+            timeElapsed = 0.0f;
         }
     }
 }

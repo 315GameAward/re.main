@@ -42,7 +42,7 @@ public class MoveEnemy : MonoBehaviour
     private float elapsedTime;
     // 攻撃間隔時間
     public float timeOut;
-    private float timeTrigger;
+    private float timeTrigger = 0.0f;
     // 敵の状態
     public EnemyState state;
 
@@ -69,6 +69,7 @@ public class MoveEnemy : MonoBehaviour
     {
         // 始めにプレイヤーの位置を取得できるようにする
         player = GameObject.FindWithTag("Player").transform;
+
 
         //　見回りまたはキャラクターを追いかける状態
         if (state == EnemyState.Walk || state == EnemyState.Chase || state == EnemyState.Attack)
@@ -106,6 +107,19 @@ public class MoveEnemy : MonoBehaviour
                 SetState(EnemyState.Walk);
             }
         }
+        if (state == EnemyState.Attack)
+        {
+            timeTrigger += Time.deltaTime;
+
+            // 一定間隔で攻撃
+            if (timeTrigger >= timeOut)
+            {
+                // 攻撃
+                Debug.Log("攻撃しました");
+                Life.instance.DelLife();
+                timeTrigger = 0.0f;
+            }
+        }
 
         // 一定間隔で煙表示
         if (Time.time > fSmkTimeTrigger)
@@ -120,6 +134,8 @@ public class MoveEnemy : MonoBehaviour
             // タイマー更新
             fSmkTimeTrigger = Time.time + fSmkTime;
         }
+
+
 
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
@@ -162,21 +178,11 @@ public class MoveEnemy : MonoBehaviour
             elapsedTime = 0f;
             state = tempState;
             arrived = true;
-
-            // 一定間隔で攻撃
-            if (Time.time > timeTrigger)
-            {
-                // 攻撃
-                Debug.Log("攻撃しました");
-                Life.instance.DelLife();
-                timeTrigger = Time.time + timeOut;
-            }
         }
         else if (tempState == EnemyState.Back)
         {
             Debug.Log("下がる");
             setPosition.CreateRandomPosition(false);
-
         }
     }
     //　敵キャラクターの状態取得メソッド

@@ -26,10 +26,10 @@ public class AppearanceEvaluation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch ()
-        {
-            default:
-                break;
-        }
+        //switch ()
+        //{
+        //    default:
+        //        break;
+        //}
     }
 }
