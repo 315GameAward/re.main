@@ -59,6 +59,7 @@ public class AreaSelect : MonoBehaviour
     private void Update()
     {
         Debug.Log(areaSelect);
+        //Debug.Log(areas.transform.localEulerAngles.y);
         //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
     }
 
@@ -71,7 +72,7 @@ public class AreaSelect : MonoBehaviour
 
         if (currentScene.name == "AreaSelect")     //ステージセレクトシーン内の場合
         {
-            if (_moveStickValue.x > 0.0f)  //right arrow
+            if (_moveStickValue.x == 1.0f)  //right arrow
             {
                 if (areaSelect == 0)
                 {
@@ -91,25 +92,23 @@ public class AreaSelect : MonoBehaviour
                 }
             }
 
-            if (_moveStickValue.x < -0.0f)  //下
+            if (_moveStickValue.x == -1.0f)  //left arrow
             {
-                if (areaSelect == 1)
+                if (areaSelect == 0)
                 {
-                    areaSelect = 0;
-                    Debug.Log("areaSelect: 0");
-                    //areas.transform.rotation = Quaternion.Euler(0, -90, 0);
+                    StartCoroutine("ChangeAreaL");
+                }
+                else if (areaSelect == 1)
+                {
+                    StartCoroutine("ChangeAreaL");
                 }
                 else if (areaSelect == 2)
                 {
-                    areaSelect = 1;
-                    Debug.Log("areaSelect: 1");
-                    //areas.transform.rotation = Quaternion.Euler(0, -180, 0);
+                    StartCoroutine("ChangeAreaL");
                 }
                 else if (areaSelect == 3)
                 {
-                    areaSelect = 2;
-                    Debug.Log("StageSelect: 2");
-                    //areas.transform.rotation = Quaternion.Euler(0, -270, 0);
+                    StartCoroutine("ChangeAreaL");
                 }
             }
         }
@@ -161,6 +160,7 @@ public class AreaSelect : MonoBehaviour
     {
         if (areaSelect == 0)
         {
+            areas.transform.eulerAngles = new Vector3(0, 0.0f, 0);
             while (areas.transform.eulerAngles.y < 90.0f)
             {
                 //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
@@ -172,9 +172,9 @@ public class AreaSelect : MonoBehaviour
         }
         else if (areaSelect == 1)
         {
+            areas.transform.eulerAngles = new Vector3(0, 90.0f, 0);
             while (areas.transform.eulerAngles.y < 180.0f)
             {
-                //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
@@ -183,9 +183,9 @@ public class AreaSelect : MonoBehaviour
         }
         else if (areaSelect == 2)
         {
+            areas.transform.eulerAngles = new Vector3(0, 180.0f, 0);
             while (areas.transform.eulerAngles.y < 270.0f)
             {
-                //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
@@ -194,9 +194,9 @@ public class AreaSelect : MonoBehaviour
         }
         else if (areaSelect == 3)
         {
-            while (areas.transform.eulerAngles.y < 359.9f)
+            areas.transform.eulerAngles = new Vector3(0, 270.0f, 0);
+            while (areas.transform.eulerAngles.y > 0.0f)
             {
-                //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
@@ -207,11 +207,46 @@ public class AreaSelect : MonoBehaviour
 
     IEnumerator ChangeAreaL()
     {
-        while (areas.transform.eulerAngles.y < -90.0f)
+        if (areaSelect == 0)
         {
-            //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
-            areas.transform.Rotate(Vector3.up * -rotateSpeed);
-            yield return new WaitForSeconds(0.01f);
+            areas.transform.eulerAngles = new Vector3(0, -0.1f, 0);
+            while (areas.transform.eulerAngles.y > 270.0f)
+            {
+                areas.transform.Rotate(Vector3.up * -rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            areaSelect = 1;
+        }
+        else if (areaSelect == 1)
+        {
+            while (areas.transform.eulerAngles.y > 180.0f)
+            {
+                areas.transform.Rotate(Vector3.up * -rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            areaSelect = 2;
+        }
+        else if (areaSelect == 2)
+        {
+            while (areas.transform.eulerAngles.y > 90.0f)
+            {
+                areas.transform.Rotate(Vector3.up * -rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            areaSelect = 3;
+        }
+        else if (areaSelect == 3)
+        {
+            while (areas.transform.eulerAngles.y < 359.0f)
+            {
+                areas.transform.Rotate(Vector3.up * -rotateSpeed);
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            areaSelect = 0;
         }
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameClear : MonoBehaviour
 {
     Animation anim;
-    Animator animator;
+    public Animator animator;
     private GameObject[] ResultTest;
     // Start is called before the first frame update
     void Start()
     {
         anim = this.gameObject.GetComponent<Animation>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
