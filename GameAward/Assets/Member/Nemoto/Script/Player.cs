@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -14,7 +16,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // リトライ
+        if(Life.instance.GetLife() <= 0)
+        {
+            if(Keyboard.current.rKey.isPressed)
+            {
+                SceneManager.LoadScene("GameScene");
+            }
+        }
     }
 
     // 当たり判定
@@ -24,7 +33,8 @@ public class Player : MonoBehaviour
         // エネミータグと触れたら
         if (other.gameObject.tag == "Enemy")
         {
-            image_gameOver.GetComponent<GameOver>().ShowGameOver();
+            Life.instance.DelLife();
+            //image_gameOver.GetComponent<GameOver>().ShowGameOver();
         }
     }
 }

@@ -80,7 +80,7 @@ public class CreateGround : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(255, 0, 0, 0.1f);   // 色の指定
+        Gizmos.color = new Color(255, 255, 255, 1.0f);   // 色の指定
         //Gizmos.DrawMesh(filter.mesh);
         Gizmos.DrawCube(transform.position, new Vector3(MeshSizeX, 0.01f, MeshSizeZ));
     }
