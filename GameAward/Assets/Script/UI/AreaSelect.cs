@@ -268,7 +268,7 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 2;
-            areaText.text = "体育館ステージ";
+            areaText.text = "図工室ステージ";
         }
         else if (areaSelect == 2)
         {
