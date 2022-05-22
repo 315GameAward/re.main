@@ -80,7 +80,8 @@ public class Life : MonoBehaviour
     //========================
     public void AddLife()
     {
-        // 引数2はどのオブジェクトの子にするかで、引数3は子にする際に以前の位置を保つか(LayoutGroup系ではfalseにしないとおかしくなる)
+        // 引数2はどのオブジェクトの子にするかで、
+        // 引数3は子にする際に以前の位置を保つか(LayoutGroup系ではfalseにしないとおかしくなる)
         GameObject instance = Instantiate(prefab, transform, false);
         Lifes.Add(instance);
         
