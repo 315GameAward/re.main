@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class target : MonoBehaviour
 {
-    //
+    //true falseÇ≈Ç®Ç±Ç»Ç§
     public UnityEvent OnCollisioned = new UnityEvent();
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class target : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionExit(Collision collision)
     {
         //è’ìÀîªíË
         if (collision.gameObject.tag == "Ground")
