@@ -35,6 +35,10 @@ public class AreaSelect : MonoBehaviour
     public float rotateSpeed = 1.5f;                //回転スピード
     
     [SerializeField] private Text areaText;         //選択中エリア表示用テキスト
+    [SerializeField] private AudioSource audioSource;
+    
+    [SerializeField] private AudioClip rotate;
+    [SerializeField] private AudioClip select;
 
     private void Awake()
     {
@@ -150,6 +154,7 @@ public class AreaSelect : MonoBehaviour
 
         if (currentScene.name == "AreaSelect")     //ステージセレクトシーン内の場合
         {
+            audioSource.PlayOneShot(select);
             //教室ステージ
             if (areaSelect == 0)
             {
@@ -188,7 +193,7 @@ public class AreaSelect : MonoBehaviour
     IEnumerator ChangeAreaR()
     {
         areaRotating = true;
-        
+        audioSource.PlayOneShot(rotate);
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, 0.0f, 0);
@@ -245,7 +250,7 @@ public class AreaSelect : MonoBehaviour
     IEnumerator ChangeAreaL()
     {
         areaRotating = true;
-        
+        audioSource.PlayOneShot(rotate);
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, -0.1f, 0);
