@@ -26,6 +26,7 @@ public class StageSelect : MonoBehaviour
     private Vector2 _moveStickValue;                //スティック移動量
     private int stageSelect;                        //何を選択しているか
 
+    [SerializeField] private GameObject selecting;
 
 
     private void Awake()
@@ -56,48 +57,53 @@ public class StageSelect : MonoBehaviour
         //現在のシーン名取得
         Scene currentScene = SceneManager.GetActiveScene();
         
-        //if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
-        if (currentScene.name == "MichidukaScene")       //デバッグ用
+        if (currentScene.name == "StageSelect")       //デバッグ用
         {
-            GameObject selectBtn = GameObject.Find("Selecting");
-            if (_moveStickValue.x < 0.0f)  //下
+            if (_moveStickValue.x >= 0.1f) //right arrow
             {
                 if (stageSelect == 0)
                 {
                     stageSelect = 1;
-                    // 0 ↓
-                    //selectBtn.transform.localPosition= new Vector3(-850.0f, -50.0f, transform.position.z);
-                    selectBtn.transform.localPosition= new Vector3(-850.0f, -250.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(-200.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 1)
                 {
                     stageSelect = 2;
-                    selectBtn.transform.localPosition= new Vector3(-850.0f, -550.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(0.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 3;
-                    selectBtn.transform.localPosition= new Vector3(-850.0f, -850.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(200.0f, -300.0f, transform.position.z);
+                }
+                else if (stageSelect == 3)
+                {
+                    stageSelect = 4;
+                    selecting.transform.localPosition= new Vector3(400.0f, -300.0f, transform.position.z);
                 }
             }
 
-            if (_moveStickValue.x > 0.0f)  //上
+            if (_moveStickValue.x <= -0.1f)
             {
                 if (stageSelect == 1)
                 {
                     stageSelect = 0;
-                    Debug.Log("StageSelect: 0");
-                    selectBtn.transform.localPosition= new Vector3(-850.0f, 50.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(-400.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 1;
-                    selectBtn.transform.localPosition= new Vector3(-850.0f, -250.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(-200.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
                     stageSelect = 2;
-                    selectBtn.transform.localPosition= new Vector3(-850.0f, -550.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(0.0f, -300.0f, transform.position.z);
+                }
+                else if (stageSelect == 4)
+                {
+                    stageSelect = 3;
+                    selecting.transform.localPosition= new Vector3(200.0f, -300.0f, transform.position.z);
                 }
             }
         }
@@ -110,23 +116,28 @@ public class StageSelect : MonoBehaviour
         
         if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
         {
-            //教室ステージ
+            //1-1
             if (stageSelect == 0)
             {
-
+                SceneManager.LoadScene("GameScene");
             }
-            //理科室ステージ
+            //1-2
             else if (stageSelect == 1)
             {
                 
             }
-            //体育館ステージ
+            //1-3
             else if (stageSelect == 2)
             {
                 
             }
-            //タイトルへ
+            //1-4
             else if (stageSelect == 3)
+            {
+                
+            }
+            //1-5
+            else if (stageSelect == 4)
             {
                 
             }
