@@ -94,7 +94,7 @@ public class AreaSelect : MonoBehaviour
 
         if (currentScene.name == "AreaSelect")     //ステージセレクトシーン内の場合
         {
-            if (_moveStickValue.x == 1.0f)  //right arrow
+            if (_moveStickValue.x >= 0.1f)  //right arrow
             {
                 if (!areaRotating)
                 {
@@ -118,7 +118,7 @@ public class AreaSelect : MonoBehaviour
                 }
             }
 
-            if (_moveStickValue.x == -1.0f)  //left arrow
+            if (_moveStickValue.x <= -0.1f)  //left arrow
             {
                 if (!areaRotating)
                 {
@@ -164,7 +164,7 @@ public class AreaSelect : MonoBehaviour
             //体育館ステージ
             else if (areaSelect == 2)
             {
-                Debug.Log("体育館ステージ選択");
+                Debug.Log("図工室ステージ選択");
             }
             //理科室へ
             else if (areaSelect == 3)
@@ -212,7 +212,7 @@ public class AreaSelect : MonoBehaviour
             }
 
             areaSelect = 2;
-            areaText.text = "体育館ステージ";
+            areaText.text = "図工室ステージ";
         }
         else if (areaSelect == 2)
         {
