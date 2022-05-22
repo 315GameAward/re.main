@@ -18,6 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -79,13 +80,11 @@ public class Pause : MonoBehaviour
         if (g_bPauseOpen) //ポーズを開いている場合
         {
             GameObject selectBtn = GameObject.Find("SelectBtn");
-            if (_moveStickValue.x < 0.0f)  //下
+            if (_moveStickValue.x >= 0.1f)  //right arrow
             {
                 if (pauseSelect == 0)
                 {
-                    Debug.Log("a");
                     pauseSelect = 1;
-                    //仮のものなので無理やり動かしてます...
                     selectBtn.transform.localPosition= new Vector3(-1550.0f, -100.0f, transform.position.z);
                 }
                 else if (pauseSelect == 1)
@@ -95,7 +94,7 @@ public class Pause : MonoBehaviour
                 }
             }
 
-            if (_moveStickValue.x > 0.0f)  //上
+            if (_moveStickValue.x <= -0.1f)  //left arrow
             {
                 if (pauseSelect == 1)
                 {
@@ -120,6 +119,10 @@ public class Pause : MonoBehaviour
                 g_bPauseOpen = false;       //ポーズ開いてない判定
                 Time.timeScale = 1.0f;      //時を動かす
                 Destroy(pauseUIInstance);   //ポーズUI破壊
+            }
+            else if (pauseSelect == 1)
+            {
+                SceneManager.LoadScene("AreaSelect");
             }
         }
     }
