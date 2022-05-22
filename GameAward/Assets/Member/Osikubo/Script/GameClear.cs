@@ -23,6 +23,6 @@ public class GameClear : MonoBehaviour
         {
             animator.SetBool("Start", true);
         }
-        Debug.Log("Á‚µƒSƒ€‚Ì”" + ResultTest.Length);
+        //Debug.Log("Á‚µƒSƒ€‚Ì”" + ResultTest.Length);
     }
 }

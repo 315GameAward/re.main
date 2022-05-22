@@ -25,6 +25,8 @@ public class CutPoint2 : MonoBehaviour
     private bool triggerFlg = false;    // デバック用トリガーフラグ
     public bool AddPointOnOff = true;   // ポイントを追加するかどうか 
 
+    public GameObject m_CubeBase;
+    public List<GameObject> objList;
 
     // 線文用変数
     public Vector2 v;
@@ -52,6 +54,7 @@ public class CutPoint2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objList = new List<GameObject>();
 
     }
 
@@ -82,6 +85,27 @@ public class CutPoint2 : MonoBehaviour
                 {
                     // カットポイントの追加
                     CutPointTest.Add(hit.point);    // ヒットした座標を格納
+                    Vector3 pos = new Vector3();
+                    pos = hit.point;
+                    GameObject gameObj = new GameObject();
+                    gameObj = m_CubeBase;
+                    gameObj.transform.position = pos;
+                    gameObj.transform.rotation = this.transform.rotation;
+                    //objList.Add(gameObj);
+                    Debug.Log("objList" + objList.Count);
+                    //if (CutPointTest.Count == 1)
+                    //{
+                    //    pos = hit.point;
+                    //}
+                    //else
+                    //{
+                    //    pos = (CutPointTest[CutPointTest.Count - 1] - CutPointTest[CutPointTest.Count - 2]) / 2.0f + transform.position;
+                    //}
+                   
+
+                    // m_CubeBase を元にして新しいm_CubeBaseを作成
+                    //Instantiate(m_CubeBase, pos, this.transform.rotation);
+                    objList.Add(Instantiate(m_CubeBase, pos, this.transform.rotation));
 
                     // 頂点を広げる処理
                     if (CutPointTest.Count >= 3 && hit.collider.gameObject.name == "Plane")
@@ -110,6 +134,13 @@ public class CutPoint2 : MonoBehaviour
                         {
                             // カットポイントの削除
                             CutPointTest.RemoveAt(0);
+
+                            // ダメージラインの削除
+                            for (int g = 0; g < objList.Count; g++)
+                            {
+                                objList[g].GetComponent<DamageLine>().Destroy();
+                            }
+                            objList.Clear();
                         }
 
                         test = false;
@@ -338,6 +369,13 @@ public class CutPoint2 : MonoBehaviour
 
                             // 今のカットポイントの削除
                             CutPointTest.RemoveRange(0, CutPointTest.Count);
+
+                            // ダメージラインの削除
+                            for(int g = 0;g < objList.Count;g++)
+                            {
+                                objList[g].GetComponent<DamageLine>().Destroy();
+                            }
+                            objList.Clear();
 
                             // カット終了フラグOFF
                             bStartP = false;
