@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 
 public class skip : MonoBehaviour
 {
-    TimelinePreferences timeline;
+   // TimelinePreferences timeline;
     private PlayableDirector director;
     public GameObject controlPanel;
     
