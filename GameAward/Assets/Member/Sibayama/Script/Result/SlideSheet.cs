@@ -1,3 +1,12 @@
+//================================================
+//
+//      SlideSheet.cs
+//      リザルトスライド
+//
+//------------------------------------------------
+//      作成者: 柴山凜太郎
+//      作成開始日：2022/5/18(水)
+//================================================
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +31,7 @@ public class SlideSheet : MonoBehaviour
         if (slide.transform.position.y <= Screen.height / 2)
         {
             pos = slide.transform.position;
-            pos.y = 540.0f;
+            pos.y = Screen.height / 2;
             return;
         }
         // 特定の位置まで下げる
