@@ -4,120 +4,150 @@ OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ja' Physical Memory
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-C:\Users\nemot\OneDrive\デスクトップ\GE11\suisou1\2020.3.27f1\Editor\Unity.exe
+C:\Users\izumo\OneDrive\Unity\Unity Hub\2020.3.27f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/nemot/OneDrive/デスクトップ/2022_ゲーム大賞/re.main/GameAward
+C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50214
-Successfully changed project path to: C:/Users/nemot/OneDrive/デスクトップ/2022_ゲーム大賞/re.main/GameAward
-C:/Users/nemot/OneDrive/デスクトップ/2022_ゲーム大賞/re.main/GameAward
+63539
+Successfully changed project path to: C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
+C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 47.27 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 137.78 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.27f1 (e759542391ea)
-[Subsystems] Discovering subsystems at path C:/Users/nemot/OneDrive/デスクトップ/GE11/suisou1/2020.3.27f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/nemot/OneDrive/デスクトップ/2022_ゲーム大賞/re.main/GameAward/Assets
+[Subsystems] Discovering subsystems at path C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
     Renderer: NVIDIA GeForce GTX 1650 with Max-Q Design (ID=0x1f91)
     Vendor:   
     VRAM:     3962 MB
-    Driver:   27.21.14.6647
+    Driver:   25.21.14.1788
 Initialize mono
-Mono path[0] = 'C:/Users/nemot/OneDrive/デスクトップ/GE11/suisou1/2020.3.27f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Users/nemot/OneDrive/デスクトップ/GE11/suisou1/2020.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Users/nemot/OneDrive/デスクトップ/GE11/suisou1/2020.3.27f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56564
+Mono path[0] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56040
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Users/nemot/OneDrive/デスクトップ/GE11/suisou1/2020.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002803 seconds.
+Register platform support module: C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.179256 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 39.23 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 53.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.574 seconds
+- Completed reload, in  4.062 seconds
 Domain Reload Profiling:
-	ReloadAssembly (575ms)
-		BeginReloadAssembly (71ms)
+	ReloadAssembly (4062ms)
+		BeginReloadAssembly (2761ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (431ms)
-			LoadAssemblies (69ms)
+		EndReloadAssembly (915ms)
+			LoadAssemblies (2758ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (138ms)
+			SetupTypeCache (533ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (34ms)
-			SetupLoadedEditorAssemblies (161ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (213ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (39ms)
-				BeforeProcessingInitializeOnLoad (16ms)
-				ProcessInitializeOnLoadAttributes (75ms)
-				ProcessInitializeOnLoadMethodAttributes (26ms)
+				RefreshPlugins (53ms)
+				BeforeProcessingInitializeOnLoad (20ms)
+				ProcessInitializeOnLoadAttributes (95ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005366 seconds.
+Registered in 0.779752 seconds.
 Begin MonoManager ReloadAssembly
+Symbol file data-00000203FF52FCD0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000002020198A130 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000002020136EEA0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FF52FCD0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201A4C230 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020200F5C010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000202017F6E20 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020200F5C010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000202017F6E20 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201A98220 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000002020100FC20 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201533020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201808A30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FF2E3020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FF2E3020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 38.14 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 51.41 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.239 seconds
+- Completed reload, in  5.283 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1240ms)
-		BeginReloadAssembly (172ms)
+	ReloadAssembly (5288ms)
+		BeginReloadAssembly (186ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (18ms)
-		EndReloadAssembly (1008ms)
-			LoadAssemblies (100ms)
+			CreateAndSetChildDomain (20ms)
+		EndReloadAssembly (5031ms)
+			LoadAssemblies (2202ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (358ms)
+			SetupTypeCache (1141ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (54ms)
-			SetupLoadedEditorAssemblies (381ms)
+			RebuildScriptCaches (60ms)
+			SetupLoadedEditorAssemblies (1491ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (38ms)
-				BeforeProcessingInitializeOnLoad (75ms)
-				ProcessInitializeOnLoadAttributes (247ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				RefreshPlugins (52ms)
+				BeforeProcessingInitializeOnLoad (101ms)
+				ProcessInitializeOnLoadAttributes (525ms)
+				ProcessInitializeOnLoadMethodAttributes (800ms)
+				AfterProcessingInitializeOnLoad (9ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
-Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2090 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 107.5 MB.
-System memory in use after: 107.6 MB.
+System memory in use before: 107.2 MB.
+System memory in use after: 107.3 MB.
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2544.
-Total: 2.641700 ms (FindLiveObjects: 0.138200 ms CreateObjectMapping: 0.063400 ms MarkObjects: 2.337500 ms  DeleteObjects: 0.101700 ms)
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2545.
+Total: 3.950200 ms (FindLiveObjects: 0.215000 ms CreateObjectMapping: 0.119800 ms MarkObjects: 3.458600 ms  DeleteObjects: 0.155100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,120 +161,278 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
+  path: Assets/Sound/BGM/学校日常１.wav
+  artifactKey: Guid(139aa92adde4e9241aaa3ed4adb99b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sound/BGM/学校日常１.wav using Guid(139aa92adde4e9241aaa3ed4adb99b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4809cf02c2f48cc903d65f39cf0403fe') in 0.634899 seconds 
+  Import took 0.644687 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003115 seconds.
   path: Assets/New Terrain.asset
   artifactKey: Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/New Terrain.asset using Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffd317c640164298e62747595f0821b6') in 0.095406 seconds 
-  Import took 0.098254 seconds .
+Start importing Assets/New Terrain.asset using Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffd317c640164298e62747595f0821b6') in 0.130449 seconds 
+  Import took 0.142197 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 145.380552 seconds.
-  path: Assets/Member/Nemoto/GameObject 1.prefab
-  artifactKey: Guid(9f91f760c43cc84428693c46706e9b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/GameObject 1.prefab using Guid(9f91f760c43cc84428693c46706e9b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '483ea0483259f196b6dbab5f62d75d3c') in 0.070225 seconds 
-  Import took 0.073744 seconds .
+  Time since last request: 0.000623 seconds.
+  path: Assets/Member/Kozuki/P_Smoke.prefab
+  artifactKey: Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/P_Smoke.prefab using Guid(f79f5268b7822914a98f726e2bf56ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '091dd8a2ef3c06035208a574b0af51d4') in 0.135030 seconds 
+  Import took 0.152121 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000415 seconds.
-  path: Assets/Member/Nemoto/Quad.prefab
-  artifactKey: Guid(5923490849301b44e95c363660de407c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Quad.prefab using Guid(5923490849301b44e95c363660de407c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b44fbcf66aabce4d61b503a8671a2e6') in 0.016462 seconds 
-  Import took 0.019824 seconds .
+  Time since last request: 0.000841 seconds.
+  path: Assets/Sound
+  artifactKey: Guid(86d887e9dd8882546bdcb8af29b48aa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sound using Guid(86d887e9dd8882546bdcb8af29b48aa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55b1103b622b8e30b253b88f2aa35bea') in 0.032329 seconds 
+  Import took 0.046145 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000369 seconds.
-  path: Assets/Member/Nemoto/PaperParticle.mat
-  artifactKey: Guid(52956a0e6eb048a48ab01a920ddd2256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/PaperParticle.mat using Guid(52956a0e6eb048a48ab01a920ddd2256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aeed8a4752afd820527bc10f4e59e119') in 0.098256 seconds 
-  Import took 0.102841 seconds .
+  Time since last request: 0.000781 seconds.
+  path: Assets/Member/Kozuki/Compass.prefab
+  artifactKey: Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Compass.prefab using Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af949961a59f0f85eaeff155d0241791') in 0.071139 seconds 
+  Import took 0.083820 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000328 seconds.
-  path: Assets/Member/Nemoto/Scissor.prefab
-  artifactKey: Guid(854b1d625857ced4491028e328fe1ced) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Scissor.prefab using Guid(854b1d625857ced4491028e328fe1ced) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04bce5a9703cad8588f1439ca4d71e7a') in 0.032553 seconds 
-  Import took 0.036741 seconds .
+  Time since last request: 0.000707 seconds.
+  path: Assets/Member/Kozuki/P_Kirakira.prefab
+  artifactKey: Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/P_Kirakira.prefab using Guid(078d232bbb4b4974c9773e87bb12e895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '613a843eaef62a4bc6b90cc666c1e29e') in 0.037251 seconds 
+  Import took 0.046613 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000470 seconds.
-  path: Assets/Member/Nemoto/Wall.prefab
-  artifactKey: Guid(21b782bf04f1c89499d5c75e4b325c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Wall.prefab using Guid(21b782bf04f1c89499d5c75e4b325c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61c0cdbebf30ab15fca86e3309f2c560') in 0.021073 seconds 
-  Import took 0.024561 seconds .
+  Time since last request: 0.000679 seconds.
+  path: Assets/Sound/BGM
+  artifactKey: Guid(275b133333bd0304d95c39e0ae9ee9db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sound/BGM using Guid(275b133333bd0304d95c39e0ae9ee9db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9de0ff71202ba011564832f7b1888cda') in 0.016491 seconds 
+  Import took 0.024910 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000298 seconds.
-  path: Assets/Member/Nemoto/Particle System.prefab
-  artifactKey: Guid(59ca76512a7de4540bd6a076f6137380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Particle System.prefab using Guid(59ca76512a7de4540bd6a076f6137380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1107445f37ef8640d86f253c712cbdb') in 0.014449 seconds 
-  Import took 0.018587 seconds .
+  Time since last request: 100.795498 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model
+  artifactKey: Guid(cc10bae62e2e2a446b63af8006afb2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model using Guid(cc10bae62e2e2a446b63af8006afb2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a2018d5bd7ab997d30a67b33196dbaa') in 0.008928 seconds 
+  Import took 0.014092 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 10.004002 seconds.
-  path: Assets/Scenes/Alpha/CM vcam3Timeline.playable
-  artifactKey: Guid(7d14da326e0dbf142b872f68501b6622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Alpha/CM vcam3Timeline.playable using Guid(7d14da326e0dbf142b872f68501b6622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fad4a711c2207372aace97f75c4ff201') in 0.014192 seconds 
-  Import took 0.017241 seconds .
+  Time since last request: 23.334432 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/konpa50aruku.fbx
+  artifactKey: Guid(9a26f75f6d9d80842b0fc92bf16b27c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/konpa50aruku.fbx using Guid(9a26f75f6d9d80842b0fc92bf16b27c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1db1e59ec99aa4f14b0446b8acf5bb10') in 0.118731 seconds 
+  Import took 0.122699 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.895258 seconds.
-  path: Assets/Scenes/Alpha/GameScene.unity
-  artifactKey: Guid(a1a5f8e2c4364c34796b4fea410e4cd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Alpha/GameScene.unity using Guid(a1a5f8e2c4364c34796b4fea410e4cd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad407c20cb3607b26c99c6cd671891aa') in 0.005993 seconds 
-  Import took 0.009046 seconds .
+  Time since last request: 1.860920 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/konpa50kick.fbx
+  artifactKey: Guid(f093ae092393dc044b0b84f11edf2b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/konpa50kick.fbx using Guid(f093ae092393dc044b0b84f11edf2b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '963e32bfc98d2b3844ef0ecf9ceac64f') in 0.070470 seconds 
+  Import took 0.074471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.957889 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/konpa50sayu.fbx
+  artifactKey: Guid(8701e2917c4a02a48b580b247b21751b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/konpa50sayu.fbx using Guid(8701e2917c4a02a48b580b247b21751b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46a17d5d4330f04e0f93b79dd77d9809') in 0.093017 seconds 
+  Import took 0.096708 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 470.531672 seconds.
+  path: Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy
+  artifactKey: Guid(a8358a3f5d2f18e42b32b692c77ea482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy using Guid(a8358a3f5d2f18e42b32b692c77ea482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42d9b30d2060ffdce0a1664c6ce51f37') in 0.009172 seconds 
+  Import took 0.014790 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.799616 seconds.
+  path: Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/CompassAnimation.cs
+  artifactKey: Guid(b8cc1bd8b46350e428330596a11983ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/CompassAnimation.cs using Guid(b8cc1bd8b46350e428330596a11983ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54887bf82b5e3deda512c72dcfd49f9e') in 0.009408 seconds 
+  Import took 0.013103 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 110.102639 seconds.
+  path: Assets/Member/Kozuki/Kozk_SceneFolder/CM vcam1Timeline.playable
+  artifactKey: Guid(1a05920aeeab3c348b2ff3416a2bbda9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_SceneFolder/CM vcam1Timeline.playable using Guid(1a05920aeeab3c348b2ff3416a2bbda9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0825bcb5a0cba1749f2a3c86b0c0d6ee') in 0.016985 seconds 
+  Import took 0.021446 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000472 seconds.
+  path: Assets/Member/Kozuki/Kozk_SceneFolder/TimelineCameraTimeline.playable
+  artifactKey: Guid(4a9a67b53e0f53c4bb77bd4db301dc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_SceneFolder/TimelineCameraTimeline.playable using Guid(4a9a67b53e0f53c4bb77bd4db301dc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bc24a02aba1efb6e6003150dd648559') in 0.011309 seconds 
+  Import took 0.015570 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.599587 seconds.
+  path: Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/AttackRange.cs
+  artifactKey: Guid(3100d01348c0ecd489889a7679681950) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/AttackRange.cs using Guid(3100d01348c0ecd489889a7679681950) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b6c23075e8ab063e87b10fa267ace63') in 0.006332 seconds 
+  Import took 0.010073 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 52.686796 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/New Animation.anim
+  artifactKey: Guid(ff42beec5f5decf43a39febe6b668e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/New Animation.anim using Guid(ff42beec5f5decf43a39febe6b668e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '104e4aa6e75f9a8fbbdfe3b500fd5962') in 0.010441 seconds 
+  Import took 0.014653 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.135844 seconds.
+  path: Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/Compass.controller
+  artifactKey: Guid(274d6ae1038fb2940873d77e6e82de9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Script/Kozk_Enemy/Compass.controller using Guid(274d6ae1038fb2940873d77e6e82de9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b8c356d7ad37f4508edc9fc2e629bd9') in 0.009016 seconds 
+  Import took 0.012893 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.983732 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/Compas_50.controller
+  artifactKey: Guid(926b9d671e6552745a696dead8ba15b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/Compas_50.controller using Guid(926b9d671e6552745a696dead8ba15b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccd8f9b0c0f4b942676617d279718b3b') in 0.007707 seconds 
+  Import took 0.012351 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 555.059499 seconds.
+  path: Assets/Member/Kozuki/Kozk_SceneFolder/Kozk_Scenes.unity
+  artifactKey: Guid(345691a70d773b547bd494f52e614727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_SceneFolder/Kozk_Scenes.unity using Guid(345691a70d773b547bd494f52e614727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a905dcf0fdc89766a536660f9c23159') in 0.009810 seconds 
+  Import took 0.014949 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.567120 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/Compas_50.controller
+  artifactKey: Guid(926b9d671e6552745a696dead8ba15b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/Compas_50.controller using Guid(926b9d671e6552745a696dead8ba15b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77dc4d86787706b0afe1f5d8ebd2e0e7') in 0.009296 seconds 
+  Import took 0.014515 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 642.823705 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/Compass_50.controller
+  artifactKey: Guid(1f25c11e18c8b8e48b1e035df6706ee5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/Compass_50.controller using Guid(1f25c11e18c8b8e48b1e035df6706ee5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d8fc25ed9c1754122f0551520969e27') in 0.007472 seconds 
+  Import took 0.011392 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 564.025879 seconds.
+  path: Assets/Member/Kozuki/Compass.prefab
+  artifactKey: Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Compass.prefab using Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d1c2609924b4de15ab79d2ccd5f2920') in 0.018253 seconds 
+  Import took 0.022701 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.378990 seconds.
+  path: Assets/Member/Kozuki/Compass.prefab
+  artifactKey: Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Compass.prefab using Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8d76688bf5e7d390051dbe3ac1bc303') in 0.035727 seconds 
+  Import took 0.040504 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.817307 seconds.
+  path: Assets/Member/Kozuki/Compass.prefab
+  artifactKey: Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Compass.prefab using Guid(e29299f1802b57d408f8514b3dad50d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bda903ef70ceb90e5159968540c819a4') in 0.021754 seconds 
+  Import took 0.026107 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.005324 seconds.
+Registered in 0.015399 seconds.
 Begin MonoManager ReloadAssembly
+Symbol file data-00000203FE964050 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020205A26840 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FEC17010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201A45A30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FF5244A0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000002020942B620 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FEC17010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000002020189E020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000202024BA010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000202051EC020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201A45A30 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201533020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FE964050 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000202011723F0 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020204812420 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.99 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.209 seconds
+- Completed reload, in  1.903 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1209ms)
-		BeginReloadAssembly (129ms)
+	ReloadAssembly (1905ms)
+		BeginReloadAssembly (359ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (22ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (35ms)
-		EndReloadAssembly (1021ms)
-			LoadAssemblies (101ms)
+			CreateAndSetChildDomain (147ms)
+		EndReloadAssembly (1425ms)
+			LoadAssemblies (204ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (344ms)
+			SetupTypeCache (543ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (44ms)
-			SetupLoadedEditorAssemblies (447ms)
+			RebuildScriptCaches (83ms)
+			SetupLoadedEditorAssemblies (464ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (133ms)
-				ProcessInitializeOnLoadAttributes (292ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (110ms)
+				ProcessInitializeOnLoadAttributes (321ms)
+				ProcessInitializeOnLoadMethodAttributes (11ms)
+				AfterProcessingInitializeOnLoad (12ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2080 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 110.6 MB.
-System memory in use after: 110.7 MB.
+System memory in use before: 110.4 MB.
+System memory in use after: 110.5 MB.
 
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2589.
-Total: 2.766200 ms (FindLiveObjects: 0.161700 ms CreateObjectMapping: 0.059400 ms MarkObjects: 2.523500 ms  DeleteObjects: 0.020500 ms)
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2593.
+Total: 4.225700 ms (FindLiveObjects: 0.204300 ms CreateObjectMapping: 0.111600 ms MarkObjects: 3.886000 ms  DeleteObjects: 0.022100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -256,4 +444,131 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006758 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000020202E74050 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FF08F010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020204800010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201820020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020204800010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FEC56710 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020204800010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000002042089E060 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020204800010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020202B15020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000202017F6E20 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020201533020 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020202E74050 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000203FF30BC40 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000020200CF7010 doesn't match image C:\Users\izumo\OneDrive\ドキュメント\GitHub\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.373 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1374ms)
+		BeginReloadAssembly (141ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (36ms)
+		EndReloadAssembly (1157ms)
+			LoadAssemblies (122ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (385ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (61ms)
+			SetupLoadedEditorAssemblies (442ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (103ms)
+				ProcessInitializeOnLoadAttributes (312ms)
+				ProcessInitializeOnLoadMethodAttributes (11ms)
+				AfterProcessingInitializeOnLoad (10ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2080 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.5 MB.
+System memory in use after: 110.6 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2595.
+Total: 4.240200 ms (FindLiveObjects: 0.194800 ms CreateObjectMapping: 0.088700 ms MarkObjects: 3.937300 ms  DeleteObjects: 0.018600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 517.985038 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/Compass.prefab
+  artifactKey: Guid(fd79a9f75d37af1489d4bd13b7bb5435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/Compass.prefab using Guid(fd79a9f75d37af1489d4bd13b7bb5435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6d904bbe17919fd502ceb2da7c03168') in 0.045512 seconds 
+  Import took 0.049325 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.450530 seconds.
+  path: Assets/Member/Kozuki/Kozk_Model/Compass.prefab
+  artifactKey: Guid(fd79a9f75d37af1489d4bd13b7bb5435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Kozuki/Kozk_Model/Compass.prefab using Guid(fd79a9f75d37af1489d4bd13b7bb5435) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The Animator Controller (Compass_50) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+The Animator Controller (Compass_50) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:InitInstantiatedPreviewRecursive (UnityEngine.GameObject)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+ -> (artifact id: '145436df57b110d59d485c8e28a3187b') in 0.049056 seconds 
+  Import took 0.052849 seconds .
+
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

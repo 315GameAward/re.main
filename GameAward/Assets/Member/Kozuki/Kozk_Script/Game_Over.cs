@@ -93,7 +93,7 @@ public class Game_Over : MonoBehaviour
                     break;
             }
         }
-        Debug.Log(OVERstate);
+        // Debug.Log(OVERstate);
     }
 
     // =====================
