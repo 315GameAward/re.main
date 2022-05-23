@@ -34,6 +34,12 @@ public class AreaSelect : MonoBehaviour
     [SerializeField] private GameObject areas;
     public float rotateSpeed = 1.5f;                //回転スピード
     
+    //Animator
+    public Animator enpitsuAnime;
+    public Animator pianoAnime;
+    public Animator hanmaAnime;
+    public Animator arukoruAnime;
+    
     [SerializeField] private Text areaText;         //選択中エリア表示用テキスト
     [SerializeField] private AudioSource audioSource;
     
@@ -105,18 +111,25 @@ public class AreaSelect : MonoBehaviour
                     if (areaSelect == 0)
                     {
                         areaRotating = true;
+                        enpitsuAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaR");
                     }
                     else if (areaSelect == 1)
                     {
+                        areaRotating = true;
+                        pianoAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaR");
                     }
                     else if (areaSelect == 2)
                     {
+                        areaRotating = true;
+                        hanmaAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaR");
                     }
                     else if (areaSelect == 3)
                     {
+                        areaRotating = true;
+                        arukoruAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaR");
                     }
                 }
@@ -128,18 +141,26 @@ public class AreaSelect : MonoBehaviour
                 {
                     if (areaSelect == 0)
                     {
+                        areaRotating = true;
+                        enpitsuAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaL");
                     }
                     else if (areaSelect == 1)
                     {
+                        areaRotating = true;
+                        pianoAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaL");
                     }
                     else if (areaSelect == 2)
                     {
+                        areaRotating = true;
+                        hanmaAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaL");
                     }
                     else if (areaSelect == 3)
                     {
+                        areaRotating = true;
+                        arukoruAnime.SetBool("Bounce", false);
                         StartCoroutine("ChangeAreaL");
                     }
                 }
@@ -197,6 +218,8 @@ public class AreaSelect : MonoBehaviour
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, 0.0f, 0);
+            
+            pianoAnime.SetBool("Bounce", true);     //play animation
             while (areas.transform.eulerAngles.y < 90.0f)
             {
                 //areas.transform.Rotate(Vector3.up * (90.0f * Time.deltaTime));
@@ -210,6 +233,8 @@ public class AreaSelect : MonoBehaviour
         else if (areaSelect == 1)
         {
             areas.transform.eulerAngles = new Vector3(0, 90.0f, 0);
+            
+            hanmaAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y < 180.0f)
             {
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
@@ -222,6 +247,8 @@ public class AreaSelect : MonoBehaviour
         else if (areaSelect == 2)
         {
             areas.transform.eulerAngles = new Vector3(0, 180.0f, 0);
+            
+            arukoruAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y < 270.0f)
             {
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
@@ -234,6 +261,8 @@ public class AreaSelect : MonoBehaviour
         else if (areaSelect == 3)
         {
             areas.transform.eulerAngles = new Vector3(0, 270.0f, 0);
+            
+            enpitsuAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 0.0f)
             {
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
@@ -254,6 +283,8 @@ public class AreaSelect : MonoBehaviour
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, -0.1f, 0);
+            
+            arukoruAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 270.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
@@ -266,6 +297,8 @@ public class AreaSelect : MonoBehaviour
         else if (areaSelect == 3)
         {
             areas.transform.eulerAngles = new Vector3(0, 270.0f, 0);
+            
+            hanmaAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 180.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
@@ -278,6 +311,8 @@ public class AreaSelect : MonoBehaviour
         else if (areaSelect == 2)
         {
             areas.transform.eulerAngles = new Vector3(0, 180.0f, 0);
+            
+            pianoAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 90.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
@@ -290,6 +325,8 @@ public class AreaSelect : MonoBehaviour
         else if (areaSelect == 1)
         {
             areas.transform.eulerAngles = new Vector3(0, 90.0f, 0);
+            
+            enpitsuAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y < 359.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
