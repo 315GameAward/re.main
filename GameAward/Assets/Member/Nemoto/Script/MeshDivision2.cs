@@ -949,7 +949,7 @@ public class MeshDivision2 : MonoBehaviour
 
             }
 
-            // 最初に2分割した後にする2分割にする処理
+            // 2分割する処理(途中)
             {
                 //--- 変数宣言 ---
                 int count = 0;
@@ -4682,7 +4682,7 @@ public class MeshDivision2 : MonoBehaviour
         return true;
     }
 
-    // メッシュの分割(2分割)
+    // メッシュの分割(最後)
     public void DivisionMeshTwice(List<Vector3> cutPoint)
     {
         Debug.Log("---------最後の処理---------");
@@ -5274,7 +5274,7 @@ public class MeshDivision2 : MonoBehaviour
             // 交点が2個の時(またいでるポリゴンがあるとき)
             else if (straddlePolyIdx.Count > 0)
             {
-                Debug.Log("交点が2個の時");
+                Debug.Log("============= 交点が2個の時 =============");
                 Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
                 //--- 変数宣言 ---
                 int firstNum = 0;
@@ -5358,8 +5358,7 @@ public class MeshDivision2 : MonoBehaviour
                                     // 記憶されたインデックスの先頭を格納
                                     here = z - a;
                                 }
-
-                                Debug.Log("idxMemory.Count" + idxMemory.Count);
+                              
                                 // 記憶されたインデックスの数によって分岐
                                 // 記憶されたインデックスが12個(ポリゴンが4個)の時
                                 if (idxMemory.Count == 12)
@@ -5506,8 +5505,6 @@ public class MeshDivision2 : MonoBehaviour
                                     }
 
                                 }
-
-
                             }
 
                             // 交点が一個のポリゴンの候補の中から今上で使ったポリゴンを削除
@@ -5521,9 +5518,12 @@ public class MeshDivision2 : MonoBehaviour
                     }
                 }
 
+                Debug.Log("idxList2.Count" + idxList2.Count);
+
                 // 記憶されたインデックスと一致しなかったら
                 if (idxList2.Count == 0)
                 {
+                    Debug.Log("記憶されたインデックスと一致しなかったら");
                     var point = intersectPolyList2[0][0];
                     int first = 0;
                     int second = 0;
@@ -5538,6 +5538,10 @@ public class MeshDivision2 : MonoBehaviour
                         }
                     }
 
+                    Debug.Log("first / 3 :" + first / 3);
+                    Debug.Log("edgIdx2List.Count" + edgIdx2List.Count);
+                    Debug.Log("edgIdx2List[first / 3][0]" + edgIdx2List[first / 3][0]);
+
                     // 始点がどっちにあるかで分岐
                     if (second == 0)
                     {
@@ -5549,8 +5553,8 @@ public class MeshDivision2 : MonoBehaviour
                     else if (second == 1)
                     {
                         // 候補に追加
-                        //idxList2.Add(edgIdx2List[first / 3][0]);
-                        //idxList2.Add(edgIdx2List[first / 3][1]);
+                        idxList2.Add(edgIdx2List[first / 3][0]);
+                        idxList2.Add(edgIdx2List[first / 3][1]);
 
                     }
 
@@ -5568,7 +5572,7 @@ public class MeshDivision2 : MonoBehaviour
                     Debug.Log("idxCnt.Count" + idxCnt.Count);
 
                     // 交点が2個あるポリゴンの候補がなくなるかカウントが一定以上になるまでループ
-                    while (count < 50 && idxCnt.Count > 0)
+                    while (count < 100 && idxCnt.Count > 0)
                     {
                         bool end3 = false;
 
