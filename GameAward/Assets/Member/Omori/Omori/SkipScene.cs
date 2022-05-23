@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;//キー押したらの処理のため
 using UnityEngine.SceneManagement;
 
 
+
 public class SkipScene : MonoBehaviour
 {
 
@@ -33,6 +34,11 @@ public class SkipScene : MonoBehaviour
 
         // Xキーを押したら
         if (Keyboard.current.xKey.isPressed)
+        {
+            cnt_time = 0.0f;
+            SceneManager.LoadScene("GameScene");
+        }
+        if(Gamepad.current.xButton.wasPressedThisFrame)
         {
             cnt_time = 0.0f;
             SceneManager.LoadScene("GameScene");
