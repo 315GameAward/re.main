@@ -28,8 +28,10 @@ public class target : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        stay = true;
-
+        if (collision.gameObject.tag == "Ground")
+        {
+            stay = true;
+        }
     }
 
     void OnCollisionExit(Collision collision)
