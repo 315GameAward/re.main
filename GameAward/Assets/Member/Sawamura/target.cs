@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class target : MonoBehaviour
 {
     //true falseでおこなう
-    public UnityEvent OnCollisioned = new UnityEvent();
-
+    //現在消しゴムに振れたらマーカーが消えてしまうので地面との接触が無くなったら
+    //という風に変える
+    private bool stay = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,29 +19,24 @@ public class target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stay == false)
+        {
+            Destroy(this.gameObject);
+
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        stay = true;
 
     }
 
     void OnCollisionExit(Collision collision)
     {
-        //衝突判定
-        if (collision.gameObject.tag == "Ground")
-        {
-            //スコア処理を追加
-            //FindObjectOfType<Score>().AddScore(10);
-            //相手のタグが○○であるならば、自分を消すに変える
-            //削除された時点でスクリプトも消えるので、
-            //その時点で参照は出来なくなる
-            Destroy(this.gameObject);
 
-        }
-
+        stay = false;
     }
 
-    //private void OnCollision()
-    //private void OnDestroy()
-    //{
-    //    Debug.Log("ぶつかったよ！");
-    //    OnCollisioned.Invoke();
-    //}
+
 }
