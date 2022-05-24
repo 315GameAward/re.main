@@ -235,8 +235,8 @@ public class MeshDivision2 : MonoBehaviour
                 }
 
                 // 頂点の追加
-                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * -cpNormalAbs.z));
-                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * cpNormalAbs.z));
+                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
+                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
                 
                 vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
                 vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
@@ -674,10 +674,10 @@ public class MeshDivision2 : MonoBehaviour
                 }
 
                 // カットポイントの始点   
-                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * -cpNormalAbs.z));
-                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * cpNormalAbs.z));
-                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f *  -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f *  -cpNormalAbs.z));
-                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f *  cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f *  cpNormalAbs.z));
+                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
+                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
+                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f *  -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f *  -cpNormalAbs.z));
+                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f *  cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f *  cpNormalAbs.z));
 
                 // インデックスの割り当て
                 int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -817,24 +817,18 @@ public class MeshDivision2 : MonoBehaviour
                         triangles1.Add(idx0);
                         triangles1.Add(idx1);
                     }
+                  
 
                 }
                 else if(secondNum == 1)
                 {
+                   
                     // インデックスの削除
                     triangles1.RemoveRange(removeIdx, 3);
 
-                    // インデックスの並び替え
-                    var numChange = new List<int>();
-                    numChange.Add(edgIdx2List2[firstNum][0]);
-                    numChange.Add(edgIdx2List2[firstNum][1]);
-                    edgIdx2List2[firstNum].RemoveRange(0, 2);
-                    edgIdx2List2[firstNum].Add(numChange[0]);
-                    edgIdx2List2[firstNum].Add(numChange[1]);
-
                     // 01-12インデックス
-                    if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx1)) &&
-                        ((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)))
+                    if (((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx0 || edgIdx2List2[firstNum][3] == idx1)) &&
+                             ((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)))
                     {
                         Debug.Log("01-12インデックス");
                         triangles1.Add(idx5);
@@ -850,8 +844,8 @@ public class MeshDivision2 : MonoBehaviour
                         triangles1.Add(idx4);
                     }
                     // 01-02インデックス
-                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx1)) &&
-                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx0)))
+                    else if (((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx0 || edgIdx2List2[firstNum][3] == idx1)) &&
+                             ((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx0)))
                     {
                         Debug.Log("01-02インデックス");
                         triangles1.Add(idx6);
@@ -868,8 +862,8 @@ public class MeshDivision2 : MonoBehaviour
 
                     }
                     // 02-12インデックス
-                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx0)) &&
-                             ((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)))
+                    else if (((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx0)) &&
+                             ((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)))
                     {
                         Debug.Log("02-12インデックス");
                         triangles1.Add(idx6);
@@ -885,8 +879,8 @@ public class MeshDivision2 : MonoBehaviour
                         triangles1.Add(idx1);
                     }
                     // 02-01インデックス
-                    else if (((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx0)) &&
-                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx1 || edgIdx2List2[firstNum][3] == idx0)))
+                    else if (((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx0)) &&
+                             ((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx1 || edgIdx2List2[firstNum][1] == idx0)))
                     {
                         Debug.Log("02-01インデックス");
                         triangles1.Add(idx5);
@@ -904,8 +898,8 @@ public class MeshDivision2 : MonoBehaviour
 
                     }
                     // 12-01インデックス
-                    else if (((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)) &&
-                             ((edgIdx2List2[firstNum][2] == idx0 || edgIdx2List2[firstNum][2] == idx1) && (edgIdx2List2[firstNum][3] == idx1 || edgIdx2List2[firstNum][3] == idx0)))
+                    else if (((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)) &&
+                             ((edgIdx2List2[firstNum][0] == idx0 || edgIdx2List2[firstNum][0] == idx1) && (edgIdx2List2[firstNum][1] == idx1 || edgIdx2List2[firstNum][1] == idx0)))
                     {
                         Debug.Log("12-01インデックス");
                         triangles1.Add(idx6);
@@ -921,8 +915,8 @@ public class MeshDivision2 : MonoBehaviour
                         triangles1.Add(idx0);
                     }
                     // 12-20インデックス
-                    else if (((edgIdx2List2[firstNum][0] == idx1 || edgIdx2List2[firstNum][0] == idx2) && (edgIdx2List2[firstNum][1] == idx2 || edgIdx2List2[firstNum][1] == idx1)) &&
-                             ((edgIdx2List2[firstNum][2] == idx2 || edgIdx2List2[firstNum][2] == idx0) && (edgIdx2List2[firstNum][3] == idx0 || edgIdx2List2[firstNum][3] == idx2)))
+                    else if (((edgIdx2List2[firstNum][2] == idx1 || edgIdx2List2[firstNum][2] == idx2) && (edgIdx2List2[firstNum][3] == idx2 || edgIdx2List2[firstNum][3] == idx1)) &&
+                             ((edgIdx2List2[firstNum][0] == idx2 || edgIdx2List2[firstNum][0] == idx0) && (edgIdx2List2[firstNum][1] == idx0 || edgIdx2List2[firstNum][1] == idx2)))
                     {
                         Debug.Log(" 12-02インデックス");
                         triangles1.Add(idx5);
@@ -935,22 +929,21 @@ public class MeshDivision2 : MonoBehaviour
 
                         triangles1.Add(idx6);
                         triangles1.Add(idx0);
-                        triangles1.Add(idx4);
+                        triangles1.Add(idx1);
                     }
-
-                    numChange.RemoveRange(0, 2);
-                    numChange.Add(edgIdx2List2[firstNum][0]);
-                    numChange.Add(edgIdx2List2[firstNum][1]);
-                    edgIdx2List2[firstNum].RemoveRange(0, 2);
-                    edgIdx2List2[firstNum].Add(numChange[0]);
-                    edgIdx2List2[firstNum].Add(numChange[1]);
-
+                    
                 }
 
+                // 候補から削除
+                intersectPolyList2.RemoveAt(firstNum);
+                intersectEdgList2.RemoveAt(firstNum);
+                edgIdx2List2.RemoveAt(firstNum);
             }
 
             // 2分割する処理(途中)
             {
+                Debug.Log("中間:2分割する処理(途中)");
+
                 //--- 変数宣言 ---
                 int count = 0;
                 var idxCnt = straddlePolyIdx;
@@ -989,10 +982,10 @@ public class MeshDivision2 : MonoBehaviour
                                 var pEdge = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][secondNum].x), Mathf.Abs(intersectEdgList2[firstNum][secondNum].y));
                                 var pEdge2 = new Vector2();     // 交点の終点の辺ベクトル
 
-                                //Debug.Log("edgIdx2List2[firstNum][0]:" + edgIdx2List2[firstNum][0]);
-                                //Debug.Log("edgIdx2List2[firstNum][1]:" + edgIdx2List2[firstNum][1]);
-                                //Debug.Log("edgIdx2List2[firstNum][2]:" + edgIdx2List2[firstNum][2]);
-                                //Debug.Log("edgIdx2List2[firstNum][3]:" + edgIdx2List2[firstNum][3]);
+                                Debug.Log("edgIdx2List2[firstNum][0]:" + edgIdx2List2[firstNum][0]);
+                                Debug.Log("edgIdx2List2[firstNum][1]:" + edgIdx2List2[firstNum][1]);
+                                Debug.Log("edgIdx2List2[firstNum][2]:" + edgIdx2List2[firstNum][2]);
+                                Debug.Log("edgIdx2List2[firstNum][3]:" + edgIdx2List2[firstNum][3]);
 
                                 // どっちが交点の始点か調べる
                                 if ((edgIdx2List2[firstNum][0] == idxList[0] || edgIdx2List2[firstNum][0] == idxList[1]) && (edgIdx2List2[firstNum][1] == idxList[1] || edgIdx2List2[firstNum][1] == idxList[0]) )
@@ -1023,8 +1016,8 @@ public class MeshDivision2 : MonoBehaviour
                                 }
 
                                 // 頂点の追加
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * -cpNormalAbs.z));
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -1042,6 +1035,15 @@ public class MeshDivision2 : MonoBehaviour
                                     if (!(attachedMesh.triangles[a] == idx0 && attachedMesh.triangles[a + 1] == idx1 && attachedMesh.triangles[a + 2] == idx2)) continue;
                                     removeIdx = a;
                                 }
+
+                                Debug.Log("secondNum" + secondNum);
+                                Debug.Log("idx0" + idx0);
+                                Debug.Log("idx1" + idx1);
+                                Debug.Log("idx2" + idx2);
+                                Debug.Log("edgIdx2List2[firstNum][0]" + edgIdx2List2[firstNum][0]);
+                                Debug.Log("edgIdx2List2[firstNum][1]" + edgIdx2List2[firstNum][1]);
+                                Debug.Log("edgIdx2List2[firstNum][2]" + edgIdx2List2[firstNum][2]);
+                                Debug.Log("edgIdx2List2[firstNum][3]" + edgIdx2List2[firstNum][3]);
 
                                 // インデックスの割り振り
                                 if (secondNum == 0)
@@ -1529,8 +1531,8 @@ public class MeshDivision2 : MonoBehaviour
             }
 
             // 頂点に格納
-            vertices1[i] = vertices1[i] + edge.normalized * 0.08f;
-            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.08f;
+            vertices1[i] = vertices1[i] + edge.normalized * 0.04f;
+            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.04f;
         }
 
         // カットする処理(全体)
@@ -1698,8 +1700,8 @@ public class MeshDivision2 : MonoBehaviour
                     //            if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w+1] && triangles1[c + 2] == inerPolyIdx[w+2])) continue;
                     //            Debug.Log("頂点の追加");
                     //            // 交点をもとに頂点を追加
-                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * -cpNormalAbs.z));
-                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * cpNormalAbs.z));
+                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
+                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
 
                     //            // インデックスの割り当て
                     //            int idx0 = attachedMesh.triangles[c];
@@ -2255,8 +2257,8 @@ public class MeshDivision2 : MonoBehaviour
                                 if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w + 1] && triangles1[c + 2] == inerPolyIdx[w + 2])) continue;
                                 Debug.Log("頂点の追加");
                                 // 交点をもとに頂点を追加
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * -cpNormalAbs.z));
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.08f *  cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f *  cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f *  cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f *  cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = attachedMesh.triangles[c];
@@ -2600,8 +2602,8 @@ public class MeshDivision2 : MonoBehaviour
 
 
                                     // 頂点の追加
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * -cpNormalAbs.z));
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
 
                                     // インデックスの割り当て
                                     int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -3953,8 +3955,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                    edge = Vector3.Cross(edge1, edge2);
             //                                                }
 
-            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.08f;
-            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.08f;
+            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.04f;
+            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.04f;
             //                                            }
 
             //                                            // インデックスの割り当て
@@ -4021,8 +4023,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                    edge = Vector3.Cross(edge1, edge2);
             //                                                }
 
-            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.08f;
-            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.08f;
+            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.04f;
+            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.04f;
             //                                            }
 
             //                                            // インデックスの割り当て
@@ -4077,8 +4079,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                    edge = Vector3.Cross(edge1, edge2);
             //                                                }
 
-            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.08f;
-            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.08f;
+            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.04f;
+            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.04f;
             //                                            }
 
             //                                            // インデックスの割り当て
@@ -4150,8 +4152,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                var cpEdgNor = Vector3.Cross(cpEdg_bv, Vector3.up);
 
             //                                                // 頂点の追加
-            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f * (cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.08f * (cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
-            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.08f * -(cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.08f * -(cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
+            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.04f * (cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.04f * (cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
+            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.04f * -(cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.04f * -(cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
 
             //                                                // インデックスの割り当て
             //                                                int idx0 = straddlePolyIdx[n];
@@ -4743,8 +4745,8 @@ public class MeshDivision2 : MonoBehaviour
             }
 
             // 頂点に格納
-            vertices1[i] = vertices1[i] + edge.normalized * 0.08f;
-            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.08f;
+            vertices1[i] = vertices1[i] + edge.normalized * 0.04f;
+            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.04f;
         }
 
         // カットする処理
@@ -4831,7 +4833,7 @@ public class MeshDivision2 : MonoBehaviour
                 if (interPointCnt == 2)// 交点カウント2個(ポリゴンをまたいでる時)
                 {
                     Debug.Log("2個あるで");
-                    Debug.Log("ポリゴン番号は" + attachedMesh.triangles[j] + "," + attachedMesh.triangles[j + 1] + "," + attachedMesh.triangles[j + 2]);
+                    //Debug.Log("ポリゴン番号は" + attachedMesh.triangles[j] + "," + attachedMesh.triangles[j + 1] + "," + attachedMesh.triangles[j + 2]);
 
                     straddlePolyIdx.Add(attachedMesh.triangles[j]);
                     straddlePolyIdx.Add(attachedMesh.triangles[j + 1]);
@@ -4842,7 +4844,7 @@ public class MeshDivision2 : MonoBehaviour
                     intersectPolyList2.Add(intersection);
                     intersectEdgList2.Add(edgList);
                     edgIdx2List2.Add(edgIdxList);
-                    Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
+                    //Debug.Log("straddlePolyIdx.Count" + straddlePolyIdx.Count);
                 }
                 else if (interPointCnt == 1)// 交点カウント1個(カットポイントの終点がポリゴンの中にあるとき)
                 {
@@ -4933,8 +4935,8 @@ public class MeshDivision2 : MonoBehaviour
                                 if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w + 1] && triangles1[c + 2] == inerPolyIdx[w + 2])) continue;
                                 Debug.Log("頂点の追加");
                                 // 交点をもとに頂点を追加
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * -cpNormalAbs.z));
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = attachedMesh.triangles[c];
@@ -5336,8 +5338,8 @@ public class MeshDivision2 : MonoBehaviour
                                 if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w + 1] && triangles1[c + 2] == inerPolyIdx[w + 2])) continue;
                                 Debug.Log("頂点の追加");
                                 // 交点をもとに頂点を追加
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * -cpNormalAbs.z));
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.08f * cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = attachedMesh.triangles[c];
@@ -5507,7 +5509,7 @@ public class MeshDivision2 : MonoBehaviour
                                 }
                             }
 
-                            // 交点が一個のポリゴンの候補の中から今上で使ったポリゴンを削除
+                            // 交点が2個のポリゴンの候補の中から今上で使ったポリゴンを削除
                             //inerPolyIdx.RemoveRange(w, 3);
                             //edgIdx2List.RemoveRange(w/3, 1);
                             //intersectPolyList.RemoveRange(w/3, 1);
@@ -5563,17 +5565,20 @@ public class MeshDivision2 : MonoBehaviour
 
                 // 2分割する処理(途中)
                 {
+                    Debug.Log("2分割する処理(途中)");
                     //--- 変数宣言 ---
                     int count = 0;
                     var idxCnt = straddlePolyIdx;
                     //idxCnt.RemoveRange(firstNum * 3, 3); // 候補保存用
                     //Debug.Log("idxCnt.Count" + idxCnt.Count);
-                    Debug.Log("idxList.Count" + idxList2.Count);
-                    Debug.Log("idxCnt.Count" + idxCnt.Count);
+                    //Debug.Log("idxList.Count" + idxList2.Count);
+                    //Debug.Log("idxCnt.Count" + idxCnt.Count);
 
                     // 交点が2個あるポリゴンの候補がなくなるかカウントが一定以上になるまでループ
                     while (count < 100 && idxCnt.Count > 0)
                     {
+                        Debug.Log("================= ループ ================= ");
+
                         bool end3 = false;
 
                         // 候補の数だけループ
@@ -5584,9 +5589,10 @@ public class MeshDivision2 : MonoBehaviour
                             {
                                 Debug.Log("idxCnt[k + h];" + idxCnt[k + h]);
                                 Debug.Log("idxCnt[k + ((h + 1) % 3)];" + idxCnt[k + ((h + 1) % 3)]);
-                                //Debug.Log("idxList[0];" + idxList2[0]);
-                                //Debug.Log("idxList[1];" + idxList2[1]);
-                                //// 候補と一致しなかったらスルー、一致したら分割対象のインデックスが分かる
+                                Debug.Log("idxList[0];" + idxList2[0]);
+                                Debug.Log("idxList[1];" + idxList2[1]);
+
+                                // 候補と一致しなかったらスルー、一致したら分割対象のインデックスが分かる
                                 if (!((idxCnt[k + h] == idxList2[0] || idxCnt[k + h] == idxList2[1]) && (idxCnt[k + ((h + 1) % 3)] == idxList2[0] || straddlePolyIdx[k + ((h + 1) % 3)] == idxList2[1]))) continue;
 
                                 // 保存された候補リストから今回使ったインデックスを削除
@@ -5605,11 +5611,11 @@ public class MeshDivision2 : MonoBehaviour
                                     var pEdge = new Vector2(Mathf.Abs(intersectEdgList2[firstNum][secondNum].x), Mathf.Abs(intersectEdgList2[firstNum][secondNum].y));
                                     var pEdge2 = new Vector2();     // 交点の終点の辺ベクトル
 
-                                  
-                                    //Debug.Log("edgIdx2List2[firstNum][0]:" + edgIdx2List2[firstNum][0]);
-                                    //Debug.Log("edgIdx2List2[firstNum][1]:" + edgIdx2List2[firstNum][1]);
-                                    //Debug.Log("edgIdx2List2[firstNum][2]:" + edgIdx2List2[firstNum][2]);
-                                    //Debug.Log("edgIdx2List2[firstNum][3]:" + edgIdx2List2[firstNum][3]);
+
+                                    Debug.Log("edgIdx2List2[firstNum][0]:" + edgIdx2List2[firstNum][0]);
+                                    Debug.Log("edgIdx2List2[firstNum][1]:" + edgIdx2List2[firstNum][1]);
+                                    Debug.Log("edgIdx2List2[firstNum][2]:" + edgIdx2List2[firstNum][2]);
+                                    Debug.Log("edgIdx2List2[firstNum][3]:" + edgIdx2List2[firstNum][3]);
 
                                     // どっちが交点の始点か調べる
                                     if ((edgIdx2List2[firstNum][0] == idxList2[0] || edgIdx2List2[firstNum][0] == idxList2[1]) && (edgIdx2List2[firstNum][1] == idxList2[1] || edgIdx2List2[firstNum][1] == idxList2[0]))
@@ -5640,8 +5646,8 @@ public class MeshDivision2 : MonoBehaviour
                                     }
 
                                     // 頂点の追加
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * -cpNormalAbs.z));
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.08f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.08f * cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
 
                                     // インデックスの割り当て
                                     int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -5895,6 +5901,7 @@ public class MeshDivision2 : MonoBehaviour
                                     intersectPolyList2.RemoveAt(firstNum);
                                     intersectEdgList2.RemoveAt(firstNum);
                                     edgIdx2List2.RemoveAt(firstNum);
+
                                     // ここまで来たら終了
                                     end3 = true;
                                     break;

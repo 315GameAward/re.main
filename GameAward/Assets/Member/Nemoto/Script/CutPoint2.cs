@@ -236,11 +236,11 @@ public class CutPoint2 : MonoBehaviour
                             // 交点の代入
                             p = intersectionMemory[k];
 
-                            //--- 交点の補正 ---
-                            var vtx_s = p;
-                            var vtx_v = new Vector2(CutPointTest[1].x, CutPointTest[1].z);
-                            var edg = vtx_v - vtx_s;
-                            p += edg * 0.01f;
+                            ////--- 交点の補正 ---
+                            //var vtx_s = p;
+                            //var vtx_v = new Vector2(CutPointTest[1].x, CutPointTest[1].z);
+                            //var edg = vtx_v - vtx_s;
+                            //p += edg * 0.01f;
                         }
 
                         // カットポイントの始点を変更
