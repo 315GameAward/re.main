@@ -180,7 +180,7 @@ public class AreaSelect : MonoBehaviour
             if (areaSelect == 0)
             {
                 Debug.Log("教室ステージ選択");
-                SceneManager.LoadScene("GameScene");
+                SceneManager.LoadScene("OomoriScene");
             }
             //音楽室ステージ
             else if (areaSelect == 1)
