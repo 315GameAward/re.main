@@ -15,12 +15,14 @@ using UnityEngine.UI;   // UI‚¢‚¶‚é
 public class SlideSheet : MonoBehaviour
 {
     public RectTransform slide;
-    
+    static bool landing;
+    public static bool Landing { get { return landing; } }
     public float moveDistance;     // ˆÚ“®—Ê
     Vector3 pos;
     // Start is called before the first frame update
     void Start()
     {
+        landing = false;
         slide.transform.position = new Vector3(Screen.width / 2, Screen.height + slide.rect.height, 0.0f);
     }
 
@@ -32,9 +34,11 @@ public class SlideSheet : MonoBehaviour
         {
             pos = slide.transform.position;
             pos.y = Screen.height / 2;
+            landing = true;
             return;
         }
         // “Á’è‚ÌˆÊ’u‚Ü‚Å‰º‚°‚é
         slide.transform.position -= new Vector3(0.0f, moveDistance, 0.0f);
     }
+
 }
