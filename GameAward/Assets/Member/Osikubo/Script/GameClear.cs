@@ -17,7 +17,7 @@ public class GameClear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ResultTest = GameObject.FindGameObjectsWithTag("kesigomu");
+        ResultTest = GameObject.FindGameObjectsWithTag("Enemy");
         // Debug.Log("è¡ÇµÉSÉÄÇÃêî" + ResultTest.Length);
         if (ResultTest.Length == 0)
         {
