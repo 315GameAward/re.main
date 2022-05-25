@@ -163,7 +163,7 @@ public class PlayerControl : MonoBehaviour
         m_bPlayerMove = true;
 
         // SE‚ÌÄ¶
-        if (gameObject.GetComponent<CutterPoint>().bPurposeObj)
+        if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
         {
             // †‚ğØ‚é
             audioSource.PlayOneShot(se2);
