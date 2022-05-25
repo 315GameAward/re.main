@@ -19,8 +19,11 @@ public class Life : MonoBehaviour
     public AudioClip sound;
     AudioSource audioSource;
 
-    public int nLife;   // 体力
-    static public int nlife;
+    private int MaxLife = 3;    // 体力最大数
+    public int nLife;           // 体力(変動する)
+    static public int nlife;    // 他シーンへ持っていく体力数
+
+    private bool b_Life = true; // 体力が残っているか true:ある
 
     public static Life instance;
     public GameObject image_gameOver;
@@ -41,33 +44,37 @@ public class Life : MonoBehaviour
         // 効果音取得
         audioSource = GetComponent<AudioSource>();
 
+        // 体力設定
+        nLife = MaxLife;
         for (int i = nLife; i > 0; i--)
         {
             // 体力を設定していく
             AddLife();
         }
+        b_Life = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log(nLife);
+        // Debug.Log(nLife);
 
-        if (nLife <= 0)
-        {
+        if (nLife <= 0 && b_Life == true)
+        {           
             // ゲームオーバー呼び出し
-            image_gameOver.GetComponent<GameOver>().ShowGameOver();
+            image_gameOver.GetComponent<Game_Over>().SetGMOV(true);
+            b_Life = false; // 一度しか通らない
         }
 
-        // スペースを押したら体力消費
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        // 左矢印を押したら体力消費
+        if (Input.GetKeyUp(KeyCode.PageUp))
         {
             AddLife();
             nLife++;
         }
 
-        // 下矢印を押したら体力増加
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        // 右矢印を押したら体力増加
+        if (Input.GetKeyUp(KeyCode.PageDown))
         {
             DelLife();
         }
@@ -96,6 +103,7 @@ public class Life : MonoBehaviour
     {
         if(nLife <= 0)
         {
+            nLife = 0;
             return;
         }
 
