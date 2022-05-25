@@ -21,6 +21,7 @@ public class MeshDivision2 : MonoBehaviour
 
     private List<int> idxMemory = new List<int>();    // 三角形インデックスの記憶用変数
 
+    public float CPWidth = 0.04f;
 
     public class Triangle
     {
@@ -235,8 +236,8 @@ public class MeshDivision2 : MonoBehaviour
                 }
 
                 // 頂点の追加
-                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
-                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
+                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
+                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * cpNormalAbs.z));
                 
                 vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
                 vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
@@ -674,10 +675,10 @@ public class MeshDivision2 : MonoBehaviour
                 }
 
                 // カットポイントの始点   
-                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
-                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
-                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f *  -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f *  -cpNormalAbs.z));
-                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f *  cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f *  cpNormalAbs.z));
+                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
+                vertices1.Add(new Vector3(p.x, attachedMesh.vertices[0].y, p.y) + new Vector3(pEdge.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * cpNormalAbs.z));
+                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth *  -cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth *  -cpNormalAbs.z));
+                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth *  cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth *  cpNormalAbs.z));
 
                 // インデックスの割り当て
                 int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -1016,8 +1017,8 @@ public class MeshDivision2 : MonoBehaviour
                                 }
 
                                 // 頂点の追加
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * -cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -1531,8 +1532,8 @@ public class MeshDivision2 : MonoBehaviour
             }
 
             // 頂点に格納
-            vertices1[i] = vertices1[i] + edge.normalized * 0.04f;
-            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.04f;
+            vertices1[i] = vertices1[i] + edge.normalized * CPWidth;
+            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * CPWidth;
         }
 
         // カットする処理(全体)
@@ -1580,7 +1581,7 @@ public class MeshDivision2 : MonoBehaviour
                     Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
 
                     // カットポイントの始点の補正
-                    cpVtx_s += cpEdge * 0.01f;
+                    cpVtx_s += cpEdge * 0.001f;
 
                     // カットポイントの辺の補正
                     cpEdge = cpVtx_v - cpVtx_s; // 辺
@@ -1700,8 +1701,8 @@ public class MeshDivision2 : MonoBehaviour
                     //            if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w+1] && triangles1[c + 2] == inerPolyIdx[w+2])) continue;
                     //            Debug.Log("頂点の追加");
                     //            // 交点をもとに頂点を追加
-                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
-                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
+                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * -cpNormalAbs.z));
+                    //            vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * cpNormalAbs.z));
 
                     //            // インデックスの割り当て
                     //            int idx0 = attachedMesh.triangles[c];
@@ -1845,12 +1846,12 @@ public class MeshDivision2 : MonoBehaviour
                                 Debug.Log("頂点の追加");
                                 Debug.Log("pEnd"+ pEnd);
                                 Debug.Log("pEdge" + pEdge);
-                                Debug.Log("" + ( pEdge.normalized.y * 0.079f * -cpNormalAbs.z));
+                                Debug.Log("" + ( pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
                                 Debug.Log("cpNormal" + (cpNormal));
                                 
                                 // 交点をもとに頂点を追加
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.079f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.079f * -cpNormalAbs.z));
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.079f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.079f * cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = attachedMesh.triangles[c];
@@ -2257,8 +2258,8 @@ public class MeshDivision2 : MonoBehaviour
                                 if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w + 1] && triangles1[c + 2] == inerPolyIdx[w + 2])) continue;
                                 Debug.Log("頂点の追加");
                                 // 交点をもとに頂点を追加
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
-                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f *  cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f *  cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
+                                vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth *  cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth *  cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = attachedMesh.triangles[c];
@@ -2602,8 +2603,8 @@ public class MeshDivision2 : MonoBehaviour
 
 
                                     // 頂点の追加
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * -cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * cpNormalAbs.z));
 
                                     // インデックスの割り当て
                                     int idx0 = straddlePolyIdx[(firstNum * 3)];
@@ -3955,8 +3956,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                    edge = Vector3.Cross(edge1, edge2);
             //                                                }
 
-            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.04f;
-            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.04f;
+            //                                                vertices1[l] = vertices1[l] + edge.normalized * CPWidth;
+            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * CPWidth;
             //                                            }
 
             //                                            // インデックスの割り当て
@@ -4023,8 +4024,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                    edge = Vector3.Cross(edge1, edge2);
             //                                                }
 
-            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.04f;
-            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.04f;
+            //                                                vertices1[l] = vertices1[l] + edge.normalized * CPWidth;
+            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * CPWidth;
             //                                            }
 
             //                                            // インデックスの割り当て
@@ -4079,8 +4080,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                    edge = Vector3.Cross(edge1, edge2);
             //                                                }
 
-            //                                                vertices1[l] = vertices1[l] + edge.normalized * 0.04f;
-            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * 0.04f;
+            //                                                vertices1[l] = vertices1[l] + edge.normalized * CPWidth;
+            //                                                vertices1[l + 1] = vertices1[l + 1] - edge.normalized * CPWidth;
             //                                            }
 
             //                                            // インデックスの割り当て
@@ -4152,8 +4153,8 @@ public class MeshDivision2 : MonoBehaviour
             //                                                var cpEdgNor = Vector3.Cross(cpEdg_bv, Vector3.up);
 
             //                                                // 頂点の追加
-            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.04f * (cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.04f * (cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
-            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * 0.04f * -(cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * 0.04f * -(cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
+            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * CPWidth * (cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * CPWidth * (cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
+            //                                                vertices1.Add(new Vector3(intersectPolyList[n / 3][0].x, cutPoint[cutPoint.Count - 1].y - transform.position.y, intersectPolyList[n / 3][0].y) + new Vector3(intersectEdgList[n / 3][0].normalized.x * CPWidth * -(cpEdgNor.normalized.x / Mathf.Abs(cpEdgNor.normalized.x)), 0, intersectEdgList[n / 3][0].normalized.y * CPWidth * -(cpEdgNor.normalized.z / Mathf.Abs(cpEdgNor.normalized.z))));
 
             //                                                // インデックスの割り当て
             //                                                int idx0 = straddlePolyIdx[n];
@@ -4745,8 +4746,8 @@ public class MeshDivision2 : MonoBehaviour
             }
 
             // 頂点に格納
-            vertices1[i] = vertices1[i] + edge.normalized * 0.04f;
-            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * 0.04f;
+            vertices1[i] = vertices1[i] + edge.normalized * CPWidth;
+            vertices1[i + 1] = vertices1[i + 1] - edge.normalized * CPWidth;
         }
 
         // カットする処理
@@ -4935,8 +4936,8 @@ public class MeshDivision2 : MonoBehaviour
                                 if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w + 1] && triangles1[c + 2] == inerPolyIdx[w + 2])) continue;
                                 Debug.Log("頂点の追加");
                                 // 交点をもとに頂点を追加
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = attachedMesh.triangles[c];
@@ -5338,8 +5339,8 @@ public class MeshDivision2 : MonoBehaviour
                                 if (!(triangles1[c] == inerPolyIdx[w] && triangles1[c + 1] == inerPolyIdx[w + 1] && triangles1[c + 2] == inerPolyIdx[w + 2])) continue;
                                 Debug.Log("頂点の追加");
                                 // 交点をもとに頂点を追加
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * -cpNormalAbs.z));
-                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge.normalized.y * 0.04f * cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
+                                //vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * cpNormalAbs.z));
 
                                 // インデックスの割り当て
                                 int idx0 = attachedMesh.triangles[c];
@@ -5548,8 +5549,8 @@ public class MeshDivision2 : MonoBehaviour
                     if (second == 0)
                     {
                         // 候補に追加
-                        idxList2.Add(edgIdx2List[first / 3][0]);
-                        idxList2.Add(edgIdx2List[first / 3][1]);
+                        idxList2.Add(edgIdx2List[first / 3][2]);
+                        idxList2.Add(edgIdx2List[first / 3][3]);
 
                     }
                     else if (second == 1)
@@ -5646,8 +5647,8 @@ public class MeshDivision2 : MonoBehaviour
                                     }
 
                                     // 頂点の追加
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * -cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * -cpNormalAbs.z));
-                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * 0.04f * cpNormalAbs.x, 0, pEdge2.normalized.y * 0.04f * cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * -cpNormalAbs.z));
+                                    vertices1.Add(new Vector3(pEnd.x, attachedMesh.vertices[0].y, pEnd.y) + new Vector3(pEdge2.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge2.normalized.y * CPWidth * cpNormalAbs.z));
 
                                     // インデックスの割り当て
                                     int idx0 = straddlePolyIdx[(firstNum * 3)];

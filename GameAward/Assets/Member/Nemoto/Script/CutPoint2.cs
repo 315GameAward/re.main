@@ -244,7 +244,7 @@ public class CutPoint2 : MonoBehaviour
                         }
 
                         // カットポイントの始点を変更
-                        CutPointTest[0] = new Vector3(p.x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[0].y + hit.collider.gameObject.transform.position.y, p.y);
+                        //CutPointTest[0] = new Vector3(p.x, hit.collider.gameObject.GetComponent<MeshFilter>().mesh.vertices[0].y + hit.collider.gameObject.transform.position.y, p.y);
 
                         // メッシュを分割
                         hit.collider.gameObject.GetComponent<MeshDivision2>().DivisionMesh(CutPointTest);
