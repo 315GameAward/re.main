@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 // ==========================================
 //
 //              ゲームオーバー
@@ -92,6 +92,7 @@ public class Game_Over : MonoBehaviour
                     if (Input.GetKeyUp(KeyCode.Return))
                     {
                         // シーン遷移
+                        SceneManager.LoadScene("GameScene");    // 仮
                     }
                     break;
                 case STATE_GMOV.OVER_END:   // ゲームを抜けるを選択中
