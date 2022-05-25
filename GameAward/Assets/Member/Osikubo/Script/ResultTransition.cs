@@ -16,12 +16,12 @@ public class ResultTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ResultTest = GameObject.FindGameObjectsWithTag("kesigomu");
-       // Debug.Log("Á‚µƒSƒ€‚Ì”" + ResultTest.Length);
+        ResultTest = GameObject.FindGameObjectsWithTag("Enemy");
+       
         if (ResultTest.Length == 0)
         {
             Debug.Log("ƒV[ƒ“‚ÌˆÚ“®");
-            SceneManager.LoadScene("ResultScene");
+            SceneManager.LoadScene("ResultScene",LoadSceneMode.Additive);
         }
     }
 }

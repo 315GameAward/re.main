@@ -14,17 +14,22 @@ public class SetPosition : MonoBehaviour
     public Vector3 rayPosition = Vector3.zero; // 変更可能
     private Vector3 RayPosition;
     public Vector3 rayVector = Vector3.down;
+    Ray rayhit;
     //初期位置
     private Vector3 startPosition;
     //目的地
     private Vector3 destination;
     private Vector3 newDest;
 
+    private MoveEnemy moveEnemy;
+    RaycastHit hit;
+
     private float groundtime = 1.0f;
     private float cnttime = 0.0f;
 
     void Start()
     {
+        moveEnemy = this.gameObject.GetComponentInParent<MoveEnemy>();
         //　初期位置を設定
         startPosition = transform.position;
         SetDestination(transform.position);
@@ -41,12 +46,26 @@ public class SetPosition : MonoBehaviour
         {
             RayPosition = trans + rayPosition;
             Ray ray = new Ray(RayPosition, angle.normalized);
+            rayhit = ray;
             isGround = Physics.Raycast(ray, distance);
             Debug.DrawRay(RayPosition, angle.normalized, Color.red);
             //Debug.Log(isGround);
             times = 0.0f;
         }
+        //if (Physics.Raycast(rayhit, out hit, Mathf.Infinity))
+        //{
+        //    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        //    {
+        //        //　敵キャラクターの状態を取得
+        //        MoveEnemy.EnemyState state = moveEnemy.GetState();
 
+        //        if (state != MoveEnemy.EnemyState.Wait)
+        //        {
+        //            // isGround = false;
+        //            moveEnemy.SetState(MoveEnemy.EnemyState.Wait);
+        //        }
+        //    }
+        //}
         if (Return == true)
         {
             cnttime += Time.deltaTime;

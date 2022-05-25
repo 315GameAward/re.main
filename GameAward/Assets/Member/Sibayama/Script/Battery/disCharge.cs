@@ -48,10 +48,7 @@ public class disCharge : MonoBehaviour
         if (other.gameObject.tag != Tagname)
             return;
 
-        // ここにハサミの移動量を0にする、
-        // またはフラグを立てる処理を記入
-        //movePlayer.move = 0.0f;
-
+        // ここでプレイヤーの操作を受け付けないフラグを立てる処理記入
 
     }
 
