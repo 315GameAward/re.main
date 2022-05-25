@@ -420,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &621333028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1304,7 +1304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf2fa0c01f6f4f4baf39dbce7afb7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopTime: 1
+  SelectButton: {fileID: 621333027}
+  stopTime: 0.5
   item:
   - {fileID: 327026441}
   - {fileID: 626685443}

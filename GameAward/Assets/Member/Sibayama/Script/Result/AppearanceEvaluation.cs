@@ -27,7 +27,7 @@ public class AppearanceEvaluation : MonoBehaviour
         Max_Type
     }
 
-    
+    public GameObject SelectButton;
     public const int Max_Obj = 2;  // 評価項目数
     
     public float stopTime;  // スタンプ押す間隔
@@ -36,10 +36,17 @@ public class AppearanceEvaluation : MonoBehaviour
     
     // 評価テクスチャを適用させるオブジェクト
     public GameObject[] item = new GameObject[Max_Obj];
+
+    // どデカスタンプ
     GameObject last_result;
     
     // 評価に使うスタンプテクスチャ
     public Sprite[] evaluation = new Sprite[(int)EvaType.Max_Type];
+
+    private void Awake()
+    {
+        SelectButton.SetActive(false);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -102,8 +109,9 @@ public class AppearanceEvaluation : MonoBehaviour
         //activeObj[0] = true;
         yield return new WaitForSeconds(stopTime);
         GameObject.Find("layer").gameObject.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        SelectButton.SetActive(true);
         //activeObj[1] = true;
-        SetActive.AcObj.SetActive(true);
+        //SetActive.AcObj.SetActive(true);
     }
 
 }
