@@ -14,11 +14,15 @@ using UnityEngine.UI;   // UIいじる
 
 public class SlideSheet : MonoBehaviour
 {
+    // スライドのパラメータ取得
     public RectTransform slide;
-    static bool landing;
+
+    
+    static bool landing;    // スライドが降りきったか
+    // ↑のフラグを渡す
     public static bool Landing { get { return landing; } }
     public float moveDistance;     // 移動量
-    Vector3 pos;
+    Vector3 pos;    // スライドの座標
     // Start is called before the first frame update
     void Start()
     {
