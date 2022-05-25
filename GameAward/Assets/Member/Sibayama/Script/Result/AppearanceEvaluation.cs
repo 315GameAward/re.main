@@ -11,8 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
+using UnityEngine.UI;   // UIを弄るのに必要
 
 
 public class AppearanceEvaluation : MonoBehaviour
@@ -27,17 +26,14 @@ public class AppearanceEvaluation : MonoBehaviour
         Max_Type
     }
 
-    public const int Max_Obj = 2;  // 評価項目数
+    const int Max_Obj = 2;  // 評価項目数
     
     public float stopTime;  // スタンプ押す間隔
-
-    //static bool[] activeObj = new bool[2];  // オブジェクトをアクティブに設定
     
     // 評価テクスチャを適用させるオブジェクト
     public GameObject[] item = new GameObject[Max_Obj];
-
     
-    GameObject layer;   // どデカスタンプ押した後のリザルトぼかし
+    GameObject layer;   // どデカいスタンプ押した後のリザルトぼかし
 
     // アクティブ状態を管理するオブジェクト
     GameObject[] AcObj = new GameObject[Max_Obj];
@@ -47,6 +43,8 @@ public class AppearanceEvaluation : MonoBehaviour
 
     private void Awake()
     {
+        //--- 子オブジェクト取得＆非表示
+
         layer = GameObject.Find("layer");
         layer.gameObject.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         AcObj[0] = GameObject.Find("layer/last_result");
@@ -55,6 +53,7 @@ public class AppearanceEvaluation : MonoBehaviour
 
         for (var i = 0; i < Max_Obj; ++i)
         {
+            // オブジェクトの非アクティブ化
             AcObj[i].SetActive(false);
         }
     }
@@ -62,9 +61,6 @@ public class AppearanceEvaluation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
-        
         // 評価項目を採点
         StampEvaluation();
     }
@@ -73,11 +69,11 @@ public class AppearanceEvaluation : MonoBehaviour
     void Update()
     {
         // 降りきっていないなら処理しない
-        if (!SlideSheet.Landing)
-            return;
-        
+        if (!SlideSheet.Landing)    // この処理をアニメーションを動かすスクリプトに持っていく。
+            return;                 // 代わりにアニメーションが終了したかのフラグをここで書く。
         StartCoroutine("Defeat");
     }
+
 
     // 仮の評価処理
     void StampEvaluation()
@@ -116,11 +112,15 @@ public class AppearanceEvaluation : MonoBehaviour
         }
         yield return new WaitForSeconds(stopTime);
 
+        // ドデカスタンプ
         AcObj[0].SetActive(true);
         AcObj[0].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         yield return new WaitForSeconds(stopTime);
 
+        // セレクトボタン
         AcObj[1].SetActive(true);
+
+        // ぼかし用レイヤー
         layer.gameObject.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);   
     }
 }

@@ -458,7 +458,6 @@ GameObject:
   - component: {fileID: 991307309}
   - component: {fileID: 991307311}
   - component: {fileID: 991307310}
-  - component: {fileID: 991307312}
   m_Layer: 5
   m_Name: layer
   m_TagString: Untagged
@@ -525,18 +524,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991307308}
   m_CullTransparentMesh: 1
---- !u!114 &991307312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991307308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151f3241fe93a2e4eaf00efdfb76fdfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1291514016 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8485841485969441790, guid: 55e0efc4146e6c64eb99763c81780521, type: 3}
@@ -1304,7 +1291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf2fa0c01f6f4f4baf39dbce7afb7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectButton: {fileID: 621333027}
   stopTime: 0.8
   item:
   - {fileID: 327026441}
