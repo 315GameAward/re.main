@@ -29,7 +29,7 @@ public class SetPosition : MonoBehaviour
 
     void Start()
     {
-
+        moveEnemy = this.gameObject.GetComponentInParent<MoveEnemy>();
         //　初期位置を設定
         startPosition = transform.position;
         SetDestination(transform.position);
@@ -52,20 +52,20 @@ public class SetPosition : MonoBehaviour
             //Debug.Log(isGround);
             times = 0.0f;
         }
-        if (Physics.Raycast(rayhit, out hit, Mathf.Infinity))
-        {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            {
-                //　敵キャラクターの状態を取得
-                MoveEnemy.EnemyState state = moveEnemy.GetState();
+        //if (Physics.Raycast(rayhit, out hit, Mathf.Infinity))
+        //{
+        //    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        //    {
+        //        //　敵キャラクターの状態を取得
+        //        MoveEnemy.EnemyState state = moveEnemy.GetState();
 
-                if (state != MoveEnemy.EnemyState.Wait)
-                {
-                    // isGround = false;
-                    moveEnemy.SetState(MoveEnemy.EnemyState.Wait);
-                }
-            }
-        }
+        //        if (state != MoveEnemy.EnemyState.Wait)
+        //        {
+        //            // isGround = false;
+        //            moveEnemy.SetState(MoveEnemy.EnemyState.Wait);
+        //        }
+        //    }
+        //}
         if (Return == true)
         {
             cnttime += Time.deltaTime;
