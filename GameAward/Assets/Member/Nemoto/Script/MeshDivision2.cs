@@ -5939,7 +5939,7 @@ public class MeshDivision2 : MonoBehaviour
         // --- 別々のオブジェクトに分ける処理 ---
 
         // 変数宣言
-        int idx = 0;    // 探索させるインデックス
+        //int idx = 0;    // 探索させるインデックス
         var idxList = new List<int>();       // 探索させるインデックスのリスト
         //int cnt = 0;
         bool addFlg = false;    // 追加フラグ
@@ -5949,45 +5949,35 @@ public class MeshDivision2 : MonoBehaviour
         var removeList = new List<int>();       // 消す用のリスト
         var normals2 = new List<Vector3>();     // 法線
 
+        var vertices3 = new List<Vector3>();   // 頂点
+        var triangles3 = new List<int>();       // 三角形インデックス
+        //var removeList = new List<int>();       // 消す用のリスト
+        var normals3 = new List<Vector3>();     // 法線
+
+
         var vtxRemove = new List<int>();
+
+
+        // 重複するインデックスと頂点を削除
+        for (int b = 0; b < triangles1.Count; b += 3)
+        {
+            // インデクスが3個とも違ったらスルー
+            if (!(triangles1[b] == triangles1[b + 1] && triangles1[b] == triangles1[b + 2])) continue;
+
+            // 頂点の削除、ループを最初からに
+            triangles1.RemoveRange(b, 3);
+            b = 0;
+        }
+
 
         // まず格納
         idxList.Add(0);
         triangles2.Add(triangles1[idxList[0]]);
         triangles2.Add(triangles1[idxList[0] + 1]);
         triangles2.Add(triangles1[idxList[0] + 2]);
-        //for (int l = 0; l < 3; l++)
-        //{
-        //    bool through = false;   // スルーフラグ
 
-        //    // すでに消してある頂点のインデックスだったらスルー
-        //    for (int g = 0; g < vtxRemove.Count; g++)
-        //    {
-        //        if (vtxRemove[g] != triangles1[0 + l]) continue;
-
-        //        through = true; // スルーフラグON
-        //        break;
-        //    }
-        //    // 次の探索へ
-        //    if (through) continue;
-
-        //    vertices1.Remove(vertices1[triangles1[0 + l]]); // 頂点の削除
-        //    vtxRemove.Add(triangles1[0+ l]);   // インデックス番号の保存                                  
-        //    Debug.Log("triangles1[i + l]" + triangles1[0 + l]);
-           
-        //    // インデックスの変更
-        //    for (int d = 0; d < triangles1.Count; d++)
-        //    {
-        //        if (d == triangles1[0 + l]) continue;
-        //        if (triangles1[d] < triangles1[0 + l]) continue;
-
-        //        triangles1[d] -= 1;
-
-        //    }
-          
-        //}
-
-        //Debug.Log("triangle2:" + triangles2[idx] + "" + triangles2[idx + 1] + "" + triangles2[idx + 2]);
+        Debug.Log("インデックス確認");
+        Debug.Log("triangle2:" + triangles2[0] + "" + triangles2[0 + 1] + "" + triangles2[0 + 2]);
 
 
 
@@ -6106,8 +6096,6 @@ public class MeshDivision2 : MonoBehaviour
                                 break;
                             }
                         }
-
-
                     }
 
                     // 存在したら次の探索へ
@@ -6158,10 +6146,27 @@ public class MeshDivision2 : MonoBehaviour
             triangles1.Insert(removeList[i], 0);
         }
 
+        // 重複するインデックスと頂点を削除
+        for (int b = 0; b < triangles1.Count; b += 3)
+        {
+            // インデクスが3個とも違ったらスルー
+            if (!(triangles1[b] == triangles1[b + 1] && triangles1[b] == triangles1[b + 2])) continue;
+
+            // 頂点の削除、ループを最初からに
+            triangles1.RemoveRange(b, 3);
+            b = 0;
+        }
+
+        vertices1.Clear();
+        Debug.Log("vertices1.Count" + vertices1.Count);
+
         // triangles1をもとにvertices1を生成し、それをもとにtriangles1を上書き
         for (int i = 0; i < triangles1.Count; i++)
         {
+            // 頂点の追加
             vertices1.Add(attachedMesh.vertices[triangles1[i]]);
+
+            // 頂点の数だけループ
             for (int j = 0; j < vertices1.Count; j++)
             {
                 // 追加した頂点が重複してなかったらそのまま終了
@@ -6185,19 +6190,7 @@ public class MeshDivision2 : MonoBehaviour
 
         }
 
-        // 重複するインデックスと頂点を削除
-        for(int b = 0;b < triangles1.Count;b += 3)
-        {
-            // インデクスが3個とも違ったらスルー
-            if (!(triangles1[b] == triangles1[b + 1] && triangles1[b] == triangles1[b + 2])) continue;
-            //Debug.Log("triangles1[b]" + triangles1[b]);
-            //Debug.Log("triangles1[b+1]" + triangles1[b+1]);
-            //Debug.Log("triangles1[b+2]" + triangles1[b+2]);
-            triangles1.RemoveRange(b, 3);
-            //Debug.Log("vertices1[triangles1[b]]" + vertices1[triangles1[b]]);
-            //vertices1.RemoveAt(triangles1[b]);
-            b = 0;
-        }
+        
 
         normals1.Clear();
         // ノーマルの設定       
@@ -6250,15 +6243,9 @@ public class MeshDivision2 : MonoBehaviour
         mesh.normals = normals1.ToArray();
         obj.GetComponent<MeshFilter>().mesh = mesh;
         obj.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
-        obj.GetComponent<MeshCollider>().sharedMesh = mesh;
-        obj.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
-        //obj.GetComponent<MeshCollider>().convex = false;
-        obj.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
         obj.transform.position = transform.position;
         obj.transform.rotation = transform.rotation;
         obj.transform.localScale = transform.localScale;
-        //obj.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
-        //obj.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
         obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
 
         GameObject obj2 = new GameObject("Plane", typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider), typeof(Rigidbody), typeof(MeshDivision2), typeof(Ground));
@@ -6269,15 +6256,9 @@ public class MeshDivision2 : MonoBehaviour
         mesh2.normals = normals2.ToArray();
         obj2.GetComponent<MeshFilter>().mesh = mesh2;
         obj2.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
-        obj2.GetComponent<MeshCollider>().sharedMesh = mesh2;
-        obj2.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
-        //obj2.GetComponent<MeshCollider>().convex = false;
-        obj2.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
         obj2.transform.position = transform.position;
         obj2.transform.rotation = transform.rotation;
         obj2.transform.localScale = transform.localScale;
-        //obj2.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
-        //obj2.GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity;
         obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
 
         Debug.Log("triangles2:" + triangles2.Count);
@@ -6305,6 +6286,12 @@ public class MeshDivision2 : MonoBehaviour
         {
             obj2.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
             obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+
+            // コライダーの追加
+            obj2.GetComponent<MeshCollider>().sharedMesh = mesh;
+            obj2.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
+            obj2.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+
             obj.GetComponent<Renderer>().material.color = Color.gray;
             obj.GetComponent<Ground>().StartFadeOut();
             obj.GetComponent<Rigidbody>().mass = 0.5f;
@@ -6315,6 +6302,12 @@ public class MeshDivision2 : MonoBehaviour
         {
             obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
             obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
+
+            // コライダーの追加
+            obj.GetComponent<MeshCollider>().sharedMesh = mesh;
+            obj.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
+            obj.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+
             obj2.GetComponent<Renderer>().material.color = Color.gray;
             obj2.GetComponent<Ground>().StartFadeOut();
             obj2.GetComponent<Rigidbody>().mass = 0.5f;
@@ -6325,9 +6318,9 @@ public class MeshDivision2 : MonoBehaviour
         Destroy(gameObject);
 
         // メッシュに代入
-        attachedMesh.SetVertices(vertices1.ToArray());
-        attachedMesh.SetTriangles(triangles1.ToArray(), 0);
-        attachedMesh.SetNormals(normal);
+        //attachedMesh.SetVertices(vertices1.ToArray());
+        //attachedMesh.SetTriangles(triangles1.ToArray(), 0);
+        //attachedMesh.SetNormals(normal);
 
     }
 
