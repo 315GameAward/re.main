@@ -23,7 +23,7 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     // ’è”
-    public const float moveForce = 0.5f;   
+    public const float moveForce = 0.3f;   
 
 
     [SerializeField] private float _moveForce = 5;  //‹­§ˆÚ“®—Ê
