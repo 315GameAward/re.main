@@ -4,120 +4,150 @@ OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ja' Physical Memory
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-C:\Users\izumo\OneDrive\Unity\Unity Hub\2020.3.27f1\Editor\Unity.exe
+C:\Program Files\Unity\2020.3.27f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
+C:/Users/0141e/Desktop/UnityProject/re.main/GameAward
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49825
-Successfully changed project path to: C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
-C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward
+59945
+Successfully changed project path to: C:/Users/0141e/Desktop/UnityProject/re.main/GameAward
+C:/Users/0141e/Desktop/UnityProject/re.main/GameAward
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 41.84 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 79.85 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.27f1 (e759542391ea)
-[Subsystems] Discovering subsystems at path C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/izumo/OneDrive/ドキュメント/GitHub/re.main/GameAward/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/2020.3.27f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/0141e/Desktop/UnityProject/re.main/GameAward/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
     Renderer: NVIDIA GeForce GTX 1650 with Max-Q Design (ID=0x1f91)
     Vendor:   
     VRAM:     3962 MB
-    Driver:   25.21.14.1788
+    Driver:   27.21.14.5167
 Initialize mono
-Mono path[0] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56200
+Mono path[0] = 'C:/Program Files/Unity/2020.3.27f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/2020.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/2020.3.27f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56800
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Users/izumo/OneDrive/Unity/Unity Hub/2020.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002037 seconds.
+Register platform support module: C:/Program Files/Unity/2020.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003636 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 39.19 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 64.55 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.541 seconds
+- Completed reload, in  1.052 seconds
 Domain Reload Profiling:
-	ReloadAssembly (541ms)
-		BeginReloadAssembly (60ms)
+	ReloadAssembly (1052ms)
+		BeginReloadAssembly (151ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (414ms)
-			LoadAssemblies (57ms)
+			CreateAndSetChildDomain (2ms)
+		EndReloadAssembly (740ms)
+			LoadAssemblies (145ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (139ms)
+			SetupTypeCache (307ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (28ms)
-			SetupLoadedEditorAssemblies (153ms)
+			RebuildScriptCaches (47ms)
+			SetupLoadedEditorAssemblies (233ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (39ms)
-				BeforeProcessingInitializeOnLoad (15ms)
-				ProcessInitializeOnLoadAttributes (70ms)
-				ProcessInitializeOnLoadMethodAttributes (25ms)
+				RefreshPlugins (65ms)
+				BeforeProcessingInitializeOnLoad (22ms)
+				ProcessInitializeOnLoadAttributes (104ms)
+				ProcessInitializeOnLoadMethodAttributes (36ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005413 seconds.
+Registered in 0.006343 seconds.
 Begin MonoManager ReloadAssembly
+Symbol file data-00000274F67D2060 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6BCB010 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F62EF010 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6A3A220 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6A3A220 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6227030 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F2031230 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6227030 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F61F1C20 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F61F1C20 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6A92C50 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6343010 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F67D2060 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F624F640 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000274F6C7C010 doesn't match image C:\Users\0141e\Desktop\UnityProject\re.main\GameAward\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 39.63 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 54.10 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.083 seconds
+- Completed reload, in  1.523 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1084ms)
-		BeginReloadAssembly (140ms)
+	ReloadAssembly (1524ms)
+		BeginReloadAssembly (215ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (883ms)
-			LoadAssemblies (87ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (1220ms)
+			LoadAssemblies (135ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (274ms)
+			SetupTypeCache (413ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (45ms)
-			SetupLoadedEditorAssemblies (379ms)
+			RebuildScriptCaches (90ms)
+			SetupLoadedEditorAssemblies (446ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (40ms)
-				BeforeProcessingInitializeOnLoad (67ms)
-				ProcessInitializeOnLoadAttributes (251ms)
+				RefreshPlugins (54ms)
+				BeforeProcessingInitializeOnLoad (89ms)
+				ProcessInitializeOnLoadAttributes (280ms)
 				ProcessInitializeOnLoadMethodAttributes (10ms)
 				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2090 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2091 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 107.3 MB.
 System memory in use after: 107.4 MB.
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2545.
-Total: 2.658700 ms (FindLiveObjects: 0.142900 ms CreateObjectMapping: 0.068200 ms MarkObjects: 2.343000 ms  DeleteObjects: 0.103800 ms)
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2546.
+Total: 3.298400 ms (FindLiveObjects: 0.159200 ms CreateObjectMapping: 0.078200 ms MarkObjects: 2.945200 ms  DeleteObjects: 0.114900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -133,1471 +163,279 @@ AssetImportParameters requested are different than current active one (requested
 Received Import Request.
   path: Assets/New Material.mat
   artifactKey: Guid(166f22281ee03654ab3f6957015eb77e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/New Material.mat using Guid(166f22281ee03654ab3f6957015eb77e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb4b8d70fde4228eae623b88fb4af7f5') in 0.121475 seconds 
-  Import took 0.124513 seconds .
+Start importing Assets/New Material.mat using Guid(166f22281ee03654ab3f6957015eb77e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '496784c3c17bd5f48d74d3bb541bf319') in 0.112068 seconds 
+  Import took 0.115262 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000361 seconds.
+  Time since last request: 0.000329 seconds.
   path: Assets/New Terrain.asset
   artifactKey: Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/New Terrain.asset using Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffd317c640164298e62747595f0821b6') in 0.037279 seconds 
-  Import took 0.040223 seconds .
+Start importing Assets/New Terrain.asset using Guid(0a4afa409e6174c4e8d11a8c637f8047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffd317c640164298e62747595f0821b6') in 0.025621 seconds 
+  Import took 0.028827 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.052237 seconds.
-  path: Assets/Member/Nemoto/GameObject 1.prefab
-  artifactKey: Guid(9f91f760c43cc84428693c46706e9b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/GameObject 1.prefab using Guid(9f91f760c43cc84428693c46706e9b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65976484ce35e95ebc64e2236e5c16e4') in 0.043471 seconds 
-  Import took 0.046972 seconds .
+  Time since last request: 1.251889 seconds.
+  path: Assets/Member/Sawamura/BehaviorTreeTestScene.unity
+  artifactKey: Guid(4875681414db0e64ab0efdc9ac44f018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/BehaviorTreeTestScene.unity using Guid(4875681414db0e64ab0efdc9ac44f018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c05a33d1899a57c2886dd7aed24b61dc') in 0.002734 seconds 
+  Import took 0.005669 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000480 seconds.
-  path: Assets/Member/Nemoto/Quad.prefab
-  artifactKey: Guid(5923490849301b44e95c363660de407c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Quad.prefab using Guid(5923490849301b44e95c363660de407c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d0f6d7bbf090def27b3edacf726d52e') in 0.025689 seconds 
-  Import took 0.029470 seconds .
+  Time since last request: 6.406086 seconds.
+  path: Assets/Member/Sawamura/MyScript
+  artifactKey: Guid(4bb709611d0bbe642801215631717300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/MyScript using Guid(4bb709611d0bbe642801215631717300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '834f4b8f28cd42927fc1d9a80feffdc3') in 0.006922 seconds 
+  Import took 0.010042 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000378 seconds.
-  path: Assets/Member/Nemoto/PaperParticle.mat
-  artifactKey: Guid(52956a0e6eb048a48ab01a920ddd2256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/PaperParticle.mat using Guid(52956a0e6eb048a48ab01a920ddd2256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b12e561e69ebdac440966175cb325862') in 0.033401 seconds 
-  Import took 0.036302 seconds .
+  Time since last request: 2.956753 seconds.
+  path: Assets/Member/Sawamura/Model
+  artifactKey: Guid(4d14fbc2eef70f94e9dded9fd94523e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model using Guid(4d14fbc2eef70f94e9dded9fd94523e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd25c519fc2ff96ee155359500a9b3434') in 0.003251 seconds 
+  Import took 0.006415 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000541 seconds.
-  path: Assets/Member/Nemoto/Scissor.prefab
-  artifactKey: Guid(854b1d625857ced4491028e328fe1ced) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Scissor.prefab using Guid(854b1d625857ced4491028e328fe1ced) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '910661625dea11f75b6b12a65de7f66e') in 0.038811 seconds 
-  Import took 0.043027 seconds .
+  Time since last request: 0.024400 seconds.
+  path: Assets/Member/Sawamura/Model/aruko.fbx
+  artifactKey: Guid(17eb8fd20d41d12489b5994d7ecfadfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/aruko.fbx using Guid(17eb8fd20d41d12489b5994d7ecfadfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2d2df451b18cbd6e46a9104ac8650d0') in 0.052091 seconds 
+  Import took 0.055134 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000314 seconds.
-  path: Assets/Member/Nemoto/タイトルロゴ2.png
-  artifactKey: Guid(a0b41d56bebbb3847a7df1c10e856c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/タイトルロゴ2.png using Guid(a0b41d56bebbb3847a7df1c10e856c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ce450915482358dc678f75c3396de85') in 0.032135 seconds 
-  Import took 0.035014 seconds .
+  Time since last request: 0.000286 seconds.
+  path: Assets/Member/Sawamura/Model/x10beru.fbx
+  artifactKey: Guid(c539da8883a7d8f4a9a5cf17ab9b2935) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/x10beru.fbx using Guid(c539da8883a7d8f4a9a5cf17ab9b2935) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '658435b5fb03f45cf6c864f0e38298c0') in 0.040454 seconds 
+  Import took 0.043223 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000347 seconds.
-  path: Assets/Member/Nemoto/Wall.prefab
-  artifactKey: Guid(21b782bf04f1c89499d5c75e4b325c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Wall.prefab using Guid(21b782bf04f1c89499d5c75e4b325c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ab6808f7744dabebfae4a238ee0926c') in 0.028637 seconds 
-  Import took 0.032069 seconds .
+  Time since last request: 0.000275 seconds.
+  path: Assets/Member/Sawamura/Model/kesigomunomaru.fbx
+  artifactKey: Guid(22d9b9884bb94a64f9d93ddd6d936883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/kesigomunomaru.fbx using Guid(22d9b9884bb94a64f9d93ddd6d936883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3c13840512a5a2687b09694b5539fbe') in 0.075121 seconds 
+  Import took 0.077853 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000322 seconds.
-  path: Assets/Member/Nemoto/Particle System.prefab
-  artifactKey: Guid(59ca76512a7de4540bd6a076f6137380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Particle System.prefab using Guid(59ca76512a7de4540bd6a076f6137380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f434e80643d2803a044d70556bdf240') in 0.027082 seconds 
-  Import took 0.030427 seconds .
+  Time since last request: 0.000232 seconds.
+  path: Assets/Member/Sawamura/Model/x10beruyure.fbx
+  artifactKey: Guid(c10fefb1d7e155a4baba0f6683cbd58d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/x10beruyure.fbx using Guid(c10fefb1d7e155a4baba0f6683cbd58d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30856fb7e317543c09609dbe2463f81e') in 0.040278 seconds 
+  Import took 0.042964 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 48.634437 seconds.
-  path: Assets/Scenes/Alpha/CM vcam3Timeline.playable
-  artifactKey: Guid(7d14da326e0dbf142b872f68501b6622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Alpha/CM vcam3Timeline.playable using Guid(7d14da326e0dbf142b872f68501b6622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fad4a711c2207372aace97f75c4ff201') in 0.013186 seconds 
-  Import took 0.018450 seconds .
+  Time since last request: 0.000242 seconds.
+  path: Assets/Member/Sawamura/Model/arukoru2sayuu2.fbx
+  artifactKey: Guid(f3967975893555a49b1986e74c8572cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/arukoru2sayuu2.fbx using Guid(f3967975893555a49b1986e74c8572cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18ced16a219f07abe35aa6ad2cd48c38') in 0.045336 seconds 
+  Import took 0.048787 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.985193 seconds.
-  path: Assets/Scenes/Alpha/TitleScene.unity
-  artifactKey: Guid(f50bc113430bd324fbc1a48d2b8f9c37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Alpha/TitleScene.unity using Guid(f50bc113430bd324fbc1a48d2b8f9c37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e0f19562441fc46b986d1dfcef162e2') in 0.007883 seconds 
-  Import took 0.011840 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005221 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.023 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1024ms)
-		BeginReloadAssembly (124ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (32ms)
-		EndReloadAssembly (841ms)
-			LoadAssemblies (100ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (291ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (35ms)
-			SetupLoadedEditorAssemblies (327ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (85ms)
-				ProcessInitializeOnLoadAttributes (221ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (8ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2080 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 110.4 MB.
-System memory in use after: 110.5 MB.
-
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2590.
-Total: 3.406900 ms (FindLiveObjects: 0.156200 ms CreateObjectMapping: 0.066000 ms MarkObjects: 3.160800 ms  DeleteObjects: 0.022900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 73.370792 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_06.png
-  artifactKey: Guid(80062990d15376943abcb5d392ddf4e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_06.png using Guid(80062990d15376943abcb5d392ddf4e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbd95994532de02e429a51bea24aef48') in 0.052007 seconds 
-  Import took 0.054954 seconds .
+  Time since last request: 0.000152 seconds.
+  path: Assets/Member/Sawamura/Model/Erase
+  artifactKey: Guid(9c311abe69760494ebaa55e78613a900) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Erase using Guid(9c311abe69760494ebaa55e78613a900) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5da5aa886dfff0004cbd4d8b26a021f') in 0.006571 seconds 
+  Import took 0.009438 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000340 seconds.
-  path: Assets/Member/Sibayama/Texture/too_bad.png
-  artifactKey: Guid(b06e2fbf16ced6a47a0c20641411507b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sibayama/Texture/too_bad.png using Guid(b06e2fbf16ced6a47a0c20641411507b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60585f7fb6036f63856ffe8515c37729') in 0.019795 seconds 
-  Import took 0.022697 seconds .
+  Time since last request: 0.000269 seconds.
+  path: Assets/Member/Sawamura/Model/kesigomutaoreru.fbx
+  artifactKey: Guid(2d065507726f04847939f1078efd5c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/kesigomutaoreru.fbx using Guid(2d065507726f04847939f1078efd5c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7807a919d02bdf81dcdc70dcd123c2b6') in 0.072429 seconds 
+  Import took 0.075503 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000375 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_00.png
-  artifactKey: Guid(03f6f44138c1f5c4d9e1926acf014358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_00.png using Guid(03f6f44138c1f5c4d9e1926acf014358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '887be5dd6201e2da44447b1848f8fafe') in 0.020302 seconds 
-  Import took 0.023481 seconds .
+  Time since last request: 0.000236 seconds.
+  path: Assets/Member/Sawamura/Model/kesigomuokiagaru.fbx
+  artifactKey: Guid(348550b6ed0a5fb44b892181f90c5991) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/kesigomuokiagaru.fbx using Guid(348550b6ed0a5fb44b892181f90c5991) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d3fa7cda5a0d215e9f0ca5db19dc1f9') in 0.071522 seconds 
+  Import took 0.074373 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_04.png
-  artifactKey: Guid(ed6ddffcc95329949977336d7c09d664) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_04.png using Guid(ed6ddffcc95329949977336d7c09d664) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22dd3eed8a2d09b6530659aa9b324b47') in 0.021806 seconds 
-  Import took 0.024826 seconds .
+  Time since last request: 0.000237 seconds.
+  path: Assets/Member/Sawamura/Model/TestModel.fbx
+  artifactKey: Guid(ed38f00a35ed0db448ef9da995b62863) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/TestModel.fbx using Guid(ed38f00a35ed0db448ef9da995b62863) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3003113401e9ffff541b9f24be6ee70e') in 0.037997 seconds 
+  Import took 0.040772 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000300 seconds.
-  path: Assets/Member/Nemoto/Resources/gameOver.png
-  artifactKey: Guid(d6df22718c3bc0147a25f6e7a6f46684) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/Resources/gameOver.png using Guid(d6df22718c3bc0147a25f6e7a6f46684) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c562e340273f58e3486917b863d0391') in 0.015801 seconds 
-  Import took 0.018728 seconds .
+  Time since last request: 0.000227 seconds.
+  path: Assets/Member/Sawamura/Model/kesigomujump.fbx
+  artifactKey: Guid(6b504fa574d69dd488f96f5249015b3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/kesigomujump.fbx using Guid(6b504fa574d69dd488f96f5249015b3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff914b0c588f9960a0f498c13d2a32a0') in 0.081033 seconds 
+  Import took 0.083912 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000284 seconds.
-  path: Assets/Member/Sibayama/Texture/Clear.png
-  artifactKey: Guid(11f9aca2a5fd04d47824dbee01bb7c8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sibayama/Texture/Clear.png using Guid(11f9aca2a5fd04d47824dbee01bb7c8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '220c0aacd06a67958d9cbaed3bc0065c') in 0.020023 seconds 
-  Import took 0.023626 seconds .
+  Time since last request: 0.000246 seconds.
+  path: Assets/Member/Sawamura/Model/arukoruusayuu2.fbx
+  artifactKey: Guid(a9f8e29c3fab3a040b7b42b12fb473f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/arukoruusayuu2.fbx using Guid(a9f8e29c3fab3a040b7b42b12fb473f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b97921388afc634004353d181fe8de1') in 0.047901 seconds 
+  Import took 0.050886 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000345 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_08.png
-  artifactKey: Guid(16a95034c7205f84b90f8e3a01670889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_08.png using Guid(16a95034c7205f84b90f8e3a01670889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be1ac47291631e9a6ce50fe33fe813e0') in 0.020894 seconds 
-  Import took 0.023980 seconds .
+  Time since last request: 265.334521 seconds.
+  path: Assets/Member/Sawamura/Model/Alcohol_Lamp
+  artifactKey: Guid(da252ae15e306e34ea9d88ca577120e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Alcohol_Lamp using Guid(da252ae15e306e34ea9d88ca577120e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2931f873d8e8fb91f0f314787ffcba69') in 0.007910 seconds 
+  Import took 0.011368 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000277 seconds.
-  path: Assets/Images/Pause/backtostageselect.png
-  artifactKey: Guid(4481ed10d75b25b42836774d36b5c38a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Pause/backtostageselect.png using Guid(4481ed10d75b25b42836774d36b5c38a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b320786f5ae713cc45275ea36a7f680') in 0.017934 seconds 
-  Import took 0.021081 seconds .
+  Time since last request: 0.035253 seconds.
+  path: Assets/Member/Sawamura/Model/Alcohol_Lamp/aruko.fbx
+  artifactKey: Guid(8c19f649b99844740be1dc14cd3976bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Alcohol_Lamp/aruko.fbx using Guid(8c19f649b99844740be1dc14cd3976bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40bab0fd2b1b0659294dbf6d9558f13b') in 0.052069 seconds 
+  Import took 0.055192 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000526 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_05.png
-  artifactKey: Guid(e9b7fd9413b945347b5511bf39d34a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_05.png using Guid(e9b7fd9413b945347b5511bf39d34a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4fc6fd304f9d762384dd60027309af1') in 0.021624 seconds 
-  Import took 0.025182 seconds .
+  Time since last request: 82.452354 seconds.
+  path: Assets/Member/Sawamura/Model/タイマー
+  artifactKey: Guid(42a0d5549601ce84f9e349c1ac370cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/タイマー using Guid(42a0d5549601ce84f9e349c1ac370cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a377ac49bf7f716f269361bca8383a95') in 0.007242 seconds 
+  Import took 0.011022 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.024841 seconds.
+  path: Assets/Member/Sawamura/Model/タイマー/time1.png
+  artifactKey: Guid(9bf53bd03ceb8854dbaeec2b8a4ed25e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/タイマー/time1.png using Guid(9bf53bd03ceb8854dbaeec2b8a4ed25e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df2432b3d5cbac997436c47c5c601776') in 0.033210 seconds 
+  Import took 0.037376 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000300 seconds.
   path: Assets/Member/Sawamura/Model/タイマー/time2.png
   artifactKey: Guid(fdf1e82d4ff08c948b50d6395b75a322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sawamura/Model/タイマー/time2.png using Guid(fdf1e82d4ff08c948b50d6395b75a322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95f80c2fd8f77c8dc313baaf8da9a94e') in 0.022555 seconds 
-  Import took 0.025447 seconds .
+Start importing Assets/Member/Sawamura/Model/タイマー/time2.png using Guid(fdf1e82d4ff08c948b50d6395b75a322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '115e0de09078a7c627100dc4e2375ccf') in 0.015905 seconds 
+  Import took 0.018667 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_16.png
-  artifactKey: Guid(929c688328bcdd74cab5108b1203219d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_16.png using Guid(929c688328bcdd74cab5108b1203219d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47c3341c382c4634509aabd2aa70de09') in 0.035625 seconds 
-  Import took 0.038615 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000297 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_18.png
-  artifactKey: Guid(434274696d169c74790dafb39c6d171b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_18.png using Guid(434274696d169c74790dafb39c6d171b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aea92ed26fa5c4879891ab324bd7124') in 0.017517 seconds 
-  Import took 0.020824 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000310 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_22.png
-  artifactKey: Guid(aecd68e923f324148b11d8ac3fb69828) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_22.png using Guid(aecd68e923f324148b11d8ac3fb69828) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76e4af680192f04722ab3ce82603ac8d') in 0.021122 seconds 
-  Import took 0.024478 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_01.png
-  artifactKey: Guid(a4286eca7d1bcb54aafbe54d162fec8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_01.png using Guid(a4286eca7d1bcb54aafbe54d162fec8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03c1c0affe12aaaa22e202010eafb1cf') in 0.019140 seconds 
-  Import took 0.022489 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000271 seconds.
-  path: Assets/Member/Michiduka/Material/smoke.png
-  artifactKey: Guid(43a284ede0e5cad48b624542225d5711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Material/smoke.png using Guid(43a284ede0e5cad48b624542225d5711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d0c721f76064f60387960afe11d6bcb') in 0.020682 seconds 
-  Import took 0.023787 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Images/Pause/tutorial.png
-  artifactKey: Guid(9eb3b0adeead97a4a813592f6a180cc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Pause/tutorial.png using Guid(9eb3b0adeead97a4a813592f6a180cc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39b41824c17b9d2adae70865fd99f556') in 0.021880 seconds 
-  Import took 0.024826 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000248 seconds.
-  path: Assets/Member/Sibayama/Texture/Life.png
-  artifactKey: Guid(8f2a0528e7e41a64390920fe55a9c68c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sibayama/Texture/Life.png using Guid(8f2a0528e7e41a64390920fe55a9c68c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4691321ec50d40dc73d45ae3db09bfa') in 0.018317 seconds 
-  Import took 0.021232 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000249 seconds.
-  path: Assets/Member/Kozuki/Kozk＿Texture/はさみ ライフ.png
-  artifactKey: Guid(08e5e9ee08651fa4e9c727606af0120b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Kozuki/Kozk＿Texture/はさみ ライフ.png using Guid(08e5e9ee08651fa4e9c727606af0120b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9c8179df203d7de71ac005df4efbe41') in 0.018101 seconds 
-  Import took 0.021016 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000256 seconds.
-  path: Assets/Member/Sibayama/Texture/Cut.png
-  artifactKey: Guid(5ea6859639e175a4f8a06eda487b474b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sibayama/Texture/Cut.png using Guid(5ea6859639e175a4f8a06eda487b474b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72ce7a0c58bef5895d569d55a81524c9') in 0.023883 seconds 
-  Import took 0.026807 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_15.png
-  artifactKey: Guid(0efea55bb192a054e9c2a7ad04650195) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_15.png using Guid(0efea55bb192a054e9c2a7ad04650195) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9bae3d9558850f94fa5c6f7d99bc6ab') in 0.018396 seconds 
-  Import took 0.021206 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000282 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_12.png
-  artifactKey: Guid(6c2763e098a0b4847b4dde8d21c46bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_12.png using Guid(6c2763e098a0b4847b4dde8d21c46bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10ad5824ff53e766d1344a33ef5d7e10') in 0.020513 seconds 
-  Import took 0.024108 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000241 seconds.
-  path: Assets/Member/Michiduka/Material/Falling/Red.png
-  artifactKey: Guid(752962aca61be054d989d1f9a53bfbd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Material/Falling/Red.png using Guid(752962aca61be054d989d1f9a53bfbd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cbddc72f5b866d618574747916cc2d4') in 0.018013 seconds 
-  Import took 0.021004 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000215 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_17.png
-  artifactKey: Guid(de10554d527462c47bcae02da1d88c46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_17.png using Guid(de10554d527462c47bcae02da1d88c46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e0a223aa48d72afecdb11f349ddd0d8') in 0.016217 seconds 
-  Import took 0.019169 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_11.png
-  artifactKey: Guid(ce9f4b6f4c48925469f387aad70596e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_11.png using Guid(ce9f4b6f4c48925469f387aad70596e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e5a2b6420387d4b4d98286971c9453b') in 0.018147 seconds 
-  Import took 0.021339 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000281 seconds.
-  path: Assets/Member/Michiduka/Material/Falling/Kirakira.png
-  artifactKey: Guid(33b9ec1516d9bcc4d8ede348532a1432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Material/Falling/Kirakira.png using Guid(33b9ec1516d9bcc4d8ede348532a1432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40843a7b6a3cc7e7b5a33dadf3630db4') in 0.020043 seconds 
-  Import took 0.023007 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000212 seconds.
-  path: Assets/Member/Michiduka/Material/Falling/Sweat.png
-  artifactKey: Guid(737d3562dfa900142a7c22dab25d7637) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Material/Falling/Sweat.png using Guid(737d3562dfa900142a7c22dab25d7637) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02dd890fce46a223868ed8784f27ec1c') in 0.019352 seconds 
-  Import took 0.022216 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000234 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_19.png
-  artifactKey: Guid(ed289bfb1b884b8449d5db43c2a785c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_19.png using Guid(ed289bfb1b884b8449d5db43c2a785c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d7611c7f64388199ffdf84c5d4cecc7') in 0.015576 seconds 
-  Import took 0.018421 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000194 seconds.
-  path: Assets/Member/Osikubo/Texture/yajirusi.png
-  artifactKey: Guid(e59877cab6171e74d83e4a790ca27c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/yajirusi.png using Guid(e59877cab6171e74d83e4a790ca27c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca31c38573e16b32330a87d805e4ac9a') in 0.015299 seconds 
-  Import took 0.018143 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000212 seconds.
-  path: Assets/Member/Sibayama/Texture/Result.png
-  artifactKey: Guid(419fb95712d1dc1468ef7795eea1e591) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sibayama/Texture/Result.png using Guid(419fb95712d1dc1468ef7795eea1e591) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c51374ec0fa29633081644177d44a69') in 0.018116 seconds 
-  Import took 0.021039 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000278 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_02.png
-  artifactKey: Guid(ea70dff3d1b59934b910b8ce74660965) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_02.png using Guid(ea70dff3d1b59934b910b8ce74660965) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c345799a54e3d6345f0c3b592430c70') in 0.017232 seconds 
-  Import took 0.020697 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_07.png
-  artifactKey: Guid(8263db0887f34ff49bebbb132e2f59ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_07.png using Guid(8263db0887f34ff49bebbb132e2f59ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e77ce17840b7defa3d9ee42f038f254') in 0.019533 seconds 
-  Import took 0.022621 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Images/Pause/backtogame.png
-  artifactKey: Guid(c8c0398147039fa40b8632cbad44dabe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Pause/backtogame.png using Guid(c8c0398147039fa40b8632cbad44dabe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e732d42585e70bb81c8c6b1adb47265') in 0.017878 seconds 
-  Import took 0.021199 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000296 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_13.png
-  artifactKey: Guid(c97370f6047ef5147908d6c5c202d010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_13.png using Guid(c97370f6047ef5147908d6c5c202d010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86f48b0f9fc5417d8f7311bc743129e2') in 0.019400 seconds 
-  Import took 0.022693 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000324 seconds.
-  path: Assets/Member/Sibayama/Texture/good.png
-  artifactKey: Guid(6030eb2cd754f57448a16a5b139264a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sibayama/Texture/good.png using Guid(6030eb2cd754f57448a16a5b139264a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40537906335c8ff9773b251182894ba5') in 0.022209 seconds 
-  Import took 0.026103 seconds .
+  Time since last request: 0.000214 seconds.
+  path: Assets/Member/Sawamura/Model/タイマー/time_hari.png
+  artifactKey: Guid(c818640fa54ce654cbcfef8d224b8670) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/タイマー/time_hari.png using Guid(c818640fa54ce654cbcfef8d224b8670) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2be7b7bc81a817580fded5353c2b70c4') in 0.016092 seconds 
+  Import took 0.019514 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000290 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_10.png
-  artifactKey: Guid(04036721ad0f03c4f96af760d1dc9086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_10.png using Guid(04036721ad0f03c4f96af760d1dc9086) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b81b6f69c9dd1e2e30657ac43c6e3fd5') in 0.018728 seconds 
-  Import took 0.021882 seconds .
+  path: Assets/Member/Sawamura/Model/タイマー/time3.png
+  artifactKey: Guid(2b7a80965c0eade49a888eada4bc7e0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/タイマー/time3.png using Guid(2b7a80965c0eade49a888eada4bc7e0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc54ad5316109b4b3b7395506f5971cf') in 0.015770 seconds 
+  Import took 0.018827 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000291 seconds.
-  path: Assets/Images/Pause/pause.png
-  artifactKey: Guid(f44b7f4b41ec4cb419805d7d16fd8aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Pause/pause.png using Guid(f44b7f4b41ec4cb419805d7d16fd8aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e92c3045c2812ce01529bcc8ff9193b1') in 0.018617 seconds 
-  Import took 0.021648 seconds .
+  Time since last request: 1.813874 seconds.
+  path: Assets/Member/Sawamura/Model/Metronome
+  artifactKey: Guid(f623e6ff377e70343a013f62fea72cc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Metronome using Guid(f623e6ff377e70343a013f62fea72cc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '303f6a5e01f69248db458239ac217772') in 0.008004 seconds 
+  Import took 0.011539 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000236 seconds.
-  path: Assets/Images/StageSelect/StageSelect.png
-  artifactKey: Guid(e009fb0b8ae9ee64a88b2089fa1e0f37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/StageSelect/StageSelect.png using Guid(e009fb0b8ae9ee64a88b2089fa1e0f37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f807dd94805b31e25f37eb03b82e56f') in 0.019579 seconds 
-  Import took 0.022645 seconds .
+  Time since last request: 0.042173 seconds.
+  path: Assets/Member/Sawamura/Model/Metronome/metoro.fbx
+  artifactKey: Guid(b0e6a3fb28c980948a04d30ae198fd58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Metronome/metoro.fbx using Guid(b0e6a3fb28c980948a04d30ae198fd58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c033b46220ab36d09e16a1456f842902') in 0.032291 seconds 
+  Import took 0.035518 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000274 seconds.
-  path: Assets/Member/Sawamura/Model/タイマー/time_hari.png
-  artifactKey: Guid(c818640fa54ce654cbcfef8d224b8670) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sawamura/Model/タイマー/time_hari.png using Guid(c818640fa54ce654cbcfef8d224b8670) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48518ea116dd50b6ff4051425641e7a3') in 0.018811 seconds 
-  Import took 0.021846 seconds .
+  Time since last request: 1.687540 seconds.
+  path: Assets/Member/Sawamura/Model/Magnifying_Glass
+  artifactKey: Guid(20e30da7081cc8840947629d03ebbe27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Magnifying_Glass using Guid(20e30da7081cc8840947629d03ebbe27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e97ee39b36e0c47866a684999cfff0ba') in 0.007030 seconds 
+  Import took 0.010571 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000206 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_09.png
-  artifactKey: Guid(c1b0acb3ea6653f4dbd79b4c2b9af25b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_09.png using Guid(c1b0acb3ea6653f4dbd79b4c2b9af25b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c348b82b143c2feea7aeaf4c9ef830cc') in 0.019930 seconds 
-  Import took 0.023177 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_03.png
-  artifactKey: Guid(1b8056cd427e8aa47accb83c7e216faa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_03.png using Guid(1b8056cd427e8aa47accb83c7e216faa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6f55d21cbcf9b36bc79edb1202842b1') in 0.020691 seconds 
-  Import took 0.023475 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_21.png
-  artifactKey: Guid(3c5b791bd045f2449bed63e8c06b74b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_21.png using Guid(3c5b791bd045f2449bed63e8c06b74b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '542d2a7c3918eda6f0388d50de636618') in 0.021594 seconds 
-  Import took 0.024468 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Images/Pause/retry.png
-  artifactKey: Guid(9c3073829a5019f4f8baab909ffbd3f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Pause/retry.png using Guid(9c3073829a5019f4f8baab909ffbd3f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2939f7b706309e48bd29978c5e993be5') in 0.022660 seconds 
-  Import took 0.025729 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000245 seconds.
-  path: Assets/Images/AreaSelect/AreaSelect.png
-  artifactKey: Guid(1ed2d7859c926a948907e7dd067bc425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/AreaSelect/AreaSelect.png using Guid(1ed2d7859c926a948907e7dd067bc425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9d62aaab4181c08e2739e55cafafd33') in 0.017726 seconds 
-  Import took 0.020775 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Member/Sawamura/Model/タイマー/time1.png
-  artifactKey: Guid(9bf53bd03ceb8854dbaeec2b8a4ed25e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sawamura/Model/タイマー/time1.png using Guid(9bf53bd03ceb8854dbaeec2b8a4ed25e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab18dab067a156c2eb4250b6510aef03') in 0.023680 seconds 
-  Import took 0.027369 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000287 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_14.png
-  artifactKey: Guid(1f1ff6022fbe6a3459278fd4587ef3d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_14.png using Guid(1f1ff6022fbe6a3459278fd4587ef3d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '025d9a3d0685df748fe14c930a8cf81f') in 0.020780 seconds 
-  Import took 0.024724 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000280 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_20.png
-  artifactKey: Guid(8a51e4d89526368418e9b1d30e66d727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_20.png using Guid(8a51e4d89526368418e9b1d30e66d727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f2c8aafa2967310631235deca4bbd1e') in 0.018040 seconds 
-  Import took 0.021887 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000288 seconds.
-  path: Assets/Member/Sibayama/Texture/great.png
-  artifactKey: Guid(6871c53d2b5b45f4989c265ab78699b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Sibayama/Texture/great.png using Guid(6871c53d2b5b45f4989c265ab78699b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c738189d5bbe6081cdf42e588b7d7a1') in 0.020389 seconds 
-  Import took 0.023519 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.630578 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_23.png
-  artifactKey: Guid(7cf3ba1c7142dee4baa6674157aa1308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_23.png using Guid(7cf3ba1c7142dee4baa6674157aa1308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3838bf9dec10e7a3297739ef534e0990') in 0.016703 seconds 
-  Import took 0.019877 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000292 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_03.png
-  artifactKey: Guid(9f2ca8fe395c0614aa8d89bbaf704622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_03.png using Guid(9f2ca8fe395c0614aa8d89bbaf704622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9d6545a679777d562cd810caae163ab') in 0.024912 seconds 
-  Import took 0.028642 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000392 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_10.png
-  artifactKey: Guid(cb01a65ffbae8ca41aba4d9746cb444a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_10.png using Guid(cb01a65ffbae8ca41aba4d9746cb444a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '889c0c448dc0be3915f72336d74d0173') in 0.017976 seconds 
-  Import took 0.021625 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000351 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_24.png
-  artifactKey: Guid(d956d8efe7c905941a1429e794402a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_24.png using Guid(d956d8efe7c905941a1429e794402a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2ef0d52183ca1889778bd6790b2674e') in 0.020130 seconds 
-  Import took 0.024122 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000377 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_13.png
-  artifactKey: Guid(ca35c160a6865ba42964d5f8c03bd11f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_13.png using Guid(ca35c160a6865ba42964d5f8c03bd11f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9463d7912c23a10f064a69eceaaa256b') in 0.016253 seconds 
-  Import took 0.019578 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_08.png
-  artifactKey: Guid(b6bbfcebe86762b4eae1dfc03434a6b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_08.png using Guid(b6bbfcebe86762b4eae1dfc03434a6b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fec3e64b294d32d79d55e7bbb761619e') in 0.018332 seconds 
-  Import took 0.022313 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_12.png
-  artifactKey: Guid(cd2c30e428ce40241bce59067dbeafca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_12.png using Guid(cd2c30e428ce40241bce59067dbeafca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85cdd26859860a2f5d6aeb2193b7b941') in 0.021594 seconds 
-  Import took 0.025169 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000268 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_01.png
-  artifactKey: Guid(76c3ae2562b0dca4b8e0c8cf6c283054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_01.png using Guid(76c3ae2562b0dca4b8e0c8cf6c283054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cde93155d58edf4b2b3990e0fd739a26') in 0.021202 seconds 
-  Import took 0.024473 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000411 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_11.png
-  artifactKey: Guid(7e76ea3697d50724c9d5f549b3e77848) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_11.png using Guid(7e76ea3697d50724c9d5f549b3e77848) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1685e88d4b027b64c5829174bad24a31') in 0.020615 seconds 
-  Import took 0.023998 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000210 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_29.png
-  artifactKey: Guid(9e500c61279ae9847afa528310c4cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_29.png using Guid(9e500c61279ae9847afa528310c4cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70db4c12ad950130ab344b097d093c17') in 0.020731 seconds 
-  Import took 0.023942 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_04.png
-  artifactKey: Guid(e271a49ae2fda1f499f032b58807d3cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_04.png using Guid(e271a49ae2fda1f499f032b58807d3cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a3bb7c5e20c3eec4c2824ee2674771a') in 0.042413 seconds 
-  Import took 0.045436 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000293 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_06.png
-  artifactKey: Guid(928c8fec775b0d14c96a36021d6d8350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_06.png using Guid(928c8fec775b0d14c96a36021d6d8350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e318fd47ff6f39cdeb1406849a2be57') in 0.020526 seconds 
-  Import took 0.024308 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000344 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_00.png
-  artifactKey: Guid(685be320525810a4e9925592270082d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_00.png using Guid(685be320525810a4e9925592270082d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '225369d90575261a23787134c9ccc8af') in 0.024313 seconds 
-  Import took 0.028522 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000262 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_05.png
-  artifactKey: Guid(ffcabbd69ea6a4347b849b2d50ae3352) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_05.png using Guid(ffcabbd69ea6a4347b849b2d50ae3352) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07c0563f0bfa36362bdc76cfe342fe18') in 0.017972 seconds 
-  Import took 0.021834 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000368 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_26.png
-  artifactKey: Guid(56a4f89bc200d1046ac02903665d82bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_26.png using Guid(56a4f89bc200d1046ac02903665d82bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad87ed9dc347b66933219caea879d117') in 0.022422 seconds 
-  Import took 0.026397 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000304 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_09.png
-  artifactKey: Guid(04b92883b3e8cd54a9c275bf14fa10cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_09.png using Guid(04b92883b3e8cd54a9c275bf14fa10cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c438133156384844c87210833376b486') in 0.018393 seconds 
-  Import took 0.021529 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_07.png
-  artifactKey: Guid(a30b6c7934a3ccc4e8427351de5fe906) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_07.png using Guid(a30b6c7934a3ccc4e8427351de5fe906) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '354052930657c1f741ffb7980e256286') in 0.017826 seconds 
-  Import took 0.021224 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000227 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_27.png
-  artifactKey: Guid(11e73f36ee4ffba4495ca3ad9072b921) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_27.png using Guid(11e73f36ee4ffba4495ca3ad9072b921) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bd552953cb49bcffceaf65b3fac93f3') in 0.020093 seconds 
-  Import took 0.023244 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000252 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_02.png
-  artifactKey: Guid(c39be6f0d8a8d9141b6b6a753e63d250) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_02.png using Guid(c39be6f0d8a8d9141b6b6a753e63d250) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4cfafdd9b4e4475d6a6a3364e44f2de') in 0.018737 seconds 
-  Import took 0.021752 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000219 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_25.png
-  artifactKey: Guid(d0de9fb37504e314ab0a0c178e0f9f6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_25.png using Guid(d0de9fb37504e314ab0a0c178e0f9f6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbb8125d9875e2e15bb8d890f843755a') in 0.019804 seconds 
-  Import took 0.023111 seconds .
+  Time since last request: 0.064920 seconds.
+  path: Assets/Member/Sawamura/Model/Magnifying_Glass/musimeganeidou.fbx
+  artifactKey: Guid(6df8151c7db5d5c4b85c8b2f8a775903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Magnifying_Glass/musimeganeidou.fbx using Guid(6df8151c7db5d5c4b85c8b2f8a775903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '098116c01e0ac7471faac104cfbd33f0') in 0.039369 seconds 
+  Import took 0.042422 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000258 seconds.
-  path: Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_28.png
-  artifactKey: Guid(86d96f8b0fa5af542a7312ea2ae3efa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Michiduka/Texture/LifeAnim/コンポ 1_28.png using Guid(86d96f8b0fa5af542a7312ea2ae3efa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f77e2b18d3476dfbcdd4bda9f782cfe3') in 0.018380 seconds 
-  Import took 0.021524 seconds .
+  path: Assets/Member/Sawamura/Model/Magnifying_Glass/musimeganenomaru.fbx
+  artifactKey: Guid(ff142b503e3fa514f90abe4d28bea337) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/Magnifying_Glass/musimeganenomaru.fbx using Guid(ff142b503e3fa514f90abe4d28bea337) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33ce5dab66d270cb7be830ebb6545f9b') in 0.047948 seconds 
+  Import took 0.050650 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.261778 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_14.png
-  artifactKey: Guid(60c9b37850de84542b1a1a171801794d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_14.png using Guid(60c9b37850de84542b1a1a171801794d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '342fc6d9176b64e9f6a2ed2044eb99f9') in 0.018666 seconds 
-  Import took 0.022127 seconds .
+  Time since last request: 3.436692 seconds.
+  path: Assets/Member/Sawamura/Model/iranai
+  artifactKey: Guid(fcfa8fc448095594e97d2867ef535a35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/iranai using Guid(fcfa8fc448095594e97d2867ef535a35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c337907177f4e0869cb0e7481795eba') in 0.006815 seconds 
+  Import took 0.009986 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000264 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_24.png
-  artifactKey: Guid(50dcf20a8c2608a4b983ae5327b9d987) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_24.png using Guid(50dcf20a8c2608a4b983ae5327b9d987) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f09834ecf718ebacca0379d67c43386') in 0.020725 seconds 
-  Import took 0.024014 seconds .
+  Time since last request: 0.047531 seconds.
+  path: Assets/Member/Sawamura/Model/iranai/jumpkesigomu.fbx
+  artifactKey: Guid(d460f3b7230fd484b9c87ba57b68097f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/iranai/jumpkesigomu.fbx using Guid(d460f3b7230fd484b9c87ba57b68097f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cf5c643d567012ad8eed54eabb0ca02') in 0.071460 seconds 
+  Import took 0.074646 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000250 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_25.png
-  artifactKey: Guid(14a527fe3714c73468ef1605e4fc41d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_25.png using Guid(14a527fe3714c73468ef1605e4fc41d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd708f0c47255ff43a24cd0a631215060') in 0.019315 seconds 
-  Import took 0.022908 seconds .
+  Time since last request: 0.000270 seconds.
+  path: Assets/Member/Sawamura/Model/iranai/kesigomupyon.fbx
+  artifactKey: Guid(f230c524eda51594ca89ef24bfdfff5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/iranai/kesigomupyon.fbx using Guid(f230c524eda51594ca89ef24bfdfff5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54d8581e567114e576d6f35b89085e1d') in 0.059947 seconds 
+  Import took 0.062701 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000298 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_34.png
-  artifactKey: Guid(d40ce0eda05e76346a8287f8f594c08b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_34.png using Guid(d40ce0eda05e76346a8287f8f594c08b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a7aec26c17aca43c9d3a7317454333b') in 0.019635 seconds 
-  Import took 0.024525 seconds .
+  Time since last request: 0.000217 seconds.
+  path: Assets/Member/Sawamura/Model/iranai/kesigomutaoreru.fbx
+  artifactKey: Guid(b8cc0fb1c7bd98b46aa137b44b6a5a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/iranai/kesigomutaoreru.fbx using Guid(b8cc0fb1c7bd98b46aa137b44b6a5a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13acade3b81baf2370da908f89fdea3c') in 0.061054 seconds 
+  Import took 0.063810 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000394 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_23.png
-  artifactKey: Guid(50ffc606a731bed4bb8083747753cb87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_23.png using Guid(50ffc606a731bed4bb8083747753cb87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21e73baf2da1901a703c84d6980fab9d') in 0.020437 seconds 
-  Import took 0.023721 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_38.png
-  artifactKey: Guid(6a7013a4f01a4494386b278bf4bffb5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_38.png using Guid(6a7013a4f01a4494386b278bf4bffb5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c1e59592e3445de4eebfe61ea4ba585') in 0.016299 seconds 
-  Import took 0.019700 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000348 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_42.png
-  artifactKey: Guid(2fbe71129b189e6408e773f869120516) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_42.png using Guid(2fbe71129b189e6408e773f869120516) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dae5d1f9cb1cfb7300e16d54afe09c94') in 0.020460 seconds 
-  Import took 0.023644 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_46.png
-  artifactKey: Guid(7c4d2206d25cdc44aa36a558987eaa10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_46.png using Guid(7c4d2206d25cdc44aa36a558987eaa10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a4be230b21e655522cd568807333ac4') in 0.019758 seconds 
-  Import took 0.023266 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000265 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_45.png
-  artifactKey: Guid(930c6f06e345fef4db5d8816758de8db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_45.png using Guid(930c6f06e345fef4db5d8816758de8db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c72ce3b52f64bc24e9bc088ceee20442') in 0.015537 seconds 
-  Import took 0.018787 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000271 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_19.png
-  artifactKey: Guid(666e7d11faab8264a85a48e50b46e434) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_19.png using Guid(666e7d11faab8264a85a48e50b46e434) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fad77db88a32e4a70475a75beb11f86a') in 0.019834 seconds 
-  Import took 0.023422 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000298 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_48.png
-  artifactKey: Guid(7c352b952af3f674e843c20fc12254f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_48.png using Guid(7c352b952af3f674e843c20fc12254f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56c08d2e10fd76688ecacd9e2eb5b161') in 0.018918 seconds 
-  Import took 0.021962 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000233 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_44.png
-  artifactKey: Guid(c894c5097c185794db6eb154668959fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_44.png using Guid(c894c5097c185794db6eb154668959fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2429b40bf902e732b008234e58e5563') in 0.015068 seconds 
-  Import took 0.017926 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000259 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_43.png
-  artifactKey: Guid(10143fa12b22e5447adb0eb315849d49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_43.png using Guid(10143fa12b22e5447adb0eb315849d49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53ad026c45563daaac824e07e0e302e1') in 0.020026 seconds 
-  Import took 0.023792 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000280 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_26.png
-  artifactKey: Guid(62b225c0bfdb3c6488063ae5bb2a6331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_26.png using Guid(62b225c0bfdb3c6488063ae5bb2a6331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '136850f3a67c69b228b28f26cd95805a') in 0.019990 seconds 
-  Import took 0.023176 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000278 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_29.png
-  artifactKey: Guid(53bdd522e2d3b304788ca8c8f63039cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_29.png using Guid(53bdd522e2d3b304788ca8c8f63039cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8da5377c4781de33492e4f9af74da730') in 0.017137 seconds 
-  Import took 0.020373 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_35.png
-  artifactKey: Guid(e8d665ecdb4d5c946b9b557e013b89ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_35.png using Guid(e8d665ecdb4d5c946b9b557e013b89ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '921c0b6151e917c991882ef80f466540') in 0.019118 seconds 
-  Import took 0.022557 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_47.png
-  artifactKey: Guid(70d933c0cac96334f82b6ce9a1ecad29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_47.png using Guid(70d933c0cac96334f82b6ce9a1ecad29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbbd2f071580ec7e404dc3c80fc0f1b7') in 0.013769 seconds 
-  Import took 0.016767 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000311 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_20.png
-  artifactKey: Guid(7a01b3db1794d7d42a036fae4d7dd6f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_20.png using Guid(7a01b3db1794d7d42a036fae4d7dd6f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22208bf2a6a820bf3b8179c9652605c1') in 0.020204 seconds 
-  Import took 0.023731 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000320 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_28.png
-  artifactKey: Guid(5c84970c990f7334f96363b16ed9372c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_28.png using Guid(5c84970c990f7334f96363b16ed9372c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1481d78059041d697fbd9a59cc940685') in 0.015048 seconds 
-  Import took 0.018236 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_16.png
-  artifactKey: Guid(b47811b7bbcc5ea4d9ee7573aebdb51b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_16.png using Guid(b47811b7bbcc5ea4d9ee7573aebdb51b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ed00219922d6bce84d4649d7e130a43') in 0.020734 seconds 
-  Import took 0.023740 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000234 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_30.png
-  artifactKey: Guid(f983c6676c679d54c93c9be4acc5bef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_30.png using Guid(f983c6676c679d54c93c9be4acc5bef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60b5a8879131d6553471b27b925bc715') in 0.014905 seconds 
-  Import took 0.018320 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_22.png
-  artifactKey: Guid(a3dcf1cc44e9e054ba07852ab3c91c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_22.png using Guid(a3dcf1cc44e9e054ba07852ab3c91c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50485c347a3265bf4b8d801c7f173bad') in 0.019430 seconds 
-  Import took 0.022452 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000222 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_32.png
-  artifactKey: Guid(1f27925fbd7d0ad4993dd20e0af3380c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_32.png using Guid(1f27925fbd7d0ad4993dd20e0af3380c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14b66de5c9af88911ed3fc2eb9bca28b') in 0.012006 seconds 
-  Import took 0.015488 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000298 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_31.png
-  artifactKey: Guid(d69af8ba8372fb64aadebb1b298b084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_31.png using Guid(d69af8ba8372fb64aadebb1b298b084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bca51ea7d3684ae4a128b2333e36ff9f') in 0.015109 seconds 
-  Import took 0.018280 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000269 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_40.png
-  artifactKey: Guid(479c4125fe171a84ca34f2cc7d9777ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_40.png using Guid(479c4125fe171a84ca34f2cc7d9777ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '522a60e9a906788aff182ac34f388273') in 0.014680 seconds 
-  Import took 0.018013 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000287 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_27.png
-  artifactKey: Guid(68778da7399e1bd428effde4c9f592ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_27.png using Guid(68778da7399e1bd428effde4c9f592ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9757c2af677d0b5943dfa95b7efbce9') in 0.016642 seconds 
-  Import took 0.020019 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000362 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_37.png
-  artifactKey: Guid(9d4eb84ca2b348d429ad4f62d5a4f9b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_37.png using Guid(9d4eb84ca2b348d429ad4f62d5a4f9b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de9bcf8049e006634df600e9e4660ed4') in 0.018776 seconds 
-  Import took 0.021937 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000331 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_17.png
-  artifactKey: Guid(cecd3effd774c7f4f996e37da0a0737c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_17.png using Guid(cecd3effd774c7f4f996e37da0a0737c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '146235273b051521d8b902e912b205fb') in 0.013459 seconds 
-  Import took 0.016622 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000269 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_15.png
-  artifactKey: Guid(5c87fe80df1557f4598b7d4708481793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_15.png using Guid(5c87fe80df1557f4598b7d4708481793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec96a02a5ff984c48d03e20c224a7374') in 0.014831 seconds 
-  Import took 0.017877 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000249 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_36.png
-  artifactKey: Guid(13d83bf428e3451459da33d20d21ff1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_36.png using Guid(13d83bf428e3451459da33d20d21ff1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d221a1ebe240fbd39289212d959a9a0') in 0.016505 seconds 
-  Import took 0.019657 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000319 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_39.png
-  artifactKey: Guid(fc0f087a143a0184589ff2568ebbb298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_39.png using Guid(fc0f087a143a0184589ff2568ebbb298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '012f3331b26a76277e23e4c1d3046e9f') in 0.015524 seconds 
-  Import took 0.018831 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_41.png
-  artifactKey: Guid(5021b3f178c289543afa1efa2392c6d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_41.png using Guid(5021b3f178c289543afa1efa2392c6d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4a0644b08fda4f725febda001c224e1') in 0.016009 seconds 
-  Import took 0.019837 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000334 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_33.png
-  artifactKey: Guid(9e5fc3082abeafd42bdc9d58d904a2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_33.png using Guid(9e5fc3082abeafd42bdc9d58d904a2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2872aa0ac69308fdd6893168e974f919') in 0.015085 seconds 
-  Import took 0.018252 seconds .
+  Time since last request: 0.000214 seconds.
+  path: Assets/Member/Sawamura/Model/iranai/kesigomutaoreterudake.fbx
+  artifactKey: Guid(56b879c3f84298d4ea837639e94d8045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/iranai/kesigomutaoreterudake.fbx using Guid(56b879c3f84298d4ea837639e94d8045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7d3c8238a8b4649caaf8b63fa72fc37') in 0.057788 seconds 
+  Import took 0.060575 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000241 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_18.png
-  artifactKey: Guid(b531da68d05f19f46b2363eb39b7c85a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_18.png using Guid(b531da68d05f19f46b2363eb39b7c85a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9df61fac66f2d90113d06279b0bdf972') in 0.015043 seconds 
-  Import took 0.018206 seconds .
+  path: Assets/Member/Sawamura/Model/iranai/taorerukesigomu.fbx
+  artifactKey: Guid(9e8e51bb4937d0d4e91d12630e91d4c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/iranai/taorerukesigomu.fbx using Guid(9e8e51bb4937d0d4e91d12630e91d4c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bba2bcf08c96bbdafe10a2fbd250389a') in 0.072631 seconds 
+  Import took 0.075439 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_21.png
-  artifactKey: Guid(75c578eb422fd8c4493946d023c8f366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_21.png using Guid(75c578eb422fd8c4493946d023c8f366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9fd1494098bd9400b32ee0e5ad3f3c8') in 0.017424 seconds 
-  Import took 0.020604 seconds .
+  Time since last request: 3.048970 seconds.
+  path: Assets/Member/Sawamura/Model/HandBell
+  artifactKey: Guid(b98c22a4a7802c9459fc243ab66f4326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Member/Sawamura/Model/HandBell using Guid(b98c22a4a7802c9459fc243ab66f4326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6473bad49e0b8989be9fd838fe45038') in 0.006784 seconds 
+  Import took 0.011655 seconds .
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.251712 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_49.png
-  artifactKey: Guid(23a78001ae29e254398eb44dc10e0263) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_49.png using Guid(23a78001ae29e254398eb44dc10e0263) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6963a66e4c4d9fa0eb496ed48447247') in 0.016318 seconds 
-  Import took 0.020006 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000268 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_50.png
-  artifactKey: Guid(c4c441138dd1928469e3b700801a8368) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_50.png using Guid(c4c441138dd1928469e3b700801a8368) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31f6eb2a4bbf6f1c7a7de7c55928d209') in 0.010043 seconds 
-  Import took 0.013631 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000382 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_56.png
-  artifactKey: Guid(9ee5a77ce01c35a4b8508d274319ff97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_56.png using Guid(9ee5a77ce01c35a4b8508d274319ff97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69fb70277c72ef69d1780eb785a4d11c') in 0.015550 seconds 
-  Import took 0.019103 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000290 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_62.png
-  artifactKey: Guid(3e39f71a0b8d4cb4ab9a8c1c4be349ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_62.png using Guid(3e39f71a0b8d4cb4ab9a8c1c4be349ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9af1414f4418f0bc6c0a110222404247') in 0.016873 seconds 
-  Import took 0.021066 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000281 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_71.png
-  artifactKey: Guid(947155acc83c3d14c8aaad2b61e89cd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_71.png using Guid(947155acc83c3d14c8aaad2b61e89cd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6718056190fc1de5139961efe39c8a71') in 0.016730 seconds 
-  Import took 0.020265 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000271 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_66.png
-  artifactKey: Guid(4a01c337283b8a54391ea393663886b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_66.png using Guid(4a01c337283b8a54391ea393663886b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '809dac2cdf79fb7733844ece27f9ce7e') in 0.014602 seconds 
-  Import took 0.018088 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000329 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_80.png
-  artifactKey: Guid(600bd6a51dc6933438cd4582aae8ecc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_80.png using Guid(600bd6a51dc6933438cd4582aae8ecc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc22b8dcb2709e3ea6a5892fb5f83889') in 0.015059 seconds 
-  Import took 0.018526 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000273 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_54.png
-  artifactKey: Guid(8eb5587e80145f64294251758afd0d6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_54.png using Guid(8eb5587e80145f64294251758afd0d6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28d94660c91d64d0b47ce17edbd7fdaf') in 0.015198 seconds 
-  Import took 0.018272 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000340 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_58.png
-  artifactKey: Guid(8e013980dd978484cb4f38432b85956f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_58.png using Guid(8e013980dd978484cb4f38432b85956f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee3861e3b640435c4291dd852241ffd2') in 0.015867 seconds 
-  Import took 0.019257 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000372 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_73.png
-  artifactKey: Guid(e9314d4cc99c0ea4ca29447fe84828b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_73.png using Guid(e9314d4cc99c0ea4ca29447fe84828b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '532f1d280ad7420b43fb34496045f961') in 0.015538 seconds 
-  Import took 0.019331 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000318 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_57.png
-  artifactKey: Guid(e46221d6c927bb84cbacda60b8e6d082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_57.png using Guid(e46221d6c927bb84cbacda60b8e6d082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0be1412ebcedde18cf969417e1b50ef') in 0.016478 seconds 
-  Import took 0.019840 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000256 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_77.png
-  artifactKey: Guid(bb18f0671cdf400469f0b10cd8693330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_77.png using Guid(bb18f0671cdf400469f0b10cd8693330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9e1ac8f4e08ba6380076af716603e04') in 0.016377 seconds 
-  Import took 0.019744 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_53.png
-  artifactKey: Guid(a47bfe7c3a59412489462071883cf90f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_53.png using Guid(a47bfe7c3a59412489462071883cf90f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b365a7a19903da9d06820f2c5bd60c57') in 0.014181 seconds 
-  Import took 0.017390 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000289 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_51.png
-  artifactKey: Guid(416281c20181e4844b4be629f46a409c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_51.png using Guid(416281c20181e4844b4be629f46a409c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7255658742dc0beb03d55a22e37e630') in 0.014760 seconds 
-  Import took 0.018142 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000227 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_65.png
-  artifactKey: Guid(4b36305d2dd8f78459fb46a20b09cade) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_65.png using Guid(4b36305d2dd8f78459fb46a20b09cade) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a384636d64faa003433aaa74fc5129b') in 0.016028 seconds 
-  Import took 0.019142 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000386 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_69.png
-  artifactKey: Guid(e19cbbfaf79f83046ab30b80450a4bbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_69.png using Guid(e19cbbfaf79f83046ab30b80450a4bbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3644e41d155dc6f5edfc4f402eeed7b8') in 0.017037 seconds 
-  Import took 0.020552 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000263 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_52.png
-  artifactKey: Guid(1c41e26b9b92dab4fa8812adb68abb66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_52.png using Guid(1c41e26b9b92dab4fa8812adb68abb66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afddcc92c1b17c8922a411afbcc10103') in 0.015043 seconds 
-  Import took 0.018158 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_81.png
-  artifactKey: Guid(c1ea7d789c7f7b6498ce1135e6b3f89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_81.png using Guid(c1ea7d789c7f7b6498ce1135e6b3f89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '481f6ecbf28657b04f6a7b1b653a27f1') in 0.014304 seconds 
-  Import took 0.017535 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000254 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_76.png
-  artifactKey: Guid(8a68da3b33b1ddd499b4441291394b63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_76.png using Guid(8a68da3b33b1ddd499b4441291394b63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eeb3e335b72b009778837c4a0ceb688f') in 0.015114 seconds 
-  Import took 0.019228 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000228 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_68.png
-  artifactKey: Guid(1edc82da4f51c9a49a264e4b89afa59d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_68.png using Guid(1edc82da4f51c9a49a264e4b89afa59d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b64cc54e2a1dc38f9d116558183c85a') in 0.018321 seconds 
-  Import took 0.021524 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000261 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_79.png
-  artifactKey: Guid(aedf1c944f7a3914ab56d6d074426875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_79.png using Guid(aedf1c944f7a3914ab56d6d074426875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53fdf21bd98caf94b67fe03929958b80') in 0.013671 seconds 
-  Import took 0.017234 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000350 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_63.png
-  artifactKey: Guid(820978baab9c3494cbb24832aea78fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_63.png using Guid(820978baab9c3494cbb24832aea78fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87ab10192de5bdcf652912ca4e4b1846') in 0.016955 seconds 
-  Import took 0.021257 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_78.png
-  artifactKey: Guid(e9a0852bf3c1a224483ee62b2d4e10fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_78.png using Guid(e9a0852bf3c1a224483ee62b2d4e10fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b257656586109db602c211fc09df2b0') in 0.015464 seconds 
-  Import took 0.019185 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000248 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_82.png
-  artifactKey: Guid(d83124dc2e048214c9c3597f7ad17358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_82.png using Guid(d83124dc2e048214c9c3597f7ad17358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7d7bedd032173388f69ebded3edcacc') in 0.010807 seconds 
-  Import took 0.013844 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_61.png
-  artifactKey: Guid(56ba5eff7400f8b489b6c94bb7569972) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_61.png using Guid(56ba5eff7400f8b489b6c94bb7569972) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ab2c128263de80c74e1d101e95c197d') in 0.014105 seconds 
-  Import took 0.017107 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_75.png
-  artifactKey: Guid(25eb90780ea1c4046bd92c04cda29067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_75.png using Guid(25eb90780ea1c4046bd92c04cda29067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7a675f2b0b739709ca70180b6c0a73a') in 0.016130 seconds 
-  Import took 0.020492 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000320 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_70.png
-  artifactKey: Guid(b406a3d58273935418d52627e2345b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_70.png using Guid(b406a3d58273935418d52627e2345b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a53854b47766cbe84d135af0171ccc6c') in 0.016728 seconds 
-  Import took 0.020166 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000235 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_60.png
-  artifactKey: Guid(de7a2e87e07a84643919cae12e11854f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_60.png using Guid(de7a2e87e07a84643919cae12e11854f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '538aeee415b6fcf6e5c2707d7478b052') in 0.016015 seconds 
-  Import took 0.020627 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000341 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_64.png
-  artifactKey: Guid(74ecbed201b556b438926c3c4fc1c855) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_64.png using Guid(74ecbed201b556b438926c3c4fc1c855) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a23bc84a0854c241633f40707b25e54') in 0.016157 seconds 
-  Import took 0.020326 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000280 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_72.png
-  artifactKey: Guid(820a0c6af4718964799201cac6fe3b8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_72.png using Guid(820a0c6af4718964799201cac6fe3b8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30ee4ce1f853f4567afce1113beb3016') in 0.015995 seconds 
-  Import took 0.019447 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000281 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_74.png
-  artifactKey: Guid(5b78a2ba9714bef4eb9d427c23dacc95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_74.png using Guid(5b78a2ba9714bef4eb9d427c23dacc95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dc4bcae5220907b9990411ad38652ac') in 0.014492 seconds 
-  Import took 0.017732 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_55.png
-  artifactKey: Guid(ac53baf8b25ee4c4286e4357e7661d5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_55.png using Guid(ac53baf8b25ee4c4286e4357e7661d5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2fd77b45a78fd43bd8eda7975bf93f7') in 0.016907 seconds 
-  Import took 0.020141 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000281 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_67.png
-  artifactKey: Guid(bb1be5e8900a9f748ab232896adc6d2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_67.png using Guid(bb1be5e8900a9f748ab232896adc6d2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e006aa0b785deb79c2b4f3a26a70787a') in 0.018249 seconds 
-  Import took 0.022144 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000315 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_59.png
-  artifactKey: Guid(c8e97d5891dfdc04e9e679aeae03aeec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_59.png using Guid(c8e97d5891dfdc04e9e679aeae03aeec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee6d1f79630c0b7d8844d675056a3d6b') in 0.017620 seconds 
-  Import took 0.021946 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000283 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_83.png
-  artifactKey: Guid(fc8539e60c14a094c9822c0e17ed6864) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_83.png using Guid(fc8539e60c14a094c9822c0e17ed6864) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '172ef006ffb9e7aebf6ed4900f99cdab') in 0.013828 seconds 
-  Import took 0.017204 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.145854 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_84.png
-  artifactKey: Guid(2675b40edd1640e41bbc368c9e09fffd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_84.png using Guid(2675b40edd1640e41bbc368c9e09fffd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04e11a2992fa0b0fc026af5b2c3a54a1') in 0.015227 seconds 
-  Import took 0.020593 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000327 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_88.png
-  artifactKey: Guid(d3d7314b35024084385b51dae7bb4e10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_88.png using Guid(d3d7314b35024084385b51dae7bb4e10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eb4af05db276fa5b0eb5d395dbac389') in 0.016377 seconds 
-  Import took 0.019889 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000336 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_86.png
-  artifactKey: Guid(9c1329ea92735b34990e6082022cd750) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_86.png using Guid(9c1329ea92735b34990e6082022cd750) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9169f32dc0b2ac5780174ee00f88ab4') in 0.016677 seconds 
-  Import took 0.021819 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000285 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_87.png
-  artifactKey: Guid(c374523f06fa890488115151ae507c89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_87.png using Guid(c374523f06fa890488115151ae507c89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e35489e9dd2c20e5e716f003d83306e4') in 0.018666 seconds 
-  Import took 0.023044 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_85.png
-  artifactKey: Guid(b38687d2818ddb44faa97bdfd851bdb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_85.png using Guid(b38687d2818ddb44faa97bdfd851bdb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '876079229f3e69e1fb66643e53b40cf5') in 0.014154 seconds 
-  Import took 0.017818 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000299 seconds.
-  path: Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_89.png
-  artifactKey: Guid(c0e68698942381c4ca84f0f693e5974e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Osikubo/Texture/Gameclear/コンポ 2_89.png using Guid(c0e68698942381c4ca84f0f693e5974e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e16edff04bebe549e59ea1c0cdf5bec5') in 0.017999 seconds 
-  Import took 0.021480 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 74.675114 seconds.
-  path: Assets/Member/Nemoto/タイトルロゴ2.png
-  artifactKey: Guid(a0b41d56bebbb3847a7df1c10e856c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Member/Nemoto/タイトルロゴ2.png using Guid(a0b41d56bebbb3847a7df1c10e856c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd37f1cdc35da295c79707a0a3c71613f') in 0.020134 seconds 
-  Import took 0.023322 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005642 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.990 seconds
-Domain Reload Profiling:
-	ReloadAssembly (991ms)
-		BeginReloadAssembly (117ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (33ms)
-		EndReloadAssembly (817ms)
-			LoadAssemblies (95ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (292ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (36ms)
-			SetupLoadedEditorAssemblies (307ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (66ms)
-				ProcessInitializeOnLoadAttributes (220ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (8ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2080 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 110.7 MB.
-System memory in use after: 110.8 MB.
-
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2610.
-Total: 2.951800 ms (FindLiveObjects: 0.161100 ms CreateObjectMapping: 0.061500 ms MarkObjects: 2.713600 ms  DeleteObjects: 0.014800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006511 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.063 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1063ms)
-		BeginReloadAssembly (122ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (33ms)
-		EndReloadAssembly (870ms)
-			LoadAssemblies (101ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (324ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (315ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (65ms)
-				ProcessInitializeOnLoadAttributes (228ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (8ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2080 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 110.7 MB.
-System memory in use after: 110.8 MB.
-
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2612.
-Total: 2.866400 ms (FindLiveObjects: 0.160400 ms CreateObjectMapping: 0.074700 ms MarkObjects: 2.614200 ms  DeleteObjects: 0.015500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005936 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.999 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1000ms)
-		BeginReloadAssembly (104ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (26ms)
-		EndReloadAssembly (836ms)
-			LoadAssemblies (92ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (300ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (315ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (67ms)
-				ProcessInitializeOnLoadAttributes (228ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2080 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 110.7 MB.
-System memory in use after: 110.8 MB.
-
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2614.
-Total: 2.727400 ms (FindLiveObjects: 0.170500 ms CreateObjectMapping: 0.070000 ms MarkObjects: 2.471300 ms  DeleteObjects: 0.014700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

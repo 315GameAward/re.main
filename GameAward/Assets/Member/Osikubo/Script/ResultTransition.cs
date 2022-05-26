@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ResultTransition : MonoBehaviour
 {
+    bool Trigger;
     private GameObject[] ResultTest;
     // Start is called before the first frame update
     void Start()
     {
-
+        Trigger = false;
     }
 
 
@@ -18,10 +19,11 @@ public class ResultTransition : MonoBehaviour
     {
         ResultTest = GameObject.FindGameObjectsWithTag("Enemy");
        
-        if (ResultTest.Length == 0)
+        if (ResultTest.Length == 0 && !Trigger)
         {
             Debug.Log("ƒV[ƒ“‚ÌˆÚ“®");
             SceneManager.LoadScene("ResultScene",LoadSceneMode.Additive);
+            Trigger = true;
         }
     }
 }
