@@ -30,11 +30,13 @@ public class Game_Over : MonoBehaviour
     AudioSource audioSource;
     public AudioClip sound_Rot; // 移動_効果音
     public AudioClip sound_Chs; // 選択_効果音
+    public AudioClip sound_Gin; // ジングル音
+
     private float fAlpha = 0.0f;
 
     private STATE_GMOV OVERstate;
     public bool b_gmov = false;    // trueなら呼び出す
-
+    private bool b_gingle = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +59,9 @@ public class Game_Over : MonoBehaviour
         // オーバーが呼び出されたら入る
         if (b_gmov == true)
         {
+            // ジングル再生
+            if(b_gingle == true) { audioSource.PlayOneShot(sound_Gin); b_gingle = false; }
+
             // 入力取得
             if (Input.GetKeyUp(KeyCode.DownArrow))
             {
@@ -165,5 +170,6 @@ public class Game_Over : MonoBehaviour
     {
         // bool取得
         b_gmov = gmov;
+        b_gingle = true;
     }
 }
