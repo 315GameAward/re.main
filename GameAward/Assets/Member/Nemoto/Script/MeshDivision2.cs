@@ -6243,6 +6243,7 @@ public class MeshDivision2 : MonoBehaviour
         mesh.normals = normals1.ToArray();
         obj.GetComponent<MeshFilter>().mesh = mesh;
         obj.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
+      
         obj.transform.position = transform.position;
         obj.transform.rotation = transform.rotation;
         obj.transform.localScale = transform.localScale;
@@ -6256,6 +6257,7 @@ public class MeshDivision2 : MonoBehaviour
         mesh2.normals = normals2.ToArray();
         obj2.GetComponent<MeshFilter>().mesh = mesh2;
         obj2.GetComponent<MeshRenderer>().materials = GetComponent<MeshRenderer>().materials;
+      
         obj2.transform.position = transform.position;
         obj2.transform.rotation = transform.rotation;
         obj2.transform.localScale = transform.localScale;
@@ -6284,13 +6286,15 @@ public class MeshDivision2 : MonoBehaviour
         // 体積の比較(ここで体積が軽い方を落としています)
         if (s1 < s2)
         {
+           
             obj2.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
             obj2.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
 
             // コライダーの追加
-            obj2.GetComponent<MeshCollider>().sharedMesh = mesh;
+            obj2.GetComponent<MeshCollider>().sharedMesh = mesh2;
             obj2.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
             obj2.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+
 
             obj.GetComponent<Renderer>().material.color = Color.gray;
             obj.GetComponent<Ground>().StartFadeOut();
@@ -6300,6 +6304,8 @@ public class MeshDivision2 : MonoBehaviour
         }
         else
         {
+
+          
             obj.GetComponent<Rigidbody>().useGravity = false;   // 重力の無効化
             obj.GetComponent<Rigidbody>().isKinematic = true;   // 運動を無効化 
 
@@ -6307,6 +6313,7 @@ public class MeshDivision2 : MonoBehaviour
             obj.GetComponent<MeshCollider>().sharedMesh = mesh;
             obj.GetComponent<MeshCollider>().cookingOptions = MeshColliderCookingOptions.CookForFasterSimulation;
             obj.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
+
 
             obj2.GetComponent<Renderer>().material.color = Color.gray;
             obj2.GetComponent<Ground>().StartFadeOut();
