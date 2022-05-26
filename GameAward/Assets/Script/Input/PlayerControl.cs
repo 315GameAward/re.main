@@ -288,7 +288,7 @@ public class PlayerControl : MonoBehaviour
             _moveDir = transform.forward;   // ï˚å¸ÇÃë„ì¸
 
             // SEÇÃçƒê∂
-            if (gameObject.GetComponent<CutterPoint>().bPurposeObj)
+            if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
             {
                 if (!bSmoothCutSE)
                 {
@@ -316,7 +316,7 @@ public class PlayerControl : MonoBehaviour
 
             }
 
-        if (!gameObject.GetComponent<CutterPoint>().bPurposeObj)
+        if (!gameObject.GetComponent<CutPoint2>().bPurposeObj)
         {
             bSmoothCutSE = false;
         }
