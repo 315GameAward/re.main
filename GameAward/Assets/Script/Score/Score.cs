@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
+    // 外でも呼び出せるようにする
+    public static Score instance;
+
     //-----スコアの表示
     public Text scoreText;
 
@@ -22,6 +25,14 @@ public class Score : MonoBehaviour
     //private int highScore;
 
     //-----保存するためのキー（未完成）
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +50,13 @@ public class Score : MonoBehaviour
         //}
 
         //スコア・ハイスコアを表示する
+
+        // 限界値かどうか
+        if (score >= 100)
+        {
+            score = 100;
+        }
+
         //スコア
         scoreText.text = score.ToString();
 
@@ -71,4 +89,9 @@ public class Score : MonoBehaviour
         Initialize();
     }
 
+    // スコア取得用
+    public int GetScore()
+    {
+        return score;
+    }
 }

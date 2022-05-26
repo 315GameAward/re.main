@@ -11,7 +11,6 @@ public class SearchCharacter : MonoBehaviour
     private AttackRange Pcol;
 
     private float ChaseTime = 7.0f;
-    private float WaitTime = 1.5f;
     public float cnttime = 0.0f;
     public bool b_Chase = true;
 

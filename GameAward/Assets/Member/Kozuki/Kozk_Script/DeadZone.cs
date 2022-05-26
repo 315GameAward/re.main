@@ -15,7 +15,7 @@ public class DeadZone : MonoBehaviour
     //  private bool bDead = false;
     public string objName;
     private int i = 0;
-   
+
 
     void OnTriggerEnter(Collider collision)
     {
@@ -30,12 +30,32 @@ public class DeadZone : MonoBehaviour
 
             Invoke(nameof(InsKira), Deadtaime);
             collision.gameObject.tag = "Untagged";
+
+            // スコア加算
+            Score.instance.AddScore(5);
+
             // エネミー消去
             Destroy(collision.gameObject, Deadtaime);
         }
-        else
+        else if (collision.CompareTag("Don'tFall"))
         {
-            // Debug.Log("当ってない");
+            // 生成位置
+            Objpos.Add(collision.gameObject.transform.position);
+
+            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            collision.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+            // Invoke(nameof(InsKira), Deadtaime);
+            collision.gameObject.tag = "Untagged";
+
+            // スコア加算
+            Score.instance.AddScore(-5);
+
+            // ライフ減少
+            Life.instance.DelLife();
+
+            // エネミー消去
+            Destroy(collision.gameObject, Deadtaime);
         }
     }
 
