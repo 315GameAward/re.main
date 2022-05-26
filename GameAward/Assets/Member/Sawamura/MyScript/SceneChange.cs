@@ -21,6 +21,6 @@ public class SceneChange : MonoBehaviour
     public void OnChangeScene()
     {
         //""“à‚É•Ï‚¦‚é‚×‚«ƒV[ƒ“–¼‚ğ‘‚­
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("AreaSelect");
     }
 }
