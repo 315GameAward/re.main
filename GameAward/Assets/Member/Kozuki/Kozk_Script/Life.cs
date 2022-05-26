@@ -19,9 +19,9 @@ public class Life : MonoBehaviour
     public AudioClip sound;
     AudioSource audioSource;
 
-    private int MaxLife = 3;    // 体力最大数
-    public int nLife;           // 体力(変動する)
-    static public int nlife;    // 他シーンへ持っていく体力数
+    private int MaxLife;        // 最大値
+    public int nLife = 3;       // 体力(変動する)
+    public static int nlife;    // 他シーンへ持っていく体力数
 
     private bool b_Life = true; // 体力が残っているか true:ある
 
@@ -44,8 +44,10 @@ public class Life : MonoBehaviour
         // 効果音取得
         audioSource = GetComponent<AudioSource>();
 
+        // 最大値代入
+        MaxLife = nLife;
+
         // 体力設定
-        nLife = MaxLife;
         for (int i = nLife; i > 0; i--)
         {
             // 体力を設定していく
@@ -121,5 +123,11 @@ public class Life : MonoBehaviour
     {
         nlife = nLife;
         return nlife;
+    }
+
+    // 最大数取得用関数
+    public int GetMaxLife()
+    {       
+        return MaxLife;
     }
 }

@@ -51,6 +51,9 @@ public class DeadZone : MonoBehaviour
             // スコア加算
             Score.instance.AddScore(-5);
 
+            // ライフ減少
+            Life.instance.DelLife();
+
             // エネミー消去
             Destroy(collision.gameObject, Deadtaime);
         }
