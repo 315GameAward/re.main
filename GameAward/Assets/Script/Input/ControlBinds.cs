@@ -760,6 +760,65 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TitleScene"",
+            ""id"": ""ac85d2c2-3fe5-4b05-b673-19f82a86c487"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""f09d5c92-df0c-475f-b1fe-97c45ff99272"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""b36dd300-bc86-4f8e-8f40-104e7e670b4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8430b9da-660f-4957-af42-77b879e52e09"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe3b89c8-f75b-409e-bb8f-cd434a051af9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d03eb7a0-ddc3-4a35-804e-cb6e54e71a16"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -781,6 +840,10 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         // New action map
         m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
         m_Newactionmap_Newaction = m_Newactionmap.FindAction("New action", throwIfNotFound: true);
+        // TitleScene
+        m_TitleScene = asset.FindActionMap("TitleScene", throwIfNotFound: true);
+        m_TitleScene_MoveScene = m_TitleScene.FindAction("MoveScene", throwIfNotFound: true);
+        m_TitleScene_Newaction = m_TitleScene.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -990,6 +1053,47 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         }
     }
     public NewactionmapActions @Newactionmap => new NewactionmapActions(this);
+
+    // TitleScene
+    private readonly InputActionMap m_TitleScene;
+    private ITitleSceneActions m_TitleSceneActionsCallbackInterface;
+    private readonly InputAction m_TitleScene_MoveScene;
+    private readonly InputAction m_TitleScene_Newaction;
+    public struct TitleSceneActions
+    {
+        private @ControlBinds m_Wrapper;
+        public TitleSceneActions(@ControlBinds wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveScene => m_Wrapper.m_TitleScene_MoveScene;
+        public InputAction @Newaction => m_Wrapper.m_TitleScene_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_TitleScene; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TitleSceneActions set) { return set.Get(); }
+        public void SetCallbacks(ITitleSceneActions instance)
+        {
+            if (m_Wrapper.m_TitleSceneActionsCallbackInterface != null)
+            {
+                @MoveScene.started -= m_Wrapper.m_TitleSceneActionsCallbackInterface.OnMoveScene;
+                @MoveScene.performed -= m_Wrapper.m_TitleSceneActionsCallbackInterface.OnMoveScene;
+                @MoveScene.canceled -= m_Wrapper.m_TitleSceneActionsCallbackInterface.OnMoveScene;
+                @Newaction.started -= m_Wrapper.m_TitleSceneActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_TitleSceneActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_TitleSceneActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_TitleSceneActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MoveScene.started += instance.OnMoveScene;
+                @MoveScene.performed += instance.OnMoveScene;
+                @MoveScene.canceled += instance.OnMoveScene;
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public TitleSceneActions @TitleScene => new TitleSceneActions(this);
     public interface IPlayerActions
     {
         void OnCut(InputAction.CallbackContext context);
@@ -1007,6 +1111,11 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
     }
     public interface INewactionmapActions
     {
+        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface ITitleSceneActions
+    {
+        void OnMoveScene(InputAction.CallbackContext context);
         void OnNewaction(InputAction.CallbackContext context);
     }
 }

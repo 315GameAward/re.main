@@ -738,6 +738,65 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TitleScene",
+            "id": "ac85d2c2-3fe5-4b05-b673-19f82a86c487",
+            "actions": [
+                {
+                    "name": "MoveScene",
+                    "type": "Button",
+                    "id": "f09d5c92-df0c-475f-b1fe-97c45ff99272",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "b36dd300-bc86-4f8e-8f40-104e7e670b4a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8430b9da-660f-4957-af42-77b879e52e09",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe3b89c8-f75b-409e-bb8f-cd434a051af9",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d03eb7a0-ddc3-4a35-804e-cb6e54e71a16",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
