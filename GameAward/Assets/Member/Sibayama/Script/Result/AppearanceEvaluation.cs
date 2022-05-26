@@ -37,7 +37,9 @@ public class AppearanceEvaluation : MonoBehaviour
 
     // アクティブ状態を管理するオブジェクト
     GameObject[] AcObj = new GameObject[Max_Obj];
-    
+
+    GameObject slideObject;     // SlideSheet.csがアタッチされたオブジェクト取得用
+    SlideSheet slide;           // SlideSheet.csクラス取得
     // 評価に使うスタンプテクスチャ
     public Sprite[] evaluation = new Sprite[(int)EvaType.Max_Type];
 
@@ -61,6 +63,8 @@ public class AppearanceEvaluation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        slideObject = GameObject.Find("Result");
+        slide = slideObject.GetComponent<SlideSheet>();
         // 評価項目を採点
         StampEvaluation();
     }
