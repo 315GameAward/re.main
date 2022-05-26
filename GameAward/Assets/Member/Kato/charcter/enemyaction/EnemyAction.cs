@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,10 +48,6 @@ public class Enemymove : FSMnord
         {
             Contloller.changenode("turn");
         }
-        if (enemy.Hitbrock == true)
-        {
-            Contloller.changenode("turn");
-        }
         if (enemy.Hitray == false)
         {
             Contloller.changenode("turn");
@@ -71,12 +66,6 @@ public class Enemymove : FSMnord
             }
 
         }
-        //if (enemy.HitGround == false)
-        //{
-        //    Contloller.changenode("Foll");
-        //}
-
-
     }
     public override void End(FSMcontllole Contloller)
     {
@@ -132,13 +121,14 @@ public class EnemyFoll : FSMnord
 {
     Enemy enemy;
 
+
     //private CharacterController controller;
 
     public override void Start(FSMcontllole Contloller)
     {
         enemy = Contloller.Parent.gameObject.GetComponent<Enemy>();
         base.Start(Contloller);
-
+        //enemy.Cap.enabled = false;
     }
     public override void Update(FSMcontllole Contloller)
     {
