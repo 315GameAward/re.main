@@ -9,14 +9,16 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private Image uiFillImage;
     [SerializeField] private Text uiText;
-    
+
+    // ゲームオーバー画像取得(コウヅキ)
+    public GameObject image_gameOver;
 
     public int Duration
     {
         get; private set;
     }
 
-    private int remainingDuration;
+    private int remainingDuration = 60;
 
     private void Awake()
     {
@@ -52,6 +54,9 @@ public class Timer : MonoBehaviour
             remainingDuration--;
             yield return new WaitForSeconds(1f);
         }
+        // ゲームオーバー表示
+        if (remainingDuration <= 0){ image_gameOver.GetComponent<Game_Over>().SetGMOV(true);}
+
         End();
     }
 
@@ -71,6 +76,4 @@ public class Timer : MonoBehaviour
         StopAllCoroutines();
 
     }
-
-
 }

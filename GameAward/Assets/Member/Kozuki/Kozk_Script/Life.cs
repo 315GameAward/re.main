@@ -68,18 +68,18 @@ public class Life : MonoBehaviour
             b_Life = false; // ˆê“x‚µ‚©’Ê‚ç‚È‚¢
         }
 
-        // ¶–îˆó‚ğ‰Ÿ‚µ‚½‚ç‘Ì—ÍÁ”ï
-        if (Input.GetKeyUp(KeyCode.PageUp))
-        {
-            AddLife();
-            nLife++;
-        }
+        //// ¶–îˆó‚ğ‰Ÿ‚µ‚½‚ç‘Ì—ÍÁ”ï
+        //if (Input.GetKeyUp(KeyCode.PageUp))
+        //{
+        //    AddLife();
+        //    nLife++;
+        //}
 
-        // ‰E–îˆó‚ğ‰Ÿ‚µ‚½‚ç‘Ì—Í‘‰Á
-        if (Input.GetKeyUp(KeyCode.PageDown))
-        {
-            DelLife();
-        }
+        //// ‰E–îˆó‚ğ‰Ÿ‚µ‚½‚ç‘Ì—Í‘‰Á
+        //if (Input.GetKeyUp(KeyCode.PageDown))
+        //{
+        //    DelLife();
+        //}
     }
 
     //========================

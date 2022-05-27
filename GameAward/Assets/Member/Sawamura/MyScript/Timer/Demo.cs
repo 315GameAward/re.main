@@ -6,7 +6,7 @@ public class Demo : MonoBehaviour
 {
     [SerializeField] Timer timer1;
 
-    public int second;
+    public int second = 60;
 
     //[SerializeField] Timer SetDuration;
     // Start is called before the first frame update
