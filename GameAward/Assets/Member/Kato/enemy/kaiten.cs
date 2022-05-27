@@ -26,7 +26,7 @@ public class kaiten : MonoBehaviour
 
         if (Hitground == false)
         {
-            transform.Rotate(0, 1, 0);
+            transform.Rotate(0, 3, 0);
         }
         if (Hitground == true)
         {
