@@ -11,7 +11,7 @@ public class DeadZone : MonoBehaviour
 {
     public GameObject kiraPrefab;
     private List<Vector3> Objpos = new List<Vector3>();
-    private float Deadtaime = 2.0f;
+    private float Deadtaime = 1.0f;
     //  private bool bDead = false;
     public string objName;
     private int i = 0;
@@ -64,7 +64,6 @@ public class DeadZone : MonoBehaviour
         // プレハブを指定位置に生成
         Instantiate(kiraPrefab, Objpos[i], Quaternion.identity);
         i++;
-        Objpos.RemoveAt(i - 1);
         Debug.Log(Objpos.Count);
     }
 }
