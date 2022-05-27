@@ -51,7 +51,7 @@ public class Pause : MonoBehaviour
         _gameInputs = new ControlBinds();
 
         //Pauseイベント登録
-        _gameInputs.Player.Pause.started += OnPause;
+        _gameInputs.Player.Pause.canceled += OnPause;
 
         //項目移動イベント登録
         _gameInputs.Player.MoveSelect.performed += OnMoveSelect;
@@ -193,10 +193,14 @@ public class Pause : MonoBehaviour
             }
             else if (pauseSelect == 1)      //やり直す
             {
-                SceneManager.LoadScene("GameScene");
+                g_bPauseOpen = false;       //ポーズ開いてない判定
+                Destroy(pauseUIInstance);   //ポーズUI破壊
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             else if (pauseSelect == 2)      //ステージセレクトに戻る
             {
+                g_bPauseOpen = false;       //ポーズ開いてない判定
+                Destroy(pauseUIInstance);   //ポーズUI破壊
                 SceneManager.LoadScene("AreaSelect");
             }
             else if (pauseSelect == 3)      //操作説明
