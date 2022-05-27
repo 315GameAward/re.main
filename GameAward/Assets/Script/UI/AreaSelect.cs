@@ -39,6 +39,8 @@ public class AreaSelect : MonoBehaviour
     public Animator pianoAnime;
     public Animator hanmaAnime;
     public Animator arukoruAnime;
+    //Animator Area Text
+    public Animator areaTextAnime;
     
     [SerializeField] private Text areaText;         //選択中エリア表示用テキスト
     [SerializeField] private AudioSource audioSource;
@@ -205,9 +207,9 @@ public class AreaSelect : MonoBehaviour
         //現在のシーン名取得
         Scene currentScene = SceneManager.GetActiveScene();
 
-        if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
+        if (currentScene.name == "AreaSelect")
         {
-            //
+            SceneManager.LoadScene("TitleScene");
         }
     }
 
@@ -218,7 +220,7 @@ public class AreaSelect : MonoBehaviour
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, 0.0f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextR", true);
             pianoAnime.SetBool("Bounce", true);     //play animation
             while (areas.transform.eulerAngles.y < 90.0f)
             {
@@ -226,51 +228,51 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 1;
             areaText.text = "音楽室ステージ";
+            areaTextAnime.SetBool("ChangeTextR", false);
+            areaSelect = 1;
         }
         else if (areaSelect == 1)
         {
             areas.transform.eulerAngles = new Vector3(0, 90.0f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextR", true);
             hanmaAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y < 180.0f)
             {
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 2;
             areaText.text = "図工室ステージ";
+            areaTextAnime.SetBool("ChangeTextR", false);
+            areaSelect = 2;
         }
         else if (areaSelect == 2)
         {
             areas.transform.eulerAngles = new Vector3(0, 180.0f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextR", true);
             arukoruAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y < 270.0f)
             {
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 3;
             areaText.text = "理科室ステージ";
+            areaTextAnime.SetBool("ChangeTextR", false);
+            areaSelect = 3;
         }
         else if (areaSelect == 3)
         {
             areas.transform.eulerAngles = new Vector3(0, 270.0f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextR", true);
             enpitsuAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 0.0f)
             {
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 0;
             areaText.text = "教室ステージ";
+            areaTextAnime.SetBool("ChangeTextR", false);
+            areaSelect = 0;
         }
 
         areaRotating = false;
@@ -283,58 +285,58 @@ public class AreaSelect : MonoBehaviour
         if (areaSelect == 0)
         {
             areas.transform.eulerAngles = new Vector3(0, -0.1f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextL", true);
             arukoruAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 270.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 3;
             areaText.text = "理科室ステージ";
+            areaTextAnime.SetBool("ChangeTextL", false);
+            areaSelect = 3;
         }
         else if (areaSelect == 3)
         {
             areas.transform.eulerAngles = new Vector3(0, 270.0f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextL", true);
             hanmaAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 180.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 2;
             areaText.text = "図工室ステージ";
+            areaTextAnime.SetBool("ChangeTextL", false);
+            areaSelect = 2;
         }
         else if (areaSelect == 2)
         {
             areas.transform.eulerAngles = new Vector3(0, 180.0f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextL", true);
             pianoAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y > 90.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 1;
             areaText.text = "音楽室ステージ";
+            areaTextAnime.SetBool("ChangeTextL", false);
+            areaSelect = 1;
         }
         else if (areaSelect == 1)
         {
             areas.transform.eulerAngles = new Vector3(0, 90.0f, 0);
-            
+            areaTextAnime.SetBool("ChangeTextL", true);
             enpitsuAnime.SetBool("Bounce", true);
             while (areas.transform.eulerAngles.y < 359.0f)
             {
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            areaSelect = 0;
             areaText.text = "教室ステージ";
+            areaTextAnime.SetBool("ChangeTextL", false);
+            areaSelect = 0;
         }
 
         areaRotating = false;

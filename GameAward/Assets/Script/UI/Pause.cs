@@ -30,13 +30,15 @@ public class Pause : MonoBehaviour
     private Animator backtogameAnime;               //操作説明用アニメーション
     private Animator retryAnime;                    //リトライ用アニメーション
     private Animator gameselectAnime;               //ゲームセレクト用アニメーション
-    private Animator tutorialAnime;               //ゲームセレクト用アニメーション
+    private Animator tutorialAnime;                 //ゲームセレクト用アニメーション
+    private Animator tutorialImgAnime;              //操作説明画像用アニメーション
 
     private ControlBinds _gameInputs;               //インプット
     private Vector2 _moveStickValue;                //スティック移動量
 
     private int pauseSelect;                        //ポーズで何を選択しているか
 
+    private bool tutImgOpen;                        //操作説明画像を開いているか
     private bool g_bPauseOpen;                      //ポーズを開いているか
 
     private float x0, x1, x2, x3;
@@ -64,6 +66,7 @@ public class Pause : MonoBehaviour
     private void Start()
     {
         pauseSelect = 0;
+        tutImgOpen = false;
 
         x0 = -1025.0f;
         x1 = -945.0f;
@@ -83,6 +86,7 @@ public class Pause : MonoBehaviour
             g_bPauseOpen = true;        //ポーズ開いてる判定
             Time.timeScale = 0.0f;      //時を止める
             pauseUIInstance = GameObject.Instantiate(pauseUI) as GameObject;    //ポーズUI設置
+            pauseSelect = 0;            //選択初期化
 
             //アニメーション再生
             backtogameAnime = GameObject.Find("BackToGame").GetComponent<Animator>();
@@ -91,6 +95,7 @@ public class Pause : MonoBehaviour
             retryAnime = GameObject.Find("Retry").GetComponent<Animator>();
             gameselectAnime = GameObject.Find("GameSelect").GetComponent<Animator>();
             tutorialAnime = GameObject.Find("Tutorial").GetComponent<Animator>();
+            tutorialImgAnime = GameObject.Find("TutorialImage").GetComponent<Animator>();
 
             pauseBgAnime = GameObject.Find("PauseBackground").GetComponent<Animator>();
             pauseBgAnime.Play("Base Layer.PauseBg", 0, 0.25f);
@@ -98,16 +103,12 @@ public class Pause : MonoBehaviour
         else
         {
 
-            //Animator pausecanvasAnime = GameObject.Find("PauseCanvas").GetComponent<Animator>(); ;
-            //pausecanvasAnime.Play("Base Layer.ClosePause", 0, 0.25f);
+            Animator pausecanvasAnime = GameObject.Find("PauseCanvas").GetComponent<Animator>(); ;
+            pausecanvasAnime.Play("Base Layer.ClosePause", 0, 0.25f);
 
+            Time.timeScale = 1.0f;              //時を動かす
 
-
-            g_bPauseOpen = false;       //ポーズ開いてない判定
-            Time.timeScale = 1.0f;      //時を動かす
-            Destroy(pauseUIInstance);   //ポーズUI破壊
-
-
+            Invoke("ClosePauseDelay", 0.25f);   //.25f遅延でポーズ破壊
 
         }
     }
@@ -117,10 +118,10 @@ public class Pause : MonoBehaviour
         //Moveアクションの入力取得
         _moveStickValue = context.ReadValue<Vector2>();
 
-        if (g_bPauseOpen) //ポーズを開いている場合
+        if (g_bPauseOpen && !tutImgOpen) //ポーズを開いている場合
         {
             GameObject selectBtn = GameObject.Find("SelectBtn");
-            if (_moveStickValue.x >= 0.1f)  //right arrow
+            if (_moveStickValue.y <= 0.1f && _moveStickValue.y != 0.0f)  //up arrow
             {
                 if (pauseSelect == 0)
                 {
@@ -145,7 +146,7 @@ public class Pause : MonoBehaviour
                 }
             }
 
-            if (_moveStickValue.x <= -0.1f)  //left arrow
+            if (_moveStickValue.y >= 0.1f && _moveStickValue.y != 0.0f)  //down arrow
             {
                 if (pauseSelect == 3)
                 {
@@ -168,26 +169,19 @@ public class Pause : MonoBehaviour
                     retryAnime.SetBool("anime", false);
                     backtogameAnime.SetBool("anime", true);
                 }
-
             }
         }
     }
 
     private void OnSelect(InputAction.CallbackContext context)
     {
-        if (g_bPauseOpen)
+        if (tutImgOpen)
         {
-            GameObject tutorialObj = GameObject.Find("TutorialImage");
-            Image tutorialImg = tutorialObj.GetComponent<Image>();
-            var tempColor = tutorialImg.color;
-
-            if (tempColor.a == 1f)
-            {
-                tempColor.a = 0f;
-                tutorialImg.color = tempColor;
-            }
-
-
+            tutorialImgAnime.Play("Base Layer.CloseTutImg", 0, 0);
+            tutImgOpen = false;
+        }
+        else if (g_bPauseOpen)
+        {
             if (pauseSelect == 0)           //ゲームに戻る
             {
                 g_bPauseOpen = false;       //ポーズ開いてない判定
@@ -196,23 +190,23 @@ public class Pause : MonoBehaviour
             }
             else if (pauseSelect == 1)      //やり直す
             {
-                SceneManager.LoadScene("OomoriScene");
+                SceneManager.LoadScene("GameScene");
             }
             else if (pauseSelect == 2)      //ステージセレクトに戻る
             {
-                SceneManager.LoadScene("StageSelect");
+                SceneManager.LoadScene("AreaSelect");
             }
             else if (pauseSelect == 3)      //操作説明
             {
-                tempColor.a = 1f;
-                tutorialImg.color = tempColor;
+                tutImgOpen = true;
+                tutorialImgAnime.Play("Base Layer.OpenTutImg", 0, 0);
             }
         }
     }
 
-    private IEnumerator DelayOneSec()
+    private void ClosePauseDelay()
     {
-        yield return new WaitForSeconds(1.0f);
-
+        g_bPauseOpen = false;       //ポーズ開いてない判定
+        Destroy(pauseUIInstance);   //ポーズUI破壊
     }
 }
