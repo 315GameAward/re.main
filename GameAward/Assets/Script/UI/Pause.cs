@@ -184,9 +184,12 @@ public class Pause : MonoBehaviour
         {
             if (pauseSelect == 0)           //ゲームに戻る
             {
-                g_bPauseOpen = false;       //ポーズ開いてない判定
-                Time.timeScale = 1.0f;      //時を動かす
-                Destroy(pauseUIInstance);   //ポーズUI破壊
+                Animator pausecanvasAnime = GameObject.Find("PauseCanvas").GetComponent<Animator>(); ;
+                pausecanvasAnime.Play("Base Layer.ClosePause", 0, 0.25f);
+
+                Time.timeScale = 1.0f;              //時を動かす
+
+                Invoke("ClosePauseDelay", 0.25f);   //.25f遅延でポーズ破壊
             }
             else if (pauseSelect == 1)      //やり直す
             {
