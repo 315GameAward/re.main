@@ -27,7 +27,9 @@ public class StageSelect : MonoBehaviour
     private int stageSelect;                        //何を選択しているか
 
     [SerializeField] private GameObject selecting;
-
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip selChange;
+    [SerializeField] private AudioClip select;
 
     private void Awake()
     {
@@ -57,10 +59,15 @@ public class StageSelect : MonoBehaviour
         //現在のシーン名取得
         Scene currentScene = SceneManager.GetActiveScene();
         
-        if (currentScene.name == "StageSelect")       //デバッグ用
+        if (currentScene.name == "StageSelect" || currentScene.name == "StageSelect2" || currentScene.name == "StageSelect3")
         {
             if (_moveStickValue.x >= 0.1f) //right arrow
             {
+                if (stageSelect != 4)
+                {
+                    audioSource.PlayOneShot(selChange);
+                }
+                
                 if (stageSelect == 0)
                 {
                     stageSelect = 1;
@@ -69,41 +76,46 @@ public class StageSelect : MonoBehaviour
                 else if (stageSelect == 1)
                 {
                     stageSelect = 2;
-                    selecting.transform.localPosition= new Vector3(0.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(-10.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 3;
-                    selecting.transform.localPosition= new Vector3(200.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(190.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
                     stageSelect = 4;
-                    selecting.transform.localPosition= new Vector3(400.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(390.0f, -300.0f, transform.position.z);
                 }
             }
 
             if (_moveStickValue.x <= -0.1f)
             {
+                if (stageSelect != 0)
+                {
+                    audioSource.PlayOneShot(selChange);
+                }
+                
                 if (stageSelect == 1)
                 {
                     stageSelect = 0;
-                    selecting.transform.localPosition= new Vector3(-400.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(-410.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 1;
-                    selecting.transform.localPosition= new Vector3(-200.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(-190.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
                     stageSelect = 2;
-                    selecting.transform.localPosition= new Vector3(0.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(-10.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 4)
                 {
                     stageSelect = 3;
-                    selecting.transform.localPosition= new Vector3(200.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition= new Vector3(190.0f, -300.0f, transform.position.z);
                 }
             }
         }
@@ -116,30 +128,91 @@ public class StageSelect : MonoBehaviour
         
         if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
         {
+            audioSource.PlayOneShot(select);
             //1-1
             if (stageSelect == 0)
             {
-                SceneManager.LoadScene("GameScene");
+                SceneManager.LoadScene("1-1");
             }
             //1-2
             else if (stageSelect == 1)
             {
-                
+                SceneManager.LoadScene("1-2");
             }
             //1-3
             else if (stageSelect == 2)
             {
-                
+                SceneManager.LoadScene("1-3");
             }
             //1-4
             else if (stageSelect == 3)
             {
-                
+                SceneManager.LoadScene("1-4");
             }
             //1-5
             else if (stageSelect == 4)
             {
-                
+                SceneManager.LoadScene("1-5");
+            }
+        }
+        
+        if (currentScene.name == "StageSelect2")
+        {
+            audioSource.PlayOneShot(select);
+            //1-1
+            if (stageSelect == 0)
+            {
+                SceneManager.LoadScene("2-1");
+            }
+            //1-2
+            else if (stageSelect == 1)
+            {
+                SceneManager.LoadScene("2-2");
+            }
+            //1-3
+            else if (stageSelect == 2)
+            {
+                SceneManager.LoadScene("2-3");
+            }
+            //1-4
+            else if (stageSelect == 3)
+            {
+                SceneManager.LoadScene("2-4");
+            }
+            //1-5
+            else if (stageSelect == 4)
+            {
+                SceneManager.LoadScene("2-5");
+            }
+        }
+    
+        if (currentScene.name == "StageSelect3")
+        {
+            audioSource.PlayOneShot(select);
+            //1-1
+            if (stageSelect == 0)
+            {
+                SceneManager.LoadScene("3-1");
+            }
+            //1-2
+            else if (stageSelect == 1)
+            {
+                SceneManager.LoadScene("3-2");
+            }
+            //1-3
+            else if (stageSelect == 2)
+            {
+                SceneManager.LoadScene("3-3");
+            }
+            //1-4
+            else if (stageSelect == 3)
+            {
+                SceneManager.LoadScene("3-4");
+            }
+            //1-5
+            else if (stageSelect == 4)
+            {
+                SceneManager.LoadScene("3-5");
             }
         }
     }

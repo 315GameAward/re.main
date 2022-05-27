@@ -182,17 +182,19 @@ public class AreaSelect : MonoBehaviour
             if (areaSelect == 0)
             {
                 Debug.Log("教室ステージ選択");
-                SceneManager.LoadScene("OomoriScene");
+                SceneManager.LoadScene("StageSelect");
             }
             //音楽室ステージ
             else if (areaSelect == 1)
             {
                 Debug.Log("音楽室ステージ選択");
+                SceneManager.LoadScene("StageSelect2");
             }
             //体育館ステージ
             else if (areaSelect == 2)
             {
                 Debug.Log("図工室ステージ選択");
+                SceneManager.LoadScene("StageSelect3");
             }
             //理科室へ
             else if (areaSelect == 3)
