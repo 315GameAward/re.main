@@ -125,7 +125,7 @@ public class MeshDivision2 : MonoBehaviour
                 Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
 
                 // カットポイントの始点の補正
-                cpVtx_s -= cpEdge * 0.02f;
+                cpVtx_s -= cpEdge * 0.013f;
 
                 // カットポイントの辺の補正
                 cpEdge = cpVtx_v - cpVtx_s; // 辺
@@ -1581,7 +1581,7 @@ public class MeshDivision2 : MonoBehaviour
                     Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
 
                     // カットポイントの始点の補正
-                    cpVtx_s += cpEdge * 0.001f;
+                    cpVtx_s += cpEdge * 0.0005f;
 
                     // カットポイントの辺の補正
                     cpEdge = cpVtx_v - cpVtx_s; // 辺
@@ -4795,7 +4795,7 @@ public class MeshDivision2 : MonoBehaviour
                     Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
 
                     // カットポイントの始点の補正
-                    cpVtx_s += cpEdge * 0.01f;
+                    cpVtx_s += cpEdge * 0.0005f;
 
                     // カットポイントの辺の補正
                     cpEdge = cpVtx_v - cpVtx_s; // 辺

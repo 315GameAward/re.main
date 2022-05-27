@@ -71,7 +71,7 @@ public class CutPoint2 : MonoBehaviour
 
 
         // レイキャストがあったとき 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit,5,5))
         {
             // ヒットしたものが目的の物だったら
             if (hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "DivisionPlane") bPurposeObj = true;
@@ -84,27 +84,22 @@ public class CutPoint2 : MonoBehaviour
                 if (hit.point != CutPointTest[CutPointTest.Count - 1])
                 {
                     // カットポイントの追加
-                    CutPointTest.Add(hit.point);    // ヒットした座標を格納
+                    if (hit.collider.gameObject.name == "Plane" || hit.collider.gameObject.name == "MoveArea")
+                    {
+                        CutPointTest.Add(hit.point);    // ヒットした座標を格納
+                        Debug.Log("カットポイントの追加");
+                    }
+                  
+
+                   // ダメージラインの位置設定、生成
                     Vector3 pos = new Vector3();
                     pos = hit.point;
-                    GameObject gameObj = new GameObject();
+                    GameObject gameObj;
                     gameObj = m_CubeBase;
                     gameObj.transform.position = pos;
                     gameObj.transform.rotation = this.transform.rotation;
-                    //objList.Add(gameObj);
-                    Debug.Log("objList" + objList.Count);
-                    //if (CutPointTest.Count == 1)
-                    //{
-                    //    pos = hit.point;
-                    //}
-                    //else
-                    //{
-                    //    pos = (CutPointTest[CutPointTest.Count - 1] - CutPointTest[CutPointTest.Count - 2]) / 2.0f + transform.position;
-                    //}
                    
-
                     // m_CubeBase を元にして新しいm_CubeBaseを作成
-                    //Instantiate(m_CubeBase, pos, this.transform.rotation);
                     objList.Add(Instantiate(m_CubeBase, pos, this.transform.rotation));
 
                     // 頂点を広げる処理
@@ -207,17 +202,13 @@ public class CutPoint2 : MonoBehaviour
                             const float eps = 0.00001f;
                             if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
                             {
-                                // Debug.Log("交差してない");
+                                // 交差していないとき
                             }
                             else
                             {
-                                //Debug.Log("交差してる");
-                                Debug.Log("交差した座標:" + p);
-
+                                // 交差しているとき 
                                 intersectionMemory.Add(p);
-                                Debug.Log("交点の保存");
-                                Debug.Log("保存された交点の数:" + intersectionMemory.Count);
-
+                              
                             }
                         }
 
@@ -433,33 +424,33 @@ public class CutPoint2 : MonoBehaviour
 
 
 
-        //// 一個前のカットポイントの表示
-        //if (CutPoint.Count > 0)
-        //{
-        //    // 始点のカットポイントギズモ
-        //    Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
-        //    Gizmos.DrawSphere(CutPoint[0], 0.01f);  // 球の表示
+        // 一個前のカットポイントの表示
+        if (CutPoint.Count > 0)
+        {
+            // 始点のカットポイントギズモ
+            Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
+            Gizmos.DrawSphere(CutPoint[0], 0.01f);  // 球の表示
 
-        //    // 途中のカットポイントギズモ
-        //    for (int i = 1; i < CutPoint.Count; i++)
-        //    {
-        //        Gizmos.color = new Color(0, 1, 0, 1);   // 色の指定
-        //        Gizmos.DrawSphere(CutPoint[i], 0.01f);  // 球の表示
-        //    }
+            // 途中のカットポイントギズモ
+            for (int i = 1; i < CutPoint.Count; i++)
+            {
+                Gizmos.color = new Color(0, 1, 0, 1);   // 色の指定
+                Gizmos.DrawSphere(CutPoint[i], 0.01f);  // 球の表示
+            }
 
-        //    // 終点のカットポイントギズモ
-        //    Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
-        //    Gizmos.DrawSphere(CutPoint[CutPoint.Count - 1], 0.01f);  // 球の表示
-        //}
-        ////  一個前のカットポイントをつなぐ線を表示したい
-        //if (CutPoint.Count >= 2)
-        //{
-        //    for (int i = 1; i < CutPoint.Count; i++)
-        //    {
-        //        Gizmos.color = new Color(0, 0.5f, 0, 1);    // 色の指定                
-        //        Gizmos.DrawLine(CutPoint[i - 1], CutPoint[i]);  // 線の表示
-        //    }
-        //}
+            // 終点のカットポイントギズモ
+            Gizmos.color = new Color(1, 1, 0, 1);   // 色の指定
+            Gizmos.DrawSphere(CutPoint[CutPoint.Count - 1], 0.01f);  // 球の表示
+        }
+        //  一個前のカットポイントをつなぐ線を表示したい
+        if (CutPoint.Count >= 2)
+        {
+            for (int i = 1; i < CutPoint.Count; i++)
+            {
+                Gizmos.color = new Color(0, 0.5f, 0, 1);    // 色の指定                
+                Gizmos.DrawLine(CutPoint[i - 1], CutPoint[i]);  // 線の表示
+            }
+        }
     }
 
 

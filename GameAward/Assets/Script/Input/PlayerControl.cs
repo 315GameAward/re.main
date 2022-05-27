@@ -86,7 +86,8 @@ public class PlayerControl : MonoBehaviour
         _gameInputs.Player.Move.canceled += OnMove;
 
         controllerNames = Input.GetJoystickNames();
-
+        
+        // 頂点の追加
         gameObject.GetComponent<CutPoint2>().AddCPPoint();
 
         //Cutイベント登録
@@ -99,7 +100,7 @@ public class PlayerControl : MonoBehaviour
         //_gameInputs.Player.SmoothCut.canceled += OnSmoothCutOff;
 
         // Cut2イベント登録
-        _gameInputs.Player.Cut2.started += OnCut;
+        _gameInputs.Player.Cut2.performed += OnCut;
         _gameInputs.Player.Cut2.performed += MoveDir;
         _gameInputs.Player.Cut2.canceled += RessetMobeDir;
 
@@ -186,7 +187,13 @@ public class PlayerControl : MonoBehaviour
     // スーと切る処理の始め(途中)
     private void MoveDir(InputAction.CallbackContext context)
     {
-        bLeftClick = true;
+        // スムースカットの時
+        if (eCutMode == CutMode.CUT_SMOOTH)
+        {
+            bLeftClick = true;
+        }
+
+      
         //Scisser.GetComponent<PlayerAnimation>().anime = true;
 
     }
@@ -259,7 +266,12 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(0.0f, _moveStickValue.x * _moveForce, 0.0f));
+        // 方向転換
+        if(!bLeftClick)
+        {
+            transform.Rotate(new Vector3(0.0f, _moveStickValue.x * _moveForce, 0.0f));
+
+        }
         /*
         // 移動方向の力を与える
         _rigidbody.AddForce(new Vector3(
@@ -268,6 +280,7 @@ public class PlayerControl : MonoBehaviour
             _moveInputValue.y
         ) * _moveForce);
         */
+
         // 移動方向の力を与える
         _rigidbody.AddForce(_moveDir * _moveForce);
         transform.position += _moveDir * 0.1f;
