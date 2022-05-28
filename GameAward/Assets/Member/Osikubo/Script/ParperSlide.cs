@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameClear : MonoBehaviour
+public class ParperSlide : MonoBehaviour
 {
     Animation anim;
-    public Animator animator;
+    public GameObject gameClear;
+     Animator animator;
 
     GameObject slideObject;     // SlideSheet.csがアタッチされたオブジェクト取得用
     SlideSheet slide;           // SlideSheet.csクラス取得
-
     // Start is called before the first frame update
     void Start()
     {
-        anim = this.gameObject.GetComponent<Animation>();
+        animator = this.gameObject.GetComponent<Animator>();
         slideObject = GameObject.Find("Result");
         slide = slideObject.GetComponent<SlideSheet>();
     }
@@ -21,14 +21,9 @@ public class GameClear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("slide.Landing:" + slide.Landing);
-        if (slide.Landing)
+        if(gameClear.GetComponent<Animator>().GetBool("End"))
         {
-            animator.SetBool("Start", true);
-            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5f)
-            {
-                animator.SetBool("End", true);
-            }
+            animator.SetBool("Start2", true);
         }
     }
 }
