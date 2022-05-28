@@ -75,14 +75,13 @@ public class Life : MonoBehaviour
             b_Life = false; // 一度しか通らない
         }
 
-        Debug.Log(" アニメーション再生時間" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-
+       
         // アニメーションが終わったときの処理
         if(bBreakAnim)
         {
             
             // アニメーションが再生されていなかったら
-            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > animTime + 1)
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5f)
             {
                 // ライフの削除
                 Destroy(Lifes[0]);
