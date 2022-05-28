@@ -73,7 +73,7 @@ public class AppearanceEvaluation : MonoBehaviour
     void Update()
     {
         // 降りきっていないなら処理しない
-        if (!SlideSheet.Landing)    // この処理をアニメーションを動かすスクリプトに持っていく。
+        if (!slide.Landing)    // この処理をアニメーションを動かすスクリプトに持っていく。
             return;                 // 代わりにアニメーションが終了したかのフラグをここで書く。
         StartCoroutine("Defeat");
     }

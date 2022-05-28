@@ -26,9 +26,9 @@ public class SlideSheet : MonoBehaviour
     public float moveDistance;      // 移動量
 
 
-    static bool landing;    // スライドが降りきったか
+    bool landing;    // スライドが降りきったか
     // ↑のフラグを渡す
-    public static bool Landing { get { return landing; } }
+    public bool Landing { get { return landing; } }
 
 
     Vector3 pos;    // スライドの座標
@@ -39,7 +39,7 @@ public class SlideSheet : MonoBehaviour
         landing = false;
         // 画面外に出るよう設置
         slide.transform.position = new Vector3(Screen.width / 2, Screen.height + slide.rect.height, 0.0f);
-
+        
     }
 
     // Update is called once per frame
