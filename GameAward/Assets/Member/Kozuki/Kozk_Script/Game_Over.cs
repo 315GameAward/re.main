@@ -51,6 +51,7 @@ public class Game_Over : MonoBehaviour
         img_end = GameObject.Find("cursor_3").GetComponent<Image>();
         img_slct.enabled = false;
         img_rtry.enabled = false;
+        img_end.enabled = false;
     }
 
     // Update is called once per frame
@@ -136,21 +137,21 @@ public class Game_Over : MonoBehaviour
                         SceneManager.LoadScene("AreaSelect");    // 仮
                     }
                     break;
-                case STATE_GMOV.OVER_END:   // ゲームを抜けるを選択中
-                    img_slct.enabled = false;
-                    img_rtry.enabled = false;
-                    img_end.enabled = true;
+                //case STATE_GMOV.OVER_END:   // ゲームを抜けるを選択中
+                //    img_slct.enabled = false;
+                //    img_rtry.enabled = false;
+                //    img_end.enabled = true;
 
-                    // ゲーム終了
-                    if (Input.GetKeyUp(KeyCode.Return))
-                    {
-                        //音を鳴らす
-                        audioSource.PlayOneShot(sound_Chs);
+                //    // ゲーム終了
+                //    if (Input.GetKeyUp(KeyCode.Return))
+                //    {
+                //        //音を鳴らす
+                //        audioSource.PlayOneShot(sound_Chs);
 
-                        // 終了
-                        Application.Quit();
-                    }
-                    break;
+                //        // 終了
+                //        Application.Quit();
+                //    }
+                //    break;
             }
         }
         else if (b_gmov == false)   // 解除されたら
