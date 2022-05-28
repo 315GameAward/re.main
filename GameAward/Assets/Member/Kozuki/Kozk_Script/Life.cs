@@ -25,6 +25,10 @@ public class Life : MonoBehaviour
 
     private bool b_Life = true; // 体力が残っているか true:ある
 
+    bool bBreakAnim = false;    // アニメーションが再生されているか true:再生中
+    Animator animator;
+    float animTime = 0.0f;  // アニメーションの再生時間
+
     public static Life instance;
     public GameObject image_gameOver;
 
@@ -54,6 +58,9 @@ public class Life : MonoBehaviour
             AddLife();
         }
         b_Life = true;
+
+        // アニメーターに代入
+        animator = Lifes[0].GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -68,18 +75,47 @@ public class Life : MonoBehaviour
             b_Life = false; // 一度しか通らない
         }
 
-        //// 左矢印を押したら体力消費
-        //if (Input.GetKeyUp(KeyCode.PageUp))
-        //{
-        //    AddLife();
-        //    nLife++;
-        //}
+        Debug.Log(" アニメーション再生時間" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
-        //// 右矢印を押したら体力増加
-        //if (Input.GetKeyUp(KeyCode.PageDown))
-        //{
-        //    DelLife();
-        //}
+        // アニメーションが終わったときの処理
+        if(bBreakAnim)
+        {
+            
+            // アニメーションが再生されていなかったら
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > animTime + 1)
+            {
+                // ライフの削除
+                Destroy(Lifes[0]);
+                Lifes.RemoveAt(0);                
+               
+                nLife--;
+
+                // アニメーターに代入
+                animator = Lifes[0].GetComponent<Animator>();
+                Lifes[0].GetComponent<Animator>().SetBool("StartBreak", false);
+
+                // アニメーション再生OFF
+                bBreakAnim = false;
+            }
+           
+        }
+
+#if DEBUG
+        // 左矢印を押したら体力消費
+        if (Input.GetKeyUp(KeyCode.PageUp))
+        {
+            AddLife();
+            nLife++;
+        }
+
+        // 右矢印を押したら体力増加
+        if (Input.GetKeyUp(KeyCode.PageDown))
+        {
+            DelLife();
+        }
+#endif
+
+
     }
 
     //========================
@@ -103,19 +139,23 @@ public class Life : MonoBehaviour
     //========================
     public void DelLife()
     {
+        if (bBreakAnim) return;
+
         if(nLife <= 0)
         {
             nLife = 0;
             return;
         }
 
-        Destroy(Lifes[0]);
-        Lifes.RemoveAt(0);
-
+        // アニメーション再生
+        bBreakAnim = true;
+        Lifes[0].GetComponent<Animator>().SetBool("StartBreak",true);
+       
         //音を鳴らす
         audioSource.PlayOneShot(sound);
 
-        nLife--;
+        // アニメーション時間代入
+        animTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
     // 体力数取得用関数
