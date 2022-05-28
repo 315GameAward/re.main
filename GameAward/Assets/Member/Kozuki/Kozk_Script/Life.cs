@@ -77,9 +77,9 @@ public class Life : MonoBehaviour
 
        
         // アニメーションが終わったときの処理
-        if(bBreakAnim)
+        if(bBreakAnim && nLife > 0)
         {
-            
+            Debug.Log("trueです");
             // アニメーションが再生されていなかったら
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5f)
             {
@@ -88,6 +88,7 @@ public class Life : MonoBehaviour
                 Lifes.RemoveAt(0);                
                
                 nLife--;
+                if (nLife <= 0) return;
 
                 // アニメーターに代入
                 animator = Lifes[0].GetComponent<Animator>();
@@ -145,6 +146,9 @@ public class Life : MonoBehaviour
             nLife = 0;
             return;
         }
+
+        // アニメーターに代入
+        animator = Lifes[0].GetComponent<Animator>();
 
         // アニメーション再生
         bBreakAnim = true;
