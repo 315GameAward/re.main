@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class ParperSlide : MonoBehaviour
 {
-    Animation anim;
     public GameObject gameClear;
-     Animator animator;
-
-    GameObject slideObject;     // SlideSheet.csがアタッチされたオブジェクト取得用
-    SlideSheet slide;           // SlideSheet.csクラス取得
+    public Animator ClearPaper;
+    bool endAnim;
+    public bool EndAnim { get { return endAnim; } }
     // Start is called before the first frame update
     void Start()
     {
-        animator = this.gameObject.GetComponent<Animator>();
-        slideObject = GameObject.Find("Result");
-        slide = slideObject.GetComponent<SlideSheet>();
+        ClearPaper = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,7 +19,14 @@ public class ParperSlide : MonoBehaviour
     {
         if(gameClear.GetComponent<Animator>().GetBool("End"))
         {
-            animator.SetBool("Start2", true);
+            ClearPaper.SetBool("Start2", true);
+            if (ClearPaper.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && ClearPaper.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5f)
+            {
+                ClearPaper.SetBool("End", true);
+            }
         }
+        
+        endAnim = ClearPaper.gameObject.GetComponent<Animator>().GetBool("End");
+
     }
 }
