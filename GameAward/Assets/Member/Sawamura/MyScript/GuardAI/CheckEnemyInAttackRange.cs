@@ -27,7 +27,7 @@ public class CheckEnemyInAttackRange : Node
         }
 
         Transform target = (Transform)t;
-        if (Vector3.Distance(__transform.position, target.position) <= GuardBT.attackRange)
+        if (Vector3.Distance(__transform.position, target.position) <= PatrolAI.attackRange)
         {
             __animator.SetBool("Attacking", true);
             __animator.SetBool("Walking", false);

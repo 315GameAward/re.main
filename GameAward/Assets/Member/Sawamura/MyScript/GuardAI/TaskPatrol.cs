@@ -53,7 +53,7 @@ public class TaskPatrol : Node
             else
             {
                 //Vector3.MoveTowards「現在地」から「目的地」まで「一定速度」で移動させてくれる関数
-                __transform.position = Vector3.MoveTowards(__transform.position, wp.position, GuardBT.speed * Time.deltaTime);
+                __transform.position = Vector3.MoveTowards(__transform.position, wp.position, PatrolAI.speed * Time.deltaTime);
                 //LookAt 指定した方向を見る関数
                 __transform.LookAt(wp.position);
             }

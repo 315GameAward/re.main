@@ -23,7 +23,7 @@ public class CheckEnemyInFOVRange : Node
         if (t == null)
         {
             Collider[] colliders = Physics.OverlapSphere(
-                __transform.position,GuardBT.fovRange, __enemyLayeMask);
+                __transform.position, PatrolAI.fovRange, __enemyLayeMask);
 
             if (colliders.Length > 0)
             {

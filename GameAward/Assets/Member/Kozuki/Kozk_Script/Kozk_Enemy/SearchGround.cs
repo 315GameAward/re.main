@@ -27,7 +27,7 @@ public class SearchGround : MonoBehaviour
              Debug.Log("“–‚Á‚Ä‚é");
            
             this.transform.Translate(Vector3.right * speed);
-            GetComponent<GuardBT>().enabled = false;
+            GetComponent<PatrolAI>().enabled = false;
         }
             else
             {
