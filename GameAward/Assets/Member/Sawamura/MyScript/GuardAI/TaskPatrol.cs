@@ -26,6 +26,11 @@ public class TaskPatrol : Node
 
     public override NodeState Evaluate()
     {
+        //‰ü—Ç—\’è
+        //if (__transform.position.y > -1)
+        //{
+        //
+        //}
         if (__waiting)
         {
             __waitCounter += Time.deltaTime;
