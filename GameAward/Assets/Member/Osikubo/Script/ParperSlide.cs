@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParperSlide : MonoBehaviour
 {
     public GameObject gameClear;
-    public Animator ClearPaper;
+    Animator ClearPaper;
     bool endAnim;
     public bool EndAnim { get { return endAnim; } }
     // Start is called before the first frame update
