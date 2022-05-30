@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -7541063649181527932}
   - component: {fileID: 300881699183995539}
   - component: {fileID: -288959966964775986}
+  - component: {fileID: 1694512904283893239}
   m_Layer: 0
   m_Name: Scissor
   m_TagString: Untagged
@@ -260,6 +261,7 @@ MonoBehaviour:
   ground: {fileID: 0}
   AddPointOnOff: 1
   m_CubeBase: {fileID: 3756069021933423836, guid: 566e25efd8e31e24399d3ebe7a39fd4a, type: 3}
+  objList: []
   v: {x: 0, y: 0}
   v1: {x: 0, y: 0}
   v2: {x: 0, y: 0}
@@ -270,6 +272,18 @@ MonoBehaviour:
   bStartP: 0
   bPurposeObj: 0
   particle: {fileID: 1545283425084691684, guid: 59ca76512a7de4540bd6a076f6137380, type: 3}
+--- !u!114 &1694512904283893239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246881300938537682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d04f3866feeb74bb6fed6950c70742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2246881301111235703
 GameObject:
   m_ObjectHideFlags: 0

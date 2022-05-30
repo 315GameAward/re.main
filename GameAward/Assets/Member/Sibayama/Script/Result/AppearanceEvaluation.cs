@@ -67,8 +67,6 @@ public class AppearanceEvaluation : MonoBehaviour
     // 一定間隔ずつリザルト項目表示
     IEnumerator Defeat()
     {
-        yield return new WaitForSeconds(stopTime);
-
         // ドデカスタンプ
         AcObj[0].SetActive(true);
         AcObj[0].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -78,6 +76,8 @@ public class AppearanceEvaluation : MonoBehaviour
         AcObj[1].SetActive(true);
 
         // ぼかし用レイヤー
-        layer.gameObject.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);   
+        layer.gameObject.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+
+        slideObject.SetActive(false);
     }
 }

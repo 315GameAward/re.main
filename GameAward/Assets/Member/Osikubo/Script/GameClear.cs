@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class GameClear : MonoBehaviour
 {
-    Animation anim;
     public Animator animator;
 
     GameObject slideObject;     // SlideSheet.csがアタッチされたオブジェクト取得用
     SlideSheet slide;           // SlideSheet.csクラス取得
 
+    void Awake()
+    {
+        // 生存時間をリアルタイム設定
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        anim = this.gameObject.GetComponent<Animation>();
         slideObject = GameObject.Find("Result");
         slide = slideObject.GetComponent<SlideSheet>();
     }

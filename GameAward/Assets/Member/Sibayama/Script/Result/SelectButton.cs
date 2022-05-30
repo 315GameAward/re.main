@@ -18,6 +18,11 @@ using UnityEngine.SceneManagement;
 public class SelectButton : MonoBehaviour
 {
     Button[] button = new Button[2];
+    GameObject currentScene;
+    GetScene scene;
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,14 +37,31 @@ public class SelectButton : MonoBehaviour
         
     }
 
-    public void ReturnSelect(string _name)
+    public void ReturnSelect()
     {
-        SceneManager.LoadScene(_name);
+        SceneManager.LoadScene(GetScene.CurrentSceneArea);
     }
 
-    public void NextStage(int _index)
+    public void NextStage()
     {
-        SceneManager.LoadScene(_index);
+        switch (GetScene.CurrentSceneStage)
+        {
+            case 9:// 1-5
+                // エリア２へ
+                SceneManager.LoadScene(GetScene.CurrentSceneArea + 1);
+                break;
+            case 14:// 2-5
+                // エリア３へ
+                SceneManager.LoadScene(GetScene.CurrentSceneArea + 1);
+                break;
+            default:
+                if ((GetScene.CurrentSceneStage + 1) > 19)
+                {// 最終エリア、最終ステージをクリアしたら
+                    SceneManager.LoadScene("TitleScene");
+                }
+                SceneManager.LoadScene((GetScene.CurrentSceneStage + 1));
+                break;
+        }
     }
 
 }

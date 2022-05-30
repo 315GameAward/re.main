@@ -4,29 +4,36 @@ using UnityEngine;
 
 public class ParperSlide : MonoBehaviour
 {
-    public GameObject gameClear;
+    GameObject ClearObj;
+    Animator gameClearAnim;
     Animator ClearPaper;
     bool endAnim;
     public bool EndAnim { get { return endAnim; } }
     // Start is called before the first frame update
     void Start()
     {
+        endAnim = false;
         ClearPaper = this.gameObject.GetComponent<Animator>();
+        ClearObj = GameObject.Find("GameClear");
+        gameClearAnim = ClearObj.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameClear.GetComponent<Animator>().GetBool("End"))
+
+        if (!(ClearObj.activeSelf || gameObject.activeSelf))
+            return;
+        if(gameClearAnim.GetBool("End"))
         {
             ClearPaper.SetBool("Start2", true);
             if (ClearPaper.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && ClearPaper.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5f)
             {
                 ClearPaper.SetBool("End", true);
+                ClearObj.SetActive(false);
             }
         }
-        
-        endAnim = ClearPaper.gameObject.GetComponent<Animator>().GetBool("End");
+        endAnim = ClearPaper.GetBool("End");
 
     }
 }
