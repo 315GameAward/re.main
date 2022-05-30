@@ -138,50 +138,53 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCut(InputAction.CallbackContext context)
     {
-        if (eCutMode != CutMode.CUT_ONE)
+        var pauseObject = GameObject.Find("PauseUI(Clone)");
+        if (pauseObject == null)
         {
+            if (eCutMode != CutMode.CUT_ONE)
+            {
+                // カットポイントの追加
+                gameObject.GetComponent<CutPoint2>().AddCPPoint();
+                return;
+            }
+
+            //切った時の移動
+            transform.position += transform.forward * moveForce;
+
+            // パッドの処理
+            if (!(controllerNames.Length == 0))
+            {
+                //パッドの振動設定                   
+                Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);
+
+                //ディレイのコルーチン実行
+                StartCoroutine(DelayMethod(motorDelay, () =>
+                {
+                    Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
+                }));
+            }
+
+            m_bPlayerMove = true;
+
+            // SEの再生
+            if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
+            {
+                // 紙を切る時
+                audioSource.PlayOneShot(se2);
+            }
+            else
+            {
+                // きるものがないときの切る時
+                audioSource.PlayOneShot(se1);
+            }
+
+            // 切るアニメーションの再生
+            Scisser.GetComponent<PlayerAnimation>().anime = true;
+
             // カットポイントの追加
             gameObject.GetComponent<CutPoint2>().AddCPPoint();
-            return;
+            bAddPoint = true;
         }
-
-        //切った時の移動
-        transform.position += transform.forward * moveForce;
-
-        // パッドの処理
-        if (!(controllerNames.Length == 0))
-        {
-            //パッドの振動設定                   
-            Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);
-
-            //ディレイのコルーチン実行
-            StartCoroutine(DelayMethod(motorDelay, () =>
-            {              
-                Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
-            }));
-        }
-       
-        m_bPlayerMove = true;
-
-        // SEの再生
-        if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
-        {
-            // 紙を切る時
-            audioSource.PlayOneShot(se2);
-        }
-        else
-        {
-            // きるものがないときの切る時
-            audioSource.PlayOneShot(se1);
-        }
-
-        // 切るアニメーションの再生
-        Scisser.GetComponent<PlayerAnimation>().anime = true;
-
-        // カットポイントの追加
-        gameObject.GetComponent<CutPoint2>().AddCPPoint();
-        bAddPoint = true;
-        
     }
 
     // スーと切る処理の始め(途中)
