@@ -8383,6 +8383,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1072969572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072969566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540669473e669244f982031c63ecf848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1085300041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14348,6 +14363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target:
   - {fileID: 1196675380}
+  - {fileID: 1072969572}
 --- !u!4 &1888915295
 Transform:
   m_ObjectHideFlags: 0
@@ -15577,11 +15593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccab21bc3ebd7c7418f950dc67f281af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.058
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccab21bc3ebd7c7418f950dc67f281af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6173048
+      value: -0.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccab21bc3ebd7c7418f950dc67f281af, type: 3}
       propertyPath: m_LocalRotation.w
