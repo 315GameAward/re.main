@@ -38,10 +38,13 @@ public class StageSelect : MonoBehaviour
 
         //項目移動イベント登録
         _gameInputs.Player.MoveSelect.performed += OnMoveSelect;
-        
+
         //Selectイベント登録
         _gameInputs.Player.Select.started += OnSelect;
-        
+
+        //Pauseイベント登録(Back)
+        _gameInputs.Player.Pause.started += OnPause;
+
         //InputAction有効化
         _gameInputs.Enable();
     }
@@ -55,10 +58,10 @@ public class StageSelect : MonoBehaviour
     {
         //Moveアクションの入力取得
         _moveStickValue = context.ReadValue<Vector2>();
-        
+
         //現在のシーン名取得
         Scene currentScene = SceneManager.GetActiveScene();
-        
+
         if (currentScene.name == "StageSelect" || currentScene.name == "StageSelect2" || currentScene.name == "StageSelect3")
         {
             if (_moveStickValue.x >= 0.1f) //right arrow
@@ -67,26 +70,26 @@ public class StageSelect : MonoBehaviour
                 {
                     audioSource.PlayOneShot(selChange);
                 }
-                
+
                 if (stageSelect == 0)
                 {
                     stageSelect = 1;
-                    selecting.transform.localPosition= new Vector3(-200.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-200.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 1)
                 {
                     stageSelect = 2;
-                    selecting.transform.localPosition= new Vector3(-10.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-10.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 3;
-                    selecting.transform.localPosition= new Vector3(190.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(190.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
                     stageSelect = 4;
-                    selecting.transform.localPosition= new Vector3(390.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(390.0f, -300.0f, transform.position.z);
                 }
             }
 
@@ -96,26 +99,26 @@ public class StageSelect : MonoBehaviour
                 {
                     audioSource.PlayOneShot(selChange);
                 }
-                
+
                 if (stageSelect == 1)
                 {
                     stageSelect = 0;
-                    selecting.transform.localPosition= new Vector3(-410.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-410.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 1;
-                    selecting.transform.localPosition= new Vector3(-190.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-190.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
                     stageSelect = 2;
-                    selecting.transform.localPosition= new Vector3(-10.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-10.0f, -300.0f, transform.position.z);
                 }
                 else if (stageSelect == 4)
                 {
                     stageSelect = 3;
-                    selecting.transform.localPosition= new Vector3(190.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(190.0f, -300.0f, transform.position.z);
                 }
             }
         }
@@ -125,7 +128,7 @@ public class StageSelect : MonoBehaviour
     {
         //現在のシーン名取得
         Scene currentScene = SceneManager.GetActiveScene();
-        
+
         if (currentScene.name == "StageSelect")     //ステージセレクトシーン内の場合
         {
             audioSource.PlayOneShot(select);
@@ -155,7 +158,7 @@ public class StageSelect : MonoBehaviour
                 SceneManager.LoadScene("1-5");
             }
         }
-        
+
         if (currentScene.name == "StageSelect2")
         {
             audioSource.PlayOneShot(select);
@@ -185,7 +188,7 @@ public class StageSelect : MonoBehaviour
                 SceneManager.LoadScene("2-5");
             }
         }
-    
+
         if (currentScene.name == "StageSelect3")
         {
             audioSource.PlayOneShot(select);
@@ -214,6 +217,17 @@ public class StageSelect : MonoBehaviour
             {
                 SceneManager.LoadScene("3-5");
             }
+        }
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        //現在のシーン名取得
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        if(currentScene.name == "StageSelect" || currentScene.name == "StageSelect2" || currentScene.name == "StageSelect3")
+        {
+            SceneManager.LoadScene("AreaSelect");
         }
     }
 }
