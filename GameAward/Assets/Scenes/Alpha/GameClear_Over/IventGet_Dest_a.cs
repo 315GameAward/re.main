@@ -31,6 +31,7 @@ public class IventGet_Dest_a : MonoBehaviour
             Debug.Log("target‚ªíœ‚³‚ê‚Ü‚µ‚½");
             // ‚±‚±‚Éˆ—‚ğ’Ç‰Á
             //status_dest = DestGame_a.GameClear;
+            Life.instance.DelLife();
         });
     }
 
