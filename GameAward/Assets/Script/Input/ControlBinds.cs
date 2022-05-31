@@ -819,6 +819,164 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GameOver"",
+            ""id"": ""79920b39-fcc2-4965-8c5d-20604749e87e"",
+            ""actions"": [
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Value"",
+                    ""id"": ""96f1fd2c-dc31-40de-a816-546ba5c074b5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dicision"",
+                    ""type"": ""Button"",
+                    ""id"": ""48a5294c-2993-4669-b77c-489c198438bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""382f7850-9485-4482-85aa-f91dc6cf2004"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""eb7233ed-617d-4f32-b1f2-12d7d8793742"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7d247b50-2fe4-4594-9349-0a716981283b"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""df6f2e0a-84f7-4350-8c8b-0b6f103dd4e9"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9357847b-7341-4648-86aa-e35bcffd1fb7"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""7baa477c-872f-4037-85a7-51b452394461"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a9e46c70-229c-47ec-b48a-602dc335c04a"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a8430787-cae6-4409-98b6-006efd17513b"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fb65de0a-d836-4cd1-a31b-d5e0274d6205"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""aec74196-bc7c-4be7-aa70-d76f16ad447e"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a497b228-1dd3-45b5-894b-cfa3add36261"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dicision"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55294134-bbd5-44ea-9c96-416dabf32478"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dicision"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -844,6 +1002,10 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         m_TitleScene = asset.FindActionMap("TitleScene", throwIfNotFound: true);
         m_TitleScene_MoveScene = m_TitleScene.FindAction("MoveScene", throwIfNotFound: true);
         m_TitleScene_Newaction = m_TitleScene.FindAction("New action", throwIfNotFound: true);
+        // GameOver
+        m_GameOver = asset.FindActionMap("GameOver", throwIfNotFound: true);
+        m_GameOver_Select = m_GameOver.FindAction("Select", throwIfNotFound: true);
+        m_GameOver_Dicision = m_GameOver.FindAction("Dicision", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1094,6 +1256,47 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
         }
     }
     public TitleSceneActions @TitleScene => new TitleSceneActions(this);
+
+    // GameOver
+    private readonly InputActionMap m_GameOver;
+    private IGameOverActions m_GameOverActionsCallbackInterface;
+    private readonly InputAction m_GameOver_Select;
+    private readonly InputAction m_GameOver_Dicision;
+    public struct GameOverActions
+    {
+        private @ControlBinds m_Wrapper;
+        public GameOverActions(@ControlBinds wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Select => m_Wrapper.m_GameOver_Select;
+        public InputAction @Dicision => m_Wrapper.m_GameOver_Dicision;
+        public InputActionMap Get() { return m_Wrapper.m_GameOver; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameOverActions set) { return set.Get(); }
+        public void SetCallbacks(IGameOverActions instance)
+        {
+            if (m_Wrapper.m_GameOverActionsCallbackInterface != null)
+            {
+                @Select.started -= m_Wrapper.m_GameOverActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_GameOverActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_GameOverActionsCallbackInterface.OnSelect;
+                @Dicision.started -= m_Wrapper.m_GameOverActionsCallbackInterface.OnDicision;
+                @Dicision.performed -= m_Wrapper.m_GameOverActionsCallbackInterface.OnDicision;
+                @Dicision.canceled -= m_Wrapper.m_GameOverActionsCallbackInterface.OnDicision;
+            }
+            m_Wrapper.m_GameOverActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @Dicision.started += instance.OnDicision;
+                @Dicision.performed += instance.OnDicision;
+                @Dicision.canceled += instance.OnDicision;
+            }
+        }
+    }
+    public GameOverActions @GameOver => new GameOverActions(this);
     public interface IPlayerActions
     {
         void OnCut(InputAction.CallbackContext context);
@@ -1117,5 +1320,10 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
     {
         void OnMoveScene(InputAction.CallbackContext context);
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IGameOverActions
+    {
+        void OnSelect(InputAction.CallbackContext context);
+        void OnDicision(InputAction.CallbackContext context);
     }
 }

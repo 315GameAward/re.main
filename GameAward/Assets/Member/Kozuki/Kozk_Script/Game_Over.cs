@@ -38,6 +38,9 @@ public class Game_Over : MonoBehaviour
     public bool b_gmov = false;    // trueなら呼び出す
     private bool b_gingle = false;
 
+    private ControlBinds _gameInputs;        //インプット
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +55,16 @@ public class Game_Over : MonoBehaviour
         img_slct.enabled = false;
         img_rtry.enabled = false;
         img_end.enabled = false;
+
+        //InputActionインスタンス生成
+        _gameInputs = new ControlBinds();
+
+        _gameInputs.GameOver.Select.started += MoveCursor;
+
+        _gameInputs.GameOver.Dicision.started += Dicision;
+
+        //InputAction有効化
+        _gameInputs.Enable();
     }
 
     // Update is called once per frame
@@ -63,28 +76,28 @@ public class Game_Over : MonoBehaviour
             // ジングル再生
             if(b_gingle == true) { audioSource.PlayOneShot(sound_Gin); b_gingle = false; }
 
-            // 入力取得
-            if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                //音を鳴らす
-                audioSource.PlayOneShot(sound_Rot);
-                OVERstate++;
-                if (OVERstate > STATE_GMOV.OVER_END)
-                {
-                    OVERstate = STATE_GMOV.OVER_RETRY;
-                }
+            //// 入力取得
+            //if (Input.GetKeyUp(KeyCode.DownArrow) || Gamepad.current.buttonSouth.isPressed)
+            //{
+            //    //音を鳴らす
+            //    audioSource.PlayOneShot(sound_Rot);
+            //    OVERstate++;
+            //    if (OVERstate > STATE_GMOV.OVER_END)
+            //    {
+            //        OVERstate = STATE_GMOV.OVER_RETRY;
+            //    }
 
-            }
-            else if (Input.GetKeyUp(KeyCode.UpArrow))
-            {
-                //音を鳴らす
-                audioSource.PlayOneShot(sound_Rot);
-                OVERstate--;
-                if (OVERstate <= STATE_GMOV.OVER_NONE)
-                {
-                    OVERstate = STATE_GMOV.OVER_END;
-                }
-            }
+            //}
+            //else if (Input.GetKeyUp(KeyCode.UpArrow) || Gamepad.current.buttonNorth.isPressed)
+            //{
+            //    //音を鳴らす
+            //    audioSource.PlayOneShot(sound_Rot);
+            //    OVERstate--;
+            //    if (OVERstate <= STATE_GMOV.OVER_NONE)
+            //    {
+            //        OVERstate = STATE_GMOV.OVER_END;
+            //    }
+            //}
             // エスケープを押されたら
             //if (Input.GetKeyUp(KeyCode.Escape))
             //{
@@ -173,5 +186,72 @@ public class Game_Over : MonoBehaviour
         // bool取得
         b_gmov = gmov;
         b_gingle = true;
+    }
+
+    // =====================
+    // カーソルのいどう
+    // =====================
+    private void MoveCursor(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.ReadValue<Vector2>().y);
+        // 入力取得
+        if (context.ReadValue<Vector2>().y < 0)
+        {
+            //音を鳴らす
+            audioSource.PlayOneShot(sound_Rot);
+            OVERstate++;
+            if (OVERstate > STATE_GMOV.OVER_END)
+            {
+                OVERstate = STATE_GMOV.OVER_RETRY;
+            }
+
+        }
+        else if (context.ReadValue<Vector2>().y > 0)
+        {
+            //音を鳴らす
+            audioSource.PlayOneShot(sound_Rot);
+            OVERstate--;
+            if (OVERstate <= STATE_GMOV.OVER_NONE)
+            {
+                OVERstate = STATE_GMOV.OVER_END;
+            }
+        }
+    }
+    // =====================
+    // 決定
+    // =====================
+    private void Dicision(InputAction.CallbackContext context)
+    {
+        if (b_gmov != true) return;
+            // 状態によって変化
+            switch (OVERstate)
+        {
+            case STATE_GMOV.OVER_NONE:  // 何もない
+
+                break;
+            case STATE_GMOV.OVER_RETRY: // リトライ選択中
+                // 現在のシーンを再生
+              
+                    //音を鳴らす
+                    audioSource.PlayOneShot(sound_Chs);
+
+                    // シーン遷移
+                    string currentSceneName = SceneManager.GetActiveScene().name;   // 現在のシーン名を取得
+                    SceneManager.LoadScene(currentSceneName);    // シーンの遷移
+                
+                break;
+            case STATE_GMOV.OVER_SELECT: // リトライ選択中
+               
+                // 現在のシーンを再生
+              
+                    //音を鳴らす
+                    audioSource.PlayOneShot(sound_Chs);
+
+                    // シーン遷移
+                    SceneManager.LoadScene("AreaSelect");    // 仮
+                
+                break;
+               
+        }
     }
 }
