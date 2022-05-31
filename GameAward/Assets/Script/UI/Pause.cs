@@ -81,7 +81,7 @@ public class Pause : MonoBehaviour
 
     private void OnPause(InputAction.CallbackContext context)
     {
-        if (pauseUIInstance == null)    //ポーズUIがない場合
+        if (pauseUIInstance == null && !g_bPauseOpen)    //ポーズUIがない場合
         {
             g_bPauseOpen = true;        //ポーズ開いてる判定
             Time.timeScale = 0.0f;      //時を止める
@@ -194,15 +194,15 @@ public class Pause : MonoBehaviour
             else if (pauseSelect == 1)      //やり直す
             {
                 Time.timeScale = 1.0f;      //時を動かす
-                g_bPauseOpen = false;       //ポーズ開いてない判定
-                Destroy(pauseUIInstance);   //ポーズUI破壊
+                //g_bPauseOpen = false;       //ポーズ開いてない判定
+                //Destroy(pauseUIInstance);   //ポーズUI破壊
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             else if (pauseSelect == 2)      //ステージセレクトに戻る
             {
                 Time.timeScale = 1.0f;      //時を動かす
-                g_bPauseOpen = false;       //ポーズ開いてない判定
-                Destroy(pauseUIInstance);   //ポーズUI破壊
+                //g_bPauseOpen = false;       //ポーズ開いてない判定
+                //Destroy(pauseUIInstance);   //ポーズUI破壊
                 SceneManager.LoadScene("AreaSelect");
             }
             else if (pauseSelect == 3)      //操作説明
