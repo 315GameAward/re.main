@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5188761295473281768
+--- !u!1 &3685085471148541925
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4448800851904282716}
-  - component: {fileID: 737376815121417360}
-  - component: {fileID: 737376815121417363}
-  - component: {fileID: 737376815121417362}
-  - component: {fileID: 737376815121417365}
-  - component: {fileID: 737376815121417364}
+  - component: {fileID: 5087787282665950545}
+  - component: {fileID: 8150832599163718045}
+  - component: {fileID: 8150832599163718046}
+  - component: {fileID: 8150832599163718047}
+  - component: {fileID: 8150832599163718040}
+  - component: {fileID: 8150832599163718041}
   m_Layer: 8
-  m_Name: Penchi
+  m_Name: "Penchi_\u03B2"
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4448800851904282716
+--- !u!4 &5087787282665950545
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188761295473281768}
+  m_GameObject: {fileID: 3685085471148541925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.079}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6692295050270965399}
+  - {fileID: 2880594819962991514}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &737376815121417360
+--- !u!136 &8150832599163718045
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188761295473281768}
+  m_GameObject: {fileID: 3685085471148541925}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -50,13 +50,13 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!143 &737376815121417363
+--- !u!143 &8150832599163718046
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188761295473281768}
+  m_GameObject: {fileID: 3685085471148541925}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -68,13 +68,13 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.65, z: 0}
---- !u!114 &737376815121417362
+--- !u!114 &8150832599163718047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188761295473281768}
+  m_GameObject: {fileID: 3685085471148541925}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da9a0615fc65c4547b6acd19715c5992, type: 3}
@@ -84,30 +84,30 @@ MonoBehaviour:
   isGround: 1
   rayPosition: {x: 0, y: 0.3, z: 0}
   rayVector: {x: 0, y: 1, z: 0}
---- !u!114 &737376815121417365
+--- !u!114 &8150832599163718040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188761295473281768}
+  m_GameObject: {fileID: 3685085471148541925}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1141f57243e90740923c8eb1aaa0845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SmkPrefab: {fileID: 7321759561634253252, guid: f79f5268b7822914a98f726e2bf56ec9, type: 3}
-  walkSpeed: 0.7
-  waitTime: 5
-  timeOut: 5
+  walkSpeed: 0.4
+  waitTime: 7
+  timeOut: 7
   state: 0
---- !u!54 &737376815121417364
+--- !u!54 &8150832599163718041
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188761295473281768}
+  m_GameObject: {fileID: 3685085471148541925}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -117,12 +117,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!1001 &6581297931318204796
+--- !u!1001 &2338305847207400561
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4448800851904282716}
+    m_TransformParent: {fileID: 5087787282665950545}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f6051a593815dae4393ddf10b9fea060, type: 3}
       propertyPath: m_RootOrder
@@ -172,29 +172,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: pentiaruki
       objectReference: {fileID: 0}
+    - target: {fileID: 1170970068873931921, guid: f6051a593815dae4393ddf10b9fea060, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 652f4264ce664234d91307c69d5701c8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6051a593815dae4393ddf10b9fea060, type: 3}
---- !u!1 &6310702274741085229 stripped
+--- !u!1 &3220703850688751904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f6051a593815dae4393ddf10b9fea060, type: 3}
-  m_PrefabInstance: {fileID: 6581297931318204796}
+  m_PrefabInstance: {fileID: 2338305847207400561}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6692295050270965399 stripped
+--- !u!4 &2880594819962991514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f6051a593815dae4393ddf10b9fea060, type: 3}
-  m_PrefabInstance: {fileID: 6581297931318204796}
+  m_PrefabInstance: {fileID: 2338305847207400561}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6581297930708601964
+--- !u!95 &2338305846600941921
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6310702274741085229}
+  m_GameObject: {fileID: 3220703850688751904}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 46b32a2f34f4c1542af16ab81b89a229, type: 2}
+  m_Controller: {fileID: 9100000, guid: 52bec2465d045e24d86291acb137bd5d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
