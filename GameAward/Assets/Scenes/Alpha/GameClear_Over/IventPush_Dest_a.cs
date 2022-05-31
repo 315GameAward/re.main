@@ -20,6 +20,7 @@ public class IventPush_Dest_a : MonoBehaviour
         if (gameObject.transform.position.y < -1)
         {
             //FindObjectOfType<Score>().AddScore(10);
+            
             Destroy(this.gameObject);
         }
 
