@@ -38,6 +38,9 @@ public class PlayerControl : MonoBehaviour
     private double dDelayTime = 0.0f;   // ディレイ用
     Animator anime; // アニメーター変数
     private bool bAddPoint = false; // ポイントを追加したか
+
+    bool alive = true;
+
     public enum CutMode
     {
         CUT_ONE = 0,
@@ -67,6 +70,8 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        alive = gameObject.GetComponent<Player>().alive;
+
         //Rigidbody取得
         _rigidbody = GetComponent<Rigidbody>();
 
@@ -120,8 +125,10 @@ public class PlayerControl : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext context)
     {
+        // 死亡中は処理を行わない
+        alive = gameObject.GetComponent<Player>().alive;
+        if (!alive)return;        
 
-        
         // スーと切る時は処理を行わない
         if (eCutMode == CutMode.CUT_SMOOTH && bLeftClick)
         {
@@ -138,6 +145,10 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCut(InputAction.CallbackContext context)
     {
+        // 死亡中は処理を行わない
+        alive = gameObject.GetComponent<Player>().alive;
+        if (!alive) return;
+
         var pauseObject = GameObject.Find("PauseUI(Clone)");
         if (pauseObject == null)
         {
@@ -216,6 +227,10 @@ public class PlayerControl : MonoBehaviour
     // カットモードチェンジ
     private void CutModeChange(InputAction.CallbackContext context)
     {
+        // 死亡中は処理を行わない
+        alive = gameObject.GetComponent<Player>().alive;
+        if (!alive) return;
+
         eCutMode++;
         if(eCutMode >= CutMode.MAX_CUT_MODE)
         {
@@ -232,20 +247,6 @@ public class PlayerControl : MonoBehaviour
         }
 
         Debug.Log("カットモード" + eCutMode);
-    }
-
-    // モードによるカットの変更
-    private void ModeCut(InputAction.CallbackContext context)
-    {
-        switch (eCutMode)
-        {
-            case CutMode.CUT_ONE:
-                
-                break;
-            case CutMode.CUT_SMOOTH:
-                
-                break;
-        }
     }
 
 
@@ -269,8 +270,12 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 死亡中は処理を行わない
+        alive = gameObject.GetComponent<Player>().alive;
+        if (!alive) return;
+
         // 方向転換
-        if(!bLeftClick)
+        if (!bLeftClick)
         {
             transform.Rotate(new Vector3(0.0f, _moveStickValue.x * _moveForce, 0.0f));
 

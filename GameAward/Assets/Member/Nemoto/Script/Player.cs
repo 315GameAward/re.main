@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public bool debug = false;
     static float delayTime = 0.0f;
     static bool damage = false;
-
+    public bool alive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -48,13 +48,12 @@ public class Player : MonoBehaviour
         
 
         if (debug) return;
-        // リトライ
+
+        // 死亡フラグ
         if(Life.instance.GetLife() <= 0)
         {
-            if(Keyboard.current.rKey.isPressed)
-            {
-                SceneManager.LoadScene("GameScene");
-            }
+            // 死亡判定
+            alive = false;
         }
     }
 
