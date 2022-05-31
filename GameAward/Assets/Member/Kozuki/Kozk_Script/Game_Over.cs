@@ -119,7 +119,8 @@ public class Game_Over : MonoBehaviour
                         audioSource.PlayOneShot(sound_Chs);
 
                         // シーン遷移
-                        SceneManager.LoadScene("GameScene");    // 仮
+                        string currentSceneName = SceneManager.GetActiveScene().name;   // 現在のシーン名を取得
+                        SceneManager.LoadScene(currentSceneName);    // シーンの遷移
                     }
                     break;
                 case STATE_GMOV.OVER_SELECT: // リトライ選択中
