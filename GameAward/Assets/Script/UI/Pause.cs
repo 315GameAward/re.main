@@ -65,6 +65,7 @@ public class Pause : MonoBehaviour
 
     private void Start()
     {
+        g_bPauseOpen = false;
         pauseSelect = 0;
         tutImgOpen = false;
 
@@ -180,7 +181,7 @@ public class Pause : MonoBehaviour
             tutorialImgAnime.Play("Base Layer.CloseTutImg", 0, 0);
             tutImgOpen = false;
         }
-        else if (g_bPauseOpen)
+        else if (pauseUIInstance != null && g_bPauseOpen)
         {
             if (pauseSelect == 0)           //ゲームに戻る
             {
