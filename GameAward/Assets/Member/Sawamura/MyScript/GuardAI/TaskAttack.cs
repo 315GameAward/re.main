@@ -35,6 +35,7 @@ public class TaskAttack : Node
             if (enemyIsDead)
             {
                 ClearData("target");
+                //__animator.SetBool("Attacking", false);   //アタックパターン2など
                 __animator.SetBool("Attacking", false);
                 __animator.SetBool("Walking", true);
             }
