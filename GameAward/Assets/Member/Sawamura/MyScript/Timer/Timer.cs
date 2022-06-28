@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
 
     // ゲームオーバー画像取得(コウヅキ)
     public GameObject image_gameOver;
+    public static Timer instance;      // 外部から変更出来るように
     private bool b_TimeStop = false;    // trueならタイマー停止
 
     public int Duration
@@ -23,6 +24,11 @@ public class Timer : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         ResetTimer();
     }
 

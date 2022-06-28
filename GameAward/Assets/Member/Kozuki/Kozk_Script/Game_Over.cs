@@ -167,6 +167,7 @@ public class Game_Over : MonoBehaviour
                 //    }
                 //    break;
             }
+            Timer.instance.SetStopTimer(true);
         }
         else if (b_gmov == false)   // ‰ğœ‚³‚ê‚½‚ç
         {
