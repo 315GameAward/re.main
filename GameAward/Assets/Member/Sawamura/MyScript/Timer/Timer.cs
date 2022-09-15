@@ -56,10 +56,10 @@ public class Timer : MonoBehaviour
 
     private IEnumerator UpdateTimer()
     {
-        while (remainingDuration > 0 && b_TimeStop == false)
+        while (remainingDuration > 0)
         {
             UpdateUI(remainingDuration);
-            remainingDuration--;
+            if(b_TimeStop == false) { remainingDuration--; }
             yield return new WaitForSeconds(1f);
         }
         // ゲームオーバー表示

@@ -19,7 +19,7 @@ public class Game_Over : MonoBehaviour
         OVER_NONE = 0,  // 選択無し
         OVER_RETRY,     // リトライ
         OVER_SELECT,    // セレクト画面
-        OVER_END        // 終了
+      //  OVER_END        // 終了
     };
 
     public GameObject Image_gameOver;
@@ -201,7 +201,7 @@ public class Game_Over : MonoBehaviour
             //音を鳴らす
             audioSource.PlayOneShot(sound_Rot);
             OVERstate++;
-            if (OVERstate > STATE_GMOV.OVER_END)
+            if (OVERstate > STATE_GMOV.OVER_SELECT)
             {
                 OVERstate = STATE_GMOV.OVER_RETRY;
             }
@@ -214,7 +214,7 @@ public class Game_Over : MonoBehaviour
             OVERstate--;
             if (OVERstate <= STATE_GMOV.OVER_NONE)
             {
-                OVERstate = STATE_GMOV.OVER_END;
+                OVERstate = STATE_GMOV.OVER_SELECT;
             }
         }
     }
