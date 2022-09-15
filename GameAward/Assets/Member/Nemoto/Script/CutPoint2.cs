@@ -92,15 +92,15 @@ public class CutPoint2 : MonoBehaviour
                   
 
                    // ダメージラインの位置設定、生成
-                    Vector3 pos = new Vector3();
-                    pos = hit.point;
-                    GameObject gameObj;
-                    gameObj = m_CubeBase;
-                    gameObj.transform.position = pos;
-                    gameObj.transform.rotation = this.transform.rotation;
+                    //Vector3 pos = new Vector3();
+                    //pos = hit.point;
+                    //GameObject gameObj;
+                    //gameObj = m_CubeBase;
+                    //gameObj.transform.position = pos;
+                    //gameObj.transform.rotation = this.transform.rotation;
                    
-                    // m_CubeBase を元にして新しいm_CubeBaseを作成
-                    objList.Add(Instantiate(m_CubeBase, pos, this.transform.rotation));
+                    //// m_CubeBase を元にして新しいm_CubeBaseを作成
+                    //objList.Add(Instantiate(m_CubeBase, pos, this.transform.rotation));
 
                     // 頂点を広げる処理
                     if (CutPointTest.Count >= 3 && hit.collider.gameObject.name == "Plane")

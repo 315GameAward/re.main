@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
             if (!damage) 
             {
-                Life.instance.DelLife();
+                //Life.instance.DelLife();
                 damage = true;
             }
         }
