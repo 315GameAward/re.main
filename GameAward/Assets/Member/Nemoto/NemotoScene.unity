@@ -400,6 +400,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &235934890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 297827127608417741, guid: f32cbd4323d1b9f4db1e7cc352402ea6, type: 3}
+  m_PrefabInstance: {fileID: 297827126629348232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &235934897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235934890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c77a59cf4d559b43b6b5ea44d0234b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CPWidth: 0.04
 --- !u!1 &309819294
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image_gameOver: {fileID: 1729795488}
   debug: 1
+  alive: 1
 --- !u!114 &900791061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +671,7 @@ MonoBehaviour:
   ground: {fileID: 0}
   AddPointOnOff: 1
   m_CubeBase: {fileID: 0}
+  objList: []
   v: {x: 0, y: 0}
   v1: {x: 0, y: 0}
   v2: {x: 0, y: 0}

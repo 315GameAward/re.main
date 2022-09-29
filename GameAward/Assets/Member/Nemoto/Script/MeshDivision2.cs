@@ -40,6 +40,8 @@ public class MeshDivision2 : MonoBehaviour
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
         idxMemory.Clear();
+
+       // Debug.Log("三角形の数:" + attachedMesh.triangles.Length);
         for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
         {
             tri = new Triangle();
@@ -65,6 +67,8 @@ public class MeshDivision2 : MonoBehaviour
         // メッシュのアタッチ
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
+
+        Debug.Log("三角形の数:" + attachedMesh.triangles.Length);
 
         // 変数
         var uvs1 = new List<Vector2>(); // テクスチャ

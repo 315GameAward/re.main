@@ -25,39 +25,94 @@ public class MeshDivision3 : MonoBehaviour
 
     public class Triangle
     {
-        public int[] idx = new int[3];
-        public Triangle[] edgeLink = new Triangle[3];
+        public int[] idx      = new int[3];  // インデックス
+        public int[] adjacent = new int[3] {-1,-1,-1 };  // 隣り合う三角形の要素数(隣り合う三角形は最大で３つあるので要素数３で初期化)　adjacent　意味：隣り合う
+        public int adjacentCnt = 0; // 隣り合う三角形の数
+        public Triangle[] edgeLink = new Triangle[3];   // 
     };
 
     public Triangle tri;
-    public List<Triangle> trianglesList;
+    public List<Triangle> trianglesList;    // 三角形リスト
 
 
     // Start is called before the first frame update
     void Start()
     {     
-        // メッシュのアタッチ
-        attachedMeshFilter = GetComponent<MeshFilter>();
-        attachedMesh = attachedMeshFilter.mesh;
-        idxMemory.Clear();
-        
-        // 三角形ポリゴンごとにリストに格納
-        for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
-        {
-            tri = new Triangle();
-            trianglesList = new List<Triangle>();
-            tri.idx[0] = attachedMesh.triangles[i];
-            tri.idx[1] = attachedMesh.triangles[i + 1];
-            tri.idx[2] = attachedMesh.triangles[i + 2];
-            trianglesList.Add(tri);
-        }
-
+      
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    // 三角形リストの作成
+    public void CreateTriangle()
+    {
+        // メッシュのアタッチ
+        attachedMeshFilter = GetComponent<MeshFilter>();
+        attachedMesh = attachedMeshFilter.mesh;
+        idxMemory.Clear();
+
+        // 三角形リストの初期化
+        trianglesList = new List<Triangle>();
+       
+        // 三角形リストに自分のインデックスと隣接する三角形の情報を格納
+        for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
+        {
+            // インデックスの格納
+            tri = new Triangle();
+            tri.idx[0] = attachedMesh.triangles[i];
+            tri.idx[1] = attachedMesh.triangles[i + 1];
+            tri.idx[2] = attachedMesh.triangles[i + 2];
+
+            // リストに格納   
+            trianglesList.Add(tri);           
+        }
+             
+        // 隣接する三角形の情報を格納
+        for (int i = 0; i < trianglesList.Count; i++)
+        {
+            int pairIdxCount = 0;   // 同じ頂点の数(これが2個あったら同じ辺を持つことになる)
+
+            for (int j = 0; j < trianglesList.Count; j++)
+            {
+                // 同じ要素数だったらスルー
+                if (i == j) continue;
+
+                // インデックスが一致する辺を持つ三角形を検索
+                for (int a = 0; a < 3; a++)
+                {                  
+                    for (int b = 0; b < 3; b++)
+                    {
+                        // 頂点が一致しなかったらスルー
+                        if (trianglesList[i].idx[a] != trianglesList[j].idx[b]) continue;
+                        pairIdxCount++;
+                      
+                        break;
+                    }
+
+                    // 一致する頂点が二個あったら対象の要素番号を保存して終了
+                    if (pairIdxCount == 2)
+                    {                     
+                        for (int k = 0; k < 3; k++)
+                        {
+                            // 格納済みだったらスルー
+                            if (trianglesList[i].adjacent[k] != -1) continue;
+
+                            trianglesList[i].adjacent[k] = j;   // j番目の三角形が隣り合う三角形である
+                            trianglesList[i].adjacentCnt++;     // 隣り合う三角形のカウント加算
+                            //Debug.Log("三角形" + i + "に隣り合う三角形の格納されている要素番号:" + trianglesList[i].adjacent[k]);
+                            break;
+                        }
+                        break;
+                    }
+                }
+            }
+            //Debug.Log("三角形" + i + "に隣り合う三角形の数:" + trianglesList[i].adjacentCnt);
+        }
+      
     }
 
     // メッシュの分割(最初)

@@ -75,6 +75,7 @@ public class CreateGround : MonoBehaviour
         gameObject.GetComponent<MeshCollider>().convex = false;
         gameObject.GetComponent<MeshCollider>().material = GetComponent<Collider>().material;
 
+        gameObject.GetComponent<MeshDivision3>().CreateTriangle();
     }
 
     // Update is called once per frame
