@@ -74,22 +74,22 @@ public class StageSelect : MonoBehaviour
                 if (stageSelect == 0)
                 {
                     stageSelect = 1;
-                    selecting.transform.localPosition = new Vector3(-200.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-200.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 1)
                 {
                     stageSelect = 2;
-                    selecting.transform.localPosition = new Vector3(-10.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-10.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 3;
-                    selecting.transform.localPosition = new Vector3(190.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(190.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
                     stageSelect = 4;
-                    selecting.transform.localPosition = new Vector3(390.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(390.0f, -240.0f, transform.position.z);
                 }
             }
 
@@ -103,22 +103,22 @@ public class StageSelect : MonoBehaviour
                 if (stageSelect == 1)
                 {
                     stageSelect = 0;
-                    selecting.transform.localPosition = new Vector3(-410.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-410.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
                     stageSelect = 1;
-                    selecting.transform.localPosition = new Vector3(-190.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-190.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
                     stageSelect = 2;
-                    selecting.transform.localPosition = new Vector3(-10.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(-10.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 4)
                 {
                     stageSelect = 3;
-                    selecting.transform.localPosition = new Vector3(190.0f, -300.0f, transform.position.z);
+                    selecting.transform.localPosition = new Vector3(190.0f, -240.0f, transform.position.z);
                 }
             }
         }
