@@ -8,6 +8,15 @@
 //      作成開始日：2022/5/26(木)
 //===============================================================
 
+//===============================================================
+//      <=開発履歴=>
+//---------------------------------------------------------------
+//      内容：Start関数にコメント追加
+//            NextStage関数にコメントを追加
+//      編集者：柴山凜太郎
+//      編集日：2022/10/03(月)
+//===============================================================
+
 
 using System.Collections;
 using System.Collections.Generic;
@@ -17,17 +26,17 @@ using UnityEngine.SceneManagement;
 
 public class SelectButton : MonoBehaviour
 {
+    // ボタンのインスタンス
     Button[] button = new Button[2];
-    GameObject currentScene;
-    GetScene scene;
-    
-
 
     // Start is called before the first frame update
     void Start()
     {
+        // ボタンの振り分け
         button[0] = GameObject.Find("ReturnSelect").GetComponent<Button>();
         button[1] = GameObject.Find("NextStage").GetComponent<Button>();
+
+        // セレクトボタンにフォーカス
         button[0].Select();
     }
 
@@ -42,8 +51,10 @@ public class SelectButton : MonoBehaviour
         SceneManager.LoadScene(GetScene.CurrentSceneArea);
     }
 
+    // シーンの遷移先を判定
     public void NextStage()
     {
+        // 現在のシーン(ステージ)を元に次の遷移先を決める
         switch (GetScene.CurrentSceneStage)
         {
             case 9:// 1-5
