@@ -326,6 +326,17 @@ public partial class @ControlBinds : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""925a1b15-45ce-4516-8af9-687e32ecdb40"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""cac26f88-a0c6-4625-b85e-1a90b20ffc4b"",
                     ""path"": ""<XInputController>/buttonSouth"",
                     ""interactions"": """",

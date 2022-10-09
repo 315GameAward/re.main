@@ -165,8 +165,14 @@ public class PlayerControl : MonoBehaviour
             // パッドの処理
             if (!(controllerNames.Length == 0))
             {
-                //パッドの振動設定                   
-                Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);
+               
+                // パッドの振動(紙を切ったとき)
+                if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
+                {
+                    //パッドの振動設定                   
+                    Gamepad.current.SetMotorSpeeds(1.0f, 0.5f);
+
+                }
 
                 //ディレイのコルーチン実行
                 StartCoroutine(DelayMethod(motorDelay, () =>
@@ -303,28 +309,35 @@ public class PlayerControl : MonoBehaviour
         //}
 
         // スーと切るフラグonの時
-        if(bLeftClick)
-        if (eCutMode == CutMode.CUT_SMOOTH)
+        if(eCutMode == CutMode.CUT_SMOOTH)
         {
-            _moveDir = transform.forward;   // 方向の代入
-
-            // SEの再生
-            if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
+            if(bLeftClick)
             {
-                if (!bSmoothCutSE)
-                {
-                    // 紙を切る時
-                    audioSource.clip = smoothCutSE;
-                    audioSource.Play();   // スーと切るSE
-                    bSmoothCutSE = true;    // スーと切るSEフラグON
-                }
-                if (audioSource.time > 0.75f && bSmoothCutSE)
-                {
-                    audioSource.time = 0.45f;
-                    bSmoothCutSE = false;
-                }
+                _moveDir = transform.forward;   // 方向の代入
 
-            }
+                // パッドの振動(紙を切ったとき)
+                if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
+                {
+                    //パッドの振動設定                   
+                    Gamepad.current.SetMotorSpeeds(1.0f, 1.0f);
+                }
+                // SEの再生
+                if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
+                {
+                    if (!bSmoothCutSE)
+                    {
+                        // 紙を切る時
+                        audioSource.clip = smoothCutSE;
+                        audioSource.Play();   // スーと切るSE
+                        bSmoothCutSE = true;    // スーと切るSEフラグON
+                    }
+                    if (audioSource.time > 0.75f && bSmoothCutSE)
+                    {
+                        audioSource.time = 0.45f;
+                        bSmoothCutSE = false;
+                    }
+
+                }
 
                 dDelayTime += 0.1f;
                 if (dDelayTime > 2)
@@ -334,19 +347,24 @@ public class PlayerControl : MonoBehaviour
 
                     dDelayTime = 0;
                 }
-
             }
+            else
+            {
+                //パッドの振動設定                   
+                Gamepad.current.SetMotorSpeeds(0, 0);
+            }
+        }      
+
 
         if (!gameObject.GetComponent<CutPoint2>().bPurposeObj)
         {
             bSmoothCutSE = false;
-        }
-       
-        if (bAddPoint)
-        {
+            //パッドの振動設定                   
+            Gamepad.current.SetMotorSpeeds(0, 0);
 
-            //bAddPoint = gameObject.GetComponent<CutPoint2>().AddCPPoint();
         }
+
+
     }
 
     //ディレイ入れるコルーチン!
