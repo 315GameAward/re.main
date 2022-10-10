@@ -1,6 +1,6 @@
 //======================================================
 //
-//        MeshDivision2.cs
+//        MeshDivision3.cs
 //        メッシュを分割する処理
 //
 //------------------------------------------------------
@@ -29,11 +29,20 @@ public class MeshDivision3 : MonoBehaviour
         public int[] adjacent = new int[3] {-1,-1,-1 };  // 隣り合う三角形の要素数(隣り合う三角形は最大で３つあるので要素数３で初期化)　adjacent　意味：隣り合う
         public int adjacentCnt = 0; // 隣り合う三角形の数
         public Triangle[] edgeLink = new Triangle[3];   // 
+        public int trianglesElement = -1;   // 三角形リストに入っている要素数
+        public int outerTrianglesElement = -1;  // 外側にある三角形のリストに入っている要素数
+        public int crossPointNum = 0;   // 交差している辺との交差している点の数
+        public bool cutin = false;  // 切られる対象かどうか
     };
 
-    public Triangle tri;
-    public List<Triangle> trianglesList;    // 三角形リスト
-
+    public class TriangleList
+    {
+        public List<Triangle> triangles = new List<Triangle>();    // 三角形リスト
+        public List<Triangle> outerTriangles = new List<Triangle>();   // 外側にある三角形のリスト     
+        
+    };
+ 
+    TriangleList triangleList;  // 三角形リスト
 
     // Start is called before the first frame update
     void Start()
@@ -56,53 +65,54 @@ public class MeshDivision3 : MonoBehaviour
         idxMemory.Clear();
 
         // 三角形リストの初期化
-        trianglesList = new List<Triangle>();
-       
-        // 三角形リストに自分のインデックスと隣接する三角形の情報を格納
+        triangleList = new TriangleList();
+
+        // 三角形リストに切ろうとするメッシュのポリゴンをすべて格納
         for (int i = 0; i < attachedMesh.triangles.Length; i += 3)
         {
-            // インデックスの格納
-            tri = new Triangle();
+            var tri = new Triangle();
+          
             tri.idx[0] = attachedMesh.triangles[i];
             tri.idx[1] = attachedMesh.triangles[i + 1];
             tri.idx[2] = attachedMesh.triangles[i + 2];
-
-            // リストに格納   
-            trianglesList.Add(tri);           
+            triangleList.triangles.Add(tri);
+            triangleList.triangles[triangleList.triangles.Count - 1].trianglesElement = triangleList.triangles.Count - 1;
         }
-             
-        // 隣接する三角形の情報を格納
-        for (int i = 0; i < trianglesList.Count; i++)
-        {
-            int pairIdxCount = 0;   // 同じ頂点の数(これが2個あったら同じ辺を持つことになる)
 
-            for (int j = 0; j < trianglesList.Count; j++)
+        // 隣接する三角形の情報を格納する処理
+        for(int i = 0;i < triangleList.triangles.Count;i++)
+        {
+            // インデックスが一致する辺を持つ三角形を検索(i以外の三角形分ループ)
+            for (int j = 0; j < triangleList.triangles.Count; j++)
             {
                 // 同じ要素数だったらスルー
                 if (i == j) continue;
 
-                // インデックスが一致する辺を持つ三角形を検索
+                int pairIdxCount = 0;   // 同じ頂点の数(これが2個あったら同じ辺を持つことになる)
+
+                // インデックスが一致する辺を探す
                 for (int a = 0; a < 3; a++)
-                {                  
+                {
                     for (int b = 0; b < 3; b++)
                     {
-                        // 頂点が一致しなかったらスルー
-                        if (trianglesList[i].idx[a] != trianglesList[j].idx[b]) continue;
-                        pairIdxCount++;
-                      
+                        // 頂点インデックスが一致しなかったらスルー
+                        if (triangleList.triangles[i].idx[a] != triangleList.triangles[j].idx[b]) continue;
+
+                        pairIdxCount++; // 一致したらカウント加算
                         break;
                     }
 
                     // 一致する頂点が二個あったら対象の要素番号を保存して終了
                     if (pairIdxCount == 2)
-                    {                     
+                    {
                         for (int k = 0; k < 3; k++)
                         {
                             // 格納済みだったらスルー
-                            if (trianglesList[i].adjacent[k] != -1) continue;
+                            if (triangleList.triangles[i].adjacent[k] != -1) continue;
 
-                            trianglesList[i].adjacent[k] = j;   // j番目の三角形が隣り合う三角形である
-                            trianglesList[i].adjacentCnt++;     // 隣り合う三角形のカウント加算
+                            triangleList.triangles[i].adjacent[k] = j;   // j番目の三角形が隣り合う三角形である
+                            triangleList.triangles[i].adjacentCnt++;     // 隣り合う三角形のカウント加算
+                            
                             //Debug.Log("三角形" + i + "に隣り合う三角形の格納されている要素番号:" + trianglesList[i].adjacent[k]);
                             break;
                         }
@@ -110,15 +120,27 @@ public class MeshDivision3 : MonoBehaviour
                     }
                 }
             }
-            //Debug.Log("三角形" + i + "に隣り合う三角形の数:" + trianglesList[i].adjacentCnt);
+
+            // 隣り合う三角形が3個未満の時、メッシュの外辺をもつポリゴンとして登録
+            if(triangleList.triangles[i].adjacentCnt < 3)
+            {
+                triangleList.triangles[i].outerTrianglesElement = triangleList.outerTriangles.Count - 1;
+                triangleList.outerTriangles.Add(triangleList.triangles[i]);
+                Debug.Log("三角形[" + i + "]はメッシュの外辺を持つポリゴンです");
+            }
+
+            Debug.Log("三角形[" + i + "]に隣り合う三角形の数:" + triangleList.triangles[i].adjacentCnt);
+            Debug.Log("三角形[" + i + "]のインデックス:" + "["+triangleList.triangles[i].idx[0] + "]" + "[" + triangleList.triangles[i].idx[1] + "]" + "[" + triangleList.triangles[i].idx[2] + "]");
+           
         }
+
       
     }
 
     // メッシュの分割(最初)
     public void DivisionMesh(List<Vector3> cutPoint)
     {
-        Debug.Log("================= 切り始め ==================");
+        Debug.Log("================= 切り始め3 ==================");
         // メッシュのアタッチ
         attachedMeshFilter = GetComponent<MeshFilter>();
         attachedMesh = attachedMeshFilter.mesh;
@@ -154,6 +176,96 @@ public class MeshDivision3 : MonoBehaviour
         var checkCp = cp_s + cpEdg * 0.01f; // カットポイントの終点の1個前からカットポイントの終点の方向にちょっと伸ばした点
         var edgIdx2List = new List<List<int>>();   // 辺のインデックスのリストのリスト   
         var edgIdx2List2 = new List<List<int>>();  // 辺のインデックスのリストのリスト2   
+
+        // MeshDivision3から新たに追加変数
+        int crossEdgCnt = 0;    // カットエッジとポリゴンの辺との交点数
+        int startEdg = -1;       // 切り始めの位置がどの辺にいるのか(01,12,20)の辺のどかこか
+        int crossEdgElement = -1;   
+        var crossEdgVtx = new List<Vector2>();  // カットエッジとポリゴンの辺との交点座標リスト
+
+        Debug.Log("外側のポリゴン数" + triangleList.outerTriangles.Count);
+
+        // 切り始めのポリゴンを探す(メッシュの外辺を持つポリゴンの数だけループ)
+        for (int i = 0;i < triangleList.outerTriangles.Count;i++)
+        {
+            Debug.Log("三角形"+i+"が隣り合う三角形の数" + triangleList.outerTriangles[i].adjacentCnt);
+
+            // 隣り合う三角形の数が3個だったらスルー(隣り合う三角形の数が3個ある場合はメッシュの外辺がないので、切り始めのポリゴンには絶対にならない)    ※外辺を持つポリゴンだけでループさせているので多分起きない
+            if (triangleList.outerTriangles[i].adjacentCnt == 3) continue;
+
+            Debug.Log("切り始めのポリゴンを探す");
+           
+            // ポリゴンの辺の数だけループ
+            for (int k = 0; k < 3; k++)
+            {
+                // 長くなっちゃうのでインデックスをここに格納
+                int idx_s = triangleList.outerTriangles[i].idx[k];
+                int idx_e = triangleList.outerTriangles[i].idx[(k+1)%3];
+
+                // ポリゴンの2頂点
+                Vector2 polyVtx_s = new Vector2(attachedMesh.vertices[idx_s].x, attachedMesh.vertices[idx_s].z);
+                Vector2 polyVtx_v = new Vector2(attachedMesh.vertices[idx_e].x, attachedMesh.vertices[idx_e].z);
+
+                // ポリゴンの辺
+                Vector2 polyEdge = polyVtx_v - polyVtx_s;   // 辺
+
+                // カットポイントの2頂点
+                Vector2 cpVtx_s = new Vector2(cutPoint[cutPoint.Count - 2].x - transform.position.x, cutPoint[cutPoint.Count - 2].z - transform.position.z); // 始点
+                Vector2 cpVtx_v = new Vector2(cutPoint[cutPoint.Count - 1].x - transform.position.x, cutPoint[cutPoint.Count - 1].z - transform.position.z); // 終点
+
+                // カットポイントの辺
+                Vector2 cpEdge = cpVtx_v - cpVtx_s; // 辺
+
+                // カットポイントの始点の補正
+                cpVtx_s -= cpEdge * 0.013f;
+
+                // カットポイントの辺の補正
+                cpEdge = cpVtx_v - cpVtx_s; // 辺
+
+                // ポリゴンの辺とカットポイントの辺の始点をつないだベクトル
+                Vector2 v = polyVtx_s - cpVtx_s;
+
+                // 線分の始点から交点のベクトルの係数(多分)
+                float t1 = (v.x * polyEdge.y - polyEdge.x * v.y) / (cpEdge.x * polyEdge.y - polyEdge.x * cpEdge.y);
+                float t2 = (v.x * cpEdge.y - cpEdge.x * v.y) / (cpEdge.x * polyEdge.y - polyEdge.x * cpEdge.y);
+
+                // 交点
+                Vector2 p = new Vector2(polyVtx_s.x, polyVtx_s.y) + new Vector2(polyEdge.x * t2, polyEdge.y * t2);
+
+                // 線分と線分が交わっているか
+                const float eps = 0.00001f;
+                if (t1 + eps < 0 || t1 - eps > 1 || t2 + eps < 0 || t2 - eps > 1)
+                {
+                    // 交わってないときスルー
+                    continue;
+                }
+                else
+                {
+                    Debug.Log("交差している辺を発見");
+                    triangleList.outerTriangles[i].cutin = true;    // 切られる対象フラグON
+                    triangleList.outerTriangles[i].crossPointNum++; // 交点数加算
+                    triangleList.triangles[triangleList.outerTriangles[i].trianglesElement] = triangleList.outerTriangles[i];   // 上の2行の情報を上書き
+                    crossEdgElement = triangleList.outerTriangles[i].outerTrianglesElement; // 要素番号保存
+                    startEdg = k;   // どの辺が切り始めの辺になるか
+                    crossEdgCnt++;   // 交差している辺カウント加算
+                    crossEdgVtx.Add(p); // 交点を保存    ※のちにこれを元にどの辺が切り始めの点から一番近いかを調べる
+                }
+            }
+        }
+
+        // 交差している辺の数で分岐
+        if(crossEdgCnt == 1)
+        {
+
+        }
+        else if(crossEdgCnt == 2)
+        {
+
+        }
+        else if(crossEdgCnt > 2)
+        {
+
+        }
 
         // またいでるポリゴンと侵入しているポリゴンが何個あるか探す
         for (int j = 0; j < attachedMesh.triangles.Length; j += 3)
@@ -1515,16 +1627,16 @@ public class MeshDivision3 : MonoBehaviour
         }
 
         // メッシュに代入
-        attachedMesh.SetVertices(vertices1.ToArray());
-        attachedMesh.SetTriangles(triangles1.ToArray(), 0);
-        attachedMesh.SetNormals(normal);
+        //attachedMesh.SetVertices(vertices1.ToArray());
+        //attachedMesh.SetTriangles(triangles1.ToArray(), 0);
+        //attachedMesh.SetNormals(normal);
 
-        var mesh = new Mesh();
-        mesh.vertices = vertices1.ToArray();
-        mesh.triangles = triangles1.ToArray();
-        mesh.normals = normals1.ToArray();
+        //var mesh = new Mesh();
+        //mesh.vertices = vertices1.ToArray();
+        //mesh.triangles = triangles1.ToArray();
+        //mesh.normals = normals1.ToArray();
 
-        attachedMesh = mesh;
+        //attachedMesh = mesh;
     }
 
     // 途中のカットポイントでの分割

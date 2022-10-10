@@ -163,7 +163,7 @@ public class PlayerControl : MonoBehaviour
             transform.position += transform.forward * moveForce;
 
             // パッドの処理
-            if (!(controllerNames.Length == 0))
+            if (!(controllerNames.Length == 0) && (Gamepad.current != null))
             {
                
                 // パッドの振動(紙を切ったとき)
@@ -316,7 +316,7 @@ public class PlayerControl : MonoBehaviour
                 _moveDir = transform.forward;   // 方向の代入
 
                 // パッドの振動(紙を切ったとき)
-                if (gameObject.GetComponent<CutPoint2>().bPurposeObj)
+                if (gameObject.GetComponent<CutPoint2>().bPurposeObj && (Gamepad.current != null))
                 {
                     //パッドの振動設定                   
                     Gamepad.current.SetMotorSpeeds(1.0f, 1.0f);
@@ -358,13 +358,15 @@ public class PlayerControl : MonoBehaviour
 
         if (!gameObject.GetComponent<CutPoint2>().bPurposeObj)
         {
-            bSmoothCutSE = false;
-            //パッドの振動設定                   
-            Gamepad.current.SetMotorSpeeds(0, 0);
+            bSmoothCutSE = false;   // フラグを戻す
 
+            // パッドの振動を止める
+            if(Gamepad.current != null)
+            {
+                //パッドの振動設定                   
+                Gamepad.current.SetMotorSpeeds(0, 0);
+            }
         }
-
-
     }
 
     //ディレイ入れるコルーチン!
