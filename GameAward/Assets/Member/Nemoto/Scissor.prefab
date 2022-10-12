@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image_gameOver: {fileID: 0}
   debug: 0
+  alive: 1
 --- !u!65 &300881699183995539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -555,6 +556,10 @@ PrefabInstance:
     - target: {fileID: 4829936704552345852, guid: b89d1021ae36e0245a151350fb84b99d, type: 3}
       propertyPath: m_Name
       value: Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829936704552345852, guid: b89d1021ae36e0245a151350fb84b99d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4829936704592713150, guid: b89d1021ae36e0245a151350fb84b99d, type: 3}
       propertyPath: m_LocalScale.x
