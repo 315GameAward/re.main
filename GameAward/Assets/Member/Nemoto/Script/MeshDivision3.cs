@@ -27,6 +27,7 @@ public class MeshDivision3 : MonoBehaviour
     {
         public int[] idx      = new int[3];  // インデックス
         public int[] adjacent = new int[3] {-1,-1,-1 };  // 隣り合う三角形の要素数(隣り合う三角形は最大で３つあるので要素数３で初期化)　adjacent　意味：隣り合う
+        public int[] crossPointEdg = new int[2] { -1, -1 }; // 交差している辺番号
         public int adjacentCnt = 0; // 隣り合う三角形の数
         public Triangle[] edgeLink = new Triangle[3];   // 
         public int trianglesElement = -1;   // 三角形リストに入っている要素数
@@ -244,11 +245,18 @@ public class MeshDivision3 : MonoBehaviour
                     Debug.Log("交差している辺を発見");
                     triangleList.outerTriangles[i].cutin = true;    // 切られる対象フラグON
                     triangleList.outerTriangles[i].crossPointNum++; // 交点数加算
+                    // 交差している辺の辺番号を格納
+                    for (int j = 0; j < 2; j++)
+                    {
+                        if (triangleList.outerTriangles[i].crossPointEdg[j] != -1) continue;
+                        triangleList.outerTriangles[i].crossPointEdg[j] = k;
+                    }
                     triangleList.triangles[triangleList.outerTriangles[i].trianglesElement] = triangleList.outerTriangles[i];   // 上の2行の情報を上書き
                     crossEdgElement = triangleList.outerTriangles[i].outerTrianglesElement; // 要素番号保存
                     startEdg = k;   // どの辺が切り始めの辺になるか
                     crossEdgCnt++;   // 交差している辺カウント加算
                     crossEdgVtx.Add(p); // 交点を保存    ※のちにこれを元にどの辺が切り始めの点から一番近いかを調べる
+                  
                 }
             }
         }
@@ -256,6 +264,61 @@ public class MeshDivision3 : MonoBehaviour
         // 交差している辺の数で分岐
         if(crossEdgCnt == 1)
         {
+            // ポリゴン数だけループ
+            for(int i = 0;i < triangleList.triangles.Count;i++)
+            {
+                // 切られる対象じゃなかったらスルー
+                if (!triangleList.triangles[i].cutin) continue;
+
+                // 開始している辺番号をインデックスのもとにする
+                int startEdge = 0;
+                for(int j = 0;j < 2;j++)
+                {
+                    if (triangleList.triangles[i].crossPointEdg[j] == -1) continue;
+                    startEdge = triangleList.triangles[i].crossPointEdg[j];
+                }
+
+                // 頂点の計算
+                var cpNormal = Vector3.Cross((cutPoint[cutPoint.Count - 2] - cutPoint[cutPoint.Count - 1]), Vector3.up);
+                var cpNormalAbs = new Vector3(cpNormal.x / Mathf.Abs(cpNormal.x), 0, cpNormal.z / Mathf.Abs(cpNormal.z));
+                Vector2 pe_s = new Vector2(attachedMesh.vertices[triangleList.triangles[i].idx[startEdge]].x, attachedMesh.vertices[triangleList.triangles[i].idx[startEdge]].z);
+                Vector2 pe_v = new Vector2(attachedMesh.vertices[triangleList.triangles[i].idx[(startEdge + 1)%3]].x, attachedMesh.vertices[triangleList.triangles[i].idx[(startEdge + 1) % 3]].z);
+                var porygonEdg = pe_v - pe_s;
+                var pEdge = new Vector2(Mathf.Abs(porygonEdg.x), Mathf.Abs(porygonEdg.y));
+
+                // 頂点の追加
+                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * CPWidth * -cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * -cpNormalAbs.z));
+                vertices1.Add(new Vector3(cutPoint[0].x - transform.position.x, attachedMesh.vertices[0].y, cutPoint[0].z - transform.position.z) + new Vector3(pEdge.normalized.x * CPWidth * cpNormalAbs.x, 0, pEdge.normalized.y * CPWidth * cpNormalAbs.z));
+
+                vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+                vertices1.Add(cutPoint[cutPoint.Count - 1] - transform.position);
+
+
+                // インデックスの割り当て
+                int idx0 = triangleList.triangles[i].idx[(startEdge + 3) % 3];
+                int idx1 = triangleList.triangles[i].idx[(startEdge + 1) % 3];
+                int idx2 = triangleList.triangles[i].idx[(startEdge + 2) % 3];
+                int idx3 = vertices1.Count - 4; // 
+                int idx4 = vertices1.Count - 3; // 
+                int idx5 = vertices1.Count - 2; // 
+
+                triangles1.Add(idx5);
+                triangles1.Add(idx3);
+                triangles1.Add(idx1);
+
+                triangles1.Add(idx5);
+                triangles1.Add(idx1);
+                triangles1.Add(idx2);
+
+                triangles1.Add(idx5);
+                triangles1.Add(idx2);
+                triangles1.Add(idx0);
+
+                triangles1.Add(idx5);
+                triangles1.Add(idx0);
+                triangles1.Add(idx4);
+
+            }
 
         }
         else if(crossEdgCnt == 2)
