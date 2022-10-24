@@ -48,6 +48,15 @@ public class AreaSelect : MonoBehaviour
     [SerializeField] private AudioClip rotate;
     [SerializeField] private AudioClip select;
 
+    // イメージ
+    [SerializeField] private Image imageObj;
+    [SerializeField] private Sprite classRoom;
+    [SerializeField] private Sprite musicRoom;
+    [SerializeField] private Sprite craftsRoom;
+    [SerializeField] private Sprite scienceRoom;
+
+
+
     private void Awake()
     {
         //InputActionインスタンス生成 
@@ -230,6 +239,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = musicRoom;  // イメージの切り替え
             areaText.text = "音楽室ステージ";
             areaTextAnime.SetBool("ChangeTextR", false);
             areaSelect = 1;
@@ -244,6 +254,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = craftsRoom;  // イメージの切り替え
             areaText.text = "図工室ステージ";
             areaTextAnime.SetBool("ChangeTextR", false);
             areaSelect = 2;
@@ -258,6 +269,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = scienceRoom;  // イメージの切り替え
             areaText.text = "理科室ステージ";
             areaTextAnime.SetBool("ChangeTextR", false);
             areaSelect = 3;
@@ -272,6 +284,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = classRoom;  // イメージの切り替え
             areaText.text = "教室ステージ";
             areaTextAnime.SetBool("ChangeTextR", false);
             areaSelect = 0;
@@ -294,6 +307,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = scienceRoom;  // イメージの切り替え
             areaText.text = "理科室ステージ";
             areaTextAnime.SetBool("ChangeTextL", false);
             areaSelect = 3;
@@ -308,6 +322,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = craftsRoom;  // イメージの切り替え
             areaText.text = "図工室ステージ";
             areaTextAnime.SetBool("ChangeTextL", false);
             areaSelect = 2;
@@ -322,6 +337,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = musicRoom;  // イメージの切り替え
             areaText.text = "音楽室ステージ";
             areaTextAnime.SetBool("ChangeTextL", false);
             areaSelect = 1;
@@ -336,6 +352,7 @@ public class AreaSelect : MonoBehaviour
                 areas.transform.Rotate(Vector3.up * -rotateSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            imageObj.GetComponent<Image>().sprite = classRoom;  // イメージの切り替え
             areaText.text = "教室ステージ";
             areaTextAnime.SetBool("ChangeTextL", false);
             areaSelect = 0;
