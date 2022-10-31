@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageSelect : MonoBehaviour
 {
@@ -30,6 +31,24 @@ public class StageSelect : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip selChange;
     [SerializeField] private AudioClip select;
+
+    [SerializeField] private Image g_1;
+    [SerializeField] private Image g_2;
+    [SerializeField] private Image g_3;
+    [SerializeField] private Image g_4;
+    [SerializeField] private Image g_5;
+
+
+    [SerializeField] private Sprite  _1;
+    [SerializeField] private Sprite c_1;
+    [SerializeField] private Sprite  _2;
+    [SerializeField] private Sprite  c_2;
+    [SerializeField] private Sprite  _3;
+    [SerializeField] private Sprite c_3;
+    [SerializeField] private Sprite  _4;
+    [SerializeField] private Sprite c_4;
+    [SerializeField] private Sprite  _5;
+    [SerializeField] private Sprite c_5;
 
     private void Awake()
     {
@@ -73,21 +92,25 @@ public class StageSelect : MonoBehaviour
 
                 if (stageSelect == 0)
                 {
+                    g_1.sprite = c_1;
                     stageSelect = 1;
                     selecting.transform.localPosition = new Vector3(-200.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 1)
                 {
+                    g_2.sprite = c_2;
                     stageSelect = 2;
                     selecting.transform.localPosition = new Vector3(-10.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 2)
                 {
+                    g_3.sprite = c_3;
                     stageSelect = 3;
                     selecting.transform.localPosition = new Vector3(190.0f, -240.0f, transform.position.z);
                 }
                 else if (stageSelect == 3)
                 {
+                    g_4.sprite = c_4;
                     stageSelect = 4;
                     selecting.transform.localPosition = new Vector3(390.0f, -240.0f, transform.position.z);
                 }

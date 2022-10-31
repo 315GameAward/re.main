@@ -139,7 +139,6 @@ public class PlayerControl : MonoBehaviour
 
         //MoveƒAƒNƒVƒ‡ƒ“‚Ì“ü—ÍŽæ“¾
         _moveStickValue = context.ReadValue<Vector2>();
-
         
     }
 
